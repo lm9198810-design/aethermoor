@@ -6,7 +6,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
 const read = (name) => fs.readFileSync(path.join(root, name), 'utf8');
-const source = { app: read('app.js'), data: read('data.js'), lang: read('lang.js'), html: read('index.html') };
+const source = { app: read('app.js'), data: read('data.js'), lang: read('lang.js'), html: read('index.html'), css: read('styles.css') };
 const silentConsole = { log() {}, warn() {}, error() {} };
 for (const [name, text] of Object.entries({ app: source.app, data: source.data, lang: source.lang })) {
   assert.doesNotThrow(() => new vm.Script(text, { filename: name + '.js' }), name + '.js must parse');
@@ -59,4 +59,8 @@ assert.equal(translations.FA_DATA.magicLaws.length, world.MAGIC_LAWS.length, 'Pe
 assert.ok(source.app.includes('window.localStorage'), 'language preference access should be guarded');
 assert.ok(source.app.includes('activeRaceFilter'), 'language toggle should preserve filter state');
 assert.ok(source.app.includes("behavior: 'auto'"), 'navigation should use standard scroll behavior');
+assert.ok(source.css.includes('html[dir="rtl"] .timeline { direction: ltr; }'), 'RTL timeline positioning should use stable LTR coordinates');
+assert.ok(source.css.includes('html[dir="rtl"] .timeline-event { direction: rtl; }'), 'timeline event content should retain RTL direction');
+assert.match(source.css, /html\[dir="rtl"\] \.timeline::before \{\s*left: auto;\s*right: 22px;/, 'mobile RTL timeline line should move to the right');
+assert.match(source.css, /html\[dir="rtl"\] \.timeline-event:nth-child\(odd\),\s*html\[dir="rtl"\] \.timeline-event:nth-child\(even\) \{[^}]*width: 100%;[^}]*left: 0;[^}]*text-align: right;/s, 'mobile RTL timeline events should use one right-aligned column');
 console.log('Aethermoor smoke tests passed: syntax, routes, translations, map consistency, and 230 entries.');
