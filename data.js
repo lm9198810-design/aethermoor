@@ -3419,12 +3419,12 @@ What is he making? No one knows. No one asks. The Silent Smith is working. That 
     date: "Unknown",
     language: "Demonic",
     pages: 666,
-    excerpt: "I have killed a million demons to take the throne. I have killed ten million to keep it. I have killed a hundred million to expand it. I am still killing. I will never stop.",
-    fullText: `[This book is written in Demonic. It is one of the few Demonic texts that has ever been found in the central continent. It was found on the body of a half-demon who had crossed the Black Chasm — somehow, impossibly — and made it to the central continent before he died. The book was clutched in his hand. He had been reading it when he died.]
+    excerpt: "I have killed a million demons to take the throne. I have killed ten million to keep it. I am still killing. I will never stop.",
+    fullText: `[This book is written in Demonic. It is one of the few Demonic texts recovered in the central continent. The archive records that it travelled with a half-demon envoy during one of the rare, escorted openings of the Godseal. The envoy died after the return journey. No reliable witness says that he crossed the closed barrier alone; that version appears only in later tavern copies.
 
-[The book has 666 pages. The first 665 pages are in Demonic. The last page is in Common Tongue — as if the author wanted someone to be able to read it.]
+[The book has 666 pages. The first 665 are in Demonic. The last is in Common Tongue. The binding, ink, and final page belong to different periods, so the claim that they were written by one hand is disputed.]
 
-[Translation of the final page:]
+[Translation of the final page, author unknown:]
 
 "I am the Demon King. I have ruled Xarnath for ten thousand years. I have killed more beings than any creature in history. I have absorbed their life-force, their mana, their souls. I have become something more than a demon. Something more than a god. Something that should not exist.
 
@@ -3442,10 +3442,10 @@ And I wait. I wait for someone to find this book. I wait for someone to read thi
 
 I am the Demon King. I am the most powerful being in the world. And I am the loneliest.
 
-— The Demon King, Year Unknown"
+— The Demon King, date unverified"
 
-[The book is kept in the Watching Order's citadel. It has been there for three hundred years. No one has ever opened it a second time.]`,
-    note: "The only known Demonic text in the central continent. It was found on the body of a half-demon who crossed the Black Chasm — a feat that should be impossible. The book is kept in the Watching Order's citadel. No one has ever opened it a second time."
+[The volume is kept in the Watching Order's citadel. Its first recorded examination is dated two centuries after the Sundering. No second complete reading has been verified.]`,
+    note: "The text was recovered among the effects of a half-demon envoy after one of the rare, escorted openings of the Godseal. Later tavern copies claim the envoy crossed alone, but no record confirms this. The author's identity is disputed: the final page may be a ruler's confession, a forged political tract, or a later imitation. Its grand claims about the number of victims have not been independently verified."
   },
   {
     id: "wounded-choir-prophecies",
@@ -3458,28 +3458,32 @@ I am the Demon King. I am the most powerful being in the world. And I am the lon
     date: "Years ~500 B.S. - present",
     language: "Common Tongue",
     pages: 88,
-    excerpt: "When the god-touched are gathered, and the halfborn stand as one, the thrones of heaven shall be empty forever, and the earth shall be ruled by those born of it.",
-    fullText: `[The Wounded Choir is a secret society of halfborn and half-demons. They have no official headquarters. They have no official membership. They have only a book — this book — which is passed from member to member, in secret, for a thousand years.]
+    excerpt: "When the sealed road answers two bloods, mend the stone before you name the child. — Fragment attributed to an unknown Choir scribe; translation disputed.",
+    fullText: `[This volume is an anthology maintained by the Wounded Choir, a loose network that shelters some Halfborn and Half-Demons and preserves testimony about dangerous rites. It has no central headquarters or universally accepted doctrine. The oldest surviving leaf is dated to approximately 500 B.S.; later pages were copied, annotated, and occasionally replaced.
 
-[This book has 88 pages. It contains 88 prophecies. Each prophecy was spoken by a different member of the Wounded Choir. Each prophecy was recorded by a different member. Each prophecy has come true — or is coming true — or will come true.]
+[The current binding contains eighty-eight numbered fragments, not eighty-eight verified predictions. Some were recorded before the event they appear to describe; others were added after a war, disaster, or political upheaval. Several translations conflict. The Choir preserves those differences rather than declaring one reading correct.]
 
-PROPHECY I
-"When the god-touched are gathered, and the halfborn stand as one, the thrones of heaven shall be empty forever, and the earth shall be ruled by those born of it."
+FRAGMENT I — COPIED BY AN UNKNOWN HAND
+"When the god-touched gather, the thrones of heaven may stand empty. Or the living may simply stop kneeling. The copyist marks both readings as possible."
 
-PROPHECY XIII
-"The child of two bloods shall stand at the crossroads. They shall choose — not for themselves, but for the world. Their choice shall break the Godseal, or seal it forever."
+FRAGMENT XIII — TRANSLATION DISPUTED
+"When two bloods meet at the sealed road, the gate may answer. One choice may mend the ward; another may loosen it. The surviving line gives no name."
 
-PROPHECY XXXIV
-"The half-demon shall be the death of the Demon King. Not by strength. Not by magic. By choice. By the choice that only a half-demon can make."
+FRAGMENT XXXIV — MARGIN NOTE ADDED 211 S.A.
+"The half-demon shall be the death of the Demon King."
 
-PROPHECY LVI
-"The Ashborn shall rise from the ashes of the fallen god. He shall be the last hope of the dying race, the last light of the dying world. And he shall choose — fire or ice, dawn or dusk, life or death."
+[Beside this line, a later archivist wrote: "Death may mean the end of his reign, his reputation, or a bargain he cannot undo. No witness agrees. Do not send a child to war on the strength of one sentence."]
 
-PROPHECY LXXXVIII
-"The world shall end. But not today. Not tomorrow. Not in a thousand years. The world shall end when the last prophecy is fulfilled. The last prophecy is this prophecy. This prophecy is being fulfilled now."
+FRAGMENT LVI — DAMAGED INSCRIPTION
+"The Ashborn shall rise from the ashes of the fallen god. The last light may be a child, a city, or the dawn itself."
 
-[The final page — page 88 — is blank except for a single line: "You are reading this. The prophecy is fulfilled. The world shall end when you finish this page. Or it shall not. The choice is yours."]`,
-    note: "The holiest text of the Wounded Choir. It is passed from member to member, in secret, for a thousand years. No one knows how many members there are. No one knows who they are. No one knows where they are. But they are everywhere. And they are waiting."
+[Three copies translate "Ashborn" differently: as a family name, as eyes altered by a rune, and as a poetic term for those born after the Sundering. None names Kaelen Vareth.]
+
+FRAGMENT LXXXVIII — LATE ADDITION, AUTHOR UNKNOWN
+"The world shall end when the last prophecy is fulfilled."
+
+[The final page includes the line "You are reading this." Handwriting analysis dates it centuries later than the rest of the volume. The Watching Order catalogues it as a possible joke, warning, or deliberate forgery—not a reliable account of how the world ends.]`,
+    note: "An anthology of testimony, visions, disputed translations, and later annotations preserved by the Wounded Choir. Its fragments have been used to justify protection, persecution, and political schemes, but the Choir does not accept every passage as true. The volume is valuable evidence about what people feared and believed—not proof that one person is destined to rule or destroy the world."
   }
 ];
 
