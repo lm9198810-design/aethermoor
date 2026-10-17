@@ -4537,254 +4537,159 @@ FRAGMENT LXXXVIII — LATE ADDITION, AUTHOR UNKNOWN
    ============================================================ */
 const GUILDS_DATA = [
   {
-    id: "adventurers-guild",
-    name: "The Adventurers' Guild",
-    icon: "swords",
-    color: "#6ba8c9",
-    founded: "Year 47 S.A.",
-    founder: "Valerius the Unbroken",
-    purpose: "To organize, train, and regulate adventurers. To explore dungeons, kill monsters, and sell loot.",
-    headquarters: "Valerius's Rest",
-    branches: 12,
-    ranks: ["F", "E", "D", "C", "B", "A", "S", "SS"],
+    id: "adventurers-guild", name: "The Adventurers' Guild", icon: "swords", color: "#6ba8c9",
+    founded: "Year 61 S.A.", founder: "The first multi-peoples rescue compact",
+    purpose: "To register expeditions, publish verified danger reports, coordinate rescues, settle contract disputes and preserve field records. It accepts fighters, healers, scholars, guides and craftspeople; membership does not require every person to fight.",
+    headquarters: "The Great Hall, Black Basin, beside the Abyss", branches: 12,
+    ranks: ["F", "E", "D", "C", "B", "A", "S"],
     rankDescriptions: {
-      F: "Applicant — not yet a member. Cannot enter dungeons. Cannot fight monsters. Cannot earn.",
-      E: "Novice — can enter low-level dungeons (floors 1-5). Usually serves as a porter, loot-carrier, or camp guard.",
-      D: "Apprentice — can enter dungeons up to floor 10. Can fight low-level monsters. Can lead small teams.",
-      C: "Journeyman — can enter dungeons up to floor 20. Can fight mid-level monsters. Can lead medium teams.",
-      B: "Expert — can enter dungeons up to floor 40. Can fight high-level monsters. Can lead large teams.",
-      A: "Master — can enter dungeons up to floor 60. Can fight very high-level monsters. Can lead multiple teams.",
-      S: "Legend — can enter dungeons up to floor 80. Can fight legendary monsters. Can lead the Guild itself.",
-      SS: "Myth — no living SS-rank adventurers. The last one died a thousand years ago. No one knows how to become SS. No one knows if it is possible."
+      F: "Probationary support role; no independent dungeon expedition authority.",
+      E: "Qualified for surface routes and low-risk support duties.",
+      D: "Cleared for supervised upper-floor expeditions with a registered team.",
+      C: "May lead routine expeditions after demonstrating planning and rescue skills.",
+      B: "Trusted for hazardous routes and multi-role team coordination.",
+      A: "Senior clearance for deep surveys; approval still depends on evidence and preparation.",
+      S: "Exceptional field authority; no rank guarantees survival or absolute combat superiority."
     },
-    notable_members: ["The Emperor (honorary)", "Kaelen Vareth (unregistered)", "Nyx the Shadow-Speaker (banned)"],
-    secrets: "The Guild has a secret vault beneath its headquarters. It contains 'Whispers from the Abyss' — the forbidden book found on Floor 60. The vault has not been opened in three hundred years. The Guild says it is for safety. The Guild is lying."
+    notable_members: ["Aelwyn Vaelor (archive liaison)", "Thane Ironheart (engineering adviser)", "Nyx of the Grey Pack (route courier)"],
+    secrets: "The Guild's archive includes expeditions that returned with contradictory accounts. Rather than declaring one account true, the council seals identifying details when disclosure would endanger witnesses."
   },
   {
-    id: "iron-pact",
-    name: "The Iron Pact",
-    icon: "crossed-hammers",
-    color: "#8a6f1f",
-    founded: "Year 187 S.A.",
-    founder: "House Emberforge",
-    purpose: "To organize, train, and regulate dwarven smiths. To forge weapons, armor, and runes for the world.",
-    headquarters: "Hearthforge (dwarven district)",
-    branches: 3,
-    ranks: ["Apprentice", "Journeyman", "Master", "Grandmaster"],
+    id: "iron-pact", name: "The Iron Pact", icon: "crossed-hammers", color: "#8a6f1f",
+    founded: "Year 187 S.A.", founder: "The mountain workshops",
+    purpose: "To certify smiths, maintain expedition tools, inspect lift cables and share safety standards between independent workshops. It does not control all dwarven craft or claim that every relic is magical.",
+    headquarters: "The Iron Hold, Hearthforge", branches: 3,
+    ranks: ["Apprentice", "Journeyman", "Master", "Inspector"],
     rankDescriptions: {
-      Apprentice: "A student smith. Can forge basic tools. Cannot forge weapons.",
-      Journeyman: "A skilled smith. Can forge weapons. Cannot forge runes.",
-      Master: "A master smith. Can forge masterwork weapons. Can forge basic runes.",
-      Grandmaster: "A legendary smith. Can forge legendary weapons. Can forge any rune. There are only three Grandmasters alive — and one of them is the Silent Smith."
+      Apprentice: "Learns tools, materials and safe workshop practice.",
+      Journeyman: "Can make standard equipment and repair common failures.",
+      Master: "Can design complex tools and train apprentices.",
+      Inspector: "Audits safety and certifies repairs for public use."
     },
-    notable_members: ["The Silent Smith (Grandmaster)", "Thane Ironheart (Master)", "Grimli the Forgeborn (Grandmaster)"],
-    secrets: "The Iron Pact has a secret project. It is called 'Project Ember.' No one outside the Pact knows what it is. The Silent Smith is the only one who knows the full scope. He has not spoken in thirty years."
+    notable_members: ["Thane Ironheart (council delegate)", "The lift engineers of Hearthforge"],
+    secrets: "Several old fittings resemble parts of the Godseal, but no complete plan proves that dwarves built it."
   },
   {
-    id: "silent-choir",
-    name: "The Silent Choir",
-    icon: "star",
-    color: "#e8c547",
-    founded: "Unknown (possibly pre-Sundering)",
-    founder: "Unknown",
-    purpose: "Unknown. They guard the Fading Garden. They have not spoken in centuries. They have not needed to.",
-    headquarters: "The Fading Garden",
-    branches: 1,
-    ranks: ["Chorister", "Cantor", "Silent", "The Unheard"],
+    id: "watching-order", name: "The Watch", icon: "shield", color: "#c9a227",
+    founded: "Year 18 S.A.", founder: "The first survivors' watch",
+    purpose: "To maintain the Godseal crossing, record changes in the structure, inspect travellers and prevent any one crown from taking complete control. Its name has religious associations in some regions, but it is a maintenance and security institution, not proof of a divine mandate.",
+    headquarters: "The Upper Gate of the Godseal", branches: 4,
+    ranks: ["Watcher", "Surveyor", "Keeper", "Warden"],
     rankDescriptions: {
-      Chorister: "A new member. Takes the vow of silence. Begins training.",
-      Cantor: "A trained member. Can read the Old Script. Can hum fragments of the Song.",
-      Silent: "A veteran member. Has taken the vow of eternal silence. Cannot speak, even if they want to.",
-      "The Unheard": "The leader of the Silent Choir. No one has ever seen them. No one has ever heard them. No one knows if they exist."
+      Watcher: "Checks travellers, equipment and crossing conditions.",
+      Surveyor: "Records damage, water levels and structural changes.",
+      Keeper: "Coordinates repairs and the archive of inspections.",
+      Warden: "Commands the watch during emergencies under a shared charter."
     },
-    notable_members: ["Unknown — the Silent Choir does not share names"],
-    secrets: "The Silent Choir is the oldest organization in Aethermoor. They are older than the Aeldrin. They are older than the Sundering. They are older than the gods. They know things that no one else knows. They have not spoken in centuries. They may never speak again."
+    notable_members: ["The Watch council", "Independent dwarf and elven engineers"],
+    secrets: "Early inspection ledgers describe a different sequence of chambers than modern plans. The mismatch may indicate repairs, lost pages or a mistaken reconstruction."
   },
   {
-    id: "shadow-guild",
-    name: "The Shadow Guild",
-    icon: "eclipse",
-    color: "#4a1f6b",
-    founded: "Year 312 S.A.",
-    founder: "The Whisperer (presumably)",
-    purpose: "To gather information. To sell information. To use information. The Shadow Guild does not fight. It knows.",
-    headquarters: "Unknown (possibly Ondrath, possibly everywhere)",
-    branches: "Unknown (possibly dozens)",
-    ranks: ["Whisper", "Echo", "Voice", "The Whisperer"],
+    id: "shadow-guild", name: "The Shadow Guild", icon: "mask", color: "#4a1f6b",
+    founded: "Unknown; surviving records are recent", founder: "Unknown",
+    purpose: "A loose information-broker network trading in verified records, routes, identities and rumours. It sometimes works with courts and sometimes against them. Its stories are not treated as facts until corroborated.",
+    headquarters: "No confirmed headquarters; contacts cluster around Ondrath", branches: 5,
+    ranks: ["Listener", "Courier", "Broker", "Keeper"],
     rankDescriptions: {
-      Whisper: "A new member. Gathers low-level information. Has no authority.",
-      Echo: "A trained member. Can negotiate. Can lie. Can kill if necessary.",
-      Voice: "A senior member. Can command other members. Can access the Guild's deepest secrets.",
-      "The Whisperer": "The leader. Unknown. Possibly a single person. Possibly a title. Possibly a myth."
+      Listener: "Collects local claims and checks them against other reports.",
+      Courier: "Moves information without exposing its source.",
+      Broker: "Negotiates exchanges between clients and sources.",
+      Keeper: "Maintains a ledger of debts, risks and compromised identities."
     },
-    notable_members: ["Unknown — the Shadow Guild does not share names"],
-    secrets: "The Shadow Guild has been planning something for a century. It is called 'The Plan.' No one outside the Guild knows what it is. The Guild has not told anyone. The Guild will not tell anyone. The Guild is almost ready."
+    notable_members: ["The Whisperer (title used by an information network)", "Independent couriers"],
+    secrets: "The name 'The Whisperer' may refer to a role shared by several brokers rather than a single immortal individual."
   },
   {
-    id: "watching-order",
-    name: "The Watching Order",
-    icon: "gate",
-    color: "#e8c547",
-    founded: "Year 380 S.A.",
-    founder: "Unknown (possibly the gods themselves)",
-    purpose: "To guard the Godseal. To watch for the demons. To wait for the end.",
-    headquarters: "The Godseal Citadel",
-    branches: 1,
-    ranks: ["Watcher", "Keeper", "Sentinel", "Grand Sentinel"],
+    id: "kemiiri-packs", name: "The Kemiiri Route Leagues", icon: "fox", color: "#6d4fa8",
+    founded: "No single founding date", founder: "Several family caravans",
+    purpose: "A changing network of family caravans, guides and safe houses. It shares warnings about slavers, helps travellers find water and carries messages between communities omitted from official maps. It speaks for no single Kemiiri people.",
+    headquarters: "No central seat; seasonal gatherings on the Broken Steppe", branches: 7,
+    ranks: ["Runner", "Guide", "Caravan Elder"],
     rankDescriptions: {
-      Watcher: "A new member. Stands guard on the Godseal. Watches for demons.",
-      Keeper: "A trained member. Can read the Gospel of the Divide. Can perform the Rites of Watching.",
-      Sentinel: "A veteran member. Can command other members. Can make decisions about the Godseal.",
-      "Grand Sentinel": "The leader. Has the authority to open the Godseal — if necessary. The Grand Sentinel has not been seen in a century."
+      Runner: "Carries messages between nearby routes.",
+      Guide: "Knows local terrain, water and safe stopping places.",
+      "Caravan Elder": "Mediates disputes and coordinates shelter across routes."
     },
-    notable_members: ["Unknown — the Watching Order does not share names"],
-    secrets: "The Watching Order has 300 members. There have always been 300. When one dies, another takes their place. No one knows how new members are selected. No one knows where they come from. No one knows who the Grand Sentinel is. The Grand Sentinel has not been seen in a century. The Watching Order continues to function. Somehow."
+    notable_members: ["Nyx of the Grey Pack", "Independent route-keepers"],
+    secrets: "Their most valuable records are lists of missing people and suspected brokers. Keeping the records hidden often protects families from retaliation."
   },
   {
-    id: "kemiiri-packs",
-    name: "The Kemiiri Packs",
-    icon: "fox",
-    color: "#6d4fa8",
-    founded: "Year ~1,500 B.S.",
-    founder: "The first Kemiiri Pack-Leader",
-    purpose: "Survival. The Kemiiri do not have a purpose. They have each other.",
-    headquarters: "None (scattered)",
-    branches: "Unknown (dozens of packs, constantly forming and dissolving)",
-    ranks: ["Kit", "Hunter", "Pack-Leader", "Elder"],
+    id: "orc-warbands", name: "The Ashen Warbands", icon: "axe", color: "#7a1a1a",
+    founded: "No unified founding date", founder: "Multiple desert clans",
+    purpose: "An umbrella term used by southern governments for several rival orc coalitions. The Red Hand and Iron Fangs are known for raiding and captive-trading; smaller camps trade, avoid conflict or oppose them. The label does not imply a single orc government.",
+    headquarters: "No capital; major camps move with water and grazing", branches: 3,
+    ranks: ["Scout", "Raider", "War-Leader", "Clan Speaker"],
     rankDescriptions: {
-      Kit: "A young Kemiiri. Cannot fight. Cannot hunt. Must be protected.",
-      Hunter: "An adult Kemiiri. Can fight. Can hunt. Provides for the pack.",
-      "Pack-Leader": "The leader of a pack. Can make decisions. Can declare war. Can declare peace.",
-      Elder: "A senior Kemiiri. Has survived. Has wisdom. Is respected. Is dying."
+      Scout: "Finds water, prey and enemy movement.",
+      Raider: "Participates in a warband's field operations.",
+      "War-Leader": "Commands a warband through victory, bargaining and resource control.",
+      "Clan Speaker": "Negotiates temporary compacts among rival camps."
     },
-    notable_members: ["Nyx the Shadow-Speaker", "Old Sable", "The Grey Pack"],
-    secrets: "The Kemiiri carry a dormant plague — the Beast-Curse. It activates when their population drops below one thousand. They are currently at fourteen hundred. The elders know. They have not told the young. They are running out of time."
+    notable_members: ["Morag Bloodaxe", "The Red Hand", "The Iron Fangs"],
+    secrets: "Captive-trading networks rely on buyers and officials outside the Wastes as much as on the raiders who take people."
   },
   {
-    id: "orc-warbands",
-    name: "The Orc Warbands",
-    icon: "axe",
-    color: "#7a1a1a",
-    founded: "Year ~2,100 B.S. (after Grunna's rebellion)",
-    founder: "Grunna Ironbound (first warband)",
-    purpose: "Survival. Conquest. Blood. The orcs do not have a purpose. They have a hunger.",
-    headquarters: "None (dozens of warband camps)",
-    branches: "Unknown (dozens of warbands, constantly forming and dissolving)",
-    ranks: ["Grunt", "Warrior", "Berserker", "Warboss"],
+    id: "deep-halls-compact", name: "The Deep Halls Compact", icon: "mountain", color: "#8a6f1f",
+    founded: "Around 700 B.S. (estimated)", founder: "The major mountain councils",
+    purpose: "A shared charter for water rights, tunnel safety, mine boundaries and mutual aid during collapses. It does not erase local councils or forbid political disagreement; it makes sabotage of shared infrastructure a serious offence.",
+    headquarters: "Rotating council across the Frostspine holds", branches: 5,
+    ranks: ["Hall Member", "Delegate", "Engineer", "Speaker"],
     rankDescriptions: {
-      Grunt: "A new orc. Can fight. Can die. Will die.",
-      Warrior: "A proven orc. Can fight. Can lead. Can survive.",
-      Berserker: "A veteran orc. Can fight. Can kill. Can die. Will die. Will die screaming.",
-      Warboss: "The leader of a warband. Can command. Can conquer. Can be killed by any orc who is stronger."
+      "Hall Member": "Recognised member of a participating hold.",
+      Delegate: "Represents a hold at compact meetings.",
+      Engineer: "Certifies shared structures and emergency plans.",
+      Speaker: "Coordinates the compact but cannot rule member holds alone."
     },
-    notable_members: ["Karog the Red (Warboss of the Red Hand)", "Grishka the Slaver (Warboss of the Iron Fangs)", "The Broken Skull (unknown Warboss)"],
-    secrets: "The orcs are not naturally cruel. They were created to be cruel — by a god who is now dead. Karok's death-spell still runs in their blood, compelling them toward violence. If Karok were ever resurrected — or if the spell were ever broken — the orcs might become something else. Something better. But the Karoknul is shattered into seven fragments, and none of them can be read."
+    notable_members: ["House Ironheart", "House Emberforge", "Thane Ironheart"],
+    secrets: "A damaged copy of the earliest charter contains sketches with a resemblance to the Godseal's stone joints, but the paper's date is uncertain."
   },
   {
-    id: "dwarven-clans",
-    name: "The Dwarven Clans",
-    icon: "hammer",
-    color: "#8a6f1f",
-    founded: "Year ~187 S.A.",
-    founder: "Thane Ironheart the First",
-    purpose: "Craft. Clan. Contract. The dwarves do not have a purpose. They have a promise.",
-    headquarters: "Hearthforge",
-    branches: 7,
-    ranks: ["Beardling", "Smith", "Master Smith", "Thane"],
+    id: "canopy-courts", name: "The Canopy Courts", icon: "leaf", color: "#a8d8e8",
+    founded: "Older than most surviving human records", founder: "No single founder is known",
+    purpose: "Elven councils that govern canopy settlements, protected forests, scholarship and treaty roads. Their courts prize continuity and public records, but disagree over how much ancient material should be shared with outsiders.",
+    headquarters: "Several canopy halls, including Aelthalas", branches: 4,
+    ranks: ["Steward", "Archivist", "Envoy", "Councilor"],
     rankDescriptions: {
-      Beardling: "A young dwarf. Cannot craft. Cannot fight. Must learn.",
-      Smith: "An adult dwarf. Can craft. Can fight. Can provide for the clan.",
-      "Master Smith": "A senior dwarf. Can craft masterwork items. Can lead other smiths. Can sit on the Council.",
-      Thane: "The leader of a clan. Can command. Can declare war. Can declare peace. Can die for the clan."
+      Steward: "Maintains a settlement or protected grove.",
+      Archivist: "Compares copies and preserves public records.",
+      Envoy: "Negotiates across courts and with other peoples.",
+      Councilor: "Represents a court; does not speak for every elf."
     },
-    notable_members: ["Thane Ironheart (current Thane of Thanes)", "The Silent Smith (Grandmaster of the Iron Pact)", "Grimli the Forgeborn (Grandmaster of the Iron Pact)"],
-    secrets: "The dwarves are not native to the Frostspine. They fled there — from something. Their oldest legends speak of a 'Deep Dark' that drove them from their original homeland, somewhere beneath the Shadowmere Depths. They have never gone back. They never will. And they have never told anyone what they found down there."
+    notable_members: ["House Vaelor", "Aelwyn Vaelor", "Seraphine Vaelor"],
+    secrets: "The same old chronicle survives in several versions; the differences may concern political claims rather than a lost language."
   },
   {
-    id: "aетhel-court",
-    name: "The Aeldrin Court",
-    icon: "moon",
-    color: "#a8d8e8",
-    founded: "Year ~9,000 B.S.",
-    founder: "Aelith (the goddess herself)",
-    purpose: "To preserve. To remember. To rule. The Aeldrin do not have a purpose. They have a burden.",
-    headquarters: "Aelthalas, the Crystal Throne",
-    branches: 1,
-    ranks: ["Silverless", "Lowborn", "Highborn", "Silent Council"],
+    id: "merchant-princes", name: "The Merchant League", icon: "scale", color: "#c9a227",
+    founded: "Year 102 S.A.", founder: "A coalition of southern port councils",
+    purpose: "A trade compact linking independent city-states. It negotiates tariffs, port safety and shared weights, but its members compete fiercely and sometimes finance opposite sides of a war.",
+    headquarters: "Rotating assembly in the Sunlit Coast ports", branches: 5,
+    ranks: ["Clerk", "Factor", "Captain", "Delegate"],
     rankDescriptions: {
-      Silverless: "An Aeldrin born without arcane sight. Cannot cast spells. Cannot read the Old Script. Cannot rule. Must serve.",
-      Lowborn: "An Aeldrin of low caste. Can cast spells. Can read the Old Script. Cannot rule.",
-      Highborn: "An Aeldrin of high caste. Can cast spells. Can read the Old Script. Can rule. Can be on the Silent Council.",
-      "Silent Council": "The ruling body of the Aeldrin. Nine members. Elected for life. Cannot speak outside the Council chamber."
+      Clerk: "Keeps accounts and verifies cargo papers.",
+      Factor: "Manages contracts and a merchant house's trade.",
+      Captain: "Commands a ship or caravan under contract.",
+      Delegate: "Represents a city in shared negotiations."
     },
-    notable_members: ["Seraphine Vaelor (Silent Council, oldest living Aeldrin)", "Aelwyn Vaelor (Highborn, first recorded Aeldrin child after a 160-year gap; no later birth is confirmed)", "Lord Arathor (Highborn, human ambassador — unusual)"],
-    secrets: "The Aeldrin birth decline is not yet fully explained. Aelith remains imprisoned beneath the Silver Wood, and a surviving ledger suggests Aelwyn was born during a brief weakening of the binding. This supports a possible connection but does not prove that the binding is the sole cause of the decline or that releasing Aelith would restore fertility safely."
+    notable_members: ["The Golden Harbor council", "Independent caravan owners"],
+    secrets: "A surviving set of accounts suggests that some houses publicly condemned the captive trade while their agents bought goods from its brokers."
   },
   {
-    id: "sylvaar-court",
-    name: "The Sylvaar Court",
-    icon: "spider",
-    color: "#4a1f6b",
-    founded: "Year ~9,000 B.S.",
-    founder: "Aelith (the goddess herself)",
-    purpose: "To serve. To spy. To survive. The Sylvaar do not have a purpose. They have a secret.",
-    headquarters: "Ondrath, the Throne of Bone",
-    branches: 1,
-    ranks: ["Servant", "Agent", "Lord", "Shadow-King"],
+    id: "greyroad-network", name: "The Greyroad Refuge Network", icon: "heart-handshake", color: "#6d4fa8",
+    founded: "Expanded after the Greyroad Revolt of 176 S.A.", founder: "Escaped captives and local guides",
+    purpose: "A clandestine network of shelters, couriers and witnesses that helps people escape forced labour and carries evidence about traffickers. It is not a military order; its safety depends on trusted routes, false papers and local cooperation.",
+    headquarters: "No central seat; safe houses change frequently", branches: 6,
+    ranks: ["Courier", "Shelter-Keeper", "Investigator", "Advocate"],
     rankDescriptions: {
-      Servant: "A Sylvaar of low rank. Cannot spy. Cannot kill. Must serve.",
-      Agent: "A Sylvaar of high rank. Can spy. Can kill. Can be trusted.",
-      Lord: "A Sylvaar of noble rank. Can command. Can rule. Can be on the Court.",
-      "Shadow-King": "The ruler of the Sylvaar. Currently Lord Vexar. Has not been seen in public in a century."
+      Courier: "Moves people or messages between safe stops.",
+      "Shelter-Keeper": "Provides food, rest and temporary papers.",
+      Investigator: "Collects records about kidnappers and buyers.",
+      Advocate: "Negotiates safe passage or brings evidence before a court."
     },
-    notable_members: ["Lord Vexar Shadowmere (Shadow-King)", "The Whisperer (unknown rank)", "Queen Maelith (dead, but her body still rules)"],
-    secrets: "The Sylvaar Queen, Maelith the Ever-Living, is dead. She has been dead for three hundred years. But her body still sits on the Obsidian Throne, animated by a spell that her son Vexar renews every night. No Sylvaar knows this. When Vexar dies — and he is dying — the Queen will collapse, and the Sylvaar will have no ruler, no purpose, and no light."
-  },
-  {
-    id: "merchant-princes",
-    name: "The Merchant Princes",
-    icon: "coin",
-    color: "#e8c547",
-    founded: "Year ~102 S.A.",
-    founder: "Unknown (the first merchant-prince of the Sunlit Coast)",
-    purpose: "Trade. Profit. Power. The Merchant Princes do not have a purpose. They have a ledger.",
-    headquarters: "The Golden Harbor",
-    branches: 12,
-    ranks: ["Clerk", "Merchant", "Master Merchant", "Merchant-Prince"],
-    rankDescriptions: {
-      Clerk: "A new merchant. Cannot trade independently. Must work for a master.",
-      Merchant: "An adult merchant. Can trade independently. Can make deals. Can make money.",
-      "Master Merchant": "A senior merchant. Can command other merchants. Can own ships. Can own warehouses.",
-      "Merchant-Prince": "The ruler of a Merchant House. Can command the entire Merchant House. Can declare economic war. Can declare economic peace."
-    },
-    notable_members: ["The Twelve Merchant-Princes (names change frequently)"],
-    secrets: "The Merchant Princes have been trading with the demon continent. Not the demons themselves — the half-demons who live on the border. The trade is illegal. The trade is profitable. The trade has been going on for a century. The Emperor knows. The Emperor does not care. The Emperor is buying."
-  },
-  {
-    id: "wounded-choir-society",
-    name: "The Wounded Choir",
-    icon: "eye",
-    color: "#6d4fa8",
-    founded: "Unknown (possibly pre-Sundering)",
-    founder: "Unknown (possibly the first halfborn)",
-    purpose: "To shelter people endangered by divine anomalies, preserve testimony, and prevent persecution. Members disagree about theology and the uses of their records; there is no universally accepted prophecy or single political objective.",
-    headquarters: "No central seat; a changing network of safe houses and clinics",
-    branches: "Small local circles in the Heartlands, the Silver Wood borderlands, and a handful of trade ports",
-    ranks: ["Voice", "Echo", "Silent", "The Unheard"],
-    rankDescriptions: {
-      Voice: "A new member. Can speak. Can recruit. Cannot act.",
-      Echo: "A trained member. Can act. Can fight. Can die.",
-      Silent: "A senior member. Cannot speak. Cannot act. Can only watch.",
-      "The Unheard": "The leader. Unknown. Possibly dead. Possibly alive. Possibly a myth."
-    },
-    notable_members: ["Unknown — the Wounded Choir does not share names"],
-    secrets: "The Choir keeps conflicting copies of the half-blood prophecy and has not agreed on its meaning. A few archivists suspect Kaelen Vareth's rune reactions may help explain the Godseal's changing tone; others warn that connecting him to the prophecy could endanger him. The Choir has no proof that he is a key to the barrier and has not followed him since childhood as a single coordinated organization.",
+    notable_members: ["Nyx of the Grey Pack", "Independent refuge-keepers"],
+    secrets: "Its ledgers separate verified names from unconfirmed accusations so the wrong person is not exposed by an unreliable witness."
   }
 ];
 
-/* ============================================================
-   15. DUNGEONS DATA — THE ABYSS AND OTHER DUNGEONS
-   ============================================================ */
 const DUNGEONS_DATA = {
   theAbyss: {
     name: "The Abyss",
