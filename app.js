@@ -274,6 +274,56 @@
      PAGE RENDERERS
      ============================================================ */
   
+  const READING_ORDER = [
+    { id: 'world', key: 'nav_world' },
+    { id: 'map', key: 'nav_map' },
+    { id: 'regions', key: 'nav_regions' },
+    { id: 'races', key: 'nav_races' },
+    { id: 'magic', key: 'nav_magic' },
+    { id: 'timeline', key: 'nav_timeline' },
+    { id: 'characters', key: 'nav_characters' },
+    { id: 'houses', key: 'nav_houses' },
+    { id: 'guilds', key: 'nav_guilds' },
+    { id: 'dungeons', key: 'nav_dungeons' },
+    { id: 'codex', key: 'nav_codex' },
+    { id: 'library', key: 'nav_library' }
+  ];
+
+  function renderReadingGuide(route) {
+    if (route === 'home') return;
+    const page = $('[data-page="' + route + '"]');
+    const index = READING_ORDER.findIndex(item => item.id === route);
+    if (!page || index < 0) return;
+    page.querySelector('.reading-continue')?.remove();
+
+    const nav = el('nav', { class: 'reading-continue', 'aria-label': t('reading_continue_title') });
+    const copy = el('div', { class: 'reading-continue-copy' }, [
+      el('div', { class: 'reading-continue-heading', text: t('reading_continue_title') }),
+      el('div', { class: 'reading-continue-desc', text: CURRENT_LANG === 'fa'
+        ? 'موضوع بعدی بر پایه‌ی همین فصل انتخاب شده؛ می‌توانی مسیر را دنبال کنی یا هرجا خواستی از آن بیرون بروی.'
+        : 'The next topic builds on this chapter; follow the path or leave it whenever you wish.' })
+    ]);
+    nav.appendChild(copy);
+
+    const links = el('div', { class: 'reading-continue-links' });
+    const addLink = (item, label, fallbackLabel) => {
+      if (!item) return;
+      const text = label || t(item.key);
+      links.appendChild(el('a', {
+        class: 'reading-continue-link',
+        href: '#/' + item.id,
+        'data-route': item.id,
+        text: text || fallbackLabel || item.id
+      }));
+    };
+    if (index > 0) addLink(READING_ORDER[index - 1], t('reading_previous') + ' · ' + t(READING_ORDER[index - 1].key));
+    else addLink({ id: 'home', key: 'nav_home' }, t('reading_return'));
+    if (index < READING_ORDER.length - 1) addLink(READING_ORDER[index + 1], t('reading_next') + ' · ' + t(READING_ORDER[index + 1].key));
+    else addLink({ id: 'home', key: 'nav_home' }, t('reading_return'));
+    nav.appendChild(links);
+    page.appendChild(nav);
+  }
+
   function renderPage(route) {
     switch (route) {
       case 'home': renderHome(); break;
@@ -290,6 +340,7 @@
       case 'guilds': renderGuilds(); break;
       case 'dungeons': renderDungeons(); break;
     }
+    renderReadingGuide(route);
   }
 
   /* ============ HOME ============ */
