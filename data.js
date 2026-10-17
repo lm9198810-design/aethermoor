@@ -4745,6 +4745,71 @@ Object.assign(FA_DATA, {
   }
 });
 
+
+/* Final terminology and edge-case translations for the active UI. */
+Object.assign(FA_DATA, {
+  traits: {
+    Adaptable:"سازگار", Ambitious:"جاه‌طلب", "Short-lived":"کوتاه‌عمر", Divided:"چندپاره",
+    "Long-lived":"دیرزیست", Patient:"صبور", Disciplined:"منضبط", Proud:"سربلند",
+    Engineers:"مهندس", Stubborn:"یک‌دنده", Craftwise:"پیشه‌دان", "Oath-bound":"پایبند سوگند",
+    Tribal:"قبیله‌ای", Martial:"جنگاور", Hardy:"جان‌سخت", Feared:"هراس‌انگیز",
+    Varied:"گوناگون", Resourceful:"چاره‌جو", Marginalised:"حاشیه‌رانده‌شده", "Close-knit":"هم‌بسته",
+    "Red-eyed":"سرخ‌چشم", Predatory:"شکارگر", Hierarchical:"سلسله‌مراتبی",
+    "Mixed lineage":"تبار آمیخته", "Often red-eyed":"اغلب سرخ‌چشم", Rare:"کمیاب", Misjudged:"بدقضاوت‌شده"
+  },
+  books: {
+    "grey-ledger": { pages:"قطعات پراکنده" }
+  }
+});
+if (FA_DATA.dungeons) Object.assign(FA_DATA.dungeons, {
+  otherDungeonNames: {
+    "The Salt Veins":"رگه‌های نمک", "The Mirror Crypt":"گورابهٔ آینه",
+    "The Black Fen":"باتلاق سیاه", "The Hollow Crown":"تاج تهی"
+  },
+  otherDungeonLocations: {
+    "The Salt Veins":"زیر دشت‌های نمک شرقی", "The Mirror Crypt":"درباری ویران در سرحدات شمالی",
+    "The Black Fen":"تالاب‌های غربی", "The Hollow Crown":"زیر دژ دیده‌بانی متروک"
+  },
+  otherDungeonDescriptions: {
+    "The Salt Veins":"شبکه‌ای در حال تغییر از غارهای نمکی؛ چراغ بدبسته و تجهیزات خیس از جانوران نخستین خطرناک‌ترند.",
+    "The Mirror Crypt":"ویرانه‌ای کوچک که سطوح بازتابنده فاصله را مخدوش می‌کنند. هیچ مردهٔ برخاسته‌ای در آن تأیید نشده است.",
+    "The Black Fen":"مجموعه‌ای طبیعی و آب‌گرفته که پس از یافتن ردّ مانا در حوضچه‌های پایینی به‌عنوان دانجن رده‌بندی شد.",
+    "The Hollow Crown":"ویرانه‌ای پرخطر بدون مدرک وجود مقبرهٔ شاهانه؛ نامش از حلقهٔ سنگی شکسته‌ای آمده که با تاج اشتباه گرفته شد."
+  },
+  otherDungeonBosses: {
+    "The Salt Veins":"حفّار تاج‌نمک", "The Mirror Crypt":"نگهبان شیشه‌ای",
+    "The Black Fen":"پوزهٔ مرداب", "The Hollow Crown":"بارِ تاج‌دار"
+  }
+});
+Object.assign(UI_TEXT.en, {
+  timeline_title: "Chronicle of the Ash Age",
+  timeline_desc: "Fifteen dated records, with disputed explanations kept separate from confirmed events.",
+  houses_title: "Factions and Power Blocs",
+  houses_desc: "Courts, councils, warbands and institutions competing over roads, resources and public trust.",
+  regions_title: "The Atlas of Aethermoor",
+  regions_desc: "Twenty-one regions, with mapped geography distinguished from rumour and uncharted territory.",
+  guilds_title: "Guilds and Networks",
+  guilds_desc: "The Adventurers' Guild has twelve branches and a multi-peoples council; other institutions serve craft, safety, trade and refuge.",
+  books_title: "The Aethermoor Library",
+  books_desc: "Six sample works: a field diary, a religious source, a mana manual, a history, a law book and a restricted ledger.",
+  dungeons_title: "The Abyss and Other Dungeons",
+  dungeons_desc: "The Abyss has one hundred floors; sixty have verifiable surveys. Other dungeons vary greatly in size and nature."
+});
+Object.assign(UI_TEXT.fa, {
+  timeline_title: "سال‌نامهٔ عصر خاکستر",
+  timeline_desc: "پانزده سند تاریخ‌دار؛ توضیح‌های مورد اختلاف از رخدادهای ثبت‌شده جدا نگه داشته شده‌اند.",
+  houses_title: "جناح‌ها و بلوک‌های قدرت",
+  houses_desc: "دربارها، شوراها، جنگاوران قبیله‌ای و نهادهایی که بر سر راه‌ها، منابع و اعتماد عمومی رقابت می‌کنند.",
+  regions_title: "اطلس آترمور",
+  regions_desc: "بیست‌ویک منطقه؛ جغرافیای نقشه‌برداری‌شده از شایعه و سرزمین ناشناخته جدا شده است.",
+  guilds_title: "گیلدها و شبکه‌ها",
+  guilds_desc: "گیلد ماجراجویان دوازده شعبه و شورایی چندنژادی دارد؛ نهادهای دیگر به صنعت، امنیت، تجارت و پناه‌رسانی می‌پردازند.",
+  books_title: "کتابخانهٔ آترمور",
+  books_desc: "شش اثر نمونه: خاطرات میدانی، منبع دینی، رسالهٔ مانا، تاریخ‌نامه، کتاب قانون و دفتر محدودشده.",
+  dungeons_title: "هاویه و دانجن‌های دیگر",
+  dungeons_desc: "هاویه صد طبقه دارد و پیمایش شصت طبقه با شواهد قابل‌بررسی تأیید شده است. اندازه و ماهیت دانجن‌های دیگر متفاوت است."
+});
+
 const WORLD_STATS = {
   races: RACES.length,
   magicSchools: MAGIC_SCHOOLS.length,
