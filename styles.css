@@ -2834,6 +2834,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 html[dir="rtl"] { direction: rtl; }
 html[dir="rtl"] body { font-family: var(--font-fa); }
 
+/* Keep timeline geometry predictable while preserving RTL Persian text. */
+html[dir="rtl"] .timeline { direction: ltr; }
+html[dir="rtl"] .timeline-event { direction: rtl; }
+
 html[dir="rtl"] .nav-links a.active {
   background: var(--gold);
   color: var(--bg-void);
@@ -3032,6 +3036,30 @@ html[dir="rtl"] .facts-list li::before { left: auto; right: 0; }
     border-right: 1px solid var(--border);
   }
   html[dir="rtl"] .nav-links.active { transform: translateX(0); }
+
+  /* On narrow screens, use a single RTL column with the timeline on the right. */
+  html[dir="rtl"] .timeline::before {
+    left: auto;
+    right: 22px;
+  }
+
+  html[dir="rtl"] .timeline-event,
+  html[dir="rtl"] .timeline-event:nth-child(odd),
+  html[dir="rtl"] .timeline-event:nth-child(even) {
+    width: 100%;
+    left: 0;
+    right: auto;
+    text-align: right;
+    padding-left: 0.5rem;
+    padding-right: 3.5rem;
+  }
+
+  html[dir="rtl"] .timeline-event::after,
+  html[dir="rtl"] .timeline-event:nth-child(odd)::after,
+  html[dir="rtl"] .timeline-event:nth-child(even)::after {
+    left: auto;
+    right: 15px;
+  }
 }
 
 @media (max-width: 640px) {
