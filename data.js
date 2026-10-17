@@ -712,7 +712,7 @@ Object.assign(FA_DATA, {
     godfall: {
       name: "خداافتان",
       type: "میدان نبرد ویران",
-      desc: "جایی که جنگ خدایان به پایان رسید. دشتی از شیشه و استخوان، ده قرن بعد هنوز گرم به لمس. پیکر سه خدا اینجا افتاده — خاک‌نشده، نپوسیده. هیچ‌کس به خداافتان نمی‌رود. آنان که می‌روند، کم بازمی‌گردند، و آنگاه که بازگردند... دگرگشته‌اند. دریای شیشه گفته می‌شود نه آنچه هست، که آنچه باید می‌بود را بازمی‌تاباند. نگریستن در آن دیوانه می‌کند. یا رؤیای حقیقت می‌بخشد. بعضی می‌گویند خداافتان کلید شکاف است. بعضی می‌گویند کلید خود خدایان. بعضی می‌گویند کلید همه‌چیز — و به همین دلیل هیچ‌کس به آنجا نمی‌رود.",
+      desc: "جایی که جنگ خدایان به پایان رسید. دشتی از شیشه و استخوان که چهار قرن پس از شکاف هنوز زیر دست گرما پس می‌دهد. پیکر سه خدا اینجا افتاده — خاک‌نشده، نپوسیده. هیچ‌کس به خداافتان نمی‌رود. آنان که می‌روند، کم بازمی‌گردند، و آنگاه که بازگردند... دگرگشته‌اند. دریای شیشه گفته می‌شود نه آنچه هست، که آنچه باید می‌بود را بازمی‌تاباند. نگریستن در آن دیوانه می‌کند. یا رؤیای حقیقت می‌بخشد. بعضی می‌گویند خداافتان کلید شکاف است. بعضی می‌گویند کلید خود خدایان. بعضی می‌گویند کلید همه‌چیز — و به همین دلیل هیچ‌کس به آنجا نمی‌رود.",
       control: "هیچ"
     },
     "sunken-kingdoms": {
@@ -3870,7 +3870,7 @@ const HOUSES = [
 
 /* ============================================================
    5. REGIONS OF THE WORLD — FULL PROFILES
-   (20 regions, including Xarnath, Black Chasm, Godseal, Mistlands)
+   (21 regions, including Xarnath, Black Chasm, Godseal, Mistlands)
    ============================================================ */
 const REGIONS = [
   /* ═══════════════════════════════════════════════════════
@@ -4071,7 +4071,7 @@ const REGIONS = [
     color: "#c9a227",
     mapX: 300,
     mapY: 340,
-    desc: "The place where the war of the gods ended. A plain of glass and bone, still hot to the touch ten centuries later. The corpses of three gods lie here, unburied, unrotted. No one goes to the Godfall. Those who do rarely return, and when they do, they are... changed. The glass sea is said to reflect not what is, but what should have been. Looking into it is said to drive men mad. Or to grant them visions of the truth. Some say the Godfall is the key to the Sundering. Some say the Godfall is the key to the gods themselves. Some say the Godfall is the key to everything — and that is why no one goes there.",
+    desc: "The place where the war of the gods ended. A plain of glass and bone, still hot to the touch four centuries after the Sundering. The corpses of three gods lie here, unburied, unrotted. No one goes to the Godfall. Those who do rarely return, and when they do, they are... changed. The glass sea is said to reflect not what is, but what should have been. Looking into it is said to drive men mad. Or to grant them visions of the truth. Some say the Godfall is the key to the Sundering. Some say the Godfall is the key to the gods themselves. Some say the Godfall is the key to everything — and that is why no one goes there.",
     control: "None",
     notable: ["The Glass Sea", "The Fallen Three", "The Altar of Ashes", "The Godstone", "The Mad Pilgrims"],
     regionType: "mystical",
