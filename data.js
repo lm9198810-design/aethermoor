@@ -4440,51 +4440,36 @@ const MAP_DATA = {
     }
   ],
   politicalBorders: [
-    {
-      "id": "b-frost-silver",
-      "path": "M 270 258 C 282 285 300 311 322 331"
-    },
-    {
-      "id": "b-silver-heart",
-      "path": "M 432 288 C 456 322 479 347 506 372"
-    },
-    {
-      "id": "b-ashen-heart",
-      "path": "M 575 300 C 554 345 570 378 604 407"
-    },
-    {
-      "id": "b-west-heart",
-      "path": "M 226 405 C 272 415 306 427 338 450"
-    },
-    {
-      "id": "b-west-steppe",
-      "path": "M 250 465 C 278 495 300 524 327 550"
-    },
-    {
-      "id": "b-heart-steppe",
-      "path": "M 412 463 C 424 490 432 522 428 548"
-    },
-    {
-      "id": "b-east-heart",
-      "path": "M 558 424 C 581 457 610 490 651 520"
-    },
-    {
-      "id": "b-east-marches",
-      "path": "M 662 359 C 679 384 693 405 714 431"
-    },
-    {
-      "id": "b-steppe-coast",
-      "path": "M 315 565 C 353 581 393 592 433 603"
-    },
-    {
-      "id": "b-steppe-ember",
-      "path": "M 514 554 C 558 568 597 579 639 580"
-    }
+    { id: "b-xarnath-west", path: "M 330 37 C 354 61 350 91 385 125" },
+    { id: "b-xarnath-central", path: "M 472 31 C 489 55 477 85 500 122" },
+    { id: "b-xarnath-east", path: "M 660 28 C 641 55 658 86 629 126" },
+    { id: "b-xarnath-court", path: "M 500 63 C 536 74 568 73 603 88" },
+    { id: "b-frost-silver", path: "M 281 275 C 303 289 324 308 340 332" },
+    { id: "b-silver-heart", path: "M 428 348 C 449 366 472 384 489 405" },
+    { id: "b-ashen-heart", path: "M 576 304 C 560 337 558 374 590 404" },
+    { id: "b-west-heart", path: "M 249 394 C 281 414 310 432 336 452" },
+    { id: "b-west-steppe", path: "M 249 464 C 275 492 302 520 326 541" },
+    { id: "b-heart-steppe", path: "M 411 475 C 425 497 429 520 428 546" },
+    { id: "b-east-heart", path: "M 560 432 C 589 457 615 487 649 513" },
+    { id: "b-east-marches", path: "M 669 360 C 686 384 700 405 713 431" },
+    { id: "b-steppe-coast", path: "M 312 565 C 352 582 390 595 434 603" },
+    { id: "b-steppe-ember", path: "M 514 555 C 557 569 599 580 641 580" },
+    { id: "b-empire-east", path: "M 519 373 C 539 390 552 411 560 432" },
+    { id: "b-southern-clans", path: "M 650 490 C 682 477 713 478 745 491" }
   ],
   geographicLabels: [
-    { id: "severing-ranges", name: "The Severing Ranges", faName: "رشته‌کوه‌های حائل", x: 698, y: 230, rotation: -3 },
-    { id: "black-chasm-title", name: "THE BLACK CHASM", faName: "دره‌ی سیاه", x: 280, y: 170, rotation: -1 },
-    { id: "sea-of-sorrow", name: "Sea of Sorrow", faName: "دریای اندوه", x: 560, y: 687, rotation: 0 }
+    { id: "severing-ranges", name: "THE SEVERING RANGES", faName: "رشته‌کوه‌های حائل", x: 702, y: 231, rotation: -3 },
+    { id: "black-chasm-title", name: "THE BLACK CHASM", faName: "دره‌ی سیاه", x: 275, y: 170, rotation: -1 },
+    { id: "sea-of-sorrow", name: "SEA OF SORROW", faName: "دریای اندوه", x: 560, y: 687, rotation: 0 },
+    { id: "polity-demon-courts", name: "DEMON COURTS", faName: "دربارهای شیاطین", x: 690, y: 86, rotation: 0, labelType: "polity" },
+    { id: "polity-dwarven-holds", name: "DWARVEN HOLDS", faName: "دژهای دورفی", x: 222, y: 296, rotation: -12, labelType: "polity" },
+    { id: "polity-aeldrin", name: "AELDRIN ENCLAVES", faName: "قلمروهای آلدِرین", x: 402, y: 356, rotation: 0, labelType: "polity" },
+    { id: "polity-stormlands", name: "STORMLANDS", faName: "سرزمین‌های طوفان", x: 158, y: 422, rotation: -8, labelType: "polity" },
+    { id: "polity-empire", name: "VALERIAN EMPIRE", faName: "امپراتوری والریان", x: 470, y: 466, rotation: 0, labelType: "polity" },
+    { id: "polity-orc", name: "ORC WARLANDS", faName: "سرزمین‌های جنگی اورک‌ها", x: 659, y: 391, rotation: 0, labelType: "polity" },
+    { id: "polity-kemiiri", name: "KEMIIRI COMPACT", faName: "پیمان کِمیری", x: 447, y: 558, rotation: 0, labelType: "polity" },
+    { id: "polity-merchant", name: "FREE PORTS", faName: "بندرهای آزاد", x: 300, y: 625, rotation: 0, labelType: "polity" },
+    { id: "polity-draekon", name: "DRAEKON CLANS", faName: "طایفه‌های درائِکون", x: 760, y: 589, rotation: 0, labelType: "polity" }
   ],
   landmarks: [
     { name: "The Godseal", x: 500, y: 90, type: "divine", icon: "gate" },
