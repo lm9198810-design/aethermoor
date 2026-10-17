@@ -4879,14 +4879,13 @@ const MAP_DATA = {
     { name: "The Godseal", from: { x: 250, y: 90 }, to: { x: 750, y: 90 }, color: "#e8c547", dashed: true }
   ],
   legends: [
-    { icon: "crown", label: "Human", color: "#c9a227" },
-    { icon: "moon", label: "Aeldrin", color: "#a8d8e8" },
-    { icon: "spider", label: "Sylvaar", color: "#4a1f6b" },
+    { icon: "crown", label: "Humans", color: "#c9a227" },
+    { icon: "leaf", label: "Elves", color: "#a8d8e8" },
     { icon: "hammer", label: "Dwarves", color: "#8a6f1f" },
-    { icon: "dragon", label: "Draekon", color: "#b52a2a" },
     { icon: "axe", label: "Orcs", color: "#7a1a1a" },
     { icon: "fox", label: "Kemiiri", color: "#6d4fa8" },
     { icon: "demon", label: "Demons", color: "#3d0a0a" },
+    { icon: "eclipse", label: "Mixed Lineages", color: "#8e6da8" },
     { icon: "mist", label: "Unknown", color: "#4a4438" }
   ]
 };
@@ -5228,6 +5227,45 @@ Object.assign(FA_DATA, {
     "iron-coast":{name:"ساحل آهنین",type:"ساحل صخره‌ای و بندرهای تعمیر",desc:"ساحلی بادخیز با تعمیر کشتی، سنگ آهن‌دار و بندرهای کوچک پناه‌گرفته. مهندسان دورف طبق پیمان چند اسکله را نگه می‌دارند، اما ماهیگیران انسانی و کِمیری نیز در آن زندگی می‌کنند. اهمیت سیاسی منطقه در توانایی حرکت‌دادن کشتی و بار پس از توفان است.",control:"شوراهای بندری با پیمان‌های دژهای کوهستان" },
     "fading-garden":{name:"باغ رو به زوال",type:"بیشهٔ حفاظت‌شده از درختان کهنسال",desc:"بیشه‌ای کوچک به نام درختی با پوست نقره‌ای و رشد بسیار کند که نمونه‌های کهنش رو به زوال‌اند. برخی سنت‌های الفی می‌گویند آئلیثِ پرستیده‌شده در سروده‌ها آن را کاشته؛ روایت‌های دیگر از جنگل‌بانانی عادی می‌گویند که گونه‌ای کمیاب را حفظ می‌کردند. مکان از نظر فرهنگی مهم است، اما حضور الهی اثبات نشده.",control:"حفاظت مشترک شوراهای الفی و نگهبانان بیشه" },
     "ember-fields":{name:"دشت‌های اخگر",type:"دشت خاکستر آتشفشانی و دهانه‌های کانی",desc:"دشتی سیاه از گدازهٔ کهن، چشمه‌های کانی و خاکستر حاصلخیز. آبادی‌ها ابسیدین استخراج می‌کنند و در حاشیه‌های خنک گیاهان مقاوم می‌کارند. پس از باران شدید، گاز در فرورفتگی‌ها جمع می‌شود و پوستهٔ گدازه ممکن است زیر پا بشکند. افسانه‌ها از اژدها و ارواح آتش می‌گویند؛ بررسی‌ها فقط دهانه، گرما و کانی را تأیید کرده‌اند.",control:"آبادی‌های مستقل و دارندگان اجارهٔ معدن" }
+  }
+});
+
+
+/* Home-catalogue descriptions keep the landing page aligned with the rebuilt canon. */
+Object.assign(UI_TEXT.en, {
+  home_card_houses: "Twelve courts, clans and institutions competing over routes, resources and influence.",
+  home_card_regions: "Twenty-one mapped regions; unknown territory is left genuinely unknown.",
+  home_card_timeline: "Fifteen dated records, with disputed causes kept separate from confirmed events.",
+  home_card_map: "Explore the Black Chasm, the Godseal, rival realms and the unmapped north.",
+  home_card_guilds: "A multi-peoples guild with twelve branches and a council that balances regional interests.",
+  home_card_codex: "Relics, religious traditions, creatures and texts whose claims can be questioned.",
+  home_card_dungeons: "One hundred floors; sixty have independently verifiable surveys.",
+  stat_characters: "Characters",
+  stat_entries: "Catalogue Entries",
+  codex_desc: "Relics, faiths, field reports and disputed texts. The archive records what is known, what is believed and what remains unverified."
+});
+Object.assign(UI_TEXT.fa, {
+  home_card_houses: "دوازده دربار، قبیله و نهاد که بر سر راه‌ها، منابع و نفوذ رقابت می‌کنند.",
+  home_card_regions: "بیست‌ویک منطقهٔ نقشه‌برداری‌شده؛ سرزمین ناشناخته واقعاً ناشناخته باقی می‌ماند.",
+  home_card_timeline: "پانزده رویداد تاریخ‌دار؛ علت‌های مورد اختلاف از رخدادهای ثبت‌شده جدا هستند.",
+  home_card_map: "شکاف سیاه، مُهر خدا، قلمروهای رقیب و شمال نقشه‌برداری‌نشده را کاوش کن.",
+  home_card_guilds: "گیلدی چندنژادی با دوازده شعبه و شورایی برای توازن منافع مناطق.",
+  home_card_codex: "یادگارها، سنت‌های دینی، موجودات و متن‌هایی که می‌توان ادعاهایشان را به پرسش کشید.",
+  home_card_dungeons: "صد طبقه؛ پیمایش شصت طبقه با اسناد قابل‌بررسی تأیید شده است.",
+  stat_characters: "شخصیت‌ها",
+  stat_entries: "مدخل‌های دانش‌نامه",
+  codex_desc: "یادگارها، باورها، گزارش‌های میدانی و متن‌های مورد اختلاف. بایگانی میان دانسته‌ها، باورها و موارد اثبات‌نشده فرق می‌گذارد."
+});
+Object.assign(FA_DATA, {
+  worldTiles: {
+    "Two Continents, One Crossing": { title:"دو قاره، یک گذرگاه", desc:"آترمور در جنوب شکاف سیاه قرار دارد و زارناث در شمال آن امتداد می‌یابد. مُهر خدا تنها گذرگاه نگهداری‌شده است. دره، یال‌های شکسته و مسیرهای تدارکاتی باریک حتی با آسیب‌دیدن سازه، یورش بزرگ را دشوار می‌کنند. سرزمین‌های ناشناخته بیرون از نقشه‌های قابل‌اعتماد باقی مانده‌اند.", statLabel:"قاره‌های شناخته‌شده", statValue:"۲" },
+    "Four Centuries After the Sundering": { title:"چهار قرن پس از گسست", desc:"گسست ۴۰۲ سال پیش رخ داد. اسناد دربارهٔ ویرانی آن هم‌نظرند، اما علتش را متفاوت توضیح می‌دهند. دربارها، معابد و پژوهشگران روایت‌های گوناگونی نگه می‌دارند؛ هیچ‌کدام تفسیر خود را فراتر از اختلاف ثابت نکرده است.", statLabel:"سال کنونی", statValue:"۴۰۲ عصر خاکستر" },
+    "No Confirmed Gods": { title:"هیچ خدایی اثبات نشده", desc:"آترمور پر از آیین‌ها، مکان‌های مقدس و داستان‌های نیروهای کهن است. هیچ مدرک فیزیکی ثابت نمی‌کند خدایی زنده یا مرده است یا مُهر خدا را ساخته. خودِ سازه واقعی است؛ سازنده و هدف آن ناشناخته‌اند.", statLabel:"خدایانِ اثبات‌شده از نظر فیزیکی", statValue:"۰" },
+    "History Has Authors": { title:"تاریخ نویسنده دارد", desc:"سال‌نامه‌های امپراتوری، سروده‌های قبیله‌ای، اسناد معابد و خاطرات مسافران دربارهٔ رخدادهای مهم اختلاف دارند. بایگانی درست می‌پرسد چه کسی سند را نوشته، چه زمانی ساخته شده و نویسنده چه سودی می‌برد؛ نه اینکه فقط ادعای متن چیست.", statLabel:"سند اصلی خط زمانی", statValue:"۱۵" },
+    "Competing Powers": { title:"قدرت‌های رقیب", desc:"هیچ فرمانروایی به‌جای همهٔ انسان‌ها، الف‌ها، دورف‌ها یا کِمیری‌ها حرف نمی‌زند. دربارها و شوراها برای راه، غله، بندر، معدن و دانش رقابت می‌کنند؛ حتی متحدان هنگامی که منابع یا اختیار در میان باشد اختلاف دارند.", statLabel:"نهادهای مهم فهرست‌شده", statValue:"۱۲" },
+    "The Northern Courts": { title:"دربارهای شمال", desc:"شیاطین بر زارناث چیره‌اند، اما مردمان و موجودات آن یک ملت یکدست نیستند. شیاطین با کشتن و جذب بخشی از نیروی حیات قربانی، توان ذاتی و طول عمر می‌گیرند. این سازوکار سلسله‌مراتب خشنشان را شکل می‌دهد، اما سیاست، برنامه‌ریزی و رقابت را از میان نمی‌برد.", statLabel:"طول عمر احتمالی شیاطین", statValue:"تا حدود ۱۰٬۰۰۰ سال" },
+    "The Hundred Floors": { title:"صد طبقه", desc:"هاویه بزرگ‌ترین دانجن تأییدشده است و در حوضهٔ سیاه، چند روز دور از پایتخت، قرار دارد. شصت طبقه با پیمایش قابل‌بررسی ثبت شده‌اند. ده طبقهٔ نخست چرخهٔ بازگشت دارند؛ برای طبقات ژرف‌تر قانون بازگشت معتبری شناخته نشده است.", statLabel:"طبقات دانجن بزرگ", statValue:"۱۰۰" },
+    "Unknown Lands Remain": { title:"سرزمین‌های ناشناخته باقی‌اند", desc:"سرزمین‌های مه در نقشه‌های دریانوردان دیده می‌شوند، اما هیچ گروه بازگشته‌ای نقشهٔ قابل‌اعتمادی از درون جزیره نیاورده است. صخره‌ها و مه شاید خطرهای طبیعی باشند یا بخشی از پدیده‌ای ناشناخته. اطلس مرز دانش فعلی را ثبت می‌کند، نه لبهٔ جهان را.", statLabel:"نقشهٔ تأییدشده از درون جزیره", statValue:"۰" }
   }
 });
 
