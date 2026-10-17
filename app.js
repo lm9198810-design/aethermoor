@@ -41,6 +41,90 @@
     }[m]));
   };
 
+  /* ============ AETHERMOOR SIGIL SYSTEM ============ */
+  const ICON_SYMBOLS = Object.freeze({
+    '🌍': 'world', '🗺️': 'map', '👥': 'people', '✨': 'sparkle', '⚔️': 'swords',
+    '🏰': 'castle', '🏔️': 'mountain', '📜': 'scroll', '📖': 'book', '📚': 'books',
+    '⚒️': 'crossed-hammers', '🕳️': 'abyss', '🕯️': 'candle', '🗡️': 'dagger',
+    '🌑': 'eclipse', '🩸': 'blood', '🌸': 'blossom', '💀': 'skull', '🌊': 'waves',
+    '👑': 'crown', '🌙': 'moon', '🕷️': 'spider', '🔨': 'hammer', '🐉': 'dragon',
+    '🪓': 'axe', '🦊': 'fox', '👁️': 'eye', '👹': 'demon', '🜁': 'wind',
+    'ᛟ': 'rune', '🔥': 'flame', '◈': 'rune', '✦': 'star', '☀️': 'sun',
+    '❄️': 'snowflake', '🏹': 'bow', '💎': 'gem', '🌟': 'star', '🌠': 'comet',
+    '🪶': 'feather', '⚖️': 'scales', '📕': 'book', '📗': 'book', '📘': 'book',
+    '⚱️': 'urn', '🗝️': 'key', '🎭': 'mask', '🚪': 'gate', '🧭': 'compass',
+    '🌲': 'pine', '🜂': 'flame', '🜄': 'water', '🌋': 'volcano', '🌫️': 'mist',
+    '🐄': 'beast', '🐑': 'beast', '🐎': 'beast', '🐺': 'beast', '🐻': 'beast',
+    '🦅': 'eagle', '🐟': 'fish', '🐀': 'beast', '🦇': 'bat', '🦎': 'beast',
+    '🐍': 'serpent', '🐲': 'dragon', '👻': 'ghost', '🦑': 'squid', '🐂': 'beast',
+    '🦌': 'deer', '🌳': 'pine', '🦁': 'lion', '🦋': 'butterfly', '💰': 'coin',
+    '⚡': 'lightning', '🦷': 'fang'
+  });
+
+  const HOUSE_CRESTS = Object.freeze({
+    'House Vaelor': 'crest-vaelor',
+    'House Shadowmere': 'crest-shadowmere',
+    'House Whisper': 'crest-whisper',
+    'House Ironheart': 'crest-ironheart',
+    'House Emberforge': 'crest-emberforge',
+    'The Valerian Empire': 'crest-valerian',
+    'House Vareth': 'crest-vareth',
+    'House Stormborn': 'crest-stormborn',
+    'House Drakmoor': 'crest-drakmoor',
+    'House Cinderborn': 'crest-cinderborn',
+    'House Ashborn': 'crest-ashborn',
+    'The Red Hand': 'crest-redhand',
+    'The Iron Fangs': 'crest-ironfangs',
+    'The Broken Skull': 'crest-brokenskull',
+    "The Adventurers' Guild": 'crest-adventurers',
+    'The Iron Pact': 'crest-ironpact',
+    'The Silent Choir': 'crest-choir'
+  });
+
+  const VECTOR_SIGIL_IDS = new Set(Object.values(ICON_SYMBOLS));
+
+  function iconSymbol(value) {
+    return ICON_SYMBOLS[value] || (VECTOR_SIGIL_IDS.has(value) ? value : 'rune');
+  }
+
+  function createSigilIcon(value, options = {}) {
+    const symbol = options.symbol || iconSymbol(value);
+    const baseClass = options.className || 'sigil-icon';
+    const classes = baseClass.split(/\s+/).includes('sigil-icon') ? baseClass : baseClass + ' sigil-icon';
+    const attrs = { class: classes, 'aria-hidden': 'true' };
+    if (options.color) attrs.style = '--sigil-color: ' + options.color;
+    const wrapper = el('span', attrs);
+    const svg = svgEl('svg', {
+      class: 'sigil-art', viewBox: '0 0 64 64',
+      focusable: 'false', 'aria-hidden': 'true'
+    });
+    svg.appendChild(svgEl('use', { href: 'assets/aethermoor-sigils.svg#' + symbol }));
+    wrapper.appendChild(svg);
+    return wrapper;
+  }
+
+  function sigilMarkup(value, options = {}) {
+    const symbol = options.symbol || iconSymbol(value);
+    const baseClass = options.className || 'sigil-icon';
+    const classes = baseClass.split(/\s+/).includes('sigil-icon') ? baseClass : baseClass + ' sigil-icon';
+    const colorStyle = options.color ? ' style="--sigil-color:' + escapeHtml(options.color) + '"' : '';
+    return '<span class="' + classes + '"' + colorStyle + ' aria-hidden="true">' +
+      '<svg class="sigil-art" viewBox="0 0 64 64" focusable="false" aria-hidden="true">' +
+      '<use href="assets/aethermoor-sigils.svg#' + symbol + '"></use></svg></span>';
+  }
+
+  function hydrateStaticSigils() {
+    $('[data-sigil]').forEach(node => {
+      if (node.querySelector('svg')) return;
+      const svg = svgEl('svg', {
+        class: 'sigil-art', viewBox: '0 0 64 64',
+        focusable: 'false', 'aria-hidden': 'true'
+      });
+      svg.appendChild(svgEl('use', { href: 'assets/aethermoor-sigils.svg#' + node.dataset.sigil }));
+      node.appendChild(svg);
+    });
+  }
+
   /* ============ GLOBAL STATE ============ */
   const getSavedLanguage = () => {
     try {
@@ -224,7 +308,7 @@
         class: 'world-tile',
         style: `animation-delay: ${i * 0.06}s`
       }, [
-        el('span', { class: 'tile-icon', text: tile.icon }),
+        createSigilIcon(tile.icon, { className: 'tile-icon sigil-icon' }),
         el('h3', { text: getContent('worldTiles', tile.title, 'title', tile.title) }),
         el('p', { text: getContent('worldTiles', tile.title, 'desc', tile.desc) }),
         el('div', { class: 'tile-stat' }, [
@@ -241,182 +325,161 @@
     const tooltip = $('#mapTooltip');
     const legend = $('#mapLegend');
     if (!svg || typeof MAP_DATA === 'undefined') return;
-    
+
     svg.innerHTML = '';
     if (legend) legend.innerHTML = '';
-    
+
     const { viewBox, regions } = MAP_DATA;
     svg.setAttribute('viewBox', viewBox);
+    svg.setAttribute('role', 'group');
+    svg.setAttribute('aria-label', CURRENT_LANG === 'fa' ? 'نقشهٔ تعاملی جهان اترمور' : 'Interactive atlas of Aethermoor');
 
-    // Water background
-    svg.appendChild(svgEl('rect', {
+    // The artwork preserves the site's original continent and Xarnath silhouettes.
+    // Region markers and labels are a separate interactive layer above the illustration.
+    svg.appendChild(svgEl('image', {
+      href: 'assets/aethermoor-map.svg',
       x: 0, y: 0, width: 1000, height: 700,
-      fill: 'url(#oceanGradient)'
-    }));
-
-    // Defs
-    const defs = svgEl('defs');
-    
-    const oceanGrad = svgEl('radialGradient', { id: 'oceanGradient', cx: '50%', cy: '50%', r: '70%' });
-    oceanGrad.appendChild(svgEl('stop', { offset: '0%', 'stop-color': '#0a1424' }));
-    oceanGrad.appendChild(svgEl('stop', { offset: '100%', 'stop-color': '#030610' }));
-    defs.appendChild(oceanGrad);
-
-    const glowFilter = svgEl('filter', { id: 'glowFilter', x: '-50%', y: '-50%', width: '200%', height: '200%' });
-    const feGaussian = svgEl('feGaussianBlur', { stdDeviation: '4', result: 'blur' });
-    const feMerge = svgEl('feMerge');
-    feMerge.appendChild(svgEl('feMergeNode', { in: 'blur' }));
-    feMerge.appendChild(svgEl('feMergeNode', { in: 'SourceGraphic' }));
-    glowFilter.appendChild(feGaussian);
-    glowFilter.appendChild(feMerge);
-    defs.appendChild(glowFilter);
-
-    const gridPattern = svgEl('pattern', { id: 'gridPattern', width: '50', height: '50', patternUnits: 'userSpaceOnUse' });
-    gridPattern.appendChild(svgEl('path', {
-      d: 'M 50 0 L 0 0 0 50',
-      fill: 'none',
-      stroke: 'rgba(201, 162, 39, 0.06)',
-      'stroke-width': '0.5'
-    }));
-    defs.appendChild(gridPattern);
-    svg.appendChild(defs);
-
-    svg.appendChild(svgEl('rect', {
-      x: 0, y: 0, width: 1000, height: 700,
-      fill: 'url(#gridPattern)',
-      'pointer-events': 'none'
-    }));
-
-    // Continent silhouettes
-    const mainContinent = svgEl('path', {
-      d: `M 100 300 Q 150 200 250 220 L 350 240 Q 420 220 480 240 L 560 260 Q 620 240 700 260 L 780 280 Q 850 260 920 300 L 940 400 Q 950 480 900 540 Q 820 600 720 580 L 620 600 Q 540 620 460 600 L 380 620 Q 300 640 220 600 L 140 540 Q 80 460 100 380 Q 100 330 100 300 Z`,
-      fill: 'rgba(23, 15, 40, 0.55)',
-      stroke: 'rgba(201, 162, 39, 0.2)',
-      'stroke-width': '1.5',
-      'pointer-events': 'none'
-    });
-    svg.appendChild(mainContinent);
-
-    // Xarnath silhouette (north)
-    const xarnath = svgEl('path', {
-      d: `M 200 0 L 800 0 L 780 40 Q 700 70 600 80 Q 550 100 500 95 Q 450 100 400 80 Q 300 70 220 40 Z`,
-      fill: 'rgba(61, 10, 10, 0.6)',
-      stroke: 'rgba(122, 26, 26, 0.4)',
-      'stroke-width': '1.5',
-      'pointer-events': 'none'
-    });
-    svg.appendChild(xarnath);
-
-    // Black Chasm (the dark line across)
-    const chasm = svgEl('path', {
-      d: `M 100 130 Q 500 145 900 130`,
-      stroke: '#1a0a0a',
-      'stroke-width': '20',
-      fill: 'none',
-      'stroke-linecap': 'round',
+      preserveAspectRatio: 'none',
       'pointer-events': 'none',
-      opacity: '0.85'
-    });
-    svg.appendChild(chasm);
+      class: 'map-artwork'
+    }));
 
-    // Godseal (the barrier — dashed line above chasm)
-    const godseal = svgEl('path', {
-      d: `M 250 90 Q 500 75 750 90`,
-      stroke: '#e8c547',
-      'stroke-width': '3',
-      fill: 'none',
-      'stroke-dasharray': '8,6',
-      'pointer-events': 'none',
-      opacity: '0.9'
-    });
-    svg.appendChild(godseal);
+    const labelOffsets = {
+      'xarnath': { dx: 0, dy: -18 },
+      'godseal': { dx: 64, dy: -7 },
+      'black-chasm': { dx: 72, dy: 16 },
+      'frostspine': { dx: -12, dy: 35 },
+      'silver-wood': { dx: 32, dy: 36 },
+      'ashen-wastes': { dx: 16, dy: 35 },
+      'heartlands': { dx: 0, dy: 38 },
+      'stormlands': { dx: -10, dy: 35 },
+      'shadowmere': { dx: 0, dy: 36 },
+      'broken-steppe': { dx: -8, dy: 34 },
+      'sunlit-coast': { dx: -10, dy: 29 },
+      'dragons-reach': { dx: -16, dy: 34 },
+      'godfall': { dx: -18, dy: 35 },
+      'sunken-kingdoms': { dx: 0, dy: -17 },
+      'dead-marches': { dx: 22, dy: 35 },
+      'whispering-forest': { dx: 10, dy: 34 },
+      'veil': { dx: 0, dy: 35 },
+      'mistlands': { dx: 0, dy: 28 },
+      'iron-coast': { dx: 0, dy: 34 },
+      'fading-garden': { dx: -18, dy: -19 },
+      'ember-fields': { dx: 18, dy: 33 }
+    };
 
-    // Godseal label
-    const godsealLabel = svgEl('text', {
-      x: 290, y: 72, 'text-anchor': 'middle',
-      'font-family': 'Cinzel, serif', 'font-size': '11px',
-      fill: '#e8c547', 'letter-spacing': '0.15em', 'pointer-events': 'none'
-    });
-    godsealLabel.textContent = t('map_lbl_godseal');
-    svg.appendChild(godsealLabel);
-
-    // Chasm label
-    const chasmLabel = svgEl('text', {
-      x: 290, y: 165, 'text-anchor': 'middle',
-      'font-family': 'Cinzel, serif', 'font-size': '10px',
-      fill: '#7a1a1a', 'letter-spacing': '0.15em', 'pointer-events': 'none'
-    });
-    chasmLabel.textContent = t('map_lbl_chasm');
-    svg.appendChild(chasmLabel);
-
-    // Xarnath label
-    const xarnathLabel = svgEl('text', {
-      x: 290, y: 40, 'text-anchor': 'middle',
-      'font-family': 'Cinzel, serif', 'font-size': '14px',
-      fill: '#b52a2a', 'letter-spacing': '0.25em', 'pointer-events': 'none'
-    });
-    xarnathLabel.textContent = t('map_lbl_xarnath');
-    svg.appendChild(xarnathLabel);
-
-    // Regions
-    const regionLayer = svgEl('g', { id: 'regionLayer' });
+    const regionLayer = svgEl('g', { id: 'regionLayer', class: 'map-region-layer' });
     regions.forEach(region => {
-      const displayName = CURRENT_LANG === 'fa' 
+      const displayName = CURRENT_LANG === 'fa'
         ? getContent('regions', region.id, 'name', region.name)
         : region.name;
       const displayControl = CURRENT_LANG === 'fa'
         ? getContent('regions', region.id, 'control', region.control)
         : region.control;
-      
-      const circle = svgEl('circle', {
-        cx: region.x, cy: region.y, r: 20,
-        fill: region.color,
-        'fill-opacity': '0.4',
-        stroke: region.color,
-        'stroke-width': '2',
-        class: 'map-region',
-        'data-region': region.id,
-        filter: 'url(#glowFilter)'
-      });
-      
-      circle.addEventListener('mouseenter', (e) => {
-        circle.setAttribute('fill-opacity', '0.7');
-        circle.setAttribute('r', '24');
-        showTooltip(tooltip, displayName, displayControl, e);
-      });
-      
-      circle.addEventListener('mousemove', (e) => moveTooltip(tooltip, e));
-      
-      circle.addEventListener('mouseleave', () => {
-        circle.setAttribute('fill-opacity', '0.4');
-        circle.setAttribute('r', '20');
-        hideTooltip(tooltip);
-      });
-      
-      circle.addEventListener('click', () => selectRegion(region.id));
-      regionLayer.appendChild(circle);
+      const offset = labelOffsets[region.id] || { dx: 0, dy: 34 };
+      const labelX = region.x + offset.dx;
+      const labelY = region.y + offset.dy;
+      const estimatedWidth = displayName.length * (CURRENT_LANG === 'fa' ? 5.4 : 5.9) + 18;
+      const labelWidth = Math.max(56, Math.min(184, estimatedWidth));
 
+      const marker = svgEl('g', {
+        class: 'map-region-marker',
+        'data-region': region.id,
+        style: '--region-color: ' + region.color,
+        tabindex: '0',
+        role: 'button',
+        'aria-label': displayName
+      });
+      marker.appendChild(svgEl('circle', {
+        cx: region.x, cy: region.y, r: 17,
+        class: 'map-marker-halo'
+      }));
+      marker.appendChild(svgEl('circle', {
+        cx: region.x, cy: region.y, r: 10,
+        class: 'map-marker-ring'
+      }));
+      marker.appendChild(svgEl('path', {
+        d: 'M ' + region.x + ' ' + (region.y - 5) +
+           ' L ' + (region.x + 5) + ' ' + region.y +
+           ' L ' + region.x + ' ' + (region.y + 5) +
+           ' L ' + (region.x - 5) + ' ' + region.y + ' Z',
+        class: 'map-marker-gem'
+      }));
+      marker.appendChild(svgEl('circle', {
+        cx: region.x, cy: region.y, r: 1.35,
+        class: 'map-marker-core'
+      }));
+
+      const labelGroup = svgEl('g', { class: 'map-label-group', 'pointer-events': 'none' });
+      labelGroup.appendChild(svgEl('rect', {
+        x: labelX - labelWidth / 2,
+        y: labelY - 11,
+        width: labelWidth,
+        height: 22,
+        rx: 6,
+        class: 'map-label-plate'
+      }));
       const label = svgEl('text', {
-        x: region.x, y: region.y + 38,
+        x: labelX,
+        y: labelY + 0.5,
         class: 'map-region-label',
-        'pointer-events': 'none'
+        'text-anchor': 'middle',
+        'dominant-baseline': 'middle'
       });
       label.textContent = displayName;
-      regionLayer.appendChild(label);
+      labelGroup.appendChild(label);
+      marker.appendChild(labelGroup);
+
+      marker.addEventListener('mouseenter', event => {
+        marker.classList.add('is-hovered');
+        showTooltip(tooltip, displayName, displayControl, event);
+      });
+      marker.addEventListener('mousemove', event => moveTooltip(tooltip, event));
+      marker.addEventListener('mouseleave', () => {
+        marker.classList.remove('is-hovered');
+        hideTooltip(tooltip);
+      });
+      marker.addEventListener('click', () => selectRegion(region.id));
+      marker.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          selectRegion(region.id);
+        }
+      });
+
+      regionLayer.appendChild(marker);
     });
     svg.appendChild(regionLayer);
 
-    // Legend
+    // The legend uses the same line-art emblems as the rest of the site.
     if (legend && MAP_DATA.legends) {
-      MAP_DATA.legends.forEach(lg => {
+      const legendSymbols = {
+        Human: 'crown',
+        Aeldrin: 'moon',
+        Sylvaar: 'spider',
+        Dwarves: 'crossed-hammers',
+        Draekon: 'dragon',
+        Orcs: 'axe',
+        Kemiiri: 'fox',
+        Demons: 'demon',
+        Unknown: 'mist'
+      };
+      const legendRaces = {
+        Human: 'humans', Aeldrin: 'aeldrin', Sylvaar: 'sylvaar',
+        Dwarves: 'dwarves', Draekon: 'draekon', Orcs: 'orcs',
+        Kemiiri: 'kemiiri', Demons: 'demons'
+      };
+      MAP_DATA.legends.forEach(itemData => {
         const item = el('div', { class: 'legend-item' });
-        const dot = el('span', { class: 'legend-dot' });
-        dot.style.background = lg.color;
-        dot.style.color = lg.color;
-        item.appendChild(dot);
-        const LEGEND_RACE = { Human: 'humans', Aeldrin: 'aeldrin', Sylvaar: 'sylvaar', Dwarves: 'dwarves', Draekon: 'draekon', Orcs: 'orcs', Kemiiri: 'kemiiri', Demons: 'demons' };
-        const legendLabel = lg.label === 'Unknown' ? t('unknown') : getContent('races', LEGEND_RACE[lg.label], 'name', lg.label);
-        item.appendChild(el('div', { class: 'legend-name', text: legendLabel }));
+        item.appendChild(createSigilIcon('', {
+          className: 'legend-sigil sigil-icon',
+          color: itemData.color,
+          symbol: legendSymbols[itemData.label] || 'rune'
+        }));
+        const label = itemData.label === 'Unknown'
+          ? t('unknown')
+          : getContent('races', legendRaces[itemData.label], 'name', itemData.label);
+        item.appendChild(el('div', { class: 'legend-name', text: label }));
         legend.appendChild(item);
       });
     }
@@ -483,7 +546,7 @@
         style: `animation-delay: ${i * 0.05}s`
       });
       card.appendChild(el('div', { class: 'race-card-inner' }, [
-        el('span', { class: 'race-icon', text: race.icon }),
+        createSigilIcon(race.icon, { className: 'race-icon sigil-icon' }),
         el('h3', { class: 'race-name', text: name }),
         el('div', { class: 'race-epithet', text: epithet }),
         el('p', { class: 'race-desc', text: shortDesc }),
@@ -525,7 +588,7 @@
         class: 'magic-school',
         style: `--school-color: ${school.color}`
       }, [
-        el('span', { class: 'magic-symbol', text: school.icon }),
+        createSigilIcon(school.icon, { className: 'magic-symbol sigil-icon', color: school.color }),
         el('h3', { class: 'magic-name', text: name }),
         el('div', { class: 'magic-tag', text: tag }),
         el('p', { class: 'magic-desc', text: desc }),
@@ -581,7 +644,7 @@
       const status = getContent('characters', char.id, 'status', char.status);
       
       const card = el('article', { class: 'char-card', 'data-char-id': char.id }, [
-        el('div', { class: 'char-portrait', text: char.icon }),
+        createSigilIcon(char.icon, { className: 'char-portrait sigil-icon', color: char.statusColor }),
         el('div', { class: 'char-overlay' }, [
           el('div', { class: 'char-faction', text: faction }),
           el('h3', { class: 'char-name', text: name }),
@@ -620,7 +683,7 @@
     
     body.innerHTML = `
       <div class="modal-char-header">
-        <div class="modal-char-icon">${char.icon}</div>
+        <div class="modal-char-icon">${sigilMarkup(char.icon, { className: 'modal-char-sigil sigil-icon', color: char.statusColor })}</div>
         <div>
           <div class="modal-char-faction">${escapeHtml(faction)}</div>
           <h2 class="modal-char-name">${escapeHtml(name)}</h2>
@@ -664,7 +727,7 @@
         class: 'house-card',
         style: `--house-color: ${house.color}`
       }, [
-        el('span', { class: 'house-sigil', text: house.sigil }),
+        createSigilIcon(house.sigil, { className: 'house-sigil house-crest sigil-icon', color: house.color, symbol: HOUSE_CRESTS[house.name] || iconSymbol(house.sigil) }),
         el('h3', { class: 'house-name', text: name }),
         el('div', { class: 'house-seat', text: seat }),
         el('div', { class: 'house-motto', text: motto }),
@@ -795,7 +858,7 @@
       else if (tab === 'languages') extraLabel = (CURRENT_LANG === 'fa' ? 'گویشوران: ' : t('codex_label_speakers') + ': ');
       
       grid.appendChild(el('div', { class: 'codex-item' }, [
-        el('span', { class: 'codex-item-icon', text: item.icon }),
+        createSigilIcon(item.icon, { className: 'codex-item-icon sigil-icon' }),
         el('h4', { class: 'codex-item-name', text: displayName }),
         el('div', { class: 'codex-item-type', text: displayType }),
         el('p', { class: 'codex-item-desc', text: desc }),
@@ -833,7 +896,7 @@
       const excerpt = getContent('books', book.id, 'excerpt', book.excerpt);
       
       const card = el('article', { class: 'book-card', 'data-book-id': book.id }, [
-        el('span', { class: 'book-icon', text: '📖' }),
+        createSigilIcon('📖', { className: 'book-icon sigil-icon' }),
         el('div', { class: 'book-category', text: category }),
         el('h3', { class: 'book-title', text: title }),
         el('div', { class: 'book-author', text: author }),
@@ -913,7 +976,7 @@
         class: 'guild-card',
         style: `--guild-color: ${guild.color}`
       }, [
-        el('span', { class: 'guild-icon', text: guild.icon }),
+        createSigilIcon(guild.icon, { className: 'guild-icon sigil-icon', color: guild.color }),
         el('h3', { class: 'guild-name', text: name }),
         el('div', { class: 'guild-founded', text: `${L.founded}: ${getContent('guilds', guild.name, 'founded', guild.founded)} · ${branchesText}` }),
         el('p', { class: 'guild-purpose', text: purpose }),
@@ -985,7 +1048,7 @@
     
     // Abyss header
     container.appendChild(el('div', { class: 'abyss-header' }, [
-      el('span', { class: 'abyss-icon', text: '🕳️' }),
+      createSigilIcon('🕳️', { className: 'abyss-icon sigil-icon' }),
       el('h2', { class: 'abyss-name', text: tAbyss('name', abyss.name) }),
       el('div', { class: 'abyss-location', text: tAbyss('location', abyss.location) }),
       el('div', { class: 'abyss-stats' }, [
@@ -1252,6 +1315,7 @@
   /* ============ INIT ============ */
   function init() {
     initLoader();
+    hydrateStaticSigils();
     applyUITranslations();
     initNavScroll();
     initMobileToggle();

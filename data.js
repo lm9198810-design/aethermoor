@@ -30,84 +30,84 @@ const WORLD_META = {
    ============================================================ */
 const WORLD_TILES = [
   {
-    icon: "🌍",
+    icon: "world",
     title: "Two Continents, One Wound",
     desc: "Aethermoor, the central continent, spans three million square miles. To its north lies Xarnath — the Demon Continent — an endless, desolate land of scarce minerals and barren soil, where the strong devour the weak and the Demon King sits on a throne of bone. Between them, the Black Chasm severs the world in two, and the Godseal holds the demons back.",
     statLabel: "Continents",
     statValue: "2"
   },
   {
-    icon: "⚔️",
+    icon: "swords",
     title: "A Thousand Years of Ash",
     desc: "Since the Sundering, forty-two wars have been fought over the ruins of heaven. Twelve ended in genocide. Fourteen ended in stalemate. Sixteen ended in the annihilation of at least one noble house. The rest ended when everyone involved was simply too exhausted to continue. The scholars say the forty-third war is overdue. The soldiers say it is already here.",
     statLabel: "Recorded Wars",
     statValue: "42"
   },
   {
-    icon: "🕯️",
+    icon: "candle",
     title: "The Silent Gods",
     desc: "No physical proof exists that any god lives or died. Every faith tells a different story. The Aeldrin say Aelith waits beneath the Silver Wood. The dwarves say Vorthal sleeps beneath the Frostspine. The orcs say Karok died at the Sundering. The only evidence of divine power is the Godseal itself — a barrier so vast, so perfect, that no mortal hand could have carved it.",
     statLabel: "Confirmed Gods",
     statValue: "0"
   },
   {
-    icon: "📜",
+    icon: "scroll",
     title: "The Forbidden Histories",
     desc: "Every victor rewrites the past. Beneath the official chronicles lie banned texts, burned libraries, and the testimony of the dead — preserved in stone and bone. The Silent Choir has catalogued 1,247 works that are considered dangerous to know. They have read them all. They have not been the same since.",
     statLabel: "Banned Texts",
     statValue: "1,247"
   },
   {
-    icon: "🗡️",
+    icon: "dagger",
     title: "The Age of Ambition",
     desc: "Thrones sit empty. Crowns are cheap. A peasant can rise to emperor with enough blood and enough luck. Eighty-eight times in the past thousand years, a commoner has seized a throne. Forty-one of them died within a year. Twelve still rule. The rest — the rest are forgotten, and their names have been carved from the chronicles.",
     statLabel: "Successful Usurpations",
     statValue: "88"
   },
   {
-    icon: "🌑",
+    icon: "eclipse",
     title: "The Demon Threat",
     desc: "Beyond the Black Chasm, the Demon King rules an endless wasteland. His subjects grow stronger not through training, but through slaughter — draining the life-force of every living thing they kill. For a thousand years, the Godseal has held them back. For a thousand years, the demons have waited. The Godseal is humming now. It has never hummed before.",
     statLabel: "Demon King Age",
     statValue: "10,000+"
   },
   {
-    icon: "🩸",
+    icon: "blood",
     title: "The Blood Debt",
     desc: "Every drop of divine blood spilled at the Sundering is still owed. The world pays in slow increments — in plague, in madness, in the slow fading of magic itself. Scholars estimate that at current rates of decay, magic will cease to function entirely within four hundred years. Nobody is doing anything about it. Most people do not believe it.",
     statLabel: "Estimated Years Left",
     statValue: "~400"
   },
   {
-    icon: "🌸",
+    icon: "blossom",
     title: "The Last Dawn",
     desc: "A single Aeldrin child was born in the Year 242 — the first in one hundred and sixty years, and the last. Her name is Aelwyn Vaelor. She is one hundred and sixty years old, appears sixteen, and is the only hope of a dying race. She did not ask for this. She does not want it. She may be the most important person alive.",
     statLabel: "Aeldrin Children Born",
     statValue: "1"
   },
   {
-    icon: "🏰",
+    icon: "castle",
     title: "The Great Guild Council",
     desc: "Twelve guild branches span the continent — a round table of power brokers, monster hunters, and information brokers who answer to no king. The largest guild sits beside the Abyss in Valerius's Rest, the Imperial City. Its halls are carved from the dungeon's own stone. Its archives go deeper than anyone admits.",
     statLabel: "Guild Branches",
     statValue: "12"
   },
   {
-    icon: "🕳️",
+    icon: "abyss",
     title: "The Abyss",
     desc: "One hundred floors. Only two hundred adventurers in history have reached the fortieth. No one has ever returned from the sixtieth. The Abyss is not a cave — it is a wound. It hums. It breathes. It remembers. And at its heart, on a floor no living soul has seen, something waits. The scholars argue about what. The soldiers do not.",
     statLabel: "Confirmed Floors",
     statValue: "100 (claimed)"
   },
   {
-    icon: "💀",
+    icon: "skull",
     title: "The Beast-Curse",
     desc: "The Kemiiri carry a dormant plague that they cannot transmit to each other but can transmit to all other races. It activates when their population drops below one thousand. They are at fourteen hundred. The elders know. They have not told the young. They are running out of time.",
     statLabel: "Kemiiri Remaining",
     statValue: "~1,400"
   },
   {
-    icon: "🌊",
+    icon: "waves",
     title: "The Mistlands",
     desc: "Far to the west, beyond the Sea of Sorrow, lies an island wrapped in perpetual mist. Every ship sent to explore it has vanished. Every adventurer who has gone has not returned. The Mistlands are not on any official map — but they are on every sailor's chart, marked with a single word: 'Don't.'",
     statLabel: "Expeditions Returned",
@@ -124,7 +124,7 @@ const RACES = [
     name: "Humans",
     epithet: "The Fractured Crowns",
     category: "human",
-    icon: "👑",
+    icon: "crown",
     shortDesc: "The most numerous race of Aethermoor, and the most divided. Where elves and dwarves find unity, humans find only ambition — and the ambition of one emperor once carved the largest empire the world has ever known.",
     traits: ["Ambitious", "Numerous", "Adaptable", "Divided"],
     fullDesc: "Humans are the youngest of the great races — created late, after the Aeldrin and Sylvaar and Draekon had already claimed their thrones. But what they lack in age, they make up for in numbers and sheer, restless will. For a thousand years after the Sundering, humanity has been a story of rise and fall, of emperors and usurpers, of kingdoms built on bones and buried by betrayal. The greatest of them all was Emperor Valerius the Unbroken, who united the warring human tribes and forged the Valerian Empire — the largest empire in recorded history. His capital still stands, built directly above the Abyss, and his bloodline still rules — though the empire has long since fractured into a dozen squabbling successor states. Humans are not inherently evil, nor inherently good. They are simply driven — by hunger, by fear, by love, by hatred — and that drive has made them the most dangerous race in the world.",
@@ -150,7 +150,7 @@ const RACES = [
     name: "Aeldrin",
     epithet: "The Firstborn of the Silver Wood",
     category: "elven",
-    icon: "🌙",
+    icon: "moon",
     shortDesc: "The ageless lords of the Silver Wood, whose memories stretch back before the Sundering and whose pride outlasts their dying bloodline.",
     traits: ["Ageless", "Silver-blooded", "Arcanists", "Ancient"],
     fullDesc: "The Aeldrin were the first race blessed by the goddess Aelith, granted immortality and an unbroken connection to the arcane weave. For five thousand years they ruled Aethermoor as philosopher-kings, building cities of crystal and starlight among the giant trees of the Silver Wood. They were the keepers of the runes, the interpreters of prophecy, and the self-appointed wardens of the world. But immortality is a curse disguised as a gift: the Aeldrin have forgotten how to change. They have forgotten how to hope. And now, three millennia after Aelith's binding, they are quietly dying out — not from war or plague, but from the simple, devastating fact that no Aeldrin child has been born in one hundred and sixty years. Except one. The Last Dawn. And she does not want to be. The Aeldrin are a people waiting to die — but they are also a people who refuse to admit it. They hold their courts. They recite their poetry. They tend their failing gardens. They pretend, every day, that everything is fine.",
@@ -176,7 +176,7 @@ const RACES = [
     name: "Sylvaar",
     epithet: "The Shadowed Kin",
     category: "elven",
-    icon: "🕷️",
+    icon: "spider",
     shortDesc: "Elves who chose the dark over death, and have paid for it every day since.",
     traits: ["Shadow-bound", "Cunning", "Underground", "Secretive"],
     fullDesc: "The Sylvaar were once Aeldrin — the second-born of the goddess Aelith, given to the shadows so that the firstborn might keep the light. For ten thousand years they served as spies, assassins, and secret-keepers. When the Sundering came, the Sylvaar did what they always did: they survived. They fled into the depths of the world, where light never reaches, and there they built cities of obsidian and bone. But the dark demands a price. The Sylvaar have become something else. Their eyes have adjusted. Their skin has paled. Their souls have dimmed. They do not remember the sun. They do not miss it. They have forgotten what it felt like.",
@@ -202,7 +202,7 @@ const RACES = [
     name: "Dwarves",
     epithet: "The Stoneborn",
     category: "human",
-    icon: "🔨",
+    icon: "hammer",
     shortDesc: "Miners, engineers, and smiths without equal. The dwarves of the Frostspine carve their cities into the bones of the world — and their loyalty into the bones of their people.",
     traits: ["Stoneborn", "Engineers", "Loyal", "Stubborn"],
     fullDesc: "The dwarves are the oldest of the mortal races — created not by the gods, but by the world itself. They believe they were born from the stone of the Frostspine, and they may be right. For ten thousand years they have lived beneath the mountains, carving cities from the living rock, forging weapons that will outlast empires, and keeping their promises with the stubbornness of the stone they love. Unlike humans, dwarves have never known civil war on a grand scale. They are unified by a shared culture, a shared history, and a shared code of honor. And unlike the Aeldrin, they are not dying out — they are thriving. The dwarves are the only race that has never lost a war of defense — because in ten thousand years, no one has ever successfully invaded a dwarven hold.",
@@ -228,7 +228,7 @@ const RACES = [
     name: "Draekon",
     epithet: "The Dragon-Blooded",
     category: "human",
-    icon: "🐉",
+    icon: "dragon",
     shortDesc: "Descendants of the first mortal who dared to love a dragon. Their blood carries fire, and their fate is to one day burn in it.",
     traits: ["Fire-blooded", "Warriors", "Clan-bound", "Cursed"],
     fullDesc: "The Draekon are the descendants of Aeryn the Bold, a mortal warrior who — according to the Songs of Fire — lay with the great dragon Vharenth and bore his children. For this transgression, the gods cursed her line: every seventh generation, one Draekon would undergo the Changing — a slow, agonizing transformation into a dragon. The curse has held for over ten thousand years. The Draekon have learned to revere it. Their culture is built around fire, honor, and clan. They live in the Dragon's Reach, a volcanic peninsula in the southeast, where they train from birth to fight, to ride, and to die with dignity. They are feared by every other race, and they know it.",
@@ -254,7 +254,7 @@ const RACES = [
     name: "Orcs",
     epithet: "The Blood of Karok",
     category: "human",
-    icon: "🪓",
+    icon: "axe",
     shortDesc: "Once soldiers of a dead god, now a people without a purpose — and without a home that will have them. The orcs raid, pillage, and enslave. They do not apologize. They do not explain. They do not forgive.",
     traits: ["Warlike", "Tribal", "Slavers", "Hated"],
     fullDesc: "The orcs were not born — they were forged. The war-god Karok created them as soldiers in the divine wars, shaping them from blood and iron, giving them strength beyond any mortal race and a hunger for battle that would never be sated. When Karok fell at the Sundering, his soldiers were left without a purpose — and without a master to restrain them. They became raiders. Then slavers. Then monsters. For three hundred years, the orcs have roamed the Ashen Wastes in warbands and tribes, taking what they want and killing what they don't. They are hated by every race. They hate every race. And they would not have it any other way. The only law among orcs is the law of the strongest — but even the strongest must earn the loyalty of his warband, or he will be killed in his sleep. And there is always someone stronger. Always.",
@@ -280,7 +280,7 @@ const RACES = [
     name: "Kemiiri",
     epithet: "The Beastfolk",
     category: "beast",
-    icon: "🦊",
+    icon: "fox",
     shortDesc: "Neither human nor beast, and hated by both. The Kemiiri have learned that the only law that matters is the one you write yourself.",
     traits: ["Beast-blooded", "Adaptable", "Outcast", "Cursed"],
     fullDesc: "The Kemiiri are the descendants of an ancient magical experiment — the attempt by a long-dead sorcerer-king to create the perfect soldiers by grafting beast-spirits onto human souls. The experiment succeeded. The soldiers were perfect. Then they turned on their creator, and the world turned on them. For seven thousand years the Kemiiri have been hunted, enslaved, and exterminated by every other race. They have survived because they are adaptable: each Kemiiri manifests a different beast-aspect at birth, giving them unique abilities. Some have wolf-aspects. Some have fox-aspects. Some have bird-aspects, or serpent-aspects, or even rarer things. They live in packs — temporary family units — that form and dissolve as needed. They have no homeland. They have no capital. They have only each other.",
@@ -306,7 +306,7 @@ const RACES = [
     name: "Halfborn",
     epithet: "The God-Touched",
     category: "divine",
-    icon: "👁️",
+    icon: "eye",
     shortDesc: "The children of gods and mortals. Powerful beyond measure. Broken beyond repair. And hunted by both heaven and earth.",
     traits: ["Divine-blood", "Cursed", "Powerful", "Hunted"],
     fullDesc: "The Halfborn are what happens when a god loves a mortal — or uses one. Their blood is divine; their flesh is mortal. This contradiction tears them apart. A Halfborn child is born with power that would take a mortal wizard decades to achieve. They can shatter stone with a word, walk through fire, see the future in dreams. But every Halfborn carries a Flaw — a unique weakness that grows with their power. Some are killed by water. Some lose their memories every year. Some hear the thoughts of everyone around them, forever, without relief. Most are dead by forty. The Halfborn are not a race. They are a scattering. But the ones who survive — the ones who learn to live with their Flaw — become something more than mortal. Something terrifying.",
@@ -332,7 +332,7 @@ const RACES = [
     name: "Half-Demons",
     epithet: "The Crossroads Blood",
     category: "divine",
-    icon: "🌑",
+    icon: "eclipse",
     shortDesc: "Children of two worlds, belonging to neither. Their eyes are always red — the demon blood is dominant — and their power is a dangerous gift.",
     traits: ["Demon-blood", "Red-Eyed", "Latent Power", "Outcast"],
     fullDesc: "Half-demons are the rare children of a demon and a mortal — or, more commonly, of a demon and a mortal who made a contract with one. They look human in most respects, but their eyes are always red — the demon blood is dominant, always. Some possess horns or sharp teeth. Some possess latent magical abilities that manifest in childhood or in moments of great stress. They are hated by humans for their demon heritage, and distrusted by demons for their mortal weakness. They belong nowhere. They fight for everything. Half-demons grow stronger through training — like humans — but their ceiling is that of a demon, not a mortal. This makes them the most dangerous race in Aethermoor: they can grow without the constraint of a mortal lifespan, and they can train without the constraint of needing to kill.",
@@ -358,7 +358,7 @@ const RACES = [
     name: "Demons",
     epithet: "The Lords of Xarnath",
     category: "divine",
-    icon: "👹",
+    icon: "demon",
     shortDesc: "The rulers of Xarnath, the demon continent. Immortal, ageless, and hungry. They do not age. They do not die of natural causes. They grow stronger only through slaughter — draining the life-force of every living thing they kill.",
     traits: ["Ageless", "Red-Eyed", "Life-Drainers", "Tyrannical"],
     fullDesc: "The demons of Xarnath are the most feared race in the world. They look human in most respects — the same skin colors, the same builds — but their eyes are always red, and some have horns or sharp teeth. They do not age. They do not die of natural causes. They grow stronger only through slaughter — every living thing they kill feeds their life-force, extends their lifespan, and slowly increases their mana capacity. A demon who has lived for a thousand years has killed thousands of beings. A demon who has lived for ten thousand years has killed hundreds of thousands. The Demon King, who has ruled Xarnath for ten thousand years, has killed more than any being in history. He is not a person. He is an event. He is the reason the Godseal exists. He is the reason the world holds its breath.",
@@ -389,7 +389,7 @@ const MAGIC_SCHOOLS = [
     id: "breathweaving",
     name: "Breathweaving",
     tag: "The Common Art",
-    icon: "🜁",
+    icon: "wind",
     color: "#6ba8c9",
     desc: "Breathweaving is the most widely practiced form of magic in Aethermoor, and the most misunderstood. It draws upon the Breath — the fundamental life-force that animates all living things. Every creature has a finite reserve of Breath. Breathweaving spends it. A simple spell might cost an hour of life. A great spell might cost a decade. Those who weave recklessly age prematurely, sicken, and die. Those who weave wisely can extend their lives — a secret the Aeldrin guard jealously. Breathweaving is taught in academies from the age of six. It is the magic of healing, of warding, of elemental manipulation. It is the magic of everyday life.",
     source: "Life-force (Breath)",
@@ -402,7 +402,7 @@ const MAGIC_SCHOOLS = [
     id: "runecraft",
     name: "Runecraft",
     tag: "The Forbidden Art",
-    icon: "ᛟ",
+    icon: "rune",
     color: "#c9a227",
     desc: "Runecraft is the art of writing reality. It uses the Old Script — the language of the gods — to inscribe commands directly into the fabric of Vaelthar. A rune carved into stone will obey forever. A rune carved into flesh will obey until the flesh dies. A rune carved into air will obey for a heartbeat — long enough to change everything. The Aeldrin discovered Runecraft and, for five thousand years, kept it secret. Then the Sylvaar stole it. Now every race has at least one rune-master. The gods, if they were still alive, would be furious. Runecraft is dangerous because every rune is a permanent command. A miswritten rune can destabilize reality itself.",
     source: "The Old Script (language of the gods)",
@@ -415,7 +415,7 @@ const MAGIC_SCHOOLS = [
     id: "bloodfire",
     name: "Bloodfire",
     tag: "The Burning Art",
-    icon: "🔥",
+    icon: "flame",
     color: "#b52a2a",
     desc: "Bloodfire is the magic of sacrifice. It draws upon the heat of life itself — the fire that burns in the blood of every living creature. To cast a Bloodfire spell, a practitioner must burn a part of themselves: a memory, a year of life, a piece of their soul. The flames are hotter than any mundane fire. They cannot be extinguished by water. They leave wounds that never heal. Bloodfire was invented by the Draekon, who consider it sacred. The other races consider it abomination. Both are correct. Bloodfire is the only magic that can be cast without mana — because it does not use mana. It uses life.",
     source: "The fire within living blood",
@@ -428,7 +428,7 @@ const MAGIC_SCHOOLS = [
     id: "voidwalking",
     name: "Voidwalking",
     tag: "The Hollow Art",
-    icon: "◈",
+    icon: "rune",
     color: "#6d4fa8",
     desc: "Voidwalking is the art of stepping sideways into the spaces between spaces. It is not teleportation — teleportation implies destination. Voidwalking is movement through the Void, the empty dark that exists behind reality. A skilled Voidwalker can appear anywhere they have previously marked, can hide in plain sight, can step out of time for a heartbeat. The price is the Void itself. Every Voidwalking calls a little more of the Void into the walker's soul. Eventually, the walker becomes... hollow. Silent. Absent. The Sylvaar call this the Long Shadow, and they consider it a sacred death.",
     source: "The Void (the space between worlds)",
@@ -441,7 +441,7 @@ const MAGIC_SCHOOLS = [
     id: "songofstars",
     name: "Song of Stars",
     tag: "The Divine Art",
-    icon: "✦",
+    icon: "star",
     color: "#e8c547",
     desc: "The Song of Stars is the oldest magic in Vaelthar. Before the gods, there was the Song — the music that sang the world into being. It is not a magic that can be learned. It is a magic that can only be remembered. A practitioner of the Song must find, within themselves, a fragment of the original music. The Song can heal. It can create. It can, if sung correctly, unmake reality itself. It is also the magic the gods feared most — because it is the only magic that can kill them. Fewer than a dozen people alive remember even a fragment of the Song. Most of them are Aeldrin. Most of them are dying.",
     source: "The primordial Song",
@@ -491,7 +491,7 @@ const HOUSES = [
      ═══════════════════════════════════════════════════════ */
   {
     name: "House Vaelor",
-    sigil: "🌙",
+    sigil: "moon",
     color: "#a8d8e8",
     seat: "Aelthalas, the Crystal Throne",
     region: "The Silver Wood",
@@ -506,7 +506,7 @@ const HOUSES = [
   },
   {
     name: "House Shadowmere",
-    sigil: "🕷️",
+    sigil: "spider",
     color: "#4a1f6b",
     seat: "Ondrath, the Throne of Bone",
     region: "The Shadowmere Depths",
@@ -521,7 +521,7 @@ const HOUSES = [
   },
   {
     name: "House Whisper",
-    sigil: "🌑",
+    sigil: "eclipse",
     color: "#2a1a4a",
     seat: "The Silent Hall, Ondrath",
     region: "The Shadowmere Depths",
@@ -540,7 +540,7 @@ const HOUSES = [
      ═══════════════════════════════════════════════════════ */
   {
     name: "House Ironheart",
-    sigil: "🔨",
+    sigil: "hammer",
     color: "#8a6f1f",
     seat: "Hearthforge, the Iron Hold",
     region: "The Frostspine",
@@ -555,7 +555,7 @@ const HOUSES = [
   },
   {
     name: "House Emberforge",
-    sigil: "⚒️",
+    sigil: "crossed-hammers",
     color: "#b52a2a",
     seat: "The Great Forge, Hearthforge",
     region: "The Frostspine",
@@ -574,7 +574,7 @@ const HOUSES = [
      ═══════════════════════════════════════════════════════ */
   {
     name: "The Valerian Empire",
-    sigil: "🦅",
+    sigil: "eagle",
     color: "#c9a227",
     seat: "Valerius's Rest, the Imperial City",
     region: "The Heartlands",
@@ -591,7 +591,7 @@ const HOUSES = [
   },
   {
     name: "House Vareth",
-    sigil: "⚔️",
+    sigil: "swords",
     color: "#7a1a1a",
     seat: "The Spire of Ashes, Northern Reaches",
     region: "The Stormlands",
@@ -606,7 +606,7 @@ const HOUSES = [
   },
   {
     name: "House Stormborn",
-    sigil: "⚡",
+    sigil: "lightning",
     color: "#6ba8c9",
     seat: "The Stormhold, Cape of Storms",
     region: "The Stormlands",
@@ -625,7 +625,7 @@ const HOUSES = [
      ═══════════════════════════════════════════════════════ */
   {
     name: "House Drakmoor",
-    sigil: "🐉",
+    sigil: "dragon",
     color: "#b52a2a",
     seat: "Kael'Dorath, the Ashen Citadel",
     region: "The Dragon's Reach",
@@ -640,7 +640,7 @@ const HOUSES = [
   },
   {
     name: "House Cinderborn",
-    sigil: "🔥",
+    sigil: "flame",
     color: "#b52a2a",
     seat: "The Ember Keep, Dragon's Reach",
     region: "The Dragon's Reach",
@@ -655,7 +655,7 @@ const HOUSES = [
   },
   {
     name: "House Ashborn",
-    sigil: "💀",
+    sigil: "skull",
     color: "#e8c547",
     seat: "The Unbound Path (no fixed seat)",
     region: "Wandering (mostly Dragon's Reach)",
@@ -675,7 +675,7 @@ const HOUSES = [
      ═══════════════════════════════════════════════════════ */
   {
     name: "The Red Hand",
-    sigil: "🩸",
+    sigil: "blood",
     color: "#7a1a1a",
     seat: "The Red Camp, the Ashen Wastes",
     region: "The Ashen Wastes",
@@ -691,7 +691,7 @@ const HOUSES = [
   },
   {
     name: "The Iron Fangs",
-    sigil: "🦷",
+    sigil: "fang",
     color: "#8a6f1f",
     seat: "The Broken Spire, the Ashen Wastes",
     region: "The Ashen Wastes",
@@ -707,7 +707,7 @@ const HOUSES = [
   },
   {
     name: "The Broken Skull",
-    sigil: "💀",
+    sigil: "skull",
     color: "#4a4438",
     seat: "The Fallen City, the Ashen Wastes",
     region: "The Ashen Wastes",
@@ -727,7 +727,7 @@ const HOUSES = [
      ═══════════════════════════════════════════════════════ */
   {
     name: "The Adventurers' Guild",
-    sigil: "⚔️",
+    sigil: "swords",
     color: "#6ba8c9",
     seat: "The Great Hall, Valerius's Rest (headquarters)",
     region: "Valerius's Rest (headquarters), plus 12 branches across Aethermoor",
@@ -745,7 +745,7 @@ const HOUSES = [
   },
   {
     name: "The Iron Pact",
-    sigil: "⚒️",
+    sigil: "crossed-hammers",
     color: "#8a6f1f",
     seat: "The Iron Hold, Hearthforge (dwarven district)",
     region: "The Frostspine (dwarven districts)",
@@ -762,7 +762,7 @@ const HOUSES = [
   },
   {
     name: "The Silent Choir",
-    sigil: "✦",
+    sigil: "star",
     color: "#e8c547",
     seat: "The Fading Garden, the Silver Wood",
     region: "The Fading Garden (and scattered throughout Aethermoor)",
@@ -1357,7 +1357,7 @@ const CHARACTERS = [
     faction: "House Vaelor",
     status: "Alive",
     statusColor: "#e8dfc0",
-    icon: "🌸",
+    icon: "blossom",
     race: "Aeldrin",
     age: "160 (appears 16)",
     born: "Year 242 S.A.",
@@ -1405,7 +1405,7 @@ const CHARACTERS = [
     faction: "House Vaelor",
     status: "Alive",
     statusColor: "#a8d8e8",
-    icon: "🌙",
+    icon: "moon",
     race: "Aeldrin",
     age: "4,127",
     born: "Year 3,725 B.S.",
@@ -1453,7 +1453,7 @@ const CHARACTERS = [
     faction: "House Ashborn (unknown to him)",
     status: "Alive",
     statusColor: "#e8c547",
-    icon: "⚔️",
+    icon: "swords",
     race: "Halfborn / Half-Demon (suspected)",
     age: "24",
     born: "Year 378 S.A.",
@@ -1498,7 +1498,7 @@ const CHARACTERS = [
     faction: "The Valerian Empire",
     status: "Alive",
     statusColor: "#c9a227",
-    icon: "👑",
+    icon: "crown",
     race: "Human",
     age: "62",
     born: "Year 340 S.A.",
@@ -1542,7 +1542,7 @@ const CHARACTERS = [
     faction: "House Vareth",
     status: "Alive",
     statusColor: "#7a1a1a",
-    icon: "⚔️",
+    icon: "swords",
     race: "Human",
     age: "58",
     born: "Year 344 S.A.",
@@ -1589,7 +1589,7 @@ const CHARACTERS = [
     faction: "House Cinderborn",
     status: "Alive",
     statusColor: "#b52a2a",
-    icon: "🔥",
+    icon: "flame",
     race: "Draekon",
     age: "142",
     born: "Year 260 S.A.",
@@ -1633,7 +1633,7 @@ const CHARACTERS = [
     faction: "House Ironheart / House Bloodaxe",
     status: "Alive (dying)",
     statusColor: "#8a6f1f",
-    icon: "🪓",
+    icon: "axe",
     race: "Orc (adopted into dwarven culture)",
     age: "68",
     born: "Year 334 S.A.",
@@ -1681,7 +1681,7 @@ const CHARACTERS = [
     faction: "House Shadowmere",
     status: "Alive (failing)",
     statusColor: "#4a1f6b",
-    icon: "🕷️",
+    icon: "spider",
     race: "Sylvaar",
     age: "487",
     born: "Year 85 B.S.",
@@ -1725,7 +1725,7 @@ const CHARACTERS = [
     faction: "House Whisper",
     status: "Unknown",
     statusColor: "#4a1f6b",
-    icon: "🌑",
+    icon: "eclipse",
     race: "Unknown (suspected Sylvaar, possibly something else)",
     age: "Unknown (at least 150 years)",
     born: "Unknown",
@@ -1775,7 +1775,7 @@ const CHARACTERS = [
     faction: "The Red Hand",
     status: "Alive",
     statusColor: "#7a1a1a",
-    icon: "🩸",
+    icon: "blood",
     race: "Orc",
     age: "42",
     born: "Year 360 S.A.",
@@ -1823,7 +1823,7 @@ const CHARACTERS = [
     faction: "The Grey Pack",
     status: "Alive",
     statusColor: "#6d4fa8",
-    icon: "🦊",
+    icon: "fox",
     race: "Kemiiri (fox-aspect)",
     age: "31",
     born: "Year 371 S.A.",
@@ -1871,7 +1871,7 @@ const CHARACTERS = [
     faction: "The Demon Court",
     status: "Alive (and has been for 10,000 years)",
     statusColor: "#7a1a1a",
-    icon: "👹",
+    icon: "demon",
     race: "Demon",
     age: "10,000+ (possibly much older)",
     born: "Unknown",
@@ -1915,7 +1915,7 @@ const CHARACTERS = [
     faction: "The Fallen Gods",
     status: "Alive (imprisoned)",
     statusColor: "#e8c547",
-    icon: "☀️",
+    icon: "sun",
     race: "God",
     age: "~10,000 years",
     born: "Before time",
@@ -1963,7 +1963,7 @@ const CHARACTERS = [
     faction: "House Ironheart",
     status: "Alive",
     statusColor: "#6ba8c9",
-    icon: "❄️",
+    icon: "snowflake",
     race: "Dwarf",
     age: "187",
     born: "Year 215 S.A.",
@@ -2011,7 +2011,7 @@ const CHARACTERS = [
     faction: "Legend",
     status: "Dead (legendary)",
     statusColor: "#7a1a1a",
-    icon: "🐉",
+    icon: "dragon",
     race: "Human (later: Dragon)",
     age: "Unknown (lived ~200 years)",
     born: "~4,200 B.S.",
@@ -2053,7 +2053,7 @@ const CHARACTERS = [
     faction: "Legend (historical)",
     status: "Dead (historical)",
     statusColor: "#7a1a1a",
-    icon: "🪓",
+    icon: "axe",
     race: "Orc",
     age: "Unknown (lived ~80 years)",
     born: "~2,180 B.S.",
@@ -2099,7 +2099,7 @@ const CHARACTERS = [
     faction: "House Emberforge",
     status: "Alive",
     statusColor: "#8a6f1f",
-    icon: "⚒️",
+    icon: "crossed-hammers",
     race: "Dwarf",
     age: "~200",
     born: "Year ~200 S.A.",
@@ -2141,7 +2141,7 @@ const CHARACTERS = [
     faction: "The Fallen Gods",
     status: "Sleeping (beneath the Frostspine)",
     statusColor: "#6ba8c9",
-    icon: "❄️",
+    icon: "snowflake",
     race: "God",
     age: "~10,000 years",
     born: "Before time",
@@ -2195,35 +2195,35 @@ const ARTIFACTS = [
      WEAPONS OF LEGEND
      ═══════════════════════════════════════════════════════ */
   {
-    icon: "⚔️",
+    icon: "swords",
     name: "The Bloodaxe",
     type: "Weapon · Legendary",
     origin: "House Bloodaxe, forged 700 years ago",
     desc: "The ancestral weapon of House Bloodaxe — a massive two-handed axe forged from black iron and quenched in the blood of a dying dragon. It is said to be unbreakable, and to drink the blood of those it kills. It has been wielded by every Chieftain of House Bloodaxe since its forging. It is currently in the hands of Morag Bloodaxe — who is dying. The axe knows. It always knows. It is waiting for a new hand."
   },
   {
-    icon: "🪓",
+    icon: "axe",
     name: "Grunna's Wrath",
     type: "Weapon · Legendary",
     origin: "Forged by the god Karok himself, wielded by Grunna Ironbound",
     desc: "The axe of Grunna Ironbound — the first orc to break her chains. It was forged by the war-god Karok himself, and it was used to shatter the chains of orc slavery. It has not been wielded since Grunna's death, three thousand years ago. It rests in the Great Forge of House Emberforge, waiting for a worthy hand. No hand has been worthy. Not yet."
   },
   {
-    icon: "🔥",
+    icon: "flame",
     name: "The Ember Crown",
     type: "Crown · Bloodfire",
     origin: "Forged by Aeryn the Bold, 10,000 years ago",
     desc: "The crown of the Draekon High Chieftain. Forged from pure obsidian and lit from within by the Ashen Flame. It is said to grant the wearer mastery over all fire — including the fire within their own blood. It has not been worn for three hundred years. The last Draekon to wear it — Vexa Cinderborn's grandmother — died screaming, consumed by her own flames. The crown still waits."
   },
   {
-    icon: "🗡️",
+    icon: "dagger",
     name: "The Emperor's Blade",
     type: "Weapon · Imperial",
     origin: "Forged by the Silent Smith for Emperor Valerius II",
     desc: "The personal sword of the Emperor of the Valerian Empire. It was forged by the Silent Smith himself — a weapon of black steel and silver runes, designed not for battle but for ceremony. It has never been drawn in anger. It has never needed to be. The Emperor does not fight. He has others to fight for him. But the blade is there, in his throne room, waiting for the day the Empire needs its Emperor to be more than a politician."
   },
   {
-    icon: "🏹",
+    icon: "bow",
     name: "The Wolf's Fang",
     type: "Weapon · Legendary",
     origin: "Wielded by Lady Lyanna Stormborn",
@@ -2234,49 +2234,49 @@ const ARTIFACTS = [
      RELICS OF THE GODS
      ═══════════════════════════════════════════════════════ */
   {
-    icon: "💎",
+    icon: "gem",
     name: "The Tear of Aelith",
     type: "Relic · Divine",
     origin: "Shed by the goddess Aelith when she created the Aeldrin",
     desc: "A single tear, shed by the goddess Aelith when she created the Aeldrin. It is kept in the Crystal Throne of Aelthalas, and it is said to grant the bearer a single moment of perfect clarity — a moment in which they can see the truth of any situation. It has been used only three times in history. Each use revealed a truth that shattered a kingdom."
   },
   {
-    icon: "👁️",
+    icon: "eye",
     name: "The Eye of Vorthal",
     type: "Relic · Divine",
     origin: "Preserved from the body of the sleeping god Vorthal",
     desc: "A single eye, preserved from the body of the sleeping god Vorthal. It is kept in the Iron Hold of the dwarves, in a vault that no one but the Thane can open. It is said that whoever looks into the eye will see the future — and go mad. Thane Ironheart has looked into it. He does not speak of what he saw. He does not sleep well. He does not sleep at all."
   },
   {
-    icon: "🌟",
+    icon: "star",
     name: "The Starheart",
     type: "Relic · Divine",
     origin: "A shard of the first star, shattered at the Sundering",
     desc: "A shard of the first star — the star that the gods sang into being at the dawn of time. It was shattered at the Sundering, and its largest fragment fell to earth in the Fading Garden. It is said to be the source of all magic in Aethermoor — the physical manifestation of the Song. If it were ever destroyed, magic would end. The Silent Choir guards it. They have guarded it for a thousand years. They will guard it for a thousand more."
   },
   {
-    icon: "🌠",
+    icon: "comet",
     name: "The Fallen Star",
     type: "Relic · Divine",
     origin: "A meteorite that fell at the Sundering, carrying a fragment of a dead god",
     desc: "A meteorite that fell from the sky at the Sundering, carrying with it a fragment of a dead god — a shard of divine bone, still warm to the touch, still humming with power. It is kept in the Godfall, where it lies in the Glass Sea, radiating a faint, cold light. Those who touch it are said to see the moment of the god's death — the moment of their own death — and the moment of the world's death. No one has ever touched it and remained sane."
   },
   {
-    icon: "🪶",
+    icon: "feather",
     name: "The Last Feather",
     type: "Relic · Divine",
     origin: "A single feather from the wing of the goddess Aelith",
     desc: "A single feather from the wing of the goddess Aelith. It is said to grant the bearer one wish — but only if spoken in the primordial Song. Only three people alive can sing even a fragment of the Song. None of them have claimed the feather. The feather waits. It has waited for a thousand years. It can wait a thousand more."
   },
   {
-    icon: "🕯️",
+    icon: "candle",
     name: "The Everlasting Candle",
     type: "Relic · Divine",
     origin: "Burning since before the Sundering",
     desc: "A candle that has burned since before the Sundering. Its light reveals lies. Anyone standing in its glow cannot speak an untruth. It is kept in the Temple of the Sun, on the Sunlit Coast. It has not been lit in three hundred years. The priests say the candle will light itself when the world needs it. The world has not needed it. Not yet."
   },
   {
-    icon: "⚖️",
+    icon: "scales",
     name: "The Scales of Judgment",
     type: "Relic · Divine",
     origin: "Used by the gods to weigh the souls of the dead",
@@ -2287,35 +2287,35 @@ const ARTIFACTS = [
      THE BOOKS OF POWER
      ═══════════════════════════════════════════════════════ */
   {
-    icon: "📜",
+    icon: "scroll",
     name: "The Karoknul",
     type: "Book · Divine",
     origin: "The holy book of the orcs, written in the language of the gods",
     desc: "The holy book of the orcs — written in the language of the gods, by the god Karok himself, before the Sundering. It contains the secret of their creation and the method by which Karok might be resurrected. It was shattered into seven fragments at the Sundering. Each fragment is guarded by a different orc warband. None of them can read it. If the fragments were ever assembled and translated, the god of war would return — and he would not be pleased with what his children have become."
   },
   {
-    icon: "📖",
+    icon: "book",
     name: "The Gospel of the Divide",
     type: "Book · Religious",
     origin: "The holy book of the Watching Order",
     desc: "The holy book of the Watching Order — the knights and mages who guard the Godseal. It tells the story of the Godseal's creation: how the gods (or something older than the gods) carved the Black Chasm into the earth and raised the Godseal across it, sealing the demons in Xarnath. It also tells a prophecy: 'When the Godseal hums, the end is near.' The Godseal is humming now."
   },
   {
-    icon: "📕",
+    icon: "book",
     name: "Whispers from the Abyss",
     type: "Book · Forbidden",
     origin: "Author unknown, found on the 60th floor of the Abyss",
     desc: "A book found on the 60th floor of the Abyss — the deepest floor any adventurer has ever reached and returned from. It is written in a language no one has been able to translate. It is bound in leather that is not leather. Its pages are warm to the touch. It whispers when opened. It has been locked in the deepest vault of the Adventurers' Guild for three hundred years. The vault has not been opened since. No one wants to open it. No one wants to know what it says."
   },
   {
-    icon: "📗",
+    icon: "book",
     name: "A Treatise on Mana Conservation",
     type: "Book · Academic",
     origin: "Written by Grand Archmage Vaelor of the Grand Academy",
     desc: "The foundational text of modern magical theory. It explains the Law of Conservation — that mana is never destroyed, only transformed — and the implications for spellcasting, monster-hunting, and the economy of mana-stones. It is required reading at every magical academy in Aethermoor. It is also the book that led to the discovery that demons grow stronger by killing — a discovery that has shaped the world's politics for a thousand years."
   },
   {
-    icon: "📘",
+    icon: "book",
     name: "The Valerian Codex",
     type: "Book · Legal",
     origin: "Written by Emperor Valerius the Unbroken, 900 years ago",
@@ -2326,35 +2326,35 @@ const ARTIFACTS = [
      THE CURSED RELICS
      ═══════════════════════════════════════════════════════ */
   {
-    icon: "⚱️",
+    icon: "urn",
     name: "The Urn of Maelith",
     type: "Relic · Necromantic",
     origin: "Contains the ashes of the dead Sylvaar Queen",
     desc: "An urn containing the ashes of Queen Maelith — and, more importantly, the ashes of her spirit. Lord Vexar has used these ashes to maintain the spell that keeps his mother animated. If the urn were ever destroyed, the Queen would collapse — and Vexar would die. The urn is kept in the deepest vault of Ondrath, guarded by a dozen Sylvaar assassins and a single, ancient spell. No one has ever tried to steal it. No one has ever succeeded."
   },
   {
-    icon: "🗝️",
+    icon: "key",
     name: "The Key of Aelthalas",
     type: "Relic · Unknown",
     origin: "Forged by Seraphine Vaelor, 1,000 years ago",
     desc: "A key made of starlight, kept in the Crystal Throne. It is said to open any door — including the door to the prison of Aelith. Only Seraphine Vaelor knows what the key truly does. She has not told anyone. She will not tell anyone. She is afraid of what would happen if she did."
   },
   {
-    icon: "🌑",
+    icon: "eclipse",
     name: "The Shadowcloak",
     type: "Armor · Void",
     origin: "Woven by the Sylvaar from pure shadow",
     desc: "A cloak woven from pure shadow, kept in the Throne of Bone. It is said to grant the wearer perfect invisibility — not by hiding them, but by making them forgettable. The wearer becomes so unremarkable that no one can remember seeing them. The effect lasts until the cloak is removed. The cloak has been worn by every Sylvaar assassin for a thousand years. None of them remember wearing it."
   },
   {
-    icon: "🎭",
+    icon: "mask",
     name: "The Mask of the Whisperer",
     type: "Relic · Void",
     origin: "Unknown — possibly older than the Sundering",
     desc: "A mask of pure shadow, worn by the Whisperer. It is said to grant the wearer the ability to become anyone — to take on their appearance, their voice, their memories. The mask has never been seen. No one knows if it exists. No one knows if the Whisperer needs it. No one knows anything about the Whisperer. That is the point."
   },
   {
-    icon: "🌊",
+    icon: "waves",
     name: "The Pearl of the Sunken King",
     type: "Relic · Cursed",
     origin: "Taken from the crown of a Sunken King",
@@ -2365,14 +2365,14 @@ const ARTIFACTS = [
      THE DRAGON RELICS
      ═══════════════════════════════════════════════════════ */
   {
-    icon: "🔥",
+    icon: "flame",
     name: "The Ashen Flame",
     type: "Relic · Bloodfire",
     origin: "Lit by Aeryn the Bold, 10,000 years ago",
     desc: "An eternal flame, kept in the Ember Keep of House Cinderborn. It was lit by Aeryn the Bold herself, ten thousand years ago, and has never gone out. It is said to be the physical manifestation of the Draekon's curse. Some say that if it ever goes out, the Draekon will be free. Others say that if it ever goes out, the Draekon will die. No one knows which is true. No one wants to find out."
   },
   {
-    icon: "🐉",
+    icon: "dragon",
     name: "The Dragon Heart",
     type: "Relic · Divine",
     origin: "The heart of Vharenth, the last great dragon",
@@ -2383,14 +2383,14 @@ const ARTIFACTS = [
      THE NEW RELICS (for the expanded world)
      ═══════════════════════════════════════════════════════ */
   {
-    icon: "🚪",
+    icon: "gate",
     name: "The Godseal Key",
     type: "Relic · Divine",
     origin: "Created by the gods when they built the Godseal",
     desc: "A key that does not look like a key. It is a shard of divine light — a fragment of the Godseal itself, given to the Watching Order when the barrier was raised. It is said to be the only way to open the Godseal from the Aethermoor side. It is kept in the Watching Order's citadel, guarded by 300 knights. The Demon King has been looking for it for ten thousand years. He has never found it. He will never stop looking."
   },
   {
-    icon: "🧭",
+    icon: "compass",
     name: "The Abyss Compass",
     type: "Relic · Arcane",
     origin: "Created by the Adventurers' Guild, 500 years ago",
@@ -2408,112 +2408,112 @@ const GODS = [
      THE CONFIRMED GODS
      ═══════════════════════════════════════════════════════ */
   {
-    icon: "☀️",
+    icon: "sun",
     name: "Aelith",
     domain: "Light, Knowledge, Creation",
     status: "Imprisoned",
     desc: "The mother of the Aeldrin and Sylvaar. Bound beneath the Silver Wood by her own children. She is not dead. She is waiting. She is angry. And she is — more than anything — disappointed."
   },
   {
-    icon: "🌑",
+    icon: "eclipse",
     name: "Vorthal",
     domain: "Silence, Dreams, Secrets",
     status: "Sleeping",
     desc: "The sleeping god beneath the Frostspine. He has spoken only once — to Thane Ironheart. He has not spoken since. He may never speak again. He may be waking. The dwarves are afraid."
   },
   {
-    icon: "⚔️",
+    icon: "swords",
     name: "Karok",
     domain: "War, Strength, Conquest",
     status: "Dead",
     desc: "The creator of the orcs. Slain by Aeryn the Bold at the Sundering. His book, the Karoknul, is the only thing that could bring him back. It is shattered into seven fragments. None of them can be read. Not yet."
   },
   {
-    icon: "🔥",
+    icon: "flame",
     name: "Vharenth",
     domain: "Fire, Dragons, Passion",
     status: "Dead",
     desc: "The last of the great dragons, and the lover of Aeryn the Bold. Killed by Karok at the Sundering. His heart was eaten by Aeryn — and this is how the Draekon curse began. His heart still beats, faintly, in a crystal case in House Drakmoor's deepest vault."
   },
   {
-    icon: "🌊",
+    icon: "waves",
     name: "Nerith",
     domain: "Seas, Storms, Change",
     status: "Unknown",
     desc: "The goddess of the sea. She vanished at the Sundering. Some say she is sleeping beneath the Sea of Sorrow. Some say she is dead. Some say she is the thing that lives in the Sunken Kingdoms now — the thing that the Drowned worship."
   },
   {
-    icon: "🌲",
+    icon: "pine",
     name: "Elyra",
     domain: "Nature, Growth, Healing",
     status: "Dead",
     desc: "The goddess of nature. She died at the Sundering, and her death is why the Fading Garden is dying — and why nothing grows in the Ashen Wastes. Her death is also why the Kemiiri are dying — the Beast-Curse feeds on the absence of nature."
   },
   {
-    icon: "⚖️",
+    icon: "scales",
     name: "Justicar",
     domain: "Justice, Law, Order",
     status: "Unknown",
     desc: "The god of justice. He has not been seen since the Sundering. The Sylvaar believe he is dead. The orcs believe he is hiding. The Aeldrin believe he is waiting — for the right moment to return. The dwarves believe he is the one who built the Godseal."
   },
   {
-    icon: "🎭",
+    icon: "mask",
     name: "Lirien",
     domain: "Deception, Trickery, Chaos",
     status: "Alive (possibly)",
     desc: "The god of deception. He is the only god who may have survived the Sundering intact. He has not been seen in a thousand years. But then, he would not be. The Whisperer may be Lirien. Lirien may be the Whisperer. No one knows. No one will ever know."
   },
   {
-    icon: "🜂",
+    icon: "flame",
     name: "Ignar",
     domain: "Fire, Forge, Craft",
     status: "Dead",
     desc: "The god of the forge. He forged the weapons of the gods. He died at the Sundering, and his death is why the greatest artifacts of Aethermoor can never be duplicated. The Silent Smith is said to be his reincarnation. The Silent Smith does not comment."
   },
   {
-    icon: "🌙",
+    icon: "moon",
     name: "Selene",
     domain: "Moon, Tides, Mystery",
     status: "Dead",
     desc: "The goddess of the moon. She died at the Sundering, and the moon has not been the same since. It is said that her body is the moon — and that she watches over Aethermoor still. The Aeldrin pray to her every night. She has not answered in a thousand years."
   },
   {
-    icon: "🜄",
+    icon: "water",
     name: "Mereth",
     domain: "Death, Endings, Rebirth",
     status: "Dead",
     desc: "The god of death. He died at the Sundering. His death is why the dead do not stay dead in the Dead Marches — and why no one knows what happens after death anymore. Every faith claims to know. Every faith is lying."
   },
   {
-    icon: "🗡️",
+    icon: "dagger",
     name: "Kaelith",
     domain: "Honor, Valor, Sacrifice",
     status: "Dead",
     desc: "The god of honor. He died at the Sundering, defending his siblings. His death is the reason why the concept of honor has become so rare in Aethermoor. The dwarves still honor him. The orcs still remember him. The humans have forgotten."
   },
   {
-    icon: "🌠",
+    icon: "comet",
     name: "The Nameless",
     domain: "Unknown",
     status: "Erased",
     desc: "The rogue god who attempted to seize the Song six thousand years ago. His name has been erased from all records. His body lies in the Godfall. His death is what made the Sundering possible — because the other gods learned, that day, that gods could die."
   },
   {
-    icon: "🜁",
+    icon: "wind",
     name: "The Hollow",
     domain: "Void, Nothingness, Silence",
     status: "Unknown",
     desc: "The god of the void. He is not worshipped. He is not loved. He is not even remembered by most. But he exists — somewhere in the spaces between worlds. He is the reason Voidwalking works. He is the reason the Sylvaar have a god, even if they do not know it. He is the reason the Veil exists. He is the reason the Mistlands exist. He is the reason — some say — that the world itself exists."
   },
   {
-    icon: "🪶",
+    icon: "feather",
     name: "The Weaver",
     domain: "Fate, Destiny, Prophecy",
     status: "Dead",
     desc: "The goddess who wove the tapestry of fate. Her death at the Sundering is why prophecy is now uncertain — and why the future can still be changed. Every prophecy ever spoken is a thread that she left behind. Every prophecy ever fulfilled is a thread that she tied. She is dead. But her threads remain."
   },
   {
-    icon: "🌋",
+    icon: "volcano",
     name: "The Mountain-Father",
     domain: "Earth, Stone, Endurance",
     status: "Sleeping",
@@ -2524,21 +2524,21 @@ const GODS = [
      THE GOD-LEVEL BEINGS (not gods, but close enough)
      ═══════════════════════════════════════════════════════ */
   {
-    icon: "👹",
+    icon: "demon",
     name: "The Demon King",
     domain: "Slaughter, Power, Eternity",
     status: "Alive",
     desc: "Not a god — but close enough. The Demon King has ruled Xarnath for ten thousand years. He has killed more beings than any creature in history. He has absorbed their life-force and mana. He has become something more than a demon. Something more than a god. Something that should not exist. He is the reason the Godseal exists. He is the reason the world holds its breath."
   },
   {
-    icon: "🌑",
+    icon: "eclipse",
     name: "The Forgotten Ones",
     domain: "Unknown — possibly older than the gods",
     status: "Unknown",
     desc: "The oldest demons in Xarnath. They have lived for fifty thousand years or more. They were here before the gods. They were here before the Sundering. They were here before the Demon King. They are hidden in the deepest reaches of Xarnath, waiting. The Demon King overthrew one of them to take the throne. He knows the others are out there. He knows they are waiting. He knows that one day, they will come for him."
   },
   {
-    icon: "🌫️",
+    icon: "mist",
     name: "The Mist",
     domain: "Unknown — possibly not a god at all",
     status: "Unknown",
@@ -2556,7 +2556,7 @@ const CREATURES = [
      NATURAL ANIMALS (mundane — brief descriptions only)
      ═══════════════════════════════════════════════════════ */
   {
-    icon: "🐄",
+    icon: "beast",
     name: "Cattle",
     class: "Animal · Mundane",
     danger: "None",
@@ -2564,7 +2564,7 @@ const CREATURES = [
     desc: "Ordinary cattle. Found in every human kingdom. Used for milk, meat, and leather. Not dangerous. Not interesting. Not worth writing about. Except to the farmers who raise them."
   },
   {
-    icon: "🐑",
+    icon: "beast",
     name: "Sheep",
     class: "Animal · Mundane",
     danger: "None",
@@ -2572,7 +2572,7 @@ const CREATURES = [
     desc: "Ordinary sheep. Found in the highlands of every human kingdom. Used for wool, meat, and milk. Not dangerous. Not interesting. Except to the shepherds who protect them from wolves."
   },
   {
-    icon: "🐎",
+    icon: "beast",
     name: "Horses",
     class: "Animal · Mundane",
     danger: "None",
@@ -2580,7 +2580,7 @@ const CREATURES = [
     desc: "Ordinary horses. Found everywhere. Used for riding, farming, and war. Not dangerous. Not interesting. Except to the knights who ride them into battle."
   },
   {
-    icon: "🐺",
+    icon: "beast",
     name: "Wolves",
     class: "Animal · Natural",
     danger: "Low",
@@ -2588,7 +2588,7 @@ const CREATURES = [
     desc: "Natural wolves. Larger than ordinary wolves, but not monstrous. They hunt in packs. They avoid humans. They are not dangerous — unless they are starving, or unless their territory is threatened."
   },
   {
-    icon: "🐻",
+    icon: "beast",
     name: "Bears",
     class: "Animal · Natural",
     danger: "Moderate",
@@ -2596,7 +2596,7 @@ const CREATURES = [
     desc: "Natural bears. Larger than ordinary bears — some as large as a horse. They are solitary. They avoid humans. They are not dangerous — unless they are provoked, or unless their cubs are threatened."
   },
   {
-    icon: "🦅",
+    icon: "eagle",
     name: "Eagles",
     class: "Animal · Natural",
     danger: "Low",
@@ -2604,7 +2604,7 @@ const CREATURES = [
     desc: "Natural eagles. Larger than ordinary eagles — some as large as a dog. They nest on cliffs and mountaintops. They are not dangerous — unless they are defending their nests."
   },
   {
-    icon: "🐟",
+    icon: "fish",
     name: "Fish",
     class: "Animal · Mundane",
     danger: "None",
@@ -2616,7 +2616,7 @@ const CREATURES = [
      THE DUNGEON MONSTERS (The Abyss and other dungeons)
      ═══════════════════════════════════════════════════════ */
   {
-    icon: "🕷️",
+    icon: "spider",
     name: "Void-Spiders",
     class: "Dungeon · Void",
     danger: "High",
@@ -2624,7 +2624,7 @@ const CREATURES = [
     desc: "Spiders that live in the Void between worlds. They can slip through cracks in reality and appear anywhere. Their webs are not made of silk — they are made of pure shadow, and they can cut through steel. They are the most common monster in the Abyss's early floors. They are also the most feared — because they can appear anywhere, at any time, without warning."
   },
   {
-    icon: "🐀",
+    icon: "beast",
     name: "Giant Rats",
     class: "Dungeon · Beast",
     danger: "Low",
@@ -2632,7 +2632,7 @@ const CREATURES = [
     desc: "Rats the size of dogs. They are not intelligent. They are not dangerous — individually. But they travel in swarms of hundreds, and they can strip a human to the bone in minutes. They are the first monster every adventurer faces. They are the reason most adventurers die on their first day."
   },
   {
-    icon: "🦇",
+    icon: "bat",
     name: "Shadow-Bats",
     class: "Dungeon · Void",
     danger: "Moderate",
@@ -2640,7 +2640,7 @@ const CREATURES = [
     desc: "Bats that live in the Shadowmere Depths. They are not dangerous on their own, but they travel in swarms of thousands, and they can drain the life-force from a living creature in seconds. They are the reason adventurers carry torches. They are the reason adventurers carry fire."
   },
   {
-    icon: "🦎",
+    icon: "beast",
     name: "Stone-Lizards",
     class: "Dungeon · Earth",
     danger: "Moderate",
@@ -2648,7 +2648,7 @@ const CREATURES = [
     desc: "Lizards the size of horses, with scales as hard as stone. They are not intelligent. They are not fast. But they are incredibly strong, and their tails can shatter a shield. They are the reason adventurers carry hammers."
   },
   {
-    icon: "🐍",
+    icon: "serpent",
     name: "Ash-Serpents",
     class: "Dungeon · Fire",
     danger: "High",
@@ -2656,7 +2656,7 @@ const CREATURES = [
     desc: "Serpents adapted to the ash and the heat. They are thirty feet long, black as coal, and their venom is said to be hotter than fire. The orcs hunt them for sport. The Draekon hunt them for challenge. Most adventurers do not hunt them at all — they avoid them."
   },
   {
-    icon: "🐲",
+    icon: "dragon",
     name: "Wyrmlings",
     class: "Dungeon · Divine",
     danger: "Low",
@@ -2664,7 +2664,7 @@ const CREATURES = [
     desc: "Infant dragons, born from the Changing. They are rare, precious, and hunted by every faction in Aethermoor. A single wyrmling is worth more than a kingdom. Their scales are priceless. Their blood is poison to mortals. They are the most valuable monster in the world. They are also the most dangerous — because their mothers are always nearby."
   },
   {
-    icon: "👻",
+    icon: "ghost",
     name: "The Screaming Dead",
     class: "Dungeon · Undead",
     danger: "Extreme",
@@ -2672,7 +2672,7 @@ const CREATURES = [
     desc: "The souls trapped in the Dead Marches, cursed to die and rise forever. They cannot be killed — they can only be temporarily dispersed. They remember nothing of their former lives. They only scream. They have been screaming for a thousand years. They will scream for a thousand more."
   },
   {
-    icon: "💀",
+    icon: "skull",
     name: "Bone Knights",
     class: "Dungeon · Undead",
     danger: "High",
@@ -2680,7 +2680,7 @@ const CREATURES = [
     desc: "Skeletons wearing ancient armor, wielding ancient weapons. They are the remains of adventurers who died in the Abyss — animated by the dungeon's magic, forced to fight forever. They retain some of their former skills. Some of them retain some of their former memories. Some of them — it is said — can still speak. No one has ever gotten close enough to listen."
   },
   {
-    icon: "👁️",
+    icon: "eye",
     name: "The Watchers",
     class: "Dungeon · Fey",
     danger: "Moderate",
@@ -2688,7 +2688,7 @@ const CREATURES = [
     desc: "Owl-like creatures with human eyes. They are said to be the spies of the Whisperer. They appear where secrets are about to be revealed. They do not attack — they simply watch. And remember. And report."
   },
   {
-    icon: "🦑",
+    icon: "squid",
     name: "The Drowned",
     class: "Dungeon · Undead",
     danger: "Extreme",
@@ -2700,7 +2700,7 @@ const CREATURES = [
      THE DEMON BEASTS (Xarnath's creatures)
      ═══════════════════════════════════════════════════════ */
   {
-    icon: "🐺",
+    icon: "beast",
     name: "Abyssal Lycans",
     class: "Demon · Beast",
     danger: "High",
@@ -2708,7 +2708,7 @@ const CREATURES = [
     desc: "Werewolves — but not the kind you know. The Abyssal Lycans are demons who have fully embraced their beast-nature. They are massive — ten feet tall at the shoulder, with fur as black as night and eyes as red as blood. They hunt in packs. They are intelligent. They are cruel. They are the reason no one crosses the Black Chasm alone."
   },
   {
-    icon: "🐂",
+    icon: "beast",
     name: "Hell-Cows",
     class: "Demon · Beast",
     danger: "Moderate",
@@ -2716,7 +2716,7 @@ const CREATURES = [
     desc: "The demon version of cattle. They are massive — the size of elephants — with horns that can skewer a knight and hides that can turn a blade. They are not aggressive. They are not intelligent. They are simply... large. The demons herd them. The demons eat them. The demons use their hides for armor. They are the only source of food in Xarnath that does not come from killing."
   },
   {
-    icon: "🐑",
+    icon: "beast",
     name: "Shadow-Sheep",
     class: "Demon · Beast",
     danger: "Low",
@@ -2724,7 +2724,7 @@ const CREATURES = [
     desc: "The demon version of sheep. Their wool is black as night, and it glows faintly in the dark. Their meat is tough and bitter. Their milk is poisonous to mortals. The demons use their wool for clothing. The demons use their bones for tools. The demons do not eat them — they are too valuable alive."
   },
   {
-    icon: "🐎",
+    icon: "beast",
     name: "Ash-Horses",
     class: "Demon · Beast",
     danger: "Moderate",
@@ -2732,7 +2732,7 @@ const CREATURES = [
     desc: "The demon version of horses. They are larger than mortal horses — the size of draft horses — with hooves that spark fire when they strike stone. They are fast. They are strong. They are loyal to their riders. They are the reason the Demon King's cavalry is feared across Xarnath."
   },
   {
-    icon: "👹",
+    icon: "demon",
     name: "Apex Terrors",
     class: "Demon · Intelligent",
     danger: "Extreme",
@@ -2744,7 +2744,7 @@ const CREATURES = [
      THE UNIQUE ENTITIES
      ═══════════════════════════════════════════════════════ */
   {
-    icon: "🐉",
+    icon: "dragon",
     name: "True Dragons",
     class: "Divine · Unique",
     danger: "Extinction",
@@ -2752,7 +2752,7 @@ const CREATURES = [
     desc: "The great dragons of Vaelthar, once numbering in the thousands, are now reduced to fewer than a dozen. The last confirmed sighting was in 398 S.A. — a female, flying east. No one knows where she went. No one knows if she is still alive. No one knows if any other dragons still exist. The Draekon believe they do. The Draekon believe the dragons are waiting. The Draekon believe the dragons will return."
   },
   {
-    icon: "🐺",
+    icon: "beast",
     name: "Frost-Wyrms",
     class: "Beast · Unique",
     danger: "Extreme",
@@ -2760,7 +2760,7 @@ const CREATURES = [
     desc: "Massive serpentine creatures that live in the deepest reaches of the Frostspine. They are two hundred feet long, armored in ice, and can kill a fully armed warrior with a single bite. Thane Ironheart killed one with his bare hands. He does not recommend it."
   },
   {
-    icon: "🦌",
+    icon: "deer",
     name: "Silver Stags",
     class: "Fey · Unique",
     danger: "Low",
@@ -2768,7 +2768,7 @@ const CREATURES = [
     desc: "Beautiful, intelligent stags that live in the Silver Wood. They are not hostile — they are, in fact, quite curious — but they are also sacred to the Aeldrin, and killing one is punishable by death. They are said to be the messengers of Aelith. They are said to carry the souls of dead Aeldrin to the afterlife. No one knows if this is true. No one wants to find out."
   },
   {
-    icon: "🌳",
+    icon: "pine",
     name: "The Speaking Trees",
     class: "Fey · Unique",
     danger: "Moderate",
@@ -2776,7 +2776,7 @@ const CREATURES = [
     desc: "The trees of the Whispering Forest. They are not hostile — they are, in fact, quite helpful — but they are also completely mad. They have been listening to the world for ten thousand years, and they have opinions. They will share them. At length."
   },
   {
-    icon: "🦁",
+    icon: "lion",
     name: "The Beast of the Broken Steppe",
     class: "Unknown · Unique",
     danger: "Unknown",
@@ -2784,7 +2784,7 @@ const CREATURES = [
     desc: "A creature that has been sighted four times in the past century. It is described as 'a lion the size of a house, with the eyes of a man, and a voice that speaks in riddles.' No one has ever survived a close encounter. It may not exist. It may be a myth. It may be something worse."
   },
   {
-    icon: "🦋",
+    icon: "butterfly",
     name: "Dawn Moths",
     class: "Fey · Unique",
     danger: "None",
@@ -2792,7 +2792,7 @@ const CREATURES = [
     desc: "Luminous moths that appear only at dawn in the Silver Wood. They are said to carry the memories of the dead. The Aeldrin believe that when a Dawn Moth lands on you, someone who loved you is thinking of you. The Aeldrin believe this because they need to believe it. They have lost so much. They need to believe that someone, somewhere, remembers."
   },
   {
-    icon: "🌫️",
+    icon: "mist",
     name: "The Mist-Walkers",
     class: "Unknown · Unique",
     danger: "Extreme",
@@ -2800,7 +2800,7 @@ const CREATURES = [
     desc: "The things that live in the Mistlands. No one has ever seen them. No one has ever survived seeing them. All that is known is that the mist is alive — and that it is hungry. The Mist-Walkers may be the mist itself. They may be something inside it. They may be something older than the mist. No one knows. No one will ever know."
   },
   {
-    icon: "🕯️",
+    icon: "candle",
     name: "Fire-Newts",
     class: "Elemental · Unique",
     danger: "Low",
@@ -2815,7 +2815,7 @@ const CREATURES = [
    ============================================================ */
 const PROPHECIES = [
   {
-    icon: "✦",
+    icon: "star",
     title: "The Vaelor Prophecy",
     source: "Vaelor the Seer, Year 1,000 B.S.",
     text: "When the last dragon wakes and the first god bleeds, the ash-born shall sit upon a throne of fire, and Aethermoor shall know either dawn — or ending.",
@@ -2823,7 +2823,7 @@ const PROPHECIES = [
     desc: "The most famous prophecy in Aethermoor. Vaelor the Seer spoke it a thousand years before the Sundering. He was executed for heresy. The prophecy was preserved in secret. It has been interpreted in a thousand different ways — and every interpretation has led to war."
   },
   {
-    icon: "◈",
+    icon: "rune",
     title: "The Prophecy of the Wounded Choir",
     source: "Unknown, Year ~500 B.S.",
     text: "When the god-touched are gathered, and the halfborn stand as one, the thrones of heaven shall be empty forever, and the earth shall be ruled by those born of it.",
@@ -2831,7 +2831,7 @@ const PROPHECIES = [
     desc: "A prophecy whispered among the Halfborn. It has never been written down — it is passed from Halfborn to Halfborn, in secret. It predicts the death of the gods and the rise of the mortal races. The Wounded Choir believes it is inevitable."
   },
   {
-    icon: "🌑",
+    icon: "eclipse",
     title: "The Prophecy of the Hollow",
     source: "The Hollow God (attributed)",
     text: "When the last light is swallowed, and the last song is silenced, and the last god is forgotten, I shall return. Not to save. Not to destroy. Simply to be.",
@@ -2839,7 +2839,7 @@ const PROPHECIES = [
     desc: "A prophecy that appears, in different forms, in the sacred texts of every race. It predicts the end of the world — not by fire or ice, but by simple, quiet emptiness. The Hollow God will return when nothing else remains."
   },
   {
-    icon: "🐉",
+    icon: "dragon",
     title: "The Prophecy of the Last Dragon",
     source: "Draekon oral tradition, pre-Sundering",
     text: "The last Draekon to undergo the Changing will not become a dragon. They will become the Dragon. And the Dragon will wake the first Draekon, and the fire will return to the world.",
@@ -2847,7 +2847,7 @@ const PROPHECIES = [
     desc: "A prophecy of the Draekon. It predicts the return of Aeryn the Bold — the first Draekon, the mother of dragons. It is said that when she returns, the curse will be broken, and the Draekon will be free."
   },
   {
-    icon: "❄️",
+    icon: "snowflake",
     title: "The Prophecy of the Long Winter",
     source: "Vorthal (attributed), spoken to Thane Ironheart",
     text: "The winter that comes will not end. The cold that comes will not thaw. And only the one who has never been cold will survive it.",
@@ -2855,7 +2855,7 @@ const PROPHECIES = [
     desc: "A prophecy spoken by the sleeping god Vorthal to Thane Ironheart, forty years ago. Thane Ironheart has never told anyone else. The Long Winter is coming. It will be the last."
   },
   {
-    icon: "🌙",
+    icon: "moon",
     title: "The Prophecy of the Bound Goddess",
     source: "Seraphine Vaelor (private)",
     text: "The binding will break. It will not be gentle. And when it breaks, I will pay for what I have done.",
@@ -2863,7 +2863,7 @@ const PROPHECIES = [
     desc: "Not a prophecy, exactly — but a certainty. Seraphine Vaelor knows that the binding of Aelith will eventually break. She has spent a thousand years preparing for it. She is still not ready."
   },
   {
-    icon: "🌸",
+    icon: "blossom",
     title: "The Prophecy of the Last Dawn",
     source: "Unknown, discovered after Aelwyn's birth",
     text: "When the last child is born and the first mother weeps, the goddess shall wake, and the daughter shall choose. Her choice shall be the end of one world — or the beginning of another.",
@@ -2871,7 +2871,7 @@ const PROPHECIES = [
     desc: "A prophecy discovered in an old Aeldrin text after Aelwyn's birth. Only Seraphine and a handful of elders know of it. It names Aelwyn as the one who will decide the fate of the Aeldrin."
   },
   {
-    icon: "🪶",
+    icon: "feather",
     title: "The Prophecy of the Woven Threads",
     source: "The Weaver (attributed, before the Sundering)",
     text: "When the last thread is cut and the loom is silent, the weaver shall return to weave anew. But the pattern shall be different. And the world shall not remember the old one.",
@@ -2879,7 +2879,7 @@ const PROPHECIES = [
     desc: "A prophecy attributed to the dead goddess of fate. It predicts the total rewriting of reality itself."
   },
   {
-    icon: "🚪",
+    icon: "gate",
     title: "The Prophecy of the Godseal",
     source: "The Gospel of the Divide (Watching Order)",
     text: "When the Godseal hums, the end is near. When the Godseal sings, the end is here. When the Godseal screams, there is no end — only the beginning of something worse.",
@@ -2887,7 +2887,7 @@ const PROPHECIES = [
     desc: "The central prophecy of the Watching Order. The Godseal began humming in 400 S.A. It has not stopped. The Watching Order has doubled its patrols. The Emperor has sent envoys. No one knows what the humming means. No one wants to find out."
   },
   {
-    icon: "👹",
+    icon: "demon",
     title: "The Prophecy of the Demon King",
     source: "The Forgotten Ones (attributed), pre-Sundering",
     text: "The King of Demons shall fall, not to a god, not to a hero, but to a child of two worlds — a half-blood, a half-demon, a half-something-else. And the world shall be remade in the ashes of his throne.",
@@ -2895,7 +2895,7 @@ const PROPHECIES = [
     desc: "A prophecy whispered among the Forgotten Ones — the ancient demons who were here before the Demon King. It predicts the fall of the Demon King. It predicts the rise of a half-demon. It predicts the remaking of the world. The Demon King has been hunting half-demons for ten thousand years. This is why."
   },
   {
-    icon: "⚖️",
+    icon: "scales",
     title: "The Prophecy of the Half-Demon",
     source: "Unknown, discovered in the Wounded Choir's archives",
     text: "The child of two bloods shall stand at the crossroads. They shall choose — not for themselves, but for the world. Their choice shall break the Godseal, or seal it forever. There is no middle ground.",
@@ -2903,7 +2903,7 @@ const PROPHECIES = [
     desc: "A prophecy discovered by the Wounded Choir, the secret society that protects half-demons. It names the half-demon as the key to the Godseal — the only being who can break it, or seal it. The Wounded Choir has been searching for this half-demon for a century. They may have found him. They may have found Kaelen Vareth."
   },
   {
-    icon: "🌟",
+    icon: "star",
     title: "The Prophecy of the Ashborn",
     source: "Unknown, discovered in the Godfall",
     text: "The ash-born shall rise from the ashes of the fallen god. He shall be the last hope of the dying race, the last light of the dying world. And he shall choose — fire or ice, dawn or dusk, life or death. The world shall be remade in his image.",
@@ -3480,7 +3480,7 @@ const GUILDS_DATA = [
   {
     id: "adventurers-guild",
     name: "The Adventurers' Guild",
-    icon: "⚔️",
+    icon: "swords",
     color: "#6ba8c9",
     founded: "Year 47 S.A.",
     founder: "Valerius the Unbroken",
@@ -3504,7 +3504,7 @@ const GUILDS_DATA = [
   {
     id: "iron-pact",
     name: "The Iron Pact",
-    icon: "⚒️",
+    icon: "crossed-hammers",
     color: "#8a6f1f",
     founded: "Year 187 S.A.",
     founder: "House Emberforge",
@@ -3524,7 +3524,7 @@ const GUILDS_DATA = [
   {
     id: "silent-choir",
     name: "The Silent Choir",
-    icon: "✦",
+    icon: "star",
     color: "#e8c547",
     founded: "Unknown (possibly pre-Sundering)",
     founder: "Unknown",
@@ -3544,7 +3544,7 @@ const GUILDS_DATA = [
   {
     id: "shadow-guild",
     name: "The Shadow Guild",
-    icon: "🌑",
+    icon: "eclipse",
     color: "#4a1f6b",
     founded: "Year 312 S.A.",
     founder: "The Whisperer (presumably)",
@@ -3564,7 +3564,7 @@ const GUILDS_DATA = [
   {
     id: "watching-order",
     name: "The Watching Order",
-    icon: "🚪",
+    icon: "gate",
     color: "#e8c547",
     founded: "Year 380 S.A.",
     founder: "Unknown (possibly the gods themselves)",
@@ -3584,7 +3584,7 @@ const GUILDS_DATA = [
   {
     id: "kemiiri-packs",
     name: "The Kemiiri Packs",
-    icon: "🦊",
+    icon: "fox",
     color: "#6d4fa8",
     founded: "Year ~1,500 B.S.",
     founder: "The first Kemiiri Pack-Leader",
@@ -3604,7 +3604,7 @@ const GUILDS_DATA = [
   {
     id: "orc-warbands",
     name: "The Orc Warbands",
-    icon: "🪓",
+    icon: "axe",
     color: "#7a1a1a",
     founded: "Year ~2,100 B.S. (after Grunna's rebellion)",
     founder: "Grunna Ironbound (first warband)",
@@ -3624,7 +3624,7 @@ const GUILDS_DATA = [
   {
     id: "dwarven-clans",
     name: "The Dwarven Clans",
-    icon: "🔨",
+    icon: "hammer",
     color: "#8a6f1f",
     founded: "Year ~187 S.A.",
     founder: "Thane Ironheart the First",
@@ -3644,7 +3644,7 @@ const GUILDS_DATA = [
   {
     id: "aетhel-court",
     name: "The Aeldrin Court",
-    icon: "🌙",
+    icon: "moon",
     color: "#a8d8e8",
     founded: "Year ~9,000 B.S.",
     founder: "Aelith (the goddess herself)",
@@ -3664,7 +3664,7 @@ const GUILDS_DATA = [
   {
     id: "sylvaar-court",
     name: "The Sylvaar Court",
-    icon: "🕷️",
+    icon: "spider",
     color: "#4a1f6b",
     founded: "Year ~9,000 B.S.",
     founder: "Aelith (the goddess herself)",
@@ -3684,7 +3684,7 @@ const GUILDS_DATA = [
   {
     id: "merchant-princes",
     name: "The Merchant Princes",
-    icon: "💰",
+    icon: "coin",
     color: "#e8c547",
     founded: "Year ~102 S.A.",
     founder: "Unknown (the first merchant-prince of the Sunlit Coast)",
@@ -3704,7 +3704,7 @@ const GUILDS_DATA = [
   {
     id: "wounded-choir-society",
     name: "The Wounded Choir",
-    icon: "👁️",
+    icon: "eye",
     color: "#6d4fa8",
     founded: "Unknown (possibly pre-Sundering)",
     founder: "Unknown (possibly the first halfborn)",
@@ -3837,31 +3837,31 @@ const MAP_DATA = {
     control: r.control
   })),
   landmarks: [
-    { name: "The Godseal", x: 500, y: 90, type: "divine", icon: "🚪" },
-    { name: "The Black Chasm", x: 500, y: 130, type: "divine", icon: "🌑" },
-    { name: "Xarnath", x: 500, y: 40, type: "demon", icon: "👹" },
-    { name: "The Abyss", x: 400, y: 430, type: "dungeon", icon: "🕳️" },
-    { name: "The Mistlands", x: 80, y: 560, type: "unknown", icon: "🌫️" },
-    { name: "The Godfall", x: 300, y: 340, type: "mystical", icon: "⚡" },
-    { name: "The Veil", x: 850, y: 260, type: "anomaly", icon: "◈" },
-    { name: "The Sunken Kingdoms", x: 550, y: 650, type: "mystical", icon: "🌊" },
-    { name: "The Dead Marches", x: 700, y: 380, type: "necropolis", icon: "💀" },
-    { name: "The Whispering Forest", x: 120, y: 360, type: "mystical", icon: "🌲" }
+    { name: "The Godseal", x: 500, y: 90, type: "divine", icon: "gate" },
+    { name: "The Black Chasm", x: 500, y: 130, type: "divine", icon: "eclipse" },
+    { name: "Xarnath", x: 500, y: 40, type: "demon", icon: "demon" },
+    { name: "The Abyss", x: 400, y: 430, type: "dungeon", icon: "abyss" },
+    { name: "The Mistlands", x: 80, y: 560, type: "unknown", icon: "mist" },
+    { name: "The Godfall", x: 300, y: 340, type: "mystical", icon: "lightning" },
+    { name: "The Veil", x: 850, y: 260, type: "anomaly", icon: "rune" },
+    { name: "The Sunken Kingdoms", x: 550, y: 650, type: "mystical", icon: "waves" },
+    { name: "The Dead Marches", x: 700, y: 380, type: "necropolis", icon: "skull" },
+    { name: "The Whispering Forest", x: 120, y: 360, type: "mystical", icon: "pine" }
   ],
   borderMarkers: [
     { name: "The Black Chasm", from: { x: 100, y: 130 }, to: { x: 900, y: 130 }, color: "#1a0a0a", dashed: false },
     { name: "The Godseal", from: { x: 250, y: 90 }, to: { x: 750, y: 90 }, color: "#e8c547", dashed: true }
   ],
   legends: [
-    { icon: "👑", label: "Human", color: "#c9a227" },
-    { icon: "🌙", label: "Aeldrin", color: "#a8d8e8" },
-    { icon: "🕷️", label: "Sylvaar", color: "#4a1f6b" },
-    { icon: "🔨", label: "Dwarves", color: "#8a6f1f" },
-    { icon: "🐉", label: "Draekon", color: "#b52a2a" },
-    { icon: "🪓", label: "Orcs", color: "#7a1a1a" },
-    { icon: "🦊", label: "Kemiiri", color: "#6d4fa8" },
-    { icon: "👹", label: "Demons", color: "#3d0a0a" },
-    { icon: "🌫️", label: "Unknown", color: "#4a4438" }
+    { icon: "crown", label: "Human", color: "#c9a227" },
+    { icon: "moon", label: "Aeldrin", color: "#a8d8e8" },
+    { icon: "spider", label: "Sylvaar", color: "#4a1f6b" },
+    { icon: "hammer", label: "Dwarves", color: "#8a6f1f" },
+    { icon: "dragon", label: "Draekon", color: "#b52a2a" },
+    { icon: "axe", label: "Orcs", color: "#7a1a1a" },
+    { icon: "fox", label: "Kemiiri", color: "#6d4fa8" },
+    { icon: "demon", label: "Demons", color: "#3d0a0a" },
+    { icon: "mist", label: "Unknown", color: "#4a4438" }
   ]
 };
 
@@ -3919,42 +3919,42 @@ const BESTIARY_CLASSIFICATION = {
   categories: [
     {
       name: "Mundane Animals",
-      icon: "🐄",
+      icon: "beast",
       dangerRange: "None",
       description: "Ordinary animals. Found everywhere. Not dangerous. Not interesting.",
       examples: ["Cattle", "Sheep", "Horses", "Fish", "Birds"]
     },
     {
       name: "Natural Beasts",
-      icon: "🐺",
+      icon: "beast",
       dangerRange: "Low to Moderate",
       description: "Natural animals, but larger and more dangerous than ordinary. They avoid humans. They do not hunt humans. They defend themselves.",
       examples: ["Wolves", "Bears", "Eagles"]
     },
     {
       name: "Dungeon Monsters",
-      icon: "🕷️",
+      icon: "spider",
       dangerRange: "Moderate to Extreme",
       description: "Creatures that live in dungeons. They are not natural. They are shaped by the dungeon's magic. They are hostile to all living things.",
       examples: ["Void-Spiders", "Stone-Lizards", "Bone Knights", "Shadow-Bats"]
     },
     {
       name: "Demon Beasts",
-      icon: "👹",
+      icon: "demon",
       dangerRange: "Moderate to Extreme",
       description: "Creatures that live in Xarnath. They are twisted versions of natural animals. They are hostile to all living things. They are food for demons.",
       examples: ["Abyssal Lycans", "Hell-Cows", "Ash-Horses", "Apex Terrors"]
     },
     {
       name: "Intelligent Monsters",
-      icon: "👁️",
+      icon: "eye",
       dangerRange: "Extreme",
       description: "Creatures that are intelligent. They can speak. They can plan. They can wait. They are found only in high-level dungeons (A and S rank) and in the deep places of Xarnath.",
       examples: ["Apex Terrors", "The Watchers", "The Beast of the Broken Steppe"]
     },
     {
       name: "Unique Entities",
-      icon: "🐉",
+      icon: "dragon",
       dangerRange: "Extinction-level",
       description: "Creatures that exist only once. They are not a species. They are individuals. They are the stuff of legend.",
       examples: ["True Dragons", "Frost-Wyrms", "The Mist-Walkers", "The Speaking Trees"]

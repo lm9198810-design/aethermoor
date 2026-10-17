@@ -82,3 +82,9 @@ node tests/smoke.test.cjs
 ```
 
 The tests check JavaScript syntax, catalogue counts, map-to-region consistency, route coverage, and translation-key coverage.
+
+
+## Illustrated assets
+
+- `assets/aethermoor-map.svg` — detailed 2D atlas art that preserves the original landmass and Xarnath outlines; interactive labels and markers are overlaid by `app.js`.
+- `assets/aethermoor-sigils.svg` — shared vector icon library and 17 distinct house/faction crests. These assets are kept in one folder so the six main project files remain uncluttered at the repository root.
