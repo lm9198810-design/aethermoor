@@ -1,6 +1,7 @@
 /* ============================================================
    AETHERMOOR — The Sundered Realm
    Master Stylesheet — Enhanced Edition
+   With Bilingual Support (EN / FA)
    ============================================================ */
 
 *, *::before, *::after {
@@ -47,6 +48,7 @@
   --font-display: 'Cinzel', serif;
   --font-serif: 'Cormorant Garamond', serif;
   --font-body: 'Inter', system-ui, sans-serif;
+  --font-fa: 'Vazirmatn', 'Inter', system-ui, sans-serif;
   
   --section-pad: clamp(4rem, 10vw, 9rem);
   --container-max: 1400px;
@@ -85,7 +87,7 @@ button {
   color: inherit;
 }
 
-/* ============ STARS BACKGROUND (FIXED) ============ */
+/* ============ STARS BACKGROUND ============ */
 .stars-bg {
   position: fixed;
   inset: 0;
@@ -308,6 +310,42 @@ button {
 
 .nav-links a:hover::after,
 .nav-links a.active::after { width: 100%; }
+
+/* Language toggle button */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--gold-bright);
+  border: 1px solid var(--border);
+  background: rgba(23, 15, 40, 0.6);
+  transition: all 0.3s var(--ease-out);
+  cursor: pointer;
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+.lang-toggle:hover {
+  color: var(--bg-void);
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 25px var(--gold-glow);
+}
+
+.lang-toggle .lang-globe {
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.lang-toggle .lang-code {
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
 
 .nav-search {
   position: relative;
@@ -832,28 +870,6 @@ button {
   letter-spacing: 0.05em;
 }
 
-.map-capital-dot {
-  fill: var(--gold-bright);
-  stroke: var(--bg-void);
-  stroke-width: 2;
-  pointer-events: none;
-  animation: capitalPulse 3s ease-in-out infinite;
-}
-
-@keyframes capitalPulse {
-  0%, 100% { r: 5; opacity: 1; }
-  50% { r: 7; opacity: 0.7; }
-}
-
-.map-capital-label {
-  font-family: var(--font-display);
-  font-size: 8px;
-  fill: var(--gold-bright);
-  text-anchor: middle;
-  pointer-events: none;
-  letter-spacing: 0.05em;
-}
-
 .map-tooltip {
   position: fixed;
   padding: 0.75rem 1rem;
@@ -948,12 +964,6 @@ button {
   color: var(--text-primary);
   letter-spacing: 0.03em;
   flex: 1;
-}
-
-.legend-control {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
 }
 
 /* ============ WORLD GRID ============ */
@@ -2197,6 +2207,11 @@ button {
   .nav-toggle { display: flex; }
   .nav-search { display: none; }
   
+  .lang-toggle {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.7rem;
+  }
+  
   .timeline::before { left: 24px; }
   
   .timeline-event,
@@ -2239,6 +2254,11 @@ button {
   .footer-bottom { flex-direction: column; text-align: center; }
   
   .map-frame { padding: 1rem; }
+  
+  .lang-toggle {
+    margin-left: auto;
+    margin-right: 0.5rem;
+  }
 }
 
 /* ============ REDUCED MOTION ============ */
@@ -2247,5 +2267,197 @@ button {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   RTL LAYOUT (PERSIAN / ARABIC)
+   ============================================================ */
+html[dir="rtl"] {
+  direction: rtl;
+}
+
+html[dir="rtl"] body {
+  font-family: var(--font-fa);
+}
+
+/* Navigation RTL */
+html[dir="rtl"] .nav-links a::after {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .search-results {
+  right: auto;
+  left: 0;
+}
+
+html[dir="rtl"] .nav-toggle.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 5px);
+}
+html[dir="rtl"] .nav-toggle.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -5px);
+}
+
+/* Persian font for display text */
+html[dir="rtl"] .hero-title,
+html[dir="rtl"] .section-title,
+html[dir="rtl"] .nav-logo,
+html[dir="rtl"] .btn,
+html[dir="rtl"] .filter-btn,
+html[dir="rtl"] .era-btn,
+html[dir="rtl"] .codex-tab,
+html[dir="rtl"] .section-label,
+html[dir="rtl"] .hero-eyebrow,
+html[dir="rtl"] .stat-num,
+html[dir="rtl"] .magic-name,
+html[dir="rtl"] .race-name,
+html[dir="rtl"] .house-name,
+html[dir="rtl"] .region-name,
+html[dir="rtl"] .timeline-title,
+html[dir="rtl"] .codex-item-name,
+html[dir="rtl"] .footer-logo,
+html[dir="rtl"] .footer-col h4,
+html[dir="rtl"] .law-title,
+html[dir="rtl"] .law-num,
+html[dir="rtl"] .modal-char-name,
+html[dir="rtl"] .legend-title,
+html[dir="rtl"] .map-tooltip-title,
+html[dir="rtl"] .char-name,
+html[dir="rtl"] .lang-toggle,
+html[dir="rtl"] .modal-section-title,
+html[dir="rtl"] .stat-box-label,
+html[dir="rtl"] .stat-box-value,
+html[dir="rtl"] .timeline-year {
+  font-family: var(--font-fa);
+  letter-spacing: 0;
+}
+
+/* Persian font for body text */
+html[dir="rtl"] .hero-subtitle,
+html[dir="rtl"] .hero-tagline,
+html[dir="rtl"] .section-desc,
+html[dir="rtl"] .race-epithet,
+html[dir="rtl"] .race-desc,
+html[dir="rtl"] .race-secret,
+html[dir="rtl"] .house-desc,
+html[dir="rtl"] .house-motto,
+html[dir="rtl"] .house-seat,
+html[dir="rtl"] .region-desc,
+html[dir="rtl"] .timeline-desc,
+html[dir="rtl"] .codex-item-desc,
+html[dir="rtl"] .magic-desc,
+html[dir="rtl"] .law-desc,
+html[dir="rtl"] .modal-section p,
+html[dir="rtl"] .modal-char-title,
+html[dir="rtl"] .char-title,
+html[dir="rtl"] .prophecy-text,
+html[dir="rtl"] .footer-desc,
+html[dir="rtl"] .map-tooltip-sub,
+html[dir="rtl"] .world-tile p,
+html[dir="rtl"] .world-tile h3 {
+  font-family: var(--font-fa);
+  letter-spacing: 0;
+}
+
+/* Timeline RTL flip */
+html[dir="rtl"] .timeline-event:nth-child(odd) {
+  left: 50%;
+  text-align: left;
+  padding-right: 3rem;
+  padding-left: 4rem;
+}
+
+html[dir="rtl"] .timeline-event:nth-child(even) {
+  left: 0;
+  text-align: right;
+  padding-left: 3rem;
+  padding-right: 4rem;
+}
+
+html[dir="rtl"] .timeline-event:nth-child(odd)::after { right: auto; left: -8px; }
+html[dir="rtl"] .timeline-event:nth-child(even)::after { left: auto; right: -8px; }
+
+/* Search results alignment */
+html[dir="rtl"] .search-result-item .sr-cat,
+html[dir="rtl"] .search-result-item .sr-name {
+  text-align: right;
+}
+
+/* Stat dividers */
+html[dir="rtl"] .stat::after {
+  right: auto;
+  left: -50%;
+}
+
+/* Region card hover flip */
+html[dir="rtl"] .region-card {
+  border-left: 1px solid var(--border);
+  border-right: 3px solid var(--region-color, var(--gold));
+}
+html[dir="rtl"] .region-card:hover {
+  transform: translateX(-6px);
+  border-right-color: var(--gold-bright);
+}
+
+/* Legend item flip */
+html[dir="rtl"] .legend-item {
+  border-left: none;
+  border-right: 2px solid transparent;
+}
+html[dir="rtl"] .legend-item:hover,
+html[dir="rtl"] .legend-item.active {
+  border-left: none;
+  border-right-color: var(--gold);
+}
+
+/* Modal close button */
+html[dir="rtl"] .modal-close {
+  right: auto;
+  left: 1rem;
+}
+html[dir="rtl"] .modal-close:hover {
+  transform: rotate(-90deg);
+}
+
+/* Race secret prefix in Persian */
+html[dir="rtl"] .race-secret::before {
+  content: '⚠ ممنوعه: ';
+}
+
+/* Footer alignment */
+html[dir="rtl"] .footer-bottom {
+  text-align: right;
+}
+
+/* Mobile menu RTL */
+@media (max-width: 900px) {
+  html[dir="rtl"] .nav-links {
+    right: auto;
+    left: 0;
+    transform: translateX(-100%);
+    border-left: none;
+    border-right: 1px solid var(--border);
+  }
+  html[dir="rtl"] .nav-links.active {
+    transform: translateX(0);
+  }
+}
+
+/* Modal header RTL */
+html[dir="rtl"] .modal-char-header {
+  text-align: right;
+}
+@media (max-width: 640px) {
+  html[dir="rtl"] .modal-char-header {
+    text-align: center;
+  }
+}
+
+/* Mobile lang-toggle RTL */
+@media (max-width: 640px) {
+  html[dir="rtl"] .lang-toggle {
+    margin-right: auto;
+    margin-left: 0.5rem;
   }
 }
