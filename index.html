@@ -88,7 +88,7 @@
       <h2 class="home-nav-title" data-i18n="home_nav_title">Explore the Realm</h2>
       <p class="home-nav-desc" data-i18n="home_nav_desc">Thirteen chambers of lore, from the Age of Dawn to the Demon King himself.</p>
       <div class="home-nav-grid">
-        <a href="#/world" class="home-nav-card" data-route="world"><span class="card-icon sigil-icon" data-sigil="world" aria-hidden="true"></span><h3 data-i18n="nav_world">World</h3><p data-i18n="home_card_world">Two continents, ten races, a thousand years of ash.</p></a>
+        <a href="#/world" class="home-nav-card" data-route="world"><span class="card-icon sigil-icon" data-sigil="world" aria-hidden="true"></span><h3 data-i18n="nav_world">World</h3><p data-i18n="home_card_world">Two continents, ten peoples, and four centuries since the Sundering.</p></a>
         <a href="#/map" class="home-nav-card" data-route="map"><span class="card-icon sigil-icon" data-sigil="map" aria-hidden="true"></span><h3 data-i18n="nav_map">Map</h3><p data-i18n="home_card_map">Twenty-one regions, from the Frostspine to Xarnath.</p></a>
         <a href="#/races" class="home-nav-card" data-route="races"><span class="card-icon sigil-icon" data-sigil="people" aria-hidden="true"></span><h3 data-i18n="nav_races">Races</h3><p data-i18n="home_card_races">Humans, Aeldrin, Sylvaar, Dwarves, Draekon, Orcs, and more.</p></a>
         <a href="#/magic" class="home-nav-card" data-route="magic"><span class="card-icon sigil-icon" data-sigil="sparkle" aria-hidden="true"></span><h3 data-i18n="nav_magic">Magic</h3><p data-i18n="home_card_magic">Five schools of magic, four laws, one price.</p></a>
@@ -102,6 +102,36 @@
         <a href="#/dungeons" class="home-nav-card" data-route="dungeons"><span class="card-icon sigil-icon" data-sigil="abyss" aria-hidden="true"></span><h3 data-i18n="nav_dungeons">Dungeons</h3><p data-i18n="home_card_dungeons">The Abyss — one hundred floors, one thousand deaths.</p></a>
       </div>
     </div>
+
+    <div class="reading-path-section">
+      <header class="reading-path-heading">
+        <span class="page-label" data-i18n="chapter_1">Chapter I</span>
+        <h2 data-i18n="reading_path_title">A Guided First Journey</h2>
+        <p data-i18n="reading_path_desc">Begin with the world, learn its geography and peoples, then follow the conflicts before opening the mysteries.</p>
+      </header>
+      <div class="reading-path-grid">
+        <a class="reading-path-card" href="#/world" data-route="world">
+          <span class="reading-step-number">01</span><h3 data-i18n="reading_step_world">Understand the World</h3>
+          <p data-i18n="reading_step_world_desc">Learn what the Sundering changed and why the two continents are divided.</p><span class="reading-open" data-i18n="reading_open">Begin this step →</span>
+        </a>
+        <a class="reading-path-card" href="#/map" data-route="map">
+          <span class="reading-step-number">02</span><h3 data-i18n="reading_step_atlas">Read the Atlas</h3>
+          <p data-i18n="reading_step_atlas_desc">Locate mountain walls, capitals, roads, borders, and the only guarded crossing.</p><span class="reading-open" data-i18n="reading_open">Begin this step →</span>
+        </a>
+        <a class="reading-path-card" href="#/races" data-route="races">
+          <span class="reading-step-number">03</span><h3 data-i18n="reading_step_peoples">Meet the Peoples</h3>
+          <p data-i18n="reading_step_peoples_desc">Compare cultures and lineages without splitting humanoid peoples into arbitrary shelves.</p><span class="reading-open" data-i18n="reading_open">Begin this step →</span>
+        </a>
+        <a class="reading-path-card" href="#/timeline" data-route="timeline">
+          <span class="reading-step-number">04</span><h3 data-i18n="reading_step_history">Follow the History</h3>
+          <p data-i18n="reading_step_history_desc">Trace events in order and see which claims are fact, rumor, or contested prophecy.</p><span class="reading-open" data-i18n="reading_open">Begin this step →</span>
+        </a>
+        <a class="reading-path-card" href="#/codex" data-route="codex">
+          <span class="reading-step-number">05</span><h3 data-i18n="reading_step_mysteries">Open the Archive</h3>
+          <p data-i18n="reading_step_mysteries_desc">Read artifacts, gods, creatures, books, and prophecies after learning their context.</p><span class="reading-open" data-i18n="reading_open">Begin this step →</span>
+        </a>
+      </div>
+    </div>
   </section>
 
   <!-- ═══════════════ WORLD PAGE ═══════════════ -->
@@ -110,7 +140,7 @@
       <span class="page-label" data-i18n="chapter_1">Chapter I</span>
       <h2 class="page-title" data-i18n="world_title">The World of Vaelthar</h2>
       <p class="page-desc" data-i18n="world_desc">
-        Aethermoor is but one continent upon the sphere of Vaelthar — a world torn open a thousand years ago when the gods made war upon each other and the sky itself was cracked. To the north, across the Divine Divide and the Black Chasm, lies Xarnath, the Demon Continent.
+        Vaelthar has two great continents, connected by legend but divided in fact. Aethermoor lies south of the Black Chasm; Xarnath lies to the north. The Sundering took place 402 years ago. Twin mountain walls block overland routes around the gorge, leaving the Godseal as the only maintained crossing.
       </p>
     </header>
     <div class="world-grid" id="worldGrid"></div>
@@ -122,21 +152,35 @@
       <span class="page-label" data-i18n="chapter_2">Chapter II</span>
       <h2 class="page-title" data-i18n="map_title">The Living Map</h2>
       <p class="page-desc" data-i18n="map_desc">
-        Twenty-one lands, two continents, and a thousand years of ash. Click any region to unveil its secrets.
+        Twenty-one lands, two continents, and 402 years since the Sundering. Click any region to unveil its secrets.
       </p>
     </header>
     <div class="map-wrapper">
-      <div class="map-frame">
-        <div class="map-corner tl"></div>
-        <div class="map-corner tr"></div>
-        <div class="map-corner bl"></div>
-        <div class="map-corner br"></div>
-        <svg id="worldMap" class="world-map" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="map-tooltip" id="mapTooltip"></div>
-      </div>
-      <div class="map-legend">
-        <div class="legend-title">◆ <span data-i18n="map_legend_title">The Lands of Aethermoor</span> ◆</div>
-        <div class="legend-grid" id="mapLegend"></div>
+      <div class="map-main">
+        <div class="map-toolbar" role="toolbar" aria-label="Atlas controls">
+          <div class="map-toolbar-group">
+            <button type="button" class="map-control-btn" id="mapZoomIn" aria-label="Zoom in" data-i18n="map_zoom_in">＋ Zoom in</button>
+            <button type="button" class="map-control-btn" id="mapZoomOut" aria-label="Zoom out" data-i18n="map_zoom_out">− Zoom out</button>
+            <button type="button" class="map-control-btn" id="mapResetView" data-i18n="map_reset">Reset view</button>
+          </div>
+          <div class="map-toolbar-group">
+            <button type="button" class="map-control-btn is-active" id="mapBordersToggle" aria-pressed="true" data-i18n="map_borders_on">Borders: on</button>
+            <button type="button" class="map-control-btn is-active" id="mapCitiesToggle" aria-pressed="true" data-i18n="map_cities_on">Cities: on</button>
+          </div>
+          <span class="map-hint" data-i18n="map_hint">Scroll to zoom · drag to pan · select a marker for lore</span>
+        </div>
+        <div class="map-frame">
+          <div class="map-corner tl"></div>
+          <div class="map-corner tr"></div>
+          <div class="map-corner bl"></div>
+          <div class="map-corner br"></div>
+          <svg id="worldMap" class="world-map" viewBox="0 0 1800 1260" preserveAspectRatio="xMidYMid meet"></svg>
+          <div class="map-tooltip" id="mapTooltip"></div>
+        </div>
+        <div class="map-legend">
+          <div class="legend-title">◆ <span data-i18n="map_legend_title">Lands, peoples & borders</span> ◆</div>
+          <div class="legend-grid" id="mapLegend"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -152,10 +196,9 @@
     </header>
     <div class="filter-bar" id="raceFilters">
       <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All Races</button>
-      <button class="filter-btn" data-filter="human" data-i18n="filter_human">Humanoid</button>
-      <button class="filter-btn" data-filter="elven" data-i18n="filter_elven">Elven</button>
+      <button class="filter-btn" data-filter="humanoid" data-i18n="filter_humanoid">Humanoid peoples</button>
       <button class="filter-btn" data-filter="beast" data-i18n="filter_beast">Beastfolk</button>
-      <button class="filter-btn" data-filter="divine" data-i18n="filter_divine">Divine</button>
+      <button class="filter-btn" data-filter="otherworldly" data-i18n="filter_otherworldly">Otherworldly</button>
     </div>
     <div class="races-grid" id="racesGrid"></div>
   </section>
@@ -347,7 +390,6 @@
   </div>
 </footer>
 
-<script src="lang.js"></script>
 <script src="data.js"></script>
 <script src="app.js"></script>
 </body>

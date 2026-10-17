@@ -274,6 +274,56 @@
      PAGE RENDERERS
      ============================================================ */
   
+  const READING_ORDER = [
+    { id: 'world', key: 'nav_world' },
+    { id: 'map', key: 'nav_map' },
+    { id: 'regions', key: 'nav_regions' },
+    { id: 'races', key: 'nav_races' },
+    { id: 'magic', key: 'nav_magic' },
+    { id: 'timeline', key: 'nav_timeline' },
+    { id: 'characters', key: 'nav_characters' },
+    { id: 'houses', key: 'nav_houses' },
+    { id: 'guilds', key: 'nav_guilds' },
+    { id: 'dungeons', key: 'nav_dungeons' },
+    { id: 'codex', key: 'nav_codex' },
+    { id: 'library', key: 'nav_library' }
+  ];
+
+  function renderReadingGuide(route) {
+    if (route === 'home') return;
+    const page = $('[data-page="' + route + '"]');
+    const index = READING_ORDER.findIndex(item => item.id === route);
+    if (!page || index < 0) return;
+    page.querySelector('.reading-continue')?.remove();
+
+    const nav = el('nav', { class: 'reading-continue', 'aria-label': t('reading_continue_title') });
+    const copy = el('div', { class: 'reading-continue-copy' }, [
+      el('div', { class: 'reading-continue-heading', text: t('reading_continue_title') }),
+      el('div', { class: 'reading-continue-desc', text: CURRENT_LANG === 'fa'
+        ? 'موضوع بعدی بر پایه‌ی همین فصل انتخاب شده؛ می‌توانی مسیر را دنبال کنی یا هرجا خواستی از آن بیرون بروی.'
+        : 'The next topic builds on this chapter; follow the path or leave it whenever you wish.' })
+    ]);
+    nav.appendChild(copy);
+
+    const links = el('div', { class: 'reading-continue-links' });
+    const addLink = (item, label, fallbackLabel) => {
+      if (!item) return;
+      const text = label || t(item.key);
+      links.appendChild(el('a', {
+        class: 'reading-continue-link',
+        href: '#/' + item.id,
+        'data-route': item.id,
+        text: text || fallbackLabel || item.id
+      }));
+    };
+    if (index > 0) addLink(READING_ORDER[index - 1], t('reading_previous') + ' · ' + t(READING_ORDER[index - 1].key));
+    else addLink({ id: 'home', key: 'nav_home' }, t('reading_return'));
+    if (index < READING_ORDER.length - 1) addLink(READING_ORDER[index + 1], t('reading_next') + ' · ' + t(READING_ORDER[index + 1].key));
+    else addLink({ id: 'home', key: 'nav_home' }, t('reading_return'));
+    nav.appendChild(links);
+    page.appendChild(nav);
+  }
+
   function renderPage(route) {
     switch (route) {
       case 'home': renderHome(); break;
@@ -290,6 +340,7 @@
       case 'guilds': renderGuilds(); break;
       case 'dungeons': renderDungeons(); break;
     }
+    renderReadingGuide(route);
   }
 
   /* ============ HOME ============ */
@@ -319,7 +370,314 @@
     });
   }
 
-  /* ============ MAP ============ */
+  /* ============ INTERACTIVE FANTASY ATLAS ============ */
+  const MAP_VIEW = { x: 0, y: 0, w: 1800, h: 1260, borders: true, cities: true, drag: null };
+
+  function applyMapView(svg) {
+    svg.setAttribute('viewBox', [MAP_VIEW.x, MAP_VIEW.y, MAP_VIEW.w, MAP_VIEW.h].join(' '));
+    // Keep the overview uncluttered, then reveal every settlement name after a useful zoom-in.
+    svg.classList.toggle('map-zoomed', MAP_VIEW.w <= 1200);
+  }
+
+  function zoomMapAt(svg, factor, clientX, clientY) {
+    const rect = svg.getBoundingClientRect();
+    const px = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    const py = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
+    const nextW = Math.max(450, Math.min(1800, MAP_VIEW.w * factor));
+    const nextH = nextW * 0.7;
+    const worldX = MAP_VIEW.x + px * MAP_VIEW.w;
+    const worldY = MAP_VIEW.y + py * MAP_VIEW.h;
+    MAP_VIEW.x = Math.max(0, Math.min(1800 - nextW, worldX - px * nextW));
+    MAP_VIEW.y = Math.max(0, Math.min(1260 - nextH, worldY - py * nextH));
+    MAP_VIEW.w = nextW;
+    MAP_VIEW.h = nextH;
+    applyMapView(svg);
+  }
+
+  function updateMapControlLabels() {
+    const borders = $('#mapBordersToggle');
+    const cities = $('#mapCitiesToggle');
+    if (borders) {
+      borders.textContent = t(MAP_VIEW.borders ? 'map_borders_on' : 'map_borders_off');
+      borders.setAttribute('aria-pressed', String(MAP_VIEW.borders));
+      borders.classList.toggle('is-active', MAP_VIEW.borders);
+    }
+    if (cities) {
+      cities.textContent = t(MAP_VIEW.cities ? 'map_cities_on' : 'map_cities_off');
+      cities.setAttribute('aria-pressed', String(MAP_VIEW.cities));
+      cities.classList.toggle('is-active', MAP_VIEW.cities);
+    }
+  }
+
+  function initMapControls(svg) {
+    if (svg.dataset.mapControlsInit === 'true') return;
+    svg.dataset.mapControlsInit = 'true';
+    $('#mapZoomIn')?.addEventListener('click', () => zoomMapAt(svg, 0.78, svg.getBoundingClientRect().left + svg.clientWidth / 2, svg.getBoundingClientRect().top + svg.clientHeight / 2));
+    $('#mapZoomOut')?.addEventListener('click', () => zoomMapAt(svg, 1.28, svg.getBoundingClientRect().left + svg.clientWidth / 2, svg.getBoundingClientRect().top + svg.clientHeight / 2));
+    $('#mapResetView')?.addEventListener('click', () => {
+      MAP_VIEW.x = 0; MAP_VIEW.y = 0; MAP_VIEW.w = 1800; MAP_VIEW.h = 1260;
+      applyMapView(svg);
+    });
+    $('#mapBordersToggle')?.addEventListener('click', () => {
+      MAP_VIEW.borders = !MAP_VIEW.borders;
+      svg.querySelector('.map-border-layer')?.classList.toggle('is-hidden', !MAP_VIEW.borders);
+      updateMapControlLabels();
+    });
+    $('#mapCitiesToggle')?.addEventListener('click', () => {
+      MAP_VIEW.cities = !MAP_VIEW.cities;
+      svg.querySelector('.map-city-layer')?.classList.toggle('is-hidden', !MAP_VIEW.cities);
+      updateMapControlLabels();
+    });
+    svg.addEventListener('wheel', event => {
+      event.preventDefault();
+      zoomMapAt(svg, event.deltaY < 0 ? 0.86 : 1.16, event.clientX, event.clientY);
+    }, { passive: false });
+    svg.addEventListener('pointerdown', event => {
+      if (event.target.closest('.map-region-marker, .map-city-marker')) return;
+      MAP_VIEW.drag = { id: event.pointerId, x: event.clientX, y: event.clientY, viewX: MAP_VIEW.x, viewY: MAP_VIEW.y };
+      svg.classList.add('is-panning');
+      svg.setPointerCapture(event.pointerId);
+    });
+    svg.addEventListener('pointermove', event => {
+      if (!MAP_VIEW.drag || MAP_VIEW.drag.id !== event.pointerId) return;
+      const rect = svg.getBoundingClientRect();
+      MAP_VIEW.x = Math.max(0, Math.min(1800 - MAP_VIEW.w, MAP_VIEW.drag.viewX - (event.clientX - MAP_VIEW.drag.x) * MAP_VIEW.w / rect.width));
+      MAP_VIEW.y = Math.max(0, Math.min(1260 - MAP_VIEW.h, MAP_VIEW.drag.viewY - (event.clientY - MAP_VIEW.drag.y) * MAP_VIEW.h / rect.height));
+      applyMapView(svg);
+    });
+    const endPan = event => {
+      if (MAP_VIEW.drag && MAP_VIEW.drag.id === event.pointerId) MAP_VIEW.drag = null;
+      svg.classList.remove('is-panning');
+    };
+    svg.addEventListener('pointerup', endPan);
+    svg.addEventListener('pointercancel', endPan);
+    updateMapControlLabels();
+  }
+
+  function renderAtlasOverlays(svg, tooltip) {
+    // All geography uses the same native 1000 × 700 atlas coordinates as the artwork.
+    // The main render group is scaled to the larger 1800 × 1260 viewBox.
+    const terrain = svgEl('g', { class: 'map-terrain-detail', transform: 'scale(1.8)' });
+
+    // The twin, continent-length mountain walls make the Black Chasm a true world divide.
+    // Their peaks are intentionally tallest around the gorge; there is no safe overland bypass.
+    const drawRidge = (baseY, seed, dark, light, shadow) => {
+      const under = [];
+      const peaks = [];
+      for (let i = 0; i <= 36; i++) {
+        const x = 30 + i * 26;
+        const y = baseY + Math.sin(i * 1.47 + seed) * 4.5;
+        const h = 25 + ((i * 7 + seed * 3) % 19) + (i % 5 === 0 ? 15 : 0);
+        under.push([x, y, h]);
+      }
+      terrain.appendChild(svgEl('path', {
+        d: under.map((p, i) => (i ? 'L ' : 'M ') + p[0] + ' ' + (p[1] + 12)).join(' ') + ' L 970 ' + (baseY + 35) + ' L 30 ' + (baseY + 35) + ' Z',
+        fill: shadow, opacity: '.78'
+      }));
+      under.forEach((p, i) => {
+        const x = p[0], y = p[1], h = p[2];
+        const peak = svgEl('g', { opacity: i % 4 === 0 ? '.99' : '.88' });
+        peak.appendChild(svgEl('path', {
+          d: 'M ' + (x - 18) + ' ' + (y + 13) + ' L ' + x + ' ' + (y - h) + ' L ' + (x + 22) + ' ' + (y + 13) + ' Z',
+          fill: dark, stroke: light, 'stroke-width': 1.05
+        }));
+        peak.appendChild(svgEl('path', {
+          d: 'M ' + (x - 7) + ' ' + (y - h + 15) + ' L ' + x + ' ' + (y - h) + ' L ' + (x + 8) + ' ' + (y - h + 15) + ' L ' + (x + 1) + ' ' + (y - h + 11) + ' L ' + (x - 2) + ' ' + (y - h + 17) + ' Z',
+          fill: '#d6d9cf', opacity: '.88'
+        }));
+        if (i % 2 === 0) {
+          peak.appendChild(svgEl('path', {
+            d: 'M ' + (x - 12) + ' ' + (y + 4) + ' L ' + (x - 2) + ' ' + (y - h * .42) + ' L ' + (x + 2) + ' ' + (y + 5) + ' Z',
+            fill: '#59605b', opacity: '.85'
+          }));
+        }
+        terrain.appendChild(peak);
+      });
+    };
+    drawRidge(107, 2, '#333b3d', '#aab0a4', '#101c23');
+    drawRidge(157, 5, '#252f35', '#8d968f', '#0a171f');
+
+    // The chasm itself: a black rift between the ridges, with fractured cliff edges.
+    terrain.appendChild(svgEl('path', {
+      d: 'M 28 130 C 125 123 190 140 272 130 S 430 127 500 132 S 675 139 760 129 S 885 125 972 132',
+      fill: 'none', stroke: '#05070c', 'stroke-width': 13, 'stroke-linecap': 'round'
+    }));
+    terrain.appendChild(svgEl('path', {
+      d: 'M 28 130 C 125 123 190 140 272 130 S 430 127 500 132 S 675 139 760 129 S 885 125 972 132',
+      fill: 'none', stroke: '#5e3a39', 'stroke-width': 2, 'stroke-dasharray': '3 8', opacity: '.85'
+    }));
+    // The Godseal is the sole engineered crossing: a fortified span over the abyss, not a mountain pass.
+    terrain.appendChild(svgEl('path', {
+      d: 'M 468 112 L 468 151 M 532 112 L 532 151 M 468 121 L 532 121 M 468 143 L 532 143 M 478 112 L 478 151 M 522 112 L 522 151',
+      fill: 'none', stroke: '#e8c547', 'stroke-width': 2.2, opacity: '.98'
+    }));
+    terrain.appendChild(svgEl('path', {
+      d: 'M 468 131 L 478 121 L 522 121 L 532 131 L 522 143 L 478 143 Z',
+      fill: '#1f2830', stroke: '#f0d46c', 'stroke-width': 1.3
+    }));
+    terrain.appendChild(svgEl('path', {
+      d: 'M 489 130 L 500 122 L 511 130 L 500 138 Z',
+      fill: '#f5df7d', stroke: '#fff0b5', 'stroke-width': .8
+    }));
+    const divideLabel = svgEl('text', {
+      x: 145, y: 136, 'text-anchor': 'middle', fill: '#f0d99b',
+      'font-size': 7.5, 'font-family': 'Cinzel,serif', 'letter-spacing': 1,
+      stroke: '#07111c', 'stroke-width': 2.4, 'paint-order': 'stroke'
+    });
+    divideLabel.textContent = CURRENT_LANG === 'fa' ? 'دیواره‌ی الهی' : 'THE DIVINE DIVIDE';
+    terrain.appendChild(divideLabel);
+
+    // Rivers, old roads, forest clusters, and ravines help the map read as terrain, not a dot chart.
+    const rivers = [
+      'M 407 270 C 386 306 429 349 405 389 S 430 468 455 510 S 470 575 420 620',
+      'M 230 280 C 257 306 298 314 324 349 S 372 385 405 389',
+      'M 586 290 C 606 327 585 358 585 405 S 632 457 690 488',
+      'M 322 457 C 345 478 376 492 391 525 S 402 582 383 606'
+    ];
+    rivers.forEach(d => terrain.appendChild(svgEl('path', {
+      d, fill: 'none', stroke: '#6aa8b4', 'stroke-width': 1.7,
+      opacity: '.67', 'stroke-linecap': 'round'
+    })));
+    const roads = [
+      'M 218 246 C 252 286 298 324 400 420 S 532 415 585 405 S 675 453 750 560',
+      'M 400 420 C 367 458 340 508 340 600',
+      'M 400 420 C 322 432 241 438 185 452',
+      'M 585 405 C 601 375 610 347 610 321'
+    ];
+    roads.forEach(d => terrain.appendChild(svgEl('path', {
+      d, fill: 'none', stroke: '#c9ac70', 'stroke-width': 1.4,
+      'stroke-dasharray': '4 4', opacity: '.86', 'stroke-linecap': 'round'
+    })));
+
+    // Small hand-drawn pine groves, kept clear of the capital labels.
+    const groves = [
+      [120, 330, 8], [140, 342, 7], [153, 328, 8], [110, 351, 6],
+      [390, 235, 8], [405, 226, 7], [421, 235, 8], [438, 250, 7],
+      [145, 372, 6], [166, 363, 7], [185, 375, 6], [448, 265, 6]
+    ];
+    groves.forEach(([x, y, s]) => {
+      terrain.appendChild(svgEl('path', {
+        d: 'M ' + x + ' ' + (y - s) + ' L ' + (x - s * .72) + ' ' + (y + s * .6) +
+           ' L ' + (x - s * .18) + ' ' + (y + s * .45) + ' L ' + (x - s * .5) + ' ' + (y + s) +
+           ' L ' + (x + s * .5) + ' ' + (y + s) + ' L ' + (x + s * .18) + ' ' + (y + s * .45) +
+           ' L ' + (x + s * .72) + ' ' + (y + s * .6) + ' Z',
+        fill: '#1c3b32', stroke: '#8b9a71', 'stroke-width': .55, opacity: '.82'
+      }));
+    });
+
+    // Light geographic labels sit underneath interactive markers.
+    const geoLabels = [
+      { x: 500, y: 24, en: 'XARNATH · THE DEMON CONTINENT', fa: 'زارنات · قاره‌ی شیاطین' },
+      { x: 500, y: 195, en: 'AETHERMOOR · THE CENTRAL CONTINENT', fa: 'آرکِیا · قاره‌ی مرکزی' },
+      { x: 220, y: 206, en: 'FROSTSPINE', fa: 'شان‌کوه' },
+      { x: 405, y: 302, en: 'THE SILVER WOOD', fa: 'جنگل نقره‌ای' },
+      { x: 700, y: 302, en: 'THE ASHEN WASTES', fa: 'سرزمین‌های خاکستری' },
+      { x: 520, y: 585, en: 'THE BROKEN STEPPE', fa: 'استپ شکسته' }
+    ];
+    geoLabels.forEach(item => {
+      const text = svgEl('text', {
+        x: item.x, y: item.y, 'text-anchor': 'middle',
+        fill: '#d6c49a', opacity: '.75', 'font-size': 9.5,
+        'font-family': 'Cinzel,serif', 'letter-spacing': 1.4,
+        stroke: '#07111c', 'stroke-width': 2.3, 'paint-order': 'stroke'
+      });
+      text.textContent = CURRENT_LANG === 'fa' ? item.fa : item.en;
+      terrain.appendChild(text);
+    });
+    svg.appendChild(terrain);
+
+    // Borders are political claims, not hard geographical barriers; toggled as a separate layer.
+    const borders = svgEl('g', {
+      class: 'map-border-layer' + (MAP_VIEW.borders ? '' : ' is-hidden'),
+      transform: 'scale(1.8)'
+    });
+    const borderShapes = [
+      { name: 'VALERIAN CROWNLANDS', fa: 'قلمرو تاج والریان', color: '#d6b251', d: 'M 296 365 C 332 347 372 352 401 375 S 439 408 465 402 L 490 450 L 457 485 L 404 468 L 374 443 L 334 431 Z', x: 385, y: 389 },
+      { name: 'FREE CITIES', fa: 'شهرهای آزاد', color: '#9cbaab', d: 'M 532 355 L 579 335 L 621 354 L 633 394 L 606 424 L 566 422 L 540 394 Z', x: 580, y: 375 },
+      { name: 'AELDRIN ENCLAVE', fa: 'قلمرو آلدِرین', color: '#c5dfd4', d: 'M 353 208 C 382 194 424 203 449 226 L 452 261 L 424 281 L 396 271 L 370 246 Z', x: 407, y: 223 },
+      { name: 'FROSTSPINE HOLDS', fa: 'دژهای شان‌کوه', color: '#9bc9d4', d: 'M 104 221 C 145 199 205 204 260 224 L 278 260 L 254 290 L 197 282 L 155 258 Z', x: 189, y: 229 },
+      { name: 'STORMLAND LEAGUE', fa: 'اتحادیه‌ی توفان‌زادگان', color: '#7fb6d0', d: 'M 84 400 C 128 378 178 402 220 426 L 236 464 L 205 492 L 153 483 L 111 454 Z', x: 160, y: 430 },
+      { name: 'SYLVAAR BELOW', fa: 'قلمرو زیرین سیلوار', color: '#b094d4', d: 'M 395 459 C 426 440 478 444 516 469 L 527 502 L 502 539 L 458 543 L 426 513 Z', x: 465, y: 478 },
+      { name: 'DRAEKON CLANS', fa: 'خاندان‌های درائِکون', color: '#d88973', d: 'M 657 493 C 700 474 756 489 799 525 L 799 572 L 773 611 L 735 599 L 704 565 L 671 543 Z', x: 727, y: 512 },
+      { name: 'MISTLAND WARDS', fa: 'پناهگاه‌های سرزمین مه', color: '#b4b8ad', d: 'M 48 527 C 72 512 105 523 124 547 L 119 584 L 91 596 L 62 575 Z', x: 87, y: 547 }
+    ];
+    borderShapes.forEach(shape => {
+      borders.appendChild(svgEl('path', {
+        d: shape.d, fill: shape.color, 'fill-opacity': .07,
+        stroke: shape.color, 'stroke-width': 1.5, 'stroke-dasharray': '5 4',
+        'stroke-linejoin': 'round', 'stroke-opacity': .9,
+        'vector-effect': 'non-scaling-stroke'
+      }));
+      const label = svgEl('text', {
+        x: shape.x, y: shape.y, class: 'map-border-label', 'text-anchor': 'middle'
+      });
+      label.textContent = CURRENT_LANG === 'fa' ? shape.fa : shape.name;
+      borders.appendChild(label);
+    });
+    svg.appendChild(borders);
+
+    const places = [
+      { name: "Valerius's Rest", fa: 'آرامگاه والریوس', x: 400, y: 420, showLabel: true, region: 'heartlands', note: 'Imperial seat above the Abyss; the crown is stronger on paper than on the roads.', noteFA: 'مرکز امپراتوری بر فراز هاویه؛ تاج روی کاغذ قدرتمندتر از جاده‌های زیر فرمانش است.' },
+      { name: 'Aelthalas', fa: 'آئل‌تالاس', x: 430, y: 242, showLabel: true, region: 'silver-wood', note: 'Crystal capital of the Aeldrin, hidden behind layered forest wards.', noteFA: 'پایتخت بلورین آلدِرین، پنهان پشت نگهبان‌های چندلایه‌ی جنگل.' },
+      { name: 'Hearthforge', fa: 'آتشگاه', x: 220, y: 246, showLabel: true, region: 'frostspine', note: 'The dwarven Iron Hold, carved into the highest reachable galleries of the Frostspine.', noteFA: 'دژ آهنین دورف‌ها، کنده‌شده در بلندترین تالارهای دست‌یافتنی شان‌کوه.' },
+      { name: 'Ondrath', fa: 'اوندراِث', x: 480, y: 500, showLabel: true, region: 'shadowmere', note: 'The Sylvaar seat below ground; the court conceals the truth of its dead queen.', noteFA: 'جایگاه فرمانروایی سیلوار در زیرزمین؛ دربار حقیقت ملکه‌ی مرده‌اش را پنهان می‌کند.' },
+      { name: "Kael'Dorath", fa: 'کائل‌دورات', x: 750, y: 560, showLabel: true, region: 'dragons-reach', note: 'The Ashen Citadel, seat of the Draekon clan council.', noteFA: 'دژ خاکستر، جایگاه شورای خاندان‌های درائِکون.' },
+      { name: 'Stormwatch', fa: 'دیده‌بان توفان', x: 185, y: 452, showLabel: true, region: 'stormlands', note: 'A fortified port that watches the western storm routes.', noteFA: 'بندری دژمانند که راه‌های دریایی توفانی غرب را زیر نظر دارد.' },
+      { name: 'Thornhollow', fa: 'تورن‌هالو', x: 122, y: 357, region: 'whispering-forest', note: 'A forest town whose old roads vanish beneath the Whispering Forest.', noteFA: 'شهری جنگلی که راه‌های کهنش زیر جنگل زمزمه‌گر ناپدید می‌شوند.' },
+      { name: 'Redhaven', fa: 'بندر سرخ', x: 585, y: 405, showLabel: true, region: 'ashen-wastes', note: 'A disputed caravan port linking the central road to the eastern wastes.', noteFA: 'بندر کاروانیِ مورد مناقشه در پیوندگاه جاده‌ی مرکزی و سرزمین‌های شرقی.' },
+      { name: 'Ashen Gate', fa: 'دروازه‌ی خاکستر', x: 610, y: 321, region: 'ashen-wastes', note: 'A fortified toll crossing on the old imperial road.', noteFA: 'گذرگاه دیوارکشی‌شده‌ای برای دریافت عوارض در جاده‌ی کهن امپراتوری.' },
+      { name: 'Mistport', fa: 'بندر مه', x: 78, y: 560, showLabel: true, region: 'mistlands', note: 'A remote harbour whose charts fail when the mist thickens.', noteFA: 'بندری دورافتاده که با غلیظ‌شدن مه، نقشه‌های دریایی‌اش بی‌اعتبار می‌شوند.' },
+      { name: 'Godfall Abbey', fa: 'صومعه‌ی سقوط خدا', x: 300, y: 340, region: 'godfall', note: 'A ruined sanctuary built where divine weapons struck the earth.', noteFA: 'زیارتگاهی ویران در جایی که سلاح‌های الهی به زمین خوردند.' },
+      { name: 'Irondeep', fa: 'ژرف‌آهن', x: 180, y: 580, region: 'iron-coast', note: 'A dwarven trade enclave exporting iron, tools, and rune-work.', noteFA: 'قرارگاه بازرگانی دورف‌ها برای صدور آهن، ابزار و رون‌سازی.' },
+      { name: 'Sunspire', fa: 'خورشیدمنار', x: 340, y: 600, region: 'sunlit-coast', note: 'A coastal market city famous for salt, glass, and sea charts.', noteFA: 'شهری بازرگانی بر ساحل، نامدار به نمک، شیشه و نقشه‌های دریایی.' },
+      { name: 'Emberfall', fa: 'اخگرفرود', x: 700, y: 620, region: 'ember-fields', note: 'A settlement at the safe edge of the volcanic fields.', noteFA: 'آبادی‌ای در لبه‌ی امن دشت‌های آتشفشانی.' },
+      { name: 'Bone Throne', fa: 'تختگاه استخوان', x: 500, y: 43, showLabel: true, region: 'xarnath', note: "The Demon King's fortress-capital, built around basalt towers and the captured life-force of conquered warlords.", noteFA: 'دژـپایتخت پادشاه شیاطین، ساخته‌شده پیرامون برج‌های بازالتی و نیروی حیات جنگ‌سالاران مغلوب.' },
+      { name: 'Varkhast', fa: 'وارخاست', x: 383, y: 58, region: 'xarnath', note: 'A basalt city controlling Xarnath’s northern mineral road.', noteFA: 'شهری بازالتی که راه معدنی شمال زارنات را در اختیار دارد.' },
+      { name: 'Cinder Wells', fa: 'چاه‌های اخگر', x: 620, y: 55, region: 'xarnath', note: 'A rare settlement around deep aquifers and heat-resistant fungi.', noteFA: 'آبادی‌ای کمیاب پیرامون سفره‌های آب عمیق و قارچ‌های مقاوم به گرما.' },
+      { name: 'Blackglass Exchange', fa: 'بازار شیشه‌ی سیاه', x: 745, y: 76, region: 'xarnath', note: 'A guarded market where rival demon houses exchange ore, captives, and treaties.', noteFA: 'بازاری حفاظت‌شده که خاندان‌های رقیب شیطانی در آن سنگ معدن، اسیر و پیمان مبادله می‌کنند.' },
+      { name: "Watcher’s Citadel", fa: 'دژ فرقه‌ی دیدبان', x: 545, y: 110, showLabel: true, region: 'godseal', note: 'A fortress of the Watching Order overlooking the only sealed crossing.', noteFA: 'دژ فرقه‌ی دیدبان با دید بر تنها گذرگاه مهرشده.' },
+      { name: 'Greyford', fa: 'گذرگاه خاکستری', x: 348, y: 399, region: 'heartlands', note: 'A river crossing that feeds the imperial capital and becomes a front line when succession wars flare.', noteFA: 'گذرگاه رودخانه‌ای که پایتخت را تغذیه می‌کند و هنگام جنگ جانشینی به خط مقدم بدل می‌شود.' },
+      { name: 'Seven Bridges', fa: 'هفت‌پل', x: 457, y: 460, region: 'broken-steppe', note: 'A caravan town where the old imperial road splits into rival toll routes.', noteFA: 'شهری کاروانی که جاده‌ی کهن امپراتوری در آن به راه‌های عوارضی رقیب تقسیم می‌شود.' },
+      { name: 'Saltmere', fa: 'نمک‌مرداب', x: 510, y: 645, region: 'sunken-kingdoms', note: 'A tidal port built on the surviving towers of a drowned kingdom.', noteFA: 'بندری جزرومدی بر فراز برج‌های بازمانده‌ی پادشاهی غرق‌شده.' },
+      { name: 'Dawnwatch', fa: 'دیده‌بان سپیده', x: 690, y: 450, region: 'dead-marches', note: 'A garrison town guarding the eastern road through the Dead Marches.', noteFA: 'شهری پادگانی که جاده‌ی شرقی در میان مرداب‌های مردگان را نگهبانی می‌کند.' },
+      { name: 'Red Sails', fa: 'بادبان‌های سرخ', x: 205, y: 505, region: 'stormlands', note: 'A free port allied to merchants more readily than to kings.', noteFA: 'بندری آزاد که بازرگانان را آسان‌تر از پادشاهان متحد خود می‌داند.' }
+    ];
+    const cityLayer = svgEl('g', {
+      class: 'map-city-layer' + (MAP_VIEW.cities ? '' : ' is-hidden'),
+      transform: 'scale(1.8)'
+    });
+    places.forEach(place => {
+      const shownName = CURRENT_LANG === 'fa' ? place.fa : place.name;
+      const marker = svgEl('g', {
+        class: 'map-city-marker', tabindex: '0', role: 'button',
+        'aria-label': shownName
+      });
+      marker.appendChild(svgEl('circle', { cx: place.x, cy: place.y, r: 7, class: 'map-city-ring' }));
+      marker.appendChild(svgEl('circle', { cx: place.x, cy: place.y, r: 3.1, class: 'map-city-dot' }));
+      const label = svgEl('text', {
+        x: place.x, y: place.y - 10,
+        class: 'map-city-label' + (place.showLabel ? ' is-featured' : ' is-hidden-until-hover')
+      });
+      label.textContent = shownName;
+      marker.appendChild(label);
+      marker.addEventListener('mouseenter', event => showTooltip(
+        tooltip, shownName,
+        CURRENT_LANG === 'fa' ? place.noteFA : place.note,
+        event
+      ));
+      marker.addEventListener('mousemove', event => moveTooltip(tooltip, event));
+      marker.addEventListener('mouseleave', () => hideTooltip(tooltip));
+      marker.addEventListener('click', () => selectRegion(place.region));
+      marker.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          selectRegion(place.region);
+        }
+      });
+      cityLayer.appendChild(marker);
+    });
+    svg.appendChild(cityLayer);
+  }
   function renderMap() {
     const svg = $('#worldMap');
     const tooltip = $('#mapTooltip');
@@ -329,8 +687,8 @@
     svg.innerHTML = '';
     if (legend) legend.innerHTML = '';
 
-    const { viewBox, regions } = MAP_DATA;
-    svg.setAttribute('viewBox', viewBox);
+    const { regions } = MAP_DATA;
+    applyMapView(svg);
     svg.setAttribute('role', 'group');
     svg.setAttribute('aria-label', CURRENT_LANG === 'fa' ? 'نقشهٔ تعاملی جهان اترمور' : 'Interactive atlas of Aethermoor');
 
@@ -338,11 +696,13 @@
     // Region markers and labels are a separate interactive layer above the illustration.
     svg.appendChild(svgEl('image', {
       href: 'assets/aethermoor-map.svg',
-      x: 0, y: 0, width: 1000, height: 700,
+      x: 0, y: 0, width: 1800, height: 1260,
       preserveAspectRatio: 'none',
       'pointer-events': 'none',
       class: 'map-artwork'
     }));
+
+    renderAtlasOverlays(svg, tooltip);
 
     const labelOffsets = {
       'xarnath': { dx: 0, dy: -18 },
@@ -368,7 +728,7 @@
       'ember-fields': { dx: 18, dy: 33 }
     };
 
-    const regionLayer = svgEl('g', { id: 'regionLayer', class: 'map-region-layer' });
+    const regionLayer = svgEl('g', { id: 'regionLayer', class: 'map-region-layer', transform: 'scale(1.8)' });
     regions.forEach(region => {
       const displayName = CURRENT_LANG === 'fa'
         ? getContent('regions', region.id, 'name', region.name)
@@ -483,6 +843,8 @@
         legend.appendChild(item);
       });
     }
+    initMapControls(svg);
+    updateMapControlLabels();
   }
 
   function showTooltip(tooltip, title, sub, e) {
