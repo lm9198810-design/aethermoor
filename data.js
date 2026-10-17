@@ -3976,6 +3976,7 @@ const BESTIARY_CLASSIFICATION = {
 const WORLD_STATS = {
   races: RACES.length,
   magicSchools: MAGIC_SCHOOLS.length,
+  magicLaws: MAGIC_LAWS.length,
   houses: HOUSES.length,
   regions: REGIONS.length,
   characters: CHARACTERS.length,
@@ -3988,10 +3989,10 @@ const WORLD_STATS = {
   guilds: GUILDS_DATA.length,
   dungeons: DUNGEONS_DATA.otherDungeons.length + 1,
   timelineEvents: TIMELINE.length,
-  totalEntries: RACES.length + MAGIC_SCHOOLS.length + HOUSES.length + REGIONS.length +
-                CHARACTERS.length + ARTIFACTS.length + GODS.length + CREATURES.length +
-                PROPHECIES.length + LANGUAGES.length + BOOKS.length + GUILDS_DATA.length +
-                TIMELINE.length
+  totalEntries: RACES.length + MAGIC_SCHOOLS.length + MAGIC_LAWS.length + HOUSES.length +
+                REGIONS.length + CHARACTERS.length + ARTIFACTS.length + GODS.length +
+                CREATURES.length + PROPHECIES.length + LANGUAGES.length + BOOKS.length +
+                GUILDS_DATA.length + TIMELINE.length + (DUNGEONS_DATA.otherDungeons.length + 1)
 };
 
 /* ============================================================
@@ -4007,5 +4008,5 @@ console.log('%c  Prophecies: ' + PROPHECIES.length + ' | Languages: ' + LANGUAGE
 console.log('%c  Guilds: ' + GUILDS_DATA.length + ' | Dungeons: ' + (DUNGEONS_DATA.otherDungeons.length + 1), 'color: #7a6f5e;');
 console.log('%c  Total Entries: ' + WORLD_STATS.totalEntries, 'color: #4ade80; font-weight: bold;');
 console.log('%c═══════════════════════════════════════════════', 'color: #c9a227;');
-console.log('%c✅ DATA.JS COMPLETE — Approx. 225KB.', 'color: #4ade80; font-weight: bold;');
+console.log('%c✅ DATA.JS COMPLETE — Approx. 295KB.', 'color: #4ade80; font-weight: bold;');
 console.log('%c🌑 The chronicle is complete. The world is waiting.', 'color: #7a6f5e; font-style: italic;');

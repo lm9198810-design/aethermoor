@@ -1,85 +1,84 @@
 # ◈ AETHERMOOR
 ### The Sundered Realm — A Living Fantasy World Chronicle
 
-> *"We write so that the world does not forget."*
+> *“We write so that the world does not forget.”*
 
-An interactive, bilingual (English / Persian) fantasy worldbuilding website — built entirely with vanilla HTML, CSS, and JavaScript. No frameworks. No dependencies. Just a world.
+Aethermoor is an interactive bilingual (English / Persian) fantasy-world chronicle built with plain HTML, CSS, and JavaScript. It has no runtime framework or third-party JavaScript dependencies.
 
-**🌐 Live Site:** [https://lm9198810-design.github.io/aethermoor/](https://lm9198810-design.github.io/aethermoor/)
+**Live site:** https://lm9198810-design.github.io/aethermoor/
 
----
+## The world
 
-## 📜 About the World
+Aethermoor is one continent on Vaelthar, a world scarred by a divine war. Beyond the Divine Divide and the Black Chasm lies Xarnath, the Demon Continent. The chronicle collects the world's peoples, history, magic, powerful houses, artifacts, and dangerous places.
 
-**Aethermoor** is a continent upon the sphere of **Vaelthar** — a world torn open a thousand years ago when the gods made war upon each other and the sky itself was cracked. To the north, across the **Divine Divide** and the **Black Chasm**, lies **Xarnath**, the Demon Continent, ruled by an ageless Demon King who has waited ten thousand years for the barrier to fall.
+## What's included
 
-In the Age of Ash, ten races cling to the ruins of heaven. Every crown was won in blood. Every spell has its price. And every legend was once a truth too terrible to tell.
+The site has 13 pages: Home, World, Map, Races, Magic, Characters, Houses, Regions, Timeline, Codex, Library, Guilds, and Dungeons.
 
----
+| Category | Entries |
+|---|---:|
+| Races | 10 |
+| Magic schools | 5 |
+| Laws of magic | 4 |
+| Houses and tribes | 17 |
+| Regions | 21 |
+| Timeline events | 31 |
+| Characters | 18 |
+| Artifacts | 26 |
+| Gods | 19 |
+| Creatures | 30 |
+| Prophecies | 12 |
+| Languages | 10 |
+| Books | 10 |
+| Guilds | 12 |
+| Dungeons | 5 |
+| **Total catalogued entries** | **230** |
 
-## 🌍 What's Inside
+The total counts entries across the categories listed above. The map and region catalogue contain the same 21 region records.
 
-### 13 Interactive Pages
+## Features
 
-| Page | Content |
-|---|---|
-| 🏠 **Home** | Hero section, world stats, quick navigation to all sections |
-| 🌍 **World** | 12 overview tiles — from continents to the Abyss |
-| 🗺️ **Map** | Interactive SVG map with 20 regions, tooltips, and legend |
-| 👥 **Races** | 10 races with traits, secrets, and culture |
-| ✨ **Magic** | 5 schools of magic + the 4 Laws of Magic |
-| ⚔️ **Characters** | 18 key figures with full biographies and modals |
-| 🏰 **Houses** | 12 noble houses, warbands, and guilds |
-| 🏔️ **Regions** | 20 regions, from the Silver Wood to the Mistlands |
-| 📜 **Timeline** | 32 events from the Age of Dawn to Year 402 |
-| 📖 **Codex** | 25 artifacts, 20+ gods, 30+ creatures, 12 prophecies, 10 languages |
-| 📚 **Library** | 10 books from the world — diaries, gospels, forbidden tomes |
-| ⚒️ **Guilds** | 12 guilds with ranks, secrets, and history |
-| 🕳️ **Dungeons** | The Abyss (100 floors) + 4 other dungeons |
+- English and Persian interface, including right-to-left layout
+- Interactive SVG map with region tooltips and a legend
+- Search across characters, races, artifacts, books, guilds, and other lore
+- Character biographies and a parchment-styled book reader
+- Race and timeline filters, plus Codex tabs
+- Responsive navigation for desktop and mobile
+- Animated home-page counters and saved language preference when browser storage is available
+- Dark fantasy visual design with gold accents, mist effects, and page transitions
 
-### By the Numbers
+## Project structure
 
-| Category | Count |
-|---|---|
-| **Races** | 10 |
-| **Magic Schools** | 5 |
-| **Magic Laws** | 4 |
-| **Houses & Tribes** | 12 |
-| **Regions** | 20 |
-| **Timeline Events** | 32 |
-| **Characters** | 18 |
-| **Artifacts** | 25 |
-| **Gods** | 20+ |
-| **Creatures** | 30+ |
-| **Prophecies** | 12 |
-| **Languages** | 10 |
-| **Books** | 10 |
-| **Guilds** | 12 |
-| **Dungeons** | 5 |
-| **Total Lore Entries** | **230+** |
+```text
+aethermoor/
+├── index.html       # Static page markup and home content
+├── styles.css       # Layout, themes, responsive rules, and RTL styles
+├── app.js           # Hash router, renderers, search, modals, interactions
+├── data.js          # World data and computed catalogue counts
+├── lang.js          # English interface strings and Persian translations
+├── tests/
+│   └── smoke.test.cjs
+└── .github/
+    └── workflows/
+        └── smoke-tests.yml
+```
 
----
+## Run locally
 
-## ✨ Features
+No install step is required. Open `index.html` in a browser, or run a small local server from the project folder:
 
-- **🌐 Bilingual (EN / FA)** — Full English and Persian support with RTL layout, Vazirmatn font, and a language toggle in the navigation
-- **🗺️ Interactive SVG Map** — Clickable regions, hover tooltips, legend, and markers for Xarnath, the Godseal, the Black Chasm, and the Mistlands
-- **📚 Book Reader** — 10 in-world books readable in a parchment-styled modal, with author, date, and chronicler's notes
-- **🎭 Character Modals** — Full biographies with abilities, flaws, relationships, quotes, and story hooks
-- **📱 Fully Responsive** — Desktop, tablet, and mobile layouts with hamburger menu
-- **⚡ Zero Dependencies** — No React, no Vue, no Tailwind. Just HTML, CSS, and JavaScript
-- **🎨 Cinematic Design** — Dark fantasy aesthetic with star field, mist layers, gold accents, and page-transition animations
-- **🔍 Global Search** — Search across all categories (races, characters, artifacts, books, guilds, and more)
-- **🎬 Animated Counters** — Hero stats count up when scrolled into view
-- **💾 Persistent Language Preference** — Language choice saved to localStorage
+```bash
+python -m http.server 8000
+```
 
----
+Then open http://localhost:8000/.
 
-## 🛠️ Tech Stack
+## Validate the project
 
-- **HTML5** — Semantic markup, 13 SPA pages
-- **CSS3** — Custom properties, grid, flexbox, animations, RTL support
-- **Vanilla JavaScript** — Hash routing, lazy rendering, DOM manipulation
-- **Google Fonts** — Cinzel (display), Cormorant Garamond (serif), Inter (body), Vazirmatn (Persian)
+With Node.js 20 or newer installed, run the dependency-free checks:
 
-### File Structure
+```bash
+node tests/smoke.test.cjs
+```
+
+The tests check JavaScript syntax, catalogue counts, map-to-region consistency, route coverage, and translation-key coverage.
