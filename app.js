@@ -814,16 +814,17 @@
     if (!grid || typeof BOOKS === 'undefined') return;
     grid.innerHTML = '';
     BOOKS.forEach(book => {
-      const title = CURRENT_LANG === 'fa' && book.titleFA ? book.titleFA : book.title;
-      const author = CURRENT_LANG === 'fa' && book.authorFA ? book.authorFA : book.author;
-      const category = CURRENT_LANG === 'fa' && book.categoryFA ? book.categoryFA : book.category;
+      const title = getContent('books', book.id, 'title', book.title);
+      const author = getContent('books', book.id, 'author', book.author);
+      const category = getContent('books', book.id, 'category', book.category);
+      const excerpt = getContent('books', book.id, 'excerpt', book.excerpt);
       
       const card = el('article', { class: 'book-card', 'data-book-id': book.id }, [
         el('span', { class: 'book-icon', text: '📖' }),
         el('div', { class: 'book-category', text: category }),
         el('h3', { class: 'book-title', text: title }),
         el('div', { class: 'book-author', text: author }),
-        el('p', { class: 'book-excerpt', text: book.excerpt }),
+        el('p', { class: 'book-excerpt', text: excerpt }),
         el('div', { class: 'book-footer' }, [
           el('span', { text: `${book.pages} pages · ${book.date}` }),
           el('span', { class: 'book-read-btn', text: 'Read →' })
@@ -840,8 +841,10 @@
     const reader = $('#bookReader');
     if (!reader) return;
     
-    const title = CURRENT_LANG === 'fa' && book.titleFA ? book.titleFA : book.title;
-    const author = CURRENT_LANG === 'fa' && book.authorFA ? book.authorFA : book.author;
+    const title = getContent('books', book.id, 'title', book.title);
+    const author = getContent('books', book.id, 'author', book.author);
+    const fullText = getContent('books', book.id, 'fullText', book.fullText);
+    const note = getContent('books', book.id, 'note', book.note);
     
     reader.innerHTML = `
       <h1>${escapeHtml(title)}</h1>
@@ -851,8 +854,8 @@
         <span>${escapeHtml(book.language)}</span>
         <span>${book.pages} pages</span>
       </div>
-      <div class="book-reader-text">${escapeHtml(book.fullText)}</div>
-      ${book.note ? `<div class="book-reader-note">${escapeHtml(book.note)}</div>` : ''}
+      <div class="book-reader-text">${escapeHtml(fullText)}</div>
+      ${note ? `<div class="book-reader-note">${escapeHtml(note)}</div>` : ''}
     `;
     
     $('#bookModal').classList.add('active');
@@ -865,16 +868,20 @@
     if (!grid || typeof GUILDS_DATA === 'undefined') return;
     grid.innerHTML = '';
     GUILDS_DATA.forEach(guild => {
+      const name = getContent('guilds', guild.name, 'name', guild.name);
+      const purpose = getContent('guilds', guild.name, 'purpose', guild.purpose);
+      const ranks = getContent('guilds', guild.name, 'ranks', guild.ranks);
+      
       const card = el('article', {
         class: 'guild-card',
         style: `--guild-color: ${guild.color}`
       }, [
         el('span', { class: 'guild-icon', text: guild.icon }),
-        el('h3', { class: 'guild-name', text: guild.name }),
+        el('h3', { class: 'guild-name', text: name }),
         el('div', { class: 'guild-founded', text: `Founded ${guild.founded} · ${guild.branches} ${guild.branches === 1 ? 'branch' : 'branches'}` }),
-        el('p', { class: 'guild-purpose', text: guild.purpose }),
+        el('p', { class: 'guild-purpose', text: purpose }),
         el('div', { class: 'guild-ranks' }, 
-          (Array.isArray(guild.ranks) ? guild.ranks : []).map(r => el('span', { class: 'guild-rank', text: r }))
+          (Array.isArray(ranks) ? ranks : []).map(r => el('span', { class: 'guild-rank', text: r }))
         ),
         el('div', { class: 'guild-meta' }, [
           el('span', {}, [document.createTextNode('HQ: '), el('strong', { text: guild.headquarters })]),
