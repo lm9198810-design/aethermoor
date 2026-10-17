@@ -299,7 +299,7 @@
 
 <!-- Offshore lands already implied by the site's existing regional coordinates. -->
 <g stroke="#9db0a0" stroke-width="1.2" stroke-opacity=".75">
-  <path d="M52 521 Q68 506 84 517 L94 539 L80 554 L57 548 Z" fill="#596e5d"/>
+  <path d="M48 538 Q65 514 84 526 L101 550 L84 573 L56 568 Z" fill="#596e5d"/>
   <path d="M58 530 l9 -8 l8 9 l-5 11 Z" fill="#78916c"/>
   <path d="M831 237 Q849 224 869 236 L878 253 L863 268 L842 262 Z" fill="#5e6460"/>
   <path d="M839 244 l11 -9 l9 10 l-7 12 Z" fill="#a28e69"/>
