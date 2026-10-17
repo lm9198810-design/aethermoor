@@ -1722,53 +1722,49 @@ const CHARACTERS = [
   {
     id: "whisperer",
     name: "The Whisperer",
-    title: "Master of Spies, Keeper of Secrets, Ghost of Ondrath",
+    title: "Broker of Rumours, Keeper of Codes, Ghost of Ondrath",
     faction: "House Whisper",
     status: "Unknown",
     statusColor: "#4a1f6b",
     icon: "eclipse",
-    race: "Unknown (suspected Sylvaar, possibly something else)",
-    age: "Unknown (at least 150 years)",
+    race: "Unknown (suspected Sylvaar; unconfirmed)",
+    age: "Unknown (the title has existed for at least a century)",
     born: "Unknown",
-    allegiance: "House Shadowmere (nominally), themselves (actually)",
-    summary: "The most feared being in Aethermoor. No one knows their face, their voice, or their name. They have been shaping events for at least a century. They have never been seen.",
-    fullBio: "There is no record of the Whisperer's birth. There is no record of the Whisperer's rise. There is only the Whisperer — a name, a rumor, a shadow that has been moving through Aethermoor for over a hundred years. The Whisperer is the head of House Whisper, the Sylvaar intelligence network, but they answer to no one — not to Lord Vexar, not to the Queen, not to the gods themselves. They have agents everywhere. They have secrets on everyone. They have, it is said, a plan — a plan that has been unfolding for a century, and which is now approaching its final phase. No one knows what the plan is. No one knows if the Whisperer is even alive. But messages keep arriving. Notes keep appearing. And events keep unfolding in ways that no one can explain. Some say the Whisperer is a Sylvaar lord. Some say the Whisperer is a demon. Some say the Whisperer is a god. Some say the Whisperer is not one person but many. The truth is unknown. The truth may always be unknown.",
-    personality: "Unknown. The Whisperer has never been interviewed, never been seen, never been heard. Their personality is a matter of speculation. Some say they are cold and calculating. Some say they are warm and kind. Some say they are not one person, but many. Some say they are not a person at all. The only thing that is certain: they are patient. They have been patient for a century. And they are almost out of patience.",
+    allegiance: "House Whisper (nominally); personal interests (in practice)",
+    summary: "The elusive broker behind House Whisper, an information network strongest in Ondrath and the eastern trade ports. Their reach is real, but patchy; the network traffics in false leads as readily as in useful truths.",
+    fullBio: "No reliable record names the first person called the Whisperer. The title appears in coded ledgers more than a century old, and several entries suggest it may have passed between handlers rather than belonging to a single ageless figure. House Whisper grew from a circle of Sylvaar couriers and merchants who sold route reports, blackmail, and forged identities. Its densest contacts remain in Ondrath, the Ashen Wastes, and a handful of sea ports; claims that it has agents in every court are likely exaggerations. The current holder is careful, patient, and good at letting rivals mistake a rumour for a fact. Since the Godseal began to hum in 400 S.A., House Whisper has paid travellers and guards for descriptions of the sound and changes in the Watcher's patrols. Some reports mention Kaelen Vareth's ash-eyes, and others mention Aelwyn Vaelor's research into the Silver Wood binding. The connection between those reports is a hypothesis in one ledger, not a proven master plan. No reliable evidence shows that the Whisperer has spoken to Aelith or watched Kaelen since childhood. Whether the present holder is one person or a succession of handlers remains unresolved.",
+    personality: "Cautious, pragmatic, and guarded. The Whisperer prefers to sell information twice rather than risk everything on a single grand scheme. They are patient when negotiating and ruthless when protecting the identity of a courier. Their apparent omniscience is partly theatre: they encourage clients to believe the network knows more than it does, because fear is cheaper than a larger staff.",
     abilities: [
-      "Unknown — The Whisperer's abilities are unknown. They have never been seen using magic, never been seen fighting. But they have survived for a century in a world that kills spies.",
-      "The Network — The Whisperer controls House Whisper, the most extensive intelligence network in Aethermoor. They have agents in every kingdom, every house, every temple.",
-      "The Secrets — The Whisperer knows everything. Every secret, every scandal, every hidden truth. They have used this knowledge to shape events for a century.",
-      "The Plan — The Whisperer has a plan. It has been unfolding for a century. It is approaching its final phase."
+      "The Network — House Whisper maintains reliable contacts in Ondrath, several caravan towns, and selected ports. Coverage thins quickly outside those routes.",
+      "Codes and Counterfeit Papers — The network can encrypt messages, falsify travel documents, and trace a rumour through its known couriers; it cannot verify every source.",
+      "Information Brokerage — The Whisperer trades in secrets, but many are incomplete or deliberately planted. A report is a lead, not proof.",
+      "Misdirection — Competing stories protect the network's real contacts. This works until two clients compare notes."
     ],
     flaws: [
-      "Unknown — If the Whisperer has flaws, no one has discovered them. This, in itself, is a flaw: it makes them inhuman.",
-      "The Plan — The Whisperer's plan is everything. If it fails, they will have nothing. They have committed to it utterly.",
-      "Isolation — The Whisperer has no peers, no friends, no confidants. They are utterly alone.",
-      "Time — The Whisperer has been working on their plan for a century. They are running out of time."
+      "Unreliable Sources — House Whisper's power depends on informants who lie, misunderstand, or sell the same story to rivals.",
+      "Limited Reach — The network has no dependable access to every temple, court, or household, despite the reputation it cultivates.",
+      "Distrust — The Whisperer rarely shares enough context with their own couriers. Several have left rather than risk being sacrificed for a client.",
+      "Curiosity about the Godseal — The recent hum is a rare opportunity to gain influence, but pushing too far could expose the network to both the Watching Order and Xarnath's agents."
     ],
     relationships: [
-      { to: "Everyone", type: "Unknown", detail: "The Whisperer has relationships with everyone. No one knows what they are." },
-      { to: "Lord Vexar", type: "Ally / Puppet", detail: "The Whisperer knows Vexar's secret. They have not used it. They are saving it." },
-      { to: "Kaelen Vareth", type: "Person of Interest", detail: "The Whisperer has been watching Kaelen since he was a child. They believe he is the key to their plan." },
-      { to: "Aelwyn Vaelor", type: "Person of Interest", detail: "The Whisperer knows about Aelwyn. They have not yet acted. They are waiting for the right moment." },
-      { to: "The Goddess Aelith", type: "Unknown", detail: "The Whisperer has been in contact with the bound goddess. The nature of their relationship is unknown. The fact that it exists at all is terrifying." },
-      { to: "The Emperor", type: "Unknown Alliance", detail: "The Whisperer has made a deal with the Emperor. Neither trusts the other. Both know that one will betray the other." }
+      { to: "Lord Vexar", type: "Uneasy client", detail: "House Whisper has sold Vexar reports about rival Sylvaar houses. Neither side trusts the other, and the network does not know the full truth of Vexar's queen." },
+      { to: "Kaelen Vareth", type: "Recent subject of reports", detail: "Reports about Kaelen's ash-eyes began circulating among merchants and guards. The Whisperer wants to know whether the stories are reliable; there is no proof they tracked him as a child or believe him to be a chosen key." },
+      { to: "Aelwyn Vaelor", type: "Unverified lead", detail: "A contact in Aelthalas reported that Aelwyn has been studying the binding. The Whisperer has not met her and does not know what she has discovered." },
+      { to: "The Goddess Aelith", type: "No confirmed contact", detail: "One intercepted message claims to carry Aelith's words, but its origin is unverified. House Whisper cannot confirm that the bound goddess sent it." },
+      { to: "The Emperor", type: "Occasional broker", detail: "The network once carried a message between the imperial court and a trader near Ondrath. This was a paid exchange, not a standing alliance; both parties assume the other may be using them." }
     ],
     quotes: [
-      "...",
-      "The world is a web. I am the spider. You are the fly. Do not struggle. It only makes the waiting worse.",
-      "I have been planning this for a hundred years. I will not be stopped by a single person — not even you."
+      "A rumour is a lantern with a cracked hood. It shows enough to move by and never enough to see who follows.",
+      "If you need certainty, ask a priest. If you need a name, ask a spy. If you need the truth, compare their accounts and expect to pay twice.",
+      "I do not know everything. I only know how much people will pay to believe that I do."
     ],
     storyHooks: [
-      "The Whisperer has begun to make mistakes — small ones, but mistakes. This suggests they are under pressure. The reason is unknown.",
-      "The Whisperer's plan is approaching its final phase. Whatever it is, it will change Aethermoor forever. It will happen within the year.",
-      "The Whisperer has been in contact with the goddess Aelith. They have made a deal. The terms are unknown. The consequences will be enormous."
+      "Two separate informants submit incompatible accounts of the Godseal's new hum. The Whisperer needs someone to check the route logs before either report becomes political ammunition.",
+      "A merchant is selling forged House Whisper papers that implicate an innocent courier. Finding the forger would protect the network, but the trail leads into a rival's territory.",
+      "The reports about Kaelen and Aelwyn have been filed together by mistake—or by someone trying to make the network believe they share a cause. The Whisperer is investigating who combined them."
     ]
   },
 
-  /* ═══════════════════════════════════════════════════════
-     THE ORCS
-     ═══════════════════════════════════════════════════════ */
   {
     id: "karog",
     name: "Karog the Red",
