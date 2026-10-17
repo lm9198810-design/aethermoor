@@ -329,8 +329,8 @@
 
     const { viewBox, regions } = MAP_DATA;
     svg.setAttribute('viewBox', viewBox);
-    svg.setAttribute('role', 'img');
-    svg.setAttribute('aria-label', CURRENT_LANG === 'fa' ? 'نقشهٔ مصور جهان اترمور' : 'Illustrated atlas of Aethermoor');
+    svg.setAttribute('role', 'group');
+    svg.setAttribute('aria-label', CURRENT_LANG === 'fa' ? 'نقشهٔ تعاملی جهان اترمور' : 'Interactive atlas of Aethermoor');
 
     // The artwork preserves the site's original continent and Xarnath silhouettes.
     // Region markers and labels are a separate interactive layer above the illustration.
