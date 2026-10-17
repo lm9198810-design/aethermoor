@@ -4757,9 +4757,9 @@ Object.assign(FA_DATA, {
     "Red-eyed":"سرخ‌چشم", Predatory:"شکارگر", Hierarchical:"سلسله‌مراتبی",
     "Mixed lineage":"تبار آمیخته", "Often red-eyed":"اغلب سرخ‌چشم", Rare:"کمیاب", Misjudged:"بدقضاوت‌شده"
   },
-  books: {
+  books: Object.assign(FA_DATA.books || {}, {
     "grey-ledger": { pages:"قطعات پراکنده" }
-  }
+  })
 });
 if (FA_DATA.dungeons) Object.assign(FA_DATA.dungeons, {
   otherDungeonNames: {
