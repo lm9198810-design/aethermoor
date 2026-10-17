@@ -385,7 +385,7 @@
       id: 'mapGeographicLabels', class: 'map-geographic-labels', 'pointer-events': 'none'
     });
     (MAP_DATA.geographicLabels || []).forEach(place => {
-      const attrs = { x: place.x, y: place.y, class: 'map-geographic-label', 'text-anchor': 'middle' };
+      const attrs = { x: place.x, y: place.y, class: 'map-geographic-label' + (place.labelType === 'polity' ? ' map-political-label' : ''), 'text-anchor': 'middle' };
       if (place.rotation) attrs.transform = 'rotate(' + place.rotation + ' ' + place.x + ' ' + place.y + ')';
       const label = svgEl('text', attrs);
       label.textContent = CURRENT_LANG === 'fa' ? (place.faName || place.name) : place.name;
