@@ -1362,8 +1362,8 @@ const CHARACTERS = [
     age: "160 (appears 16)",
     born: "Year 242 S.A.",
     allegiance: "House Vaelor, The Silent Choir",
-    summary: "The last Aeldrin child born in one hundred and sixty years. She looks sixteen. She is one hundred and sixty. And she is the only hope of a dying race — a burden she never asked for.",
-    fullBio: "Aelwyn Vaelor was born in the Year 242 of the Ash Age — the first Aeldrin child born in one hundred and sixty years, and the last. Her mother, Lady Seraphine's youngest granddaughter, died in childbirth. Her father, a Silver Wood lord of the old blood, was killed by Sylvaar assassins six years later. From the moment of her birth, Aelwyn was a symbol: proof that the Aeldrin could still bring forth life, proof that the goddess had not fully abandoned them. She was raised in the Crystal Throne itself — in the highest tower of Aelthalas — surrounded by tutors, priests, historians, and soldiers, but utterly without friends. The other Aeldrin were too old to be her playmates. The other children — the few that existed in the lower castes, born before the Sterility — were beneath her station. She learned to read before she could walk. She mastered Breathweaving at thirty (a prodigy, even by Aeldrin standards). She learned the Old Script at sixty — the youngest Aeldrin in history to do so. She was, by every measure, perfect. And she was, by every measure, miserable. At one hundred and twenty, Aelwyn discovered the truth: her own grandmother, Seraphine, had bound the goddess Aelith beneath the Silver Wood. The binding had sterilized her entire race. Aelwyn had been born in the brief window when the binding had weakened — a miracle child, conceived by accident during a ritual the elders did not understand. She was not, as everyone believed, a sign of hope. She was a symptom of the disease. She was the last, not the first. She has spent the last forty years in quiet rebellion. She has learned the forbidden songs. She has read the banned histories. She has walked the Fading Garden at night, alone, listening to the voice of the goddess — who calls her 'little one' and 'last daughter' and 'the one who will choose.' She has not told anyone. She does not know what she will choose. She is 160 years old — a teenager in Aeldrin years — and she is the most important person in Aethermoor. She knows this. She hates it.",
+    summary: "The first recorded Aeldrin child in 160 years. Her birth challenged the belief that Aeldrin fertility was gone, but she remains a political symbol and an uncertain clue to the binding.",
+    fullBio: "Aelwyn Vaelor was born in the Year 242 of the Ash Age — the first Aeldrin child born in one hundred and sixty years, and the only one recorded in that interval. Her mother, Lady Seraphine's youngest granddaughter, died in childbirth. Her father, a Silver Wood lord of the old blood, was killed by Sylvaar assassins six years later. From the moment of her birth, Aelwyn was a symbol: proof that the Aeldrin could still bring forth life, proof that the goddess had not fully abandoned them. She was raised in the Crystal Throne itself — in the highest tower of Aelthalas — surrounded by tutors, priests, historians, and soldiers, but utterly without friends. The other Aeldrin were too old to be her playmates. The other children — the few that existed in the lower castes, born before the Sterility — were beneath her station. She learned to read before she could walk. She mastered Breathweaving at thirty (a prodigy, even by Aeldrin standards). She learned the Old Script at sixty — the youngest Aeldrin in history to do so. She was, by every measure, perfect. And she was, by every measure, miserable. At one hundred and twenty, Aelwyn discovered the truth: her own grandmother, Seraphine, had bound the goddess Aelith beneath the Silver Wood. The binding had sterilized her entire race. Aelwyn had been born in the brief window when the binding had weakened — a miracle child, conceived by accident during a ritual the elders did not understand. Her birth did not prove the binding was healed. It became one clue among several that the binding's effects may fluctuate. She has spent the last forty years in quiet rebellion. She has learned the forbidden songs. She has read the banned histories. She has walked the Fading Garden at night, alone, listening to the voice of the goddess — who calls her 'little one' and 'last daughter' and 'the one who will choose.' She has not told anyone. She does not know what she will choose. She is 160 years old — a teenager in Aeldrin years — and she is one of a handful of people whose research may clarify the binding. She dislikes being treated as a symbol instead of a person.",
     personality: "Aelwyn is a contradiction: a princess who wants nothing to do with royalty, a scholar who has memorized every book in the Crystal Throne and burned half of them in her mind, a girl who looks sixteen and carries the weight of a dying world on her shoulders. She is brilliant, she is angry, she is lonely beyond words. She has a sharp tongue that has gotten her into trouble with every noble house in the Silver Wood. She has a soft heart that she hides beneath layers of sarcasm and silence. She loves the Fading Garden, the taste of rain, and the old songs her mother used to sing. She hates court, ceremony, and the way the Aeldrin treat the young as if youth were a disease. She is, at her core, a girl who wants to be loved — and who is terrified that no one will ever love her for herself, only for what she represents.",
     abilities: [
       "Breathweaving Prodigy — Aelwyn is the youngest Aeldrin in three thousand years to master Breathweaving. She can cast spells that would exhaust a mage five times her age. Her control is surgical, her instinct is flawless.",
@@ -1375,16 +1375,16 @@ const CHARACTERS = [
     flaws: [
       "The Weight of the Last — Aelwyn is the last Aeldrin child. Everyone expects her to save the race. She does not want to. She wants to live. This conflict eats at her.",
       "Alone in a Crowd — Aelwyn has never had a friend her own age. She does not know how to be a friend. She does not know how to be loved.",
-      "The Binding's Shadow — Aelwyn's birth was only possible because the binding weakened. This means her existence is tied to the goddess's prison. If Seraphine ever undoes the binding, Aelwyn may cease to exist.",
-      "The Choice — Aelith has offered Aelwyn a choice: free her, and the Aeldrin will live again — but Aelwyn will be consumed. Or refuse, and the Aeldrin will die — but Aelwyn will be free. Aelwyn has not yet decided.",
+      "The Binding's Shadow — Aelwyn's birth was only possible because the binding weakened. This means her existence is tied to the goddess's prison. If the binding's weakening is why she was born, undoing it could affect her—but neither Aelwyn nor Seraphine knows how.",
+      "The Choice — Aelith claims that freeing her may cost Aelwyn her life. Seraphine disputes that interpretation. Aelwyn has no evidence that either version is complete, and she has not decided whom to trust.",
       "Rebellion — Aelwyn has broken more laws of the Silver Wood than any Aeldrin in history. She has read the forbidden books, walked the forbidden paths, learned the forbidden songs. She is a criminal in her own home."
     ],
     relationships: [
-      { to: "Seraphine Vaelor", type: "Grandmother / Jailer", detail: "Seraphine loves Aelwyn. Aelwyn knows this. It makes the truth about the binding worse, not better." },
-      { to: "Aelith", type: "Goddess / Mother Figure", detail: "Aelith speaks to Aelwyn in dreams. She calls her 'little one' and 'the last daughter.' She has never lied to Aelwyn. This is somehow worse than lying." },
-      { to: "Kaelen Vareth", type: "Unknown to Each Other", detail: "Kaelen and Aelwyn have never met. But both are connected to the binding. If they ever meet, the world will change." },
-      { to: "The Silent Choir", type: "Protectors / Watchers", detail: "The Silent Choir — the Aeldrin guardians of the Fading Garden — have sworn to protect Aelwyn. She has not told them she sneaks out at night to listen to the goddess." },
-      { to: "The Whisperer", type: "Unknown", detail: "The Whisperer knows about Aelwyn. They have not yet acted. They are waiting for the right moment." }
+      { to: "Seraphine Vaelor", type: "Grandmother / keeper of the binding", detail: "Seraphine loves Aelwyn. Aelwyn knows this. It makes the truth about the binding worse, not better." },
+      { to: "Aelith", type: "Imprisoned goddess / dream voice", detail: "Aelith speaks to Aelwyn in dreams and calls her 'little one' and 'last daughter'. Aelwyn believes the goddess has never lied to her, but dreams are no proof of intent." },
+      { to: "Kaelen Vareth", type: "Unmet; possible research overlap", detail: "Kaelen and Aelwyn have never met. Her research concerns the binding; his ash-eyes disrupt some runes. A few scholars suspect a shared cause, but the evidence is thin." },
+      { to: "The Silent Choir", type: "Protectors / watchers", detail: "The Silent Choir guards the Fading Garden and has sworn to protect Aelwyn. She has not told them that she sneaks out at night to listen to the goddess." },
+      { to: "The Whisperer", type: "Possible observer", detail: "The Whisperer has collected reports about Aelwyn, but no one knows whether their information is complete or what they intend." }
     ],
     quotes: [
       "I am one hundred and sixty years old. I am a teenager. I am a symbol. I am a weapon. I am a girl. I am tired.",
@@ -1392,10 +1392,10 @@ const CHARACTERS = [
       "They call me the Last Dawn. I am not a dawn. I am a dusk. I am the last light before the long night — and I do not want to shine."
     ],
     storyHooks: [
-      "Aelwyn has begun to hear the goddess more clearly. Aelith is preparing to break free. When she does, Aelwyn must choose: freedom, or sacrifice.",
-      "Aelwyn has discovered a way to undo the binding without dying — but it requires her to leave the Silver Wood and find Kaelen Vareth. She has not yet told anyone.",
+      "Aelwyn hears Aelith more clearly in her dreams. Whether this is a plea for help, a side effect of the binding, or manipulation remains unknown.",
+      "Aelwyn has found a way to investigate the binding outside the Silver Wood. Meeting Kaelen is one possible lead, not a required step or an inevitable meeting.",
       "Aelwyn has befriended a young Sylvaar spy who slipped into Aelthalas. The spy does not know she is a princess. Aelwyn does not know the spy is reporting to the Whisperer.",
-      "The Silent Council has decided Aelwyn must be married — to a human prince, to seal an alliance. Aelwyn has other plans. The plans involve a stolen horse and a very long journey."
+      "The Silent Council has decided Aelwyn must marry a human prince to secure an alliance. Aelwyn has other plans, involving a stolen horse and a very long journey."
     ]
   },
   {
@@ -1411,7 +1411,7 @@ const CHARACTERS = [
     born: "Year 3,725 B.S.",
     allegiance: "House Vaelor, The Aeldrin High Council",
     summary: "The oldest living Aeldrin, the last true master of Runecraft, and the woman who bound her own goddess beneath the earth. She has been alive for over four thousand years, and she has spent the last forty-six of them regretting a single decision.",
-    fullBio: "Seraphine was born into the golden age of the Aeldrin — before the Sundering, before the world was broken, before she learned what she was capable of. She was a prodigy, the youngest Aeldrin ever to master Runecraft. She wrote her first rune at age forty. She wrote her first reality-altering rune at age one hundred. By the time the Sundering came, she was the most powerful mortal in Aethermoor — and she knew it. The Sundering broke her. She watched gods die. She watched cities burn. She watched the world she loved turn to ash. And in that moment of despair, she made a decision: she would not let her people die. She would bind the goddess Aelith, keep her alive, and use the goddess's power to sustain the Aeldrin forever. It worked. The Aeldrin survived. And then, slowly, they stopped being born. It took Seraphine three hundred years to realize what she had done. It has taken her another seven hundred to accept it. She is now the only Aeldrin who knows the truth about the binding, and she is the only one who can undo it. She has not undone it. She is afraid of what will happen if she does.",
+    fullBio: "Seraphine was born into the golden age of the Aeldrin, long before the Sundering. She was a prodigy, the youngest Aeldrin ever to master Runecraft. When the Sundering came 402 years ago, she watched gods die and cities burn. In despair, she bound the goddess Aelith beneath the Silver Wood, hoping to preserve her people by drawing on the goddess's power. The Aeldrin survived, but births grew rarer. It took Seraphine almost three centuries to suspect the decline was connected to the binding. She spent another fifty-six years searching for other explanations. Forty-six years ago, a newly decoded ledger linked Aelwyn's birth to a brief weakening in the binding. It did not prove the binding was the sole cause, but it made the connection difficult to dismiss. Seraphine remains the only living rune-singer known to understand how the binding was made. She does not know whether undoing it would restore Aeldrin fertility, harm Aelwyn, or release a danger the old records failed to describe.",
     personality: "Seraphine is old in a way that is difficult to comprehend. She has seen empires rise and fall, has watched friends die of old age while she remained young, has forgotten more than most people ever learn. She is patient, deliberate, and utterly without illusion. She speaks slowly, chooses her words carefully, and rarely shows emotion — but when she does, it is overwhelming. She is deeply kind to the young, deeply contemptuous of the foolish, and deeply tired of the world. She has considered suicide four times in the past thousand years. She has not done it. She is not sure why.",
     abilities: [
       "Master of Runecraft — Seraphine is the greatest living Runecrafter. She can write runes that rewrite reality, that bind gods, that unmake matter. She has not used her full power in over two thousand years.",
@@ -1420,15 +1420,15 @@ const CHARACTERS = [
       "The Binding — Seraphine is the only living person who knows how to bind a god. She has done it once. She hopes never to do it again."
     ],
     flaws: [
-      "Guilt — Seraphine has spent a thousand years consumed by guilt over the binding. It has hollowed her out.",
+      "Guilt — Seraphine spent centuries defending her decision; only in recent decades has she accepted that the binding may be part of the Aeldrin's decline. It has hollowed her out.",
       "Isolation — Seraphine has no peers. Everyone she has ever loved is dead. She has forgotten how to connect with people.",
       "The Bound Goddess — Seraphine can feel Aelith's presence. The goddess whispers to her in dreams. The whispers are not kind.",
-      "Fear — Seraphine is afraid. She is afraid of dying, afraid of living, afraid of undoing the binding, afraid of not undoing it. She has been paralyzed by fear for a century."
+      "Fear — Seraphine is afraid. She is afraid of dying, afraid of living, afraid of undoing the binding, afraid of not undoing it. She has been paralyzed by fear for decades."
     ],
     relationships: [
       { to: "Aelith", type: "Imprisoned Goddess", detail: "Seraphine bound her. Aelith has never forgiven her. Their relationship is a slow, cold war fought in dreams." },
       { to: "Aelwyn Vaelor", type: "Great-granddaughter", detail: "She loves Aelwyn more than she loves herself. She knows what she has done to her. She cannot bear to tell her." },
-      { to: "The Silent Council", type: "Ruling Body", detail: "Seraphine created the Silent Council to help her rule. They do not know about the binding. She has kept the secret from them for a thousand years." },
+      { to: "The Silent Council", type: "Ruling Body", detail: "Seraphine created the Silent Council to help her rule. They do not know about the binding. She has kept the secret from them since the Sundering." },
       { to: "The Whisperer", type: "Unknown", detail: "Seraphine has never met the Whisperer. She suspects they know about the binding. She is not sure." }
     ],
     quotes: [
@@ -1437,9 +1437,9 @@ const CHARACTERS = [
       "Do not pity me. I made my choices. I am still making them. That is the only thing that keeps me from madness."
     ],
     storyHooks: [
-      "Seraphine is dying — not physically, but spiritually. The binding is consuming her, slowly. She has perhaps fifty years left. She must decide what to do before then.",
-      "Aelith has begun to speak to Kaelen in his dreams. He does not know who she is. Seraphine knows.",
-      "The Silent Council is planning a coup. They have discovered something about Seraphine. They do not yet know what to do with the information."
+      "Seraphine has received two conflicting reports that Aelith's voice may be reaching Kaelen in dreams. She has not spoken to him and does not know whether the reports are reliable.",
+      "Aelwyn's research has uncovered a pattern in the binding's failures. Seraphine fears the pattern may explain the decline in births, but the evidence does not yet show how to reverse it safely.",
+      "The Silent Council is planning a political challenge. They have found inconsistencies in Seraphine's accounts of the binding, but they do not yet know what she concealed or why."
     ]
   },
 
