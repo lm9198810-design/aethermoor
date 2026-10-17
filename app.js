@@ -828,8 +828,8 @@
         el('div', { class: 'book-author', text: author }),
         el('p', { class: 'book-excerpt', text: excerpt }),
         el('div', { class: 'book-footer' }, [
-          el('span', { text: `${book.pages} pages · ${book.date}` }),
-          el('span', { class: 'book-read-btn', text: 'Read →' })
+          el('span', { text: `${book.pages} ${t('book_pages')} · ${getContent('books', book.id, 'date', book.date)}` }),
+          el('span', { class: 'book-read-btn', text: t('book_read') })
         ])
       ]);
       grid.appendChild(card);
@@ -850,11 +850,11 @@
     
     reader.innerHTML = `
       <h1>${escapeHtml(title)}</h1>
-      <div class="book-reader-author">by ${escapeHtml(author)}</div>
+      <div class="book-reader-author">${CURRENT_LANG === 'fa' ? 'نوشته‌ی' : 'by'} ${escapeHtml(author)}</div>
       <div class="book-reader-meta">
-        <span>${escapeHtml(book.date)}</span>
+        <span>${escapeHtml(getContent('books', book.id, 'date', book.date))}</span>
         <span>${escapeHtml(book.language)}</span>
-        <span>${book.pages} pages</span>
+        <span>${book.pages} ${t('book_pages')}</span>
       </div>
       <div class="book-reader-text">${escapeHtml(fullText)}</div>
       ${note ? `<div class="book-reader-note">${escapeHtml(note)}</div>` : ''}
@@ -869,10 +869,31 @@
     const grid = $('#guildsGrid');
     if (!grid || typeof GUILDS_DATA === 'undefined') return;
     grid.innerHTML = '';
+    
+    const isFA = CURRENT_LANG === 'fa';
+    const L = isFA ? {
+      founded: 'بنیاد',
+      branchOne: 'شعبه',
+      branchMany: 'شعبه',
+      hq: 'مرکز',
+      notable: 'برجسته',
+      members: 'عضو'
+    } : {
+      founded: 'Founded',
+      branchOne: 'branch',
+      branchMany: 'branches',
+      hq: 'HQ',
+      notable: 'Notable',
+      members: 'members'
+    };
+    
     GUILDS_DATA.forEach(guild => {
       const name = getContent('guilds', guild.name, 'name', guild.name);
       const purpose = getContent('guilds', guild.name, 'purpose', guild.purpose);
       const ranks = getContent('guilds', guild.name, 'ranks', guild.ranks);
+      const headquarters = getContent('guilds', guild.name, 'headquarters', guild.headquarters);
+      
+      const branchesWord = guild.branches === 1 ? L.branchOne : L.branchMany;
       
       const card = el('article', {
         class: 'guild-card',
@@ -880,14 +901,14 @@
       }, [
         el('span', { class: 'guild-icon', text: guild.icon }),
         el('h3', { class: 'guild-name', text: name }),
-        el('div', { class: 'guild-founded', text: `Founded ${guild.founded} · ${guild.branches} ${guild.branches === 1 ? 'branch' : 'branches'}` }),
+        el('div', { class: 'guild-founded', text: `${L.founded}: ${getContent('guilds', guild.name, 'founded', guild.founded)} · ${guild.branches} ${branchesWord}` }),
         el('p', { class: 'guild-purpose', text: purpose }),
         el('div', { class: 'guild-ranks' }, 
           (Array.isArray(ranks) ? ranks : []).map(r => el('span', { class: 'guild-rank', text: r }))
         ),
         el('div', { class: 'guild-meta' }, [
-          el('span', {}, [document.createTextNode('HQ: '), el('strong', { text: guild.headquarters })]),
-          el('span', {}, [document.createTextNode('Notable: '), el('strong', { text: (guild.notable_members || []).length + ' members' })])
+          el('span', {}, [document.createTextNode(L.hq + ': '), el('strong', { text: headquarters })]),
+          el('span', {}, [document.createTextNode(L.notable + ': '), el('strong', { text: (guild.notable_members || []).length + ' ' + L.members })])
         ])
       ]);
       grid.appendChild(card);
@@ -895,12 +916,19 @@
   }
 
   /* ============ DUNGEONS ============ */
-  function renderDungeons() {
+   function renderDungeons() {
     const container = $('#dungeonsContent');
     if (!container || typeof DUNGEONS_DATA === 'undefined') return;
     container.innerHTML = '';
     
     const abyss = DUNGEONS_DATA.theAbyss;
+    const faDungeons = (CURRENT_LANG === 'fa' && typeof FA_DATA !== 'undefined' && FA_DATA.dungeons) || {};
+    const faAbyss = faDungeons.theAbyss || {};
+    const tAbyss = (f, fb) => faAbyss[f] || fb;
+    const tTheme = (n) => (faAbyss.themeNames && faAbyss.themeNames[n]) || n;
+    const tBoss = (n) => (faAbyss.bossNames && faAbyss.bossNames[n]) || n;
+    const tBossDesc = (n, fb) => (faAbyss.bossDescriptions && faAbyss.bossDescriptions[n]) || fb;
+    const tOther = (n) => (faDungeons.otherDungeonNames && faDungeons.otherDungeonNames[n]) || n;
     
     const L = CURRENT_LANG === 'fa' ? {
       floors: 'طبقات',
@@ -911,7 +939,11 @@
       bosses: 'رئیس‌ها',
       rules: 'قوانین هاویه',
       facts: 'نکات قابل توجه',
-      otherDungeons: 'دنجن‌های دیگر آرکِیا'
+      otherDungeons: 'دنجن‌های دیگر آرکِیا',
+      floorPrefix: 'طبقات',
+      floorSingle: 'طبقه',
+      floorsLabel: 'طبقات:',
+      bossLabel: 'رئیس:'
     } : {
       floors: 'Floors',
       explored: 'Explored',
@@ -921,14 +953,18 @@
       bosses: 'Bosses',
       rules: 'Rules of the Abyss',
       facts: 'Notable Facts',
-      otherDungeons: 'Other Dungeons of Aethermoor'
+      otherDungeons: 'Other Dungeons of Aethermoor',
+      floorPrefix: 'Floors',
+      floorSingle: 'Floor',
+      floorsLabel: 'Floors:',
+      bossLabel: 'Boss:'
     };
     
     // Abyss header
     container.appendChild(el('div', { class: 'abyss-header' }, [
       el('span', { class: 'abyss-icon', text: '🕳️' }),
-      el('h2', { class: 'abyss-name', text: abyss.name }),
-      el('div', { class: 'abyss-location', text: abyss.location }),
+      el('h2', { class: 'abyss-name', text: tAbyss('name', abyss.name) }),
+      el('div', { class: 'abyss-location', text: tAbyss('location', abyss.location) }),
       el('div', { class: 'abyss-stats' }, [
         el('div', { class: 'abyss-stat' }, [
           el('span', { class: 'abyss-stat-num', text: abyss.floors }),
@@ -947,7 +983,7 @@
           el('span', { class: 'abyss-stat-label', text: L.floor100 })
         ])
       ]),
-      el('p', { class: 'abyss-desc', text: abyss.description })
+      el('p', { class: 'abyss-desc', text: tAbyss('description', abyss.description) })
     ]));
 
     // Themes
@@ -957,9 +993,9 @@
     const themeList = el('div', { class: 'theme-list' });
     abyss.themes.forEach(theme => {
       themeList.appendChild(el('div', { class: 'theme-item' }, [
-        el('div', { class: 'theme-range', text: `Floors ${theme.range}` }),
+        el('div', { class: 'theme-range', text: `${L.floorPrefix} ${theme.range}` }),
         el('div', {}, [
-          el('div', { class: 'theme-name', text: theme.theme }),
+          el('div', { class: 'theme-name', text: tTheme(theme.theme) }),
           el('div', { class: 'theme-desc', text: theme.description })
         ])
       ]));
@@ -974,9 +1010,9 @@
     const bossList = el('div', { class: 'boss-list' });
     abyss.bosses.forEach(boss => {
       bossList.appendChild(el('div', { class: 'boss-item' }, [
-        el('div', { class: 'boss-floor', text: `Floor ${boss.floor}` }),
-        el('div', { class: 'boss-name', text: boss.name }),
-        el('div', { class: 'boss-desc', text: boss.description })
+        el('div', { class: 'boss-floor', text: `${L.floorSingle} ${boss.floor}` }),
+        el('div', { class: 'boss-name', text: tBoss(boss.name) }),
+        el('div', { class: 'boss-desc', text: tBossDesc(boss.name, boss.description) })
       ]));
     });
     bossesSection.appendChild(bossList);
@@ -1011,19 +1047,18 @@
     const otherGrid = el('div', { class: 'other-dungeons' });
     DUNGEONS_DATA.otherDungeons.forEach(d => {
       otherGrid.appendChild(el('div', { class: 'other-dungeon' }, [
-        el('h4', { class: 'other-dungeon-name', text: d.name }),
+        el('h4', { class: 'other-dungeon-name', text: tOther(d.name) }),
         el('div', { class: 'other-dungeon-location', text: d.location }),
         el('p', { class: 'other-dungeon-desc', text: d.description }),
         el('div', { class: 'other-dungeon-meta' }, [
-          el('span', {}, [document.createTextNode('Floors: '), el('strong', { text: d.floors })]),
-          el('span', {}, [document.createTextNode('Boss: '), el('strong', { text: d.boss.split('—')[0].trim() })])
+          el('span', {}, [document.createTextNode(L.floorsLabel + ' '), el('strong', { text: d.floors })]),
+          el('span', {}, [document.createTextNode(L.bossLabel + ' '), el('strong', { text: d.boss.split('—')[0].trim() })])
         ])
       ]));
     });
     otherSection.appendChild(otherGrid);
     container.appendChild(otherSection);
   }
-
   /* ============ COUNTERS (Hero stats) ============ */
   function initCounters() {
     const stats = $$('.stat-num');
