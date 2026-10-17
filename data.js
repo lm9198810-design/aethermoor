@@ -153,8 +153,8 @@ const RACES = [
     icon: "moon",
     shortDesc: "The ageless lords of the Silver Wood, whose memories stretch back before the Sundering and whose pride outlasts their dying bloodline.",
     traits: ["Ageless", "Silver-blooded", "Arcanists", "Ancient"],
-    fullDesc: "The Aeldrin were the first race blessed by the goddess Aelith, granted immortality and an unbroken connection to the arcane weave. For five thousand years they ruled Aethermoor as philosopher-kings, building cities of crystal and starlight among the giant trees of the Silver Wood. They were the keepers of the runes, the interpreters of prophecy, and the self-appointed wardens of the world. But immortality is a curse disguised as a gift: the Aeldrin have forgotten how to change. They have forgotten how to hope. And now, three millennia after Aelith's binding, they are quietly dying out — not from war or plague, but from the simple, devastating fact that no Aeldrin child has been born in one hundred and sixty years. Except one. The Last Dawn. And she does not want to be. The Aeldrin are a people waiting to die — but they are also a people who refuse to admit it. They hold their courts. They recite their poetry. They tend their failing gardens. They pretend, every day, that everything is fine.",
-    secret: "The Aeldrin are not dying from natural causes. Their goddess, Aelith, still lives — imprisoned beneath the Silver Wood by her own children, who feared her judgment. As long as she remains bound, the Aeldrin are sterile. They have imprisoned their own salvation. And the one child born — Aelwyn Vaelor — exists only because the binding cracked for a single decade.",
+    fullDesc: "The Aeldrin were the first people blessed by the goddess Aelith, granted agelessness and a strong connection to the arcane weave. For five thousand years they ruled Aethermoor as philosopher-kings, building cities of crystal and starlight among the giant trees of the Silver Wood. They kept the runes, interpreted prophecy, and appointed themselves wardens of the world. But agelessness did not teach them how to change. Since Aelith was bound during the Sundering 402 years ago, Aeldrin births have become exceedingly rare. No child was recorded for the 160 years before Aelwyn's birth in 242 S.A.; she remains the only recorded child since then. The elders call her the Last Dawn, but the title is a belief, not a prophecy proven true. The Aeldrin tend their failing gardens, hold their courts, and recite old poetry while arguing in private over why their people are declining.",
+    secret: "Aelith remains imprisoned beneath the Silver Wood. A surviving ledger suggests Aelwyn was born during a brief weakening of the binding, which supports a possible connection between the seal and the decline in births. It does not prove the binding is the sole cause, that every Aeldrin is sterile while it holds, or that releasing Aelith would restore fertility safely. Seraphine has hidden this uncertainty from her court because the truth could split the Aeldrin between those who want to free their goddess and those who fear what might follow.",
     stats: {
       lifespan: "Immortal",
       population: "~39,999",
@@ -2281,7 +2281,7 @@ const ARTIFACTS = [
     name: "The Scales of Judgment",
     type: "Relic · Divine",
     origin: "Used by the gods to weigh the souls of the dead",
-    desc: "A set of scales used by the gods to weigh the souls of the dead. They were lost at the Sundering. It is said that whoever finds them will be able to judge the living and the dead — and that the judgment will be absolute. The Whisperer has been looking for them for a century. The Demon King has been looking for them for ten thousand years. Neither has found them. Yet."
+    desc: "A set of scales used by the gods to weigh the souls of the dead. They were lost at the Sundering 402 years ago. It is said that whoever finds them will be able to judge the living and the dead, though the claim has never been tested. The Whisperer has searched for them for a century; the Demon King's agents have pursued leads since the Sundering. Neither has found a reliable trace."
   },
 
   /* ═══════════════════════════════════════════════════════
@@ -2313,7 +2313,7 @@ const ARTIFACTS = [
     name: "A Treatise on Mana Conservation",
     type: "Book · Academic",
     origin: "Written by Grand Archmage Vaelor of the Grand Academy",
-    desc: "The foundational text of modern magical theory. It explains the Law of Conservation — that mana is never destroyed, only transformed — and the implications for spellcasting, monster-hunting, and the economy of mana-stones. It is required reading at every magical academy in Aethermoor. It is also the book that led to the discovery that demons grow stronger by killing — a discovery that has shaped the world's politics for a thousand years."
+    desc: "The foundational text of modern magical theory. It explains the Law of Conservation — that mana is never destroyed, only transformed — and the implications for spellcasting, monster-hunting, and the economy of mana-stones. It is required reading at many magical academies in Aethermoor. Its notes on demon life-force harvesting helped shape political policy after the Sundering, though historians disagree about how widely those findings were known before the Godseal was raised."
   },
   {
     icon: "book",
@@ -2529,7 +2529,7 @@ const GODS = [
     name: "The Demon King",
     domain: "Slaughter, Power, Eternity",
     status: "Alive",
-    desc: "Not a god — but close enough. The Demon King has ruled Xarnath for ten thousand years. He has killed more beings than any creature in history. He has absorbed their life-force and mana. He has become something more than a demon. Something more than a god. Something that should not exist. He is the reason the Godseal exists. He is the reason the world holds its breath."
+    desc: "Not a god — though court legends portray him as one. The Demon King has ruled Xarnath for more than ten thousand years, according to demon chronicles. Tales claim he has drained the life-force of more beings than any creature in history, but the figures cannot be verified. His threat helped justify the Godseal after the Sundering 402 years ago; he did not build it, and it was not created by one ruler alone. The barrier now shapes the politics of both continents, even though its builders and original purpose remain partly unknown."
   },
   {
     icon: "eclipse",
@@ -2861,7 +2861,7 @@ const PROPHECIES = [
     source: "Seraphine Vaelor (private)",
     text: "The binding will break. It will not be gentle. And when it breaks, I will pay for what I have done.",
     status: "Approaching",
-    desc: "Not a prophecy, exactly — but a certainty. Seraphine Vaelor knows that the binding of Aelith will eventually break. She has spent a thousand years preparing for it. She is still not ready."
+    desc: "Not a prophecy, exactly, but Seraphine's fear. She believes the binding may fail one day and has spent centuries studying how to prevent that outcome. No evidence shows that the seal must break, and Seraphine still cannot predict what would happen if it did."
   },
   {
     icon: "blossom",
@@ -2893,7 +2893,7 @@ const PROPHECIES = [
     source: "The Forgotten Ones (attributed), pre-Sundering",
     text: "The King of Demons shall fall, not to a god, not to a hero, but to a child of two worlds — a half-blood, a half-demon, a half-something-else. And the world shall be remade in the ashes of his throne.",
     status: "Waiting",
-    desc: "A prophecy whispered among the Forgotten Ones — the ancient demons who were here before the Demon King. It predicts the fall of the Demon King. It predicts the rise of a half-demon. It predicts the remaking of the world. The Demon King has been hunting half-demons for ten thousand years. This is why."
+    desc: "A fragment attributed to the Forgotten Ones, ancient demon houses that predate the current king. Some interpret it as the end of his reign and the rise of a mixed-blood heir; others believe 'the world shall be remade' is a political metaphor added by a later copyist. The Demon King has ordered inquiries into a few unusual mixed-lineage cases since the Godseal began to change its tone, but no evidence supports a ten-thousand-year hunt or a single campaign against all Half-Demons."
   },
   {
     icon: "scales",
