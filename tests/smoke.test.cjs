@@ -71,3 +71,14 @@ test('the atlas supports wheel zoom, pointer panning, and reveals town names on 
   assert.match(app, /classList\.toggle\('map-zoomed', MAP_VIEW\.w <= 1200\)/);
   assert.match(css, /\.world-map\.map-zoomed \.map-city-label\.is-hidden-until-hover/);
 });
+
+
+test('the illustrated atlas assets are present and structurally identifiable', () => {
+  const map = read('assets/aethermoor-map.svg');
+  const sigils = read('assets/aethermoor-sigils.svg');
+  assert.match(map, /<svg\b/);
+  assert.match(map, /viewBox="0 0 1000 700"/);
+  assert.match(map, /<\/svg>\s*$/);
+  assert.match(sigils, /<svg\b/);
+  assert.match(sigils, /<\/svg>\s*$/);
+});
