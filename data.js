@@ -81,8 +81,8 @@ const WORLD_TILES = [
   {
     icon: "blossom",
     title: "The Last Dawn",
-    desc: "A single Aeldrin child was born in the Year 242 — the first in one hundred and sixty years, and the last. Her name is Aelwyn Vaelor. She is one hundred and sixty years old, appears sixteen, and is the only hope of a dying race. She did not ask for this. She does not want it. She may be the most important person alive.",
-    statLabel: "Aeldrin Children Born",
+    desc: "Aelwyn Vaelor was born in 242 S.A., the first Aeldrin child recorded after a gap of one hundred and sixty years. She is now one hundred and sixty years old and appears sixteen by Aeldrin standards. The elders treat her as a sign of hope, but Aelwyn does not want to be made a symbol in place of a person. No other child has been recorded since; whether she is truly the last remains unconfirmed.",
+    statLabel: "Recorded Aeldrin births since 242 S.A.",
     statValue: "1"
   },
   {
@@ -1388,7 +1388,7 @@ const CHARACTERS = [
     ],
     quotes: [
       "I am one hundred and sixty years old. I am a teenager. I am a symbol. I am a weapon. I am a girl. I am tired.",
-      "My grandmother bound a goddess to save our people. In doing so, she doomed them. And I am the proof of her sin — the last child, born in the moment the binding cracked.",
+      "My grandmother bound a goddess to save our people. In doing so, she may have helped cause their decline. I was born during a brief weakening of the binding. That is a clue, not proof that I am the last child or the answer to anything.",
       "They call me the Last Dawn. I am not a dawn. I am a dusk. I am the last light before the long night — and I do not want to shine."
     ],
     storyHooks: [
@@ -1866,7 +1866,7 @@ const CHARACTERS = [
     name: "The Demon King",
     title: "The Unnamed, the Eternal, the Lord of Xarnath",
     faction: "The Demon Court",
-    status: "Alive (and has been for 10,000 years)",
+    status: "Alive (exact age unknown; rule began over ten millennia ago)",
     statusColor: "#7a1a1a",
     icon: "demon",
     race: "Demon",
@@ -1874,25 +1874,25 @@ const CHARACTERS = [
     born: "Unknown",
     allegiance: "Himself",
     summary: "The long-lived ruler of Xarnath, whose hold on the throne depends on keeping rival demon houses divided. The Godseal is four centuries old; his rule is far older, and the two histories are often confused in popular legend.",
-    fullBio: "No one knows where the Demon King came from, and no reliable record gives his birth year. The oldest demon chronicles place his rise in Xarnath more than ten thousand years ago, long before the Sundering. He seized the Bone Throne by overthrowing a rival ruler and has kept power by balancing the great houses, controlling the deep wells, and rewarding useful enemies as often as he punishes them. The Godseal is much younger: it was raised 402 years ago after the Sundering, when the conflict between Xarnath and Aethermoor threatened to spread across the world. The Demon King did not create the Sundering or build the seal, but he has become its most dangerous political beneficiary. His subjects say he has drained the life-force of millions; the number is not verifiable, and even his own court treats the stories as both warning and propaganda. The seal's recent hum concerns him because a failed barrier would invite invasion and give his rivals a reason to unite against him.",
-    personality: "The Demon King does not have a personality in the way mortals understand it. He is not cruel for the sake of cruelty. He is not kind for the sake of kindness. He is simply... powerful. He does what he wants. He takes what he wants. He has no peers, no equals, no rivals. He has been alone for ten thousand years. He is not lonely — he does not understand loneliness. He is not bored — he does not understand boredom. He is simply... there. And he is waiting.",
+    fullBio: "No reliable record gives the Demon King's birth year. The oldest demon chronicles place his rise in Xarnath more than ten thousand years ago, long before the Sundering. He seized the Bone Throne by overthrowing a rival ruler and has kept power by balancing the great houses, controlling the deep wells, and rewarding useful enemies as often as he punishes them. The Godseal is much younger: it was raised 402 years ago after the Sundering, when conflict between Xarnath and Aethermoor threatened to spread across the world. The Demon King did not create the Sundering or build the seal, but he has become its most dangerous political beneficiary. His subjects say he has drained the life-force of millions; the number is not verifiable, and even his own court treats the stories as both warning and propaganda. The seal's recent hum concerns him because a failed barrier would invite invasion and give his rivals a reason to unite against him.",
+    personality: "The Demon King is not beyond ordinary motives: he fears invasion, values control, and dislikes uncertainty. He uses intimidation, bargains, hostages, and selective mercy to balance rival houses. He can leave a useful enemy alive to prevent a larger war or sacrifice an ally who threatens his throne. Millennia of rule have made him cold and difficult to surprise, but he still depends on supply routes, deep wells, and political deals. His subjects fear him; they are not all loyal.",
     abilities: [
-      "Absolute Power — The Demon King is the most powerful being in the world. He has absorbed the life-force and mana of millions. His power is beyond measurement.",
-      "Immortality — The Demon King cannot be killed by any means known to mortals. He has been stabbed, burned, poisoned, dismembered, and buried. He has always returned.",
-      "The Legion — The Demon King commands the largest army in the world — thirty million demons, all loyal to him, all afraid of him, all willing to die for him.",
-      "The Godseal — The Demon King cannot cross the Godseal. But he is the only being in history to have come close. He has not stopped trying."
+      "Strategic Rule — He can gather much of Xarnath's military strength for one campaign, but not every house at once and never without political cost.",
+      "Agelessness — He does not age as mortals do, but fatal wounds and prolonged loss of life-force can still weaken him.",
+      "Life-force Harvesting — Under specific conditions he can draw part of a dying creature's vitality; the gain is limited and dangerous, and killing alone does not guarantee greater power.",
+      "Seal Investigation — He cannot pass the closed Godseal. He uses reports and agents to investigate its recent change in tone."
     ],
     flaws: [
-      "The Godseal — The Demon King cannot cross the Godseal. This is his only weakness. It is also his greatest frustration.",
-      "The Forgotten Ones — The Demon King is not the oldest demon. There are older ones — demons who have lived for fifty thousand years or more, hidden in the deepest reaches of Xarnath. He knows they are out there. He knows they are waiting.",
-      "The Half-Demons — The Demon King is afraid of half-demons. They can grow stronger than him. They can train without killing. They can — potentially — kill him. He watches them very carefully.",
-      "The Boredom — The Demon King has been alive for ten thousand years. He has done everything. He has killed everyone. He has conquered everything. He is beginning to wonder if there is anything left."
+      "The Godseal — He cannot cross the closed barrier. This limits his strategy and frustrates him.",
+      "The Forgotten Ones — Older demon houses remain hidden in Xarnath's depths and may someday unite to reclaim the throne.",
+      "Half-Demon Rumours — A few unusual rune reactions have drawn his agents' attention, but there is no proof that Half-Demons can surpass him or that one person is a living key to the seal.",
+      "Boredom — A very long reign makes it difficult for him to find new challenges; at times he mistakes intrigue for genuine danger."
     ],
     relationships: [
-      { to: "The Forgotten Ones", type: "Hidden Rivals", detail: "The Demon King overthrew one of them to take the throne. He knows the others are out there. He knows they are waiting." },
-      { to: "The Emperor", type: "Unknown Rival", detail: "The Demon King knows about the Emperor. He has been watching the Emperor for forty years. He is not impressed." },
-      { to: "The Whisperer", type: "Unknown", detail: "The Demon King knows about the Whisperer. He does not know what they want. He is curious." },
-      { to: "Kaelen Vareth", type: "Unknown", detail: "The Demon King does not know about Kaelen. Yet. When he does, he will be very, very interested." }
+      { to: "The Forgotten Ones", type: "Hidden rivals", detail: "He overthrew one ancient rival to take the throne. He knows others remain alive and may return." },
+      { to: "The Emperor", type: "Political opponent", detail: "Reports suggest the human emperor is trying to gather successor realms under one crown, but the Demon King does not know how far those plans will go." },
+      { to: "The Whisperer", type: "Unverified intelligence contact", detail: "The network has circulated reports about the Godseal, but he does not know its true reach or motives." },
+      { to: "Kaelen Vareth", type: "Unconfirmed lead", detail: "Reports describe Kaelen's reaction to runes. No evidence shows the Demon King personally knows him or has ordered a dedicated hunt." }
     ],
     quotes: [
       "I have ruled for ten thousand years. I have killed more beings than you have met. I am not a person. I am an event. And I am not finished.",
@@ -1900,9 +1900,9 @@ const CHARACTERS = [
       "I am beginning to wonder if there is anything left. I have done everything. I have killed everyone. I have conquered everything. And I am still here. Still waiting. Still alone."
     ],
     storyHooks: [
-      "The Godseal is humming. The Demon King has noticed. He has begun to gather his forces.",
-      "The Demon King has discovered the existence of half-demons. He has begun to hunt them. He is afraid of them.",
-      "The Demon King has received a message from the Emperor. He has not opened it. He is amused."
+      "The Godseal's changing tone has prompted limited expeditions. Some agents seek a way to repair it; others see an opportunity to bargain with the Watching Order.",
+      "Demon houses disagree over whether mixed-lineage subjects should be protected, studied, or recruited. No general hunt order has been issued.",
+      "A message from the Valerian court arrives. The Demon King delays his reply, uncertain whether the envoy carries a warning, a threat, or a chance to split his rivals."
     ]
   },
   {
@@ -2525,7 +2525,7 @@ const GODS = [
     name: "The Demon King",
     domain: "Slaughter, Power, Eternity",
     status: "Alive",
-    desc: "Not a god — though court legends portray him as one. The Demon King has ruled Xarnath for more than ten thousand years, according to demon chronicles. Tales claim he has drained the life-force of more beings than any creature in history, but the figures cannot be verified. His threat helped justify the Godseal after the Sundering 402 years ago; he did not build it, and it was not created by one ruler alone. The barrier now shapes the politics of both continents, even though its builders and original purpose remain partly unknown."
+    desc: "Not a god — though court legends portray him as one. Demon chronicles place his rise more than ten thousand years ago, long before the Sundering. Tales claim he has drained the life-force of more beings than any creature in history, but the figures cannot be verified. The Godseal was raised only 402 years ago, after conflict between Aethermoor and Xarnath threatened to spread across both continents. The Demon King's power helped make the barrier politically necessary, but he did not build it and did not create the Sundering. His rule predates the seal; the two histories are often confused in popular legend."
   },
   {
     icon: "eclipse",
