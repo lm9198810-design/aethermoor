@@ -806,16 +806,19 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   max-width: 1500px;
 }
 
-.map-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 2rem;
-  align-items: start;
-}
+.map-wrapper { display:grid; grid-template-columns:minmax(0,1fr); gap:1.15rem; align-items:start; }
+.map-main { min-width:0; }
+.map-toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.8rem; margin-bottom:.85rem; padding:.75rem; border:1px solid var(--border); background:linear-gradient(110deg,rgba(23,15,40,.95),rgba(5,9,20,.95)); border-radius:5px; }
+.map-toolbar-group { display:flex; flex-wrap:wrap; gap:.45rem; }
+.map-control-btn { border:1px solid rgba(201,162,39,.32); border-radius:3px; padding:.55rem .8rem; color:var(--text-primary); background:rgba(201,162,39,.06); font:500 .78rem var(--font-body); cursor:pointer; transition:background .2s,border-color .2s,color .2s; }
+.map-control-btn:hover,.map-control-btn.is-active { color:var(--gold-bright); border-color:var(--gold); background:rgba(201,162,39,.15); }
+.map-hint { color:var(--text-muted); font-size:.75rem; }
+.map-main .map-legend { position:static; padding:1rem 1.2rem; }
+.map-main .legend-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(175px,1fr)); gap:.25rem .7rem; }
 
 .map-frame {
   position: relative;
-  padding: 2rem;
+  padding: clamp(.5rem, 1.2vw, 1.15rem);
   background:
     radial-gradient(ellipse at center, rgba(10, 26, 42, 0.6), rgba(5, 3, 8, 0.95)),
     linear-gradient(180deg, rgba(23, 15, 40, 0.5), rgba(10, 6, 18, 0.8));
@@ -851,12 +854,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .map-corner.bl { bottom: 8px; left: 8px; border-bottom-width: 2px; border-left-width: 2px; }
 .map-corner.br { bottom: 8px; right: 8px; border-bottom-width: 2px; border-right-width: 2px; }
 
-.world-map {
-  width: 100%;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 0 30px rgba(201, 162, 39, 0.1));
-}
+.world-map { width:100%; height:auto; aspect-ratio:10 / 7; display:block; touch-action:none; cursor:grab; user-select:none; filter:drop-shadow(0 0 30px rgba(201,162,39,.1)); }
+.world-map.is-panning { cursor:grabbing; }
+.map-border-layer,.map-terrain-detail,.map-city-layer { pointer-events:none; }
+.map-border-line { fill:none; stroke:rgba(235,213,150,.82); stroke-width:1.35; stroke-dasharray:5 5; vector-effect:non-scaling-stroke; filter:drop-shadow(0 1px 2px rgba(0,0,0,.8)); }
+.map-border-label { fill:#f0d99b; font:700 8px var(--font-display); letter-spacing:.8px; paint-order:stroke; stroke:#07111c; stroke-width:2.5px; stroke-linejoin:round; }
+.map-border-layer.is-hidden,.map-city-layer.is-hidden { display:none; }
+.map-city-marker { cursor:pointer; pointer-events:auto; outline:none; }
+.map-city-dot { fill:#f1dba0; stroke:#241a12; stroke-width:1.4; }
+.map-city-ring { fill:none; stroke:#e7c65c; stroke-width:1.1; }
+.map-city-label { fill:#fff0ca; font:600 8.2px var(--font-display); paint-order:stroke; stroke:#09131a; stroke-width:2.4px; stroke-linejoin:round; text-anchor:middle; pointer-events:none; }
+.map-city-marker:hover .map-city-dot,.map-city-marker:focus .map-city-dot { fill:#fff6d7; filter:drop-shadow(0 0 5px #e8c547); }
 
 .map-region {
   cursor: pointer;
@@ -2721,6 +2729,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 @media (max-width: 1024px) {
   .map-wrapper { grid-template-columns: 1fr; }
+  .map-toolbar { align-items:flex-start; }
+  .map-hint { flex-basis:100%; }
   .map-legend { position: static; }
   .legend-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
 }
@@ -2800,7 +2810,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .footer-bottom { flex-direction: column; text-align: center; }
 
-  .map-frame { padding: 1rem; }
+  .map-frame { padding: .45rem; }
+  .map-toolbar { padding: .55rem; }
+  .map-control-btn { padding: .48rem .6rem; font-size: .72rem; }
 
   .home-nav-grid { grid-template-columns: 1fr; }
 
