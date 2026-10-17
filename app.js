@@ -114,7 +114,7 @@
   }
 
   function hydrateStaticSigils() {
-    $('[data-sigil]').forEach(node => {
+    $$('[data-sigil]').forEach(node => {
       if (node.querySelector('svg')) return;
       const svg = svgEl('svg', {
         class: 'sigil-art', viewBox: '0 0 64 64',
