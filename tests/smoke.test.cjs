@@ -62,6 +62,14 @@ test('the rebuilt canon loads, remains bilingual, and preserves the full map', (
   for (const item of d.GODS) assert.ok(d.FA_DATA.gods[item.name], 'missing Persian faith entry: ' + item.name);
   for (const item of d.CREATURES) assert.ok(d.FA_DATA.creatures[item.name], 'missing Persian creature entry: ' + item.name);
   for (const item of d.PROPHECIES) assert.ok(d.FA_DATA.prophecies[item.title], 'missing Persian proverb entry: ' + item.title);
+  for (const item of d.WORLD_TILES) assert.ok(d.FA_DATA.worldTiles[item.title], 'missing Persian overview tile: ' + item.title);
+  for (const item of d.HOUSES) assert.ok(d.FA_DATA.houses[item.name], 'missing Persian faction: ' + item.name);
+  for (const item of d.GUILDS_DATA) assert.ok(d.FA_DATA.guilds[item.name], 'missing Persian institution: ' + item.name);
+  for (const item of d.LANGUAGES) assert.ok(d.FA_DATA.languages[item.name], 'missing Persian language entry: ' + item.name);
+  for (const item of d.BOOKS) assert.ok(d.FA_DATA.books[item.id], 'missing Persian book entry: ' + item.id);
+  for (const region of d.REGIONS) assert.ok(d.FA_DATA.regions[region.id], 'missing Persian region card: ' + region.id);
+  assert.equal(d.MAP_DATA.legends.some((item) => ["Aeldrin", "Sylvaar", "Draekon"].includes(item.label)), false,
+    'the map legend should not present elven cultures or a retired race as separate peoples');
 
   assert.ok(d.GODS.every((g) => /unverified|folk belief|venerated|taboo figure/i.test(g.status)),
     'no deity should be presented as physically confirmed');
