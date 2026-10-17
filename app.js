@@ -896,7 +896,7 @@
     grid.innerHTML = '';
     // Canon rebuild: present all peoples together; culture is not a species filter.
     const filterBar = $('#raceFilters');
-    if (filterBar) filterBar.hidden = true;
+    if (filterBar) { filterBar.hidden = true; filterBar.style.display = 'none'; }
     const filtered = RACES;
     filtered.forEach((race, i) => {
       const name = getContent('races', race.id, 'name', race.name);
@@ -925,7 +925,7 @@
     // Kept for backwards compatibility with the existing page markup.
     // The canon presents related peoples in one catalogue, not arbitrary race buckets.
     const bar = $('#raceFilters');
-    if (bar) bar.hidden = true;
+    if (bar) { bar.hidden = true; bar.style.display = 'none'; }
   }
 
   /* ============ MAGIC ============ */
@@ -1378,12 +1378,12 @@
       floors: 'طبقات',
       explored: 'کاوش‌شده',
       liftTo20: 'آسانسور تا طبقهٔ ۲۰',
-      floor100: 'رسیده به طبقه ۱۰۰',
+      floor100: 'بازگشت تأییدشده از طبقهٔ ۱۰۰',
       themes: 'تِم‌های طبقات',
       bosses: 'رئیس‌ها',
       rules: 'قوانین هاویه',
       facts: 'نکات قابل توجه',
-      otherDungeons: 'دنجن‌های دیگر آرکِیا',
+      otherDungeons: 'دانجن‌های دیگر آترمور',
       floorPrefix: 'طبقات',
       floorSingle: 'طبقه',
       floorsLabel: 'طبقات:',
@@ -1392,7 +1392,7 @@
       floors: 'Floors',
       explored: 'Explored',
       liftTo20: 'Lift to Floor 20',
-      floor100: 'Reached Floor 100',
+      floor100: 'Verified Returns from Floor 100',
       themes: 'Floor Themes',
       bosses: 'Bosses',
       rules: 'Rules of the Abyss',
