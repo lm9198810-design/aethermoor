@@ -2253,7 +2253,7 @@ const ARTIFACTS = [
     name: "The Starheart",
     type: "Relic · Divine",
     origin: "A shard of the first star, shattered at the Sundering",
-    desc: "A shard of the first star — the star that the gods sang into being at the dawn of time. It was shattered at the Sundering, and its largest fragment fell to earth in the Fading Garden. It is said to be the source of all magic in Aethermoor — the physical manifestation of the Song. If it were ever destroyed, magic would end. The Silent Choir guards it. They have guarded it for a thousand years. They will guard it for a thousand more."
+    desc: "A shard of the first star — the star that the gods sang into being at the dawn of time. It was shattered at the Sundering, and its largest fragment fell to earth in the Fading Garden. It is said to be the source of all magic in Aethermoor — the physical manifestation of the Song. If it were ever destroyed, magic would end. The Silent Choir guards it. They have guarded it since the Sundering, four centuries ago. No living guardian knows what would happen if the shard were destroyed."
   },
   {
     icon: "comet",
@@ -2670,7 +2670,7 @@ const CREATURES = [
     class: "Dungeon · Undead",
     danger: "Extreme",
     habitat: "The Dead Marches (floors 41-50)",
-    desc: "The souls trapped in the Dead Marches, cursed to die and rise forever. They cannot be killed — they can only be temporarily dispersed. They remember nothing of their former lives. They only scream. They have been screaming for a thousand years. They will scream for a thousand more."
+    desc: "The souls trapped in the Dead Marches, believed to have been caught in a failed resurrection ritual during the Sundering 402 years ago. They cannot be killed — only temporarily dispersed. They remember little of their former lives and seem to repeat the final moments of the ritual. The oldest surviving watch records span four centuries; claims older than that remain legend."
   },
   {
     icon: "skull",
@@ -2827,9 +2827,9 @@ const PROPHECIES = [
     icon: "rune",
     title: "The Prophecy of the Wounded Choir",
     source: "Unknown, Year ~500 B.S.",
-    text: "When the god-touched are gathered, and the halfborn stand as one, the thrones of heaven shall be empty forever, and the earth shall be ruled by those born of it.",
+    text: "When the god-touched gather, the thrones of heaven may stand empty. Or the living may simply stop kneeling. The copyist marks both readings as possible.",
     status: "Waiting",
-    desc: "A prophecy whispered among the Halfborn. It has never been written down — it is passed from Halfborn to Halfborn, in secret. It predicts the death of the gods and the rise of the mortal races. The Wounded Choir believes it is inevitable."
+    desc: "An oral fragment passed among some Halfborn. No original manuscript survives, and its wording differs between communities. The Wounded Choir archives the variants; some members read it as a warning against divine rule, others as a metaphor for political revolution. It has not been shown to predict the death of gods or the rise of a new order."
   },
   {
     icon: "eclipse",
