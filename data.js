@@ -3973,568 +3973,103 @@ const PROPHECIES = [
 
 const LANGUAGES = [
   {
-    name: "The Common Tongue",
-    speakers: "All races (except demons)",
-    script: "Latin",
-    desc: "The trade language of Aethermoor, developed after the Sundering to allow the surviving races to communicate. It is simple, flexible, and constantly evolving. Every educated person speaks it. Every uneducated person speaks a dialect of it. It is the language of trade, of diplomacy, of war."
+    name: "The Common Tongue", speakers: "Common across the southern trade routes and many northern markets",
+    script: "Regional alphabets; usually written left-to-right in formal records",
+    desc: "A practical trade language used across Aethermoor. It spread through caravans, guild contracts, army supply routes and port records, not by replacing every local tongue. Accents and regional vocabulary vary; even educated speakers often rely on translators for poetry, law or technical writing."
   },
   {
-    name: "The Old Script",
-    speakers: "Aeldrin, Dwarves, Sylvaar, some humans",
-    script: "Runic",
-    desc: "The language of the gods, used to write runes. It cannot be spoken — it can only be written. Every rune is a word, a command, a piece of reality. Reading the Old Script aloud is impossible; the words do not exist in any spoken language."
+    name: "The Old Script", speakers: "No single living speech community; studied by archivists and engineers",
+    script: "A set of related carved and inscribed signs",
+    desc: "A name used for several old inscriptions found on stone, metal and sealed tablets. It is not verified as the language of gods. Some marks resemble technical instructions; others may be names, measurements, ritual phrases or later copies. Reading one sign does not guarantee understanding a whole inscription."
   },
   {
-    name: "Draekon (The Fire-Tongue)",
-    speakers: "Draekon",
-    script: "Draconic",
-    desc: "A language of fire and passion. It is spoken with the whole body — the hands, the eyes, the breath. It cannot be learned by non-Draekon, because the sounds require a Draekon's throat. It is the language of the Songs of Fire — the oldest poems in Aethermoor."
+    name: "The Canopy Dialects", speakers: "Elven communities of the Silver Wood and neighbouring courts",
+    script: "A flowing alphabet used in letters, songs and public archives",
+    desc: "A family of related elven dialects used in canopy settlements and treaty halls. Formal records favour older vocabulary, while traders and younger speakers borrow words from the Common Tongue. Poems are difficult to translate literally because meter, social address and tree-craft terminology carry meaning together."
   },
   {
-    name: "Dwarven (The Stone-Tongue)",
-    speakers: "Dwarves",
-    script: "Dwarven Runes (derived from the Old Script)",
-    desc: "A language of stone and craft. It is spoken slowly, deliberately, with the weight of mountains behind every word. It has no word for 'hurry' — dwarves do not hurry. It has no word for 'impossible' — dwarves do not believe in impossible."
+    name: "The Lower Tongues", speakers: "Elven communities of the Shadowmere Depths",
+    script: "A compact script suited to stone, clay tablets and tunnel markers",
+    desc: "Several related speech forms used in subterranean settlements. Their vocabulary distinguishes echo, air movement, load-bearing stone and tunnel rights with unusual precision. Outsiders sometimes call the whole family a secret language; it is instead a set of practical regional dialects with restricted technical registers."
   },
   {
-    name: "Karathi (The Ice-Tongue)",
-    speakers: "The dwarves of the Frostspine, some humans of the north",
-    script: "Karathi Runes",
-    desc: "A language of survival. It has no words for luxury, art, or beauty — but it has seventeen words for snow, and forty-three words for various types of cold. It is spoken only in the Frostspine. It is dying — like the dwarves themselves. The dwarves do not speak it often. They do not need to. They have the Common Tongue. They have the Stone-Tongue. Karathi is for the old days — the days before the Sundering. It is for memory."
+    name: "Dwarven Stone-Tongue", speakers: "Dwarven holds and engineering workshops",
+    script: "Alphabetic records with conventional workshop marks",
+    desc: "A language of contracts, measurements, work logs and craft instruction. Dwarven sayings can be terse, but the language has poetry, humour and words for beauty as well as stone. Workshop marks are not spells by themselves; a mark only has a magical effect if prepared as a valid inscription."
   },
   {
-    name: "Orcish (The Ash-Tongue)",
-    speakers: "Orcs",
-    script: "Orcish Runes",
-    desc: "A language of strength and fury. It is a guttural, powerful language, well-suited for oaths, poetry, and war-cries. It has been preserved, unchanged, for three thousand years. It is the language of Grunna Ironbound's rebellion. It is the language of the warbands. It is the language of the Ashen Wastes."
+    name: "Karathi", speakers: "Some northern dwarven holds and border settlements",
+    script: "A local runic-derived alphabet",
+    desc: "A northern language variety shaped by cold-weather travel, hunting and mountain navigation. Its vocabulary is rich in snow conditions and safe-ice warnings because those distinctions matter to survival. It continues to be spoken by families and guides; it is not a dying language merely because the Common Tongue is useful for trade."
   },
   {
-    name: "Sylvaar (The Shadow-Tongue)",
-    speakers: "Sylvaar",
-    script: "Sylvaar Glyphs",
-    desc: "A language of secrets. It is whispered, not spoken. It changes constantly, to prevent outsiders from learning it. There are at least seven dialects, and no outsider has ever learned more than one. It is the language of the Whisperer. It is the language of the shadows."
+    name: "Orcish Ash-Tongue", speakers: "Orc clans and settlements of the Ashen Wastes",
+    script: "Clan-specific marks and several written traditions",
+    desc: "A family of related languages and dialects used in clan law, poetry, bargaining and war. Some warbands preserve old forms to demonstrate ancestry; others borrow heavily from caravan speech. No single dialect represents every orc, and a shared language does not imply loyalty to one war-chief."
   },
   {
-    name: "Kemiiri (The Pack-Tongue)",
-    speakers: "Kemiiri",
-    script: "None (oral only)",
-    desc: "A language of survival. It has no written form — it is passed down orally, from pack to pack. It is simple, direct, and often silent — much of it is communicated through gesture and scent. It is the language of the persecuted. It is the language of the lost."
+    name: "Kemiiri Route Speech", speakers: "Kemiiri caravans and mixed communities along the steppe roads",
+    script: "Mostly oral; some communities maintain private route ledgers",
+    desc: "A practical network of shared words, gestures and route signals used between several Kemiiri communities. It does not replace their own home languages. Route signs convey water, danger, shelter and trust; because traffickers have learned to imitate them, a sign alone is never proof that a stranger is safe."
   },
   {
-    name: "Demonic (The Xarnathi Tongue)",
-    speakers: "Demons, some half-demons",
-    script: "Demonic Glyphs",
-    desc: "The language of Xarnath. It is not spoken — it is projected. Demons do not move their mouths when they speak. They project their thoughts directly into the minds of their listeners. The language is not sound — it is meaning. It is the language of the Demon King. It is the language of the Forgotten Ones. It is the language of the end."
-  },
-  {
-    name: "The Song",
-    speakers: "Unknown (fewer than a dozen alive)",
-    script: "None",
-    desc: "The primordial language of creation. It cannot be learned — it can only be remembered. Those who remember it can reshape reality. Fewer than a dozen people alive remember even a fragment. The Song is not a language — it is the thing that language was made from. It is the thing that the world was made from. It is the thing that the world will be unmade by."
+    name: "Xarnathi", speakers: "Demon courts and other northern communities; used by some diplomats",
+    script: "Several court scripts and tally systems",
+    desc: "A northern language family with formal registers for bargains, challenge and rank. It is spoken aloud; claims that demons communicate only by projecting thought are not supported. Different courts use distinct titles, and a mistranslated form of address can turn routine negotiation into an insult."
   }
 ];
 
-/* ============================================================
-   CONTINUED IN PART 5 — Books + Guilds + Dungeons + Bestiary + Map + Economy
-   ============================================================ */
-console.log('%c◈ DATA.JS PART 4 LOADED ◈ — Artifacts + Gods + Creatures + Prophecies + Languages', 'color: #e8c547; font-family: serif; font-size: 14px; letter-spacing: 0.2em;');
-console.log('%cArtifacts: ' + ARTIFACTS.length + ' | Gods: ' + GODS.length + ' | Creatures: ' + CREATURES.length + ' | Prophecies: ' + PROPHECIES.length + ' | Languages: ' + LANGUAGES.length, 'color: #7a6f5e; font-style: italic;');
-console.log('%c✅ Part 4 of 5 complete. Approx. 45KB. Total so far: ~180KB.', 'color: #4ade80; font-style: italic;');
-
-/* ============================================================
-   13. THE GREAT LIBRARY — BOOKS OF AETHERMOOR
-   (10 initial books: diaries, religious texts, philosophy,
-    history, forbidden tomes)
-   ============================================================ */
 const BOOKS = [
   {
-    id: "diary-20th-floor",
-    title: "Diary of the 20th Floor",
-    titleFA: "دفترچه‌ی طبقه‌ی بیستم",
-    author: "Unknown Adventurer",
-    authorFA: "ماجراجوی ناشناس",
-    category: "journals",
-    categoryFA: "خاطرات",
-    date: "Year 398 S.A.",
-    language: "Common Tongue",
-    pages: 47,
-    excerpt: "Day 1: I joined the Guild today. They gave me a bronze tag and a warning. 'Don't die,' they said. 'It's bad for business.' I laughed. They didn't.",
-    fullText: `DAY 1
-I joined the Guild today. They gave me a bronze tag and a warning. "Don't die," they said. "It's bad for business." I laughed. They didn't.
-
-DAY 3
-My first dungeon. The Abyss. I went in with a team of five. We made it to Floor 3 before the rats found us. We lost two. I don't remember their names. I should remember their names.
-
-DAY 7
-Floor 8. The Stone-Lizards. My sword broke on their scales. I killed one with a rock. A rock. I am a warrior. I killed a monster with a rock.
-
-DAY 12
-Floor 14. The Shadow-Bats. They drained Jenkins dry in seconds. He was standing next to me. I didn't hear him scream. I heard him stop screaming. There's a difference.
-
-DAY 18
-Floor 19. We found a chest. Inside: 200 gold, a mana-stone, and a map. The map shows a path to Floor 20. It also shows a warning, written in blood: "Turn back."
-
-DAY 20
-Floor 20. The elevator. We made it. We're going back up. I'm going to see the sun again. I'm going to see my mother. I'm going to tell her I'm sorry.
-
-DAY 21
-I'm writing this on the surface. I survived. I don't know why. The others didn't. I don't know why I'm the one who gets to see the sun.
-
-I'm going back down tomorrow.`,
-    note: "Found on Floor 20 of the Abyss, beside the elevator, in the hand of a dead adventurer. The diary has been preserved by the Guild. It is required reading for every new recruit."
+    id: "diary-20th-floor", title: "Diary of the Twentieth Floor", titleFA: "دفتر روزگارِ طبقهٔ بیستم",
+    author: "Mara Enwick, junior guild member", authorFA: "مارا اِن‌ویک، عضو تازه‌کار گیلد",
+    category: "Journals", categoryFA: "خاطرات", date: "398 S.A.", language: "Common Tongue", pages: 47,
+    excerpt: "We reached the lift today. I thought the hard part would be the creatures. It was the water, the rope and the fact that nobody wanted to be the one who admitted we were not ready.",
+    fullText: "DAY 1\\nThe Guild gave us a brass tag, a route card and one rule: return with an account someone else can use. The instructor said a brave story is less valuable than a correct map. I thought he was trying to scare us.\\n\\nDAY 4\\nThe upper floors were louder than I expected. We found giant rats near a store of spoiled grain. They were not demons, curses or guardians of anything. They were hungry animals in a place full of food. We lost half a day's supplies because we ignored the tracks.\\n\\nDAY 9\\nA teammate slipped on a flooded stair. Our healer stopped the bleeding, but the injury still needed rest and clean water. We argued over whether to press on. The most experienced person voted to return, and for once nobody called it cowardice.\\n\\nDAY 15\\nWe reached the lift anchorage. The cables were damaged and the counterweight stuck. We spent three days helping the repair crew instead of descending. The Guild may not pay us as much as a monster hunt, but the work mattered.\\n\\nDAY 20\\nWe came back to the surface. I have drawn the route twice and written every place where our first plan failed. I want to return, but not before I can explain what we learned without pretending we were better prepared than we were.",
+    note: "A training diary kept by a junior member of the Adventurers' Guild. Its measurements are checked against a surviving lift-repair record. The text is valued for admitting mistakes, not for claiming a heroic victory."
   },
   {
-    id: "gospel-divide",
-    title: "The Gospel of the Divide",
-    titleFA: "انجیل تفرقه",
-    author: "The Watching Order",
-    authorFA: "فرقه‌ی دیدبان",
-    category: "religious",
-    categoryFA: "دینی",
-    date: "Year 380 S.A.",
-    language: "Common Tongue",
-    pages: 312,
-    excerpt: "In the beginning, there was the Song. And the Song was the world. And the world was the Song. Then the demons came. Then the gods came. Then the Godseal came.",
-    fullText: `CHAPTER I: THE FIRST SONG
-
-In the beginning, there was the Song. And the Song was the world. And the world was the Song.
-
-Then the demons came. They came from the north. They came from Xarnath. They came to devour. They devoured everything.
-
-Then the gods came. They came from the sky. They came from the stars. They came to save. They saved nothing.
-
-Then the Godseal came. It came from nothing. It came from everything. It came to hold. It holds.
-
-CHAPTER II: THE FIRST KING
-
-And there was a king. And his name was the Demon King. And his power was absolute.
-
-He killed a thousand demons to take the throne. He killed ten thousand to keep it. He killed a hundred thousand to expand it. He killed a million to rule it.
-
-He is still killing. He has never stopped.
-
-CHAPTER III: THE FIRST SEAL
-
-And the gods said: "We cannot kill him. We can only contain him."
-
-And so they carved the Black Chasm into the earth. And they raised the Godseal across it. And they said: "This is the end of him. This is the end of us. This is the beginning of something else."
-
-CHAPTER IV: THE FIRST HUMMING
-
-And the Godseal was silent for four centuries. And the world forgot.
-
-And then, in the Year 400 of the Ash Age, the Godseal began to hum.
-
-And the Watching Order said: "The end is near."
-
-And the world said: "Not yet."
-
-And the Godseal said nothing. But it hummed.
-
-CHAPTER V: THE LAST PROPHECY
-
-When the Godseal hums, the end is near.
-When the Godseal sings, the end is here.
-When the Godseal screams, there is no end — only the beginning of something worse.
-
-The Godseal is humming now. It has not stopped.
-
-We are watching. We have always been watching.
-
-We are the Watching Order. We do not sleep. We do not rest. We do not die.
-
-We watch.`,
-    note: "The holy book of the Watching Order. It is not widely distributed. It is not meant to be. It is meant for the 300 members of the Order, and only them. It is one of the few books in Aethermoor that has never been stolen."
+    id: "gospel-divide", title: "The Gospel of the Divide", titleFA: "انجیلِ جدایی",
+    author: "An unnamed preacher of the Godseal Watch", authorFA: "واعظی بی‌نام از دیده‌بانان مُهر",
+    category: "Religious traditions", categoryFA: "سنت‌های دینی", date: "380 S.A. (copy date)", language: "Common Tongue", pages: 62,
+    excerpt: "The crossing stands, and we do not know who raised it. Faith begins where certainty ends; it becomes dangerous when it pretends to be a measurement.",
+    fullText: "PROLOGUE\\nThis book gathers sermons spoken beside the Godseal. It records the faith of its writers; it does not claim to be a survey of the stone. The crossing stands before our eyes, but the name of its maker is not written where all can read it.\\n\\nI\\nSome say the first builders were sent by powers above the sky. Others say ancestors learned to shape the mountain and the water. A third group says the question is a trap: we can care for the crossing without knowing who began it. Each teacher must explain why their reading deserves trust.\\n\\nII\\nWe keep watch because the road is narrow and the gorge is dangerous. We do not keep watch because a dream appointed us. If the structure fails, prayer cannot replace a brace, a rope or a competent repair.\\n\\nIII\\nA traveller from the north is not guilty because of birthplace. A traveller who cuts a cable, breaks a truce or attacks a keeper must answer for that act. The same rule applies to a traveller from the south.\\n\\nMARGIN NOTE\\nSeveral copies replace 'some say' with a definite claim that the gods raised the crossing. This copy preserves the uncertainty. The alteration's date and author are unknown.",
+    note: "A religious source, not a neutral history. It shows the values and arguments of one Watch congregation. Its competing origin stories are evidence of belief, not proof of divine intervention."
   },
   {
-    id: "treatise-mana",
-    title: "A Treatise on Mana Conservation",
-    titleFA: "رساله‌ای در بقای مانا",
-    author: "Grand Archmage Vaelor",
-    authorFA: "بزرگ‌جادوگر وِیلور",
-    category: "philosophy",
-    categoryFA: "فلسفه‌ی جادو",
-    date: "Year 145 S.A.",
-    language: "Common Tongue",
-    pages: 428,
-    excerpt: "Mana is not a thing. Mana is a relationship. It is the relationship between the world and the will that shapes it. To say that mana is 'spent' is to misunderstand it entirely.",
-    fullText: `PREFACE
-
-This treatise is written for the students of the Grand Academy. It is written for those who have just begun their studies. It is written for those who are about to make their first mistake.
-
-It is written for those who will not read it. And it is written for those who will.
-
-CHAPTER I: THE FOURTH LAW
-
-The Four Laws of Magic are taught to every child in Aethermoor:
-1. The Law of Price — every spell has a cost.
-2. The Law of Echo — every spell leaves a mark.
-3. The Law of Silence — magic cannot create something from nothing.
-4. The Law of Conservation — mana is never destroyed, only transformed.
-
-It is the fourth law that concerns us here. It is the fourth law that most students fail to understand.
-
-CHAPTER II: MANA AS RELATIONSHIP
-
-Mana is not a thing. Mana is a relationship. It is the relationship between the world and the will that shapes it.
-
-To say that mana is "spent" is to misunderstand it entirely. Mana is not spent — it is transformed. It is transformed from potential into action. It is transformed from the will of the mage into the change in the world.
-
-There is no such thing as "spent" mana. There is only mana in a different form.
-
-CHAPTER III: THE IMPLICATIONS
-
-If mana is never destroyed — only transformed — then what happens to the mana of a dying creature?
-
-The answer: it returns to the world. It returns to the air, the earth, the water. It returns to the great pool of mana that sustains all life.
-
-This is why the academies begin training at age six. The younger the mind, the better it can learn to channel the ever-present flow.
-
-This is also why demons grow stronger by killing. Every death releases mana into the world — and the demon, if they have the will and the skill, can absorb a fraction of it.
-
-CHAPTER IV: THE WARNING
-
-I write this in the year 145 of the Ash Age. I write this for my students. I write this for the future.
-
-I write this because I am afraid.
-
-I am afraid of what will happen if the world's mana runs out. I am afraid of what will happen if the four hundred years are over.
-
-I am afraid of what will happen when the magic ends.
-
-The magic is ending. It has been ending for a thousand years. It will end within four hundred more.
-
-I will not live to see it. My students will not live to see it. Their children will not live to see it.
-
-But someone will. And I hope — I pray — that they will be ready.
-
-— Grand Archmage Vaelor, Year 145 of the Ash Age`,
-    note: "The foundational text of modern magical theory. Required reading at every magical academy in Aethermoor. The final chapter — 'The Warning' — is often removed from student editions. The Academy says it is 'too distressing.' The students say it is 'the only part worth reading.'"
+    id: "mana-practice", title: "Notes on Mana and Pattern", titleFA: "یادداشت‌هایی دربارهٔ مانا و الگو",
+    author: "Meren Sul, field instructor", authorFA: "مِرِن سول، آموزگار میدانی",
+    category: "Magic philosophy", categoryFA: "فلسفهٔ جادو", date: "371 S.A.", language: "Common Tongue", pages: 118,
+    excerpt: "A useful spell is not the one that makes the largest light. It is the one whose source, anchor and failure conditions you can describe before you begin.",
+    fullText: "LESSON ONE: SOURCE\\nMana is a medium of work, not a licence to create heat, food or metal from nothing. Before a shaping exercise, name the source being moved or transformed. If you cannot identify the source, assume your explanation is incomplete.\\n\\nLESSON TWO: PATTERN\\nA spell follows a pattern held in the mind or prepared in a material. Words and gestures help students maintain timing and concentration; they are not commands that reality must obey. Two practitioners may produce similar effects using different methods.\\n\\nLESSON THREE: ANCHOR\\nEvery reliable effect connects to something: contact, line of sight, a prepared mark, a current or a known threshold. Greater distance and complexity require more control. A demonstration without its anchor described is not a complete lesson.\\n\\nLESSON FOUR: LIVING SYSTEMS\\nA body repairs itself through living processes. Mending may guide those processes, but it cannot replace food, clean treatment or time. Attempts to change a mind or living body directly are difficult and uncertain.\\n\\nFIELD RULE\\nWrite what went wrong. A failed trial is useful when its conditions are recorded; a successful trial without controls may only be luck.",
+    note: "An introductory teaching text consistent with the four public laws of mana. It is not a complete theory: different colleges disagree about how the medium itself behaves."
   },
   {
-    id: "valerian-codex",
-    title: "The Valerian Codex",
-    titleFA: "قانون‌نامه‌ی والریان",
-    author: "Emperor Valerius the Unbroken",
-    authorFA: "امپراتور والریوس شکست‌ناپذیر",
-    category: "law",
-    categoryFA: "قانون",
-    date: "Year 47 S.A.",
-    language: "Common Tongue",
-    pages: 3124,
-    excerpt: "Article I: The Emperor is the state. The state is the Emperor. There is no distinction. There has never been a distinction. There will never be a distinction.",
-    fullText: `ARTICLE I: THE EMPEROR
-
-The Emperor is the state. The state is the Emperor. There is no distinction. There has never been a distinction. There will never be a distinction.
-
-The Emperor's word is law. The Emperor's will is law. The Emperor's breath is law.
-
-The Emperor is not above the law. The Emperor is the law. There is a difference.
-
-ARTICLE II: THE CITIZENS
-
-A citizen is one who has sworn the Oath of Valerius. The Oath is not complicated. It has three parts:
-1. I will serve the Empire.
-2. I will obey the Emperor.
-3. I will die for the Empire if the Empire requires it.
-
-The Oath is not optional. The Oath is not negotiable. The Oath is the Oath.
-
-ARTICLE III: THE GUILDS
-
-The Guilds are permitted to operate within the Empire. They are permitted to trade, to advent, to explore, to kill monsters.
-
-They are not permitted to:
-1. Operate without a Guild Charter.
-2. Interfere with Imperial business.
-3. Harbor criminals.
-4. Open the Godseal.
-5. Speak of the Abyss's 60th floor.
-
-The last two are non-negotiable. The last two are the reason the Empire exists.
-
-ARTICLE IV: THE ABYSS
-
-The Abyss is Imperial territory. It is Imperial property. It is Imperial responsibility.
-
-No one may enter the Abyss without an Imperial permit. No one may leave the Abyss without an Imperial permit.
-
-The permit is not a formality. The permit is a contract. The contract is not negotiable.
-
-The Empire has lost thirty thousand adventurers to the Abyss in the past century. The Empire does not want to lose thirty thousand more.
-
-ARTICLE V: THE GODSEAL
-
-The Godseal is the Empire's responsibility. The Godseal is the Empire's burden. The Godseal is the Empire's secret.
-
-No one may approach the Godseal without the Watching Order's permission. No one may cross the Godseal without the Emperor's permission.
-
-The Emperor has not given permission in a thousand years. The Emperor will not give permission in a thousand more.
-
-The Godseal holds. The Godseal will hold. The Godseal must hold.
-
-ARTICLE VI: THE PENALTIES
-
-Treason: death.
-Murder: death.
-Theft: death.
-Sedition: death.
-Breaking the Godseal: something worse than death.
-
-The Empire does not have a prison. The Empire has a graveyard.
-
-— Emperor Valerius the Unbroken, Year 47 of the Ash Age`,
-    note: "The legal code of the Valerian Empire. Three thousand pages. Every legal battle in the Empire is fought over its interpretation. Every emperor since Valerius has tried to amend it. None have succeeded. The Codex endures."
+    id: "salt-road-chronicle", title: "Chronicle of the Salt Road War", titleFA: "سال‌نامهٔ جنگ راه نمک",
+    author: "Archivist Teren Val", authorFA: "بایگان تِرِن وال",
+    category: "History", categoryFA: "تاریخ‌نامه", date: "Written 360 S.A.; revised 389 S.A.", language: "Common Tongue", pages: 204,
+    excerpt: "The court called it a war for the border. The surviving contracts call it a war for wells, tolls and the right to move armed men along the road.",
+    fullText: "FOREWORD\\nThis account compares three sets of records: imperial dispatches, port ledgers and testimony from villages along the salt road. None is complete. The dispatches justify the campaign, the ledgers count costs, and the villagers remember the damage that no tax table records.\\n\\nTHE DISPUTE\\nThe road carried salt from the inland flats to the coast. Several principalities claimed the right to tax it; each claimed its neighbour had broken an older agreement. The first armed convoy was described as an escort. The next was described as a provocation. Within a season, both sides were burning storehouses.\\n\\nTHE COST\\nThe surviving ledgers record wells guarded by soldiers, grain bought at emergency prices and loans offered to both sides by the same trading houses. The official victory report says the road was restored. It does not record how many families left the villages beside it.\\n\\nCONCLUSION\\nThe war did not begin because two peoples were born to hate one another. It grew from disputed rights, poor mediation, profitable loans and rulers who believed a show of strength would end the argument. Their descendants still quote the old slogans and ignore the old accounts.",
+    note: "A later history that explicitly compares biased sources. Its interpretation is not final, but its citations allow other researchers to challenge it."
   },
   {
-    id: "whispers-abyss",
-    title: "Whispers from the Abyss",
-    titleFA: "زمزمه‌هایی از هاویه",
-    author: "Unknown",
-    authorFA: "ناشناخته",
-    category: "forbidden",
-    categoryFA: "ممنوعه",
-    date: "Unknown (found on Floor 60)",
-    language: "Unknown (untranslatable)",
-    pages: "Unknown (the pages shift)",
-    excerpt: "...",
-    fullText: `[This book cannot be read. The pages shift. The words change. The letters form patterns that no mortal mind can follow. It is bound in leather that is not leather. It is warm to the touch. It whispers when opened. It has been locked in the deepest vault of the Adventurers' Guild for three hundred years. The vault has not been opened since. No one wants to open it. No one wants to know what it says.]
-
-[This is the only entry in the book that has ever been translated. It was translated by a scholar who went mad within a week. The translation reads:]
-
-"THE DOOR IS NOT A DOOR. THE FLOOR IS NOT A FLOOR. THE END IS NOT AN END. THE BEGINNING IS NOT A BEGINNING. YOU HAVE ALREADY BEEN HERE. YOU WILL ALWAYS BE HERE. THE ABYSS IS NOT A PLACE. IT IS A PROMISE."
-
-[The scholar is still alive. He is still mad. He has not stopped screaming.]`,
-    note: "The most dangerous book in Aethermoor. It was found on Floor 60 of the Abyss — the deepest floor any adventurer has ever reached and returned from. It is kept in the Adventurers' Guild's deepest vault. The vault has not been opened in three hundred years. The Guild says it is for safety. The Guild is lying. The Guild is afraid."
+    id: "imperial-road-law", title: "The Imperial Law of Roads, Wells and Guild Contracts", titleFA: "قانون امپراتوری دربارهٔ راه‌ها، چاه‌ها و قراردادهای گیلد",
+    author: "The Valerian Chancery", authorFA: "دیوان والریان",
+    category: "Imperial law", categoryFA: "قوانین امپراتوری", date: "Consolidated edition, 396 S.A.", language: "Common Tongue", pages: 156,
+    excerpt: "A road toll must name the road maintained, the authority collecting it and the remedy available when the road is closed. A seal on blank paper is not a contract.",
+    fullText: "TITLE I: PUBLIC ROADS\\nA toll may be collected only under a published charter. The notice must name the route, the responsible office and the service funded by the charge. Temporary emergency tolls expire when the declared emergency ends unless renewed by a second public notice.\\n\\nTITLE II: WELLS AND WATER\\nNo local lord may claim an unrecorded well as private property merely because soldiers occupy the nearest road. Water rights must be entered in the provincial register. In a drought, the governor may order a temporary ration, but the order must list its duration and appeal procedure.\\n\\nTITLE III: GUILD CONTRACTS\\nA mission contract must state the objective, reward, known risks, reporting conditions and responsibility for recovered property. Concealing a known hazard may void the sponsor's claim against a surviving crew. A guild rank does not replace a contract or compel a person to accept a mission.\\n\\nTITLE IV: LIMITS\\nThese rules are law on paper. Enforcement differs by province, and a noble with soldiers may ignore a court's order. Copies of this book should include local amendments before they are relied upon.",
+    note: "A practical legal compendium. It describes the Empire's stated rules, not a promise that every official follows them. Provincial law and political influence can override the printed text in practice."
   },
   {
-    id: "karoknul-fragment",
-    title: "The Karoknul (First Fragment)",
-    titleFA: "کارُکنول (پاره‌ی نخستین)",
-    author: "Karok (the war-god himself)",
-    authorFA: "کارُک (خدای جنگ)",
-    category: "religious",
-    categoryFA: "دینی",
-    date: "Pre-Sundering",
-    language: "The Old Script",
-    pages: "Unknown (the fragment has 47 pages)",
-    excerpt: "In the beginning, there was war. And war was good. And war was the only thing that was good. And I was war. And I was good. And I made my children. And my children were good.",
-    fullText: `[The First Fragment of the Karoknul. This is the only fragment that has ever been translated — and the translation is incomplete. It was translated by a dwarven scholar who spent forty years on the task. He completed 12 of the 47 pages before he died. His notes are preserved in the Iron Hold.]
-
-IN THE BEGINNING, THERE WAS WAR.
-
-And war was good. And war was the only thing that was good. And I was war. And I was good. And I made my children. And my children were good.
-
-I made them from iron. I made them from blood. I made them from the screams of my enemies. They were perfect. They were mine.
-
-The other gods did not understand. They said: "Why did you make them?" I said: "Because I could." They said: "What will they do?" I said: "What I tell them to." They said: "What will you tell them to do?" I said: "Everything."
-
-[Pages 2-12 continue in a similar vein. The scholar's translation stops at page 12. The remaining 35 pages have never been translated. The scholar's final note reads: "I cannot go on. The words are not words. They are commands. They are commands I cannot obey and cannot refuse. I am stopping. I am sorry."]
-
-[The First Fragment is held by the Broken Skull warband of the orcs. They cannot read it. They do not need to. They believe that when the seven fragments are assembled and translated, Karok will return. They believe this because they have to. They have nothing else.]`,
-    note: "The First Fragment of the Karoknul — the holy book of the orcs. It is the only fragment that has been partially translated. The translator died before he could finish. The remaining 35 pages have never been read. The Broken Skull warband guards it with their lives."
-  },
-  {
-    id: "silver-wood-song",
-    title: "The Songs of the Silver Wood",
-    titleFA: "سرودهای جنگل نقره‌ای",
-    author: "Anonymous Aeldrin Poets",
-    authorFA: "شاعران ناشناس آلدِرین",
-    category: "poetry",
-    categoryFA: "شعر",
-    date: "Years 1-400 S.A.",
-    language: "Aeldrin (translated to Common)",
-    pages: 892,
-    excerpt: "The trees remember what we forget. The stars remember what the trees forget. The Song remembers what the stars forget. And I — I remember nothing. I remember only the Song.",
-    fullText: `I: THE FIRST TREE
-
-The trees remember what we forget.
-The stars remember what the trees forget.
-The Song remembers what the stars forget.
-And I — I remember nothing.
-I remember only the Song.
-
-II: THE FADING GARDEN
-
-The garden is dying.
-It has been dying for a thousand years.
-We have been dying with it.
-We do not speak of this.
-We do not need to.
-We are the Aeldrin.
-We do not speak of things that are true.
-
-III: THE LAST CHILD
-
-She was born in the Year 242.
-She was the first child in a hundred and sixty years.
-She was the last child in a hundred and sixty years.
-She is the last child forever.
-She does not know this.
-She will learn.
-
-IV: THE BINDING
-
-My grandmother bound a goddess.
-My grandmother saved our people.
-My grandmother doomed our people.
-My grandmother is still alive.
-My grandmother does not speak of it.
-My grandmother does not need to.
-My grandmother is the reason we are dying.
-My grandmother is the reason I am writing this.
-My grandmother will read this.
-My grandmother will understand.
-My grandmother will say nothing.
-She never does.
-
-V: THE SONG OF THE LAST DAWN
-
-When the last child is born
-and the first mother weeps,
-the goddess shall wake,
-and the daughter shall choose.
-
-Her choice shall be the end of one world —
-or the beginning of another.
-
-The daughter does not know this.
-The daughter will learn.
-The daughter will choose.
-The daughter will choose.
-The daughter will choose.
-
-[This last poem — "The Song of the Last Dawn" — is the only known written record of the Last Dawn prophecy. It was written by an anonymous Aeldrin poet in the Year 243, one year after Aelwyn's birth. The poet was executed for heresy. The poem was preserved in secret.]`,
-    note: "A collection of Aeldrin poetry, spanning four hundred years. It is the largest collection of Aeldrin literature in existence. It was compiled by the Silent Choir, who have not spoken since."
-  },
-  {
-    id: "dwarven-forge-manual",
-    title: "The Forgemaster's Manual",
-    titleFA: "راهنمای استاد آهنگری",
-    author: "The Silent Smith's ancestors",
-    authorFA: "نیاکان آهنگر خاموش",
-    category: "craft",
-    categoryFA: "صنعت",
-    date: "Pre-Sundering (updated over millennia)",
-    language: "Dwarven Runes",
-    pages: 1204,
-    excerpt: "Iron is not a metal. Iron is a memory. A memory of the earth, of the fire, of the hammer. When you forge iron, you are not shaping metal. You are shaping memory.",
-    fullText: `CHAPTER I: ON THE NATURE OF IRON
-
-Iron is not a metal. Iron is a memory. A memory of the earth, of the fire, of the hammer. When you forge iron, you are not shaping metal. You are shaping memory.
-
-This is why dwarven weapons are superior. We do not forge weapons. We forge memories. Memories of victory. Memories of honor. Memories of the ancestors.
-
-CHAPTER II: ON THE NATURE OF RUNES
-
-A rune is not a symbol. A rune is a command. It is a word written in the language of the gods, and it commands reality to obey.
-
-When you carve a rune into a blade, you are not decorating it. You are commanding it. You are telling it: "Be sharp." You are telling it: "Never break." You are telling it: "Cut through anything."
-
-The blade has no choice. It must obey. That is the nature of runes.
-
-CHAPTER III: ON THE NATURE OF THE FORGE
-
-The forge is not a tool. The forge is a partner. It has a personality. It has a mood. It has a will.
-
-Some forges are kind. They help. They cooperate.
-Some forges are cruel. They fight. They resist.
-
-The greatest forges — the Great Forge of Hearthforge, the legendary forge of House Emberforge — are neither kind nor cruel. They are simply old. They have been burning for ten thousand years. They have seen everything. They have nothing to prove.
-
-CHAPTER IV: ON THE SILENT SMITH
-
-The Silent Smith is the greatest of us. He has not spoken in thirty years. He does not need to.
-
-He communicates through his work. His work speaks for him. His work says: "I am here. I am working. I am making something."
-
-What is he making? No one knows. No one asks. The Silent Smith is working. That is enough.
-
-[The Manual has been updated over ten thousand years. Every dwarven smith adds a page when they die. The Manual is currently 1,204 pages. The Silent Smith has added 3 pages. No one has read them. No one dares.]`,
-    note: "The foundational text of dwarven smithing. It is passed down from master to apprentice, from generation to generation, for ten thousand years. Every dwarven smith has a copy — handwritten, annotated, personal. The Silent Smith's copy is said to be the most annotated of all. It has never been seen."
-  },
-  {
-    id: "demon-court-chronicles",
-    title: "The Chronicles of the Demon Court",
-    titleFA: "سال‌نامه‌های دربار شیاطین",
-    author: "Unknown (possibly the Demon King himself)",
-    authorFA: "ناشناخته (احتمالاً خود پادشاه شیاطین)",
-    category: "forbidden",
-    categoryFA: "ممنوعه",
-    date: "Unknown",
-    language: "Demonic",
-    pages: 666,
-    excerpt: "I have killed a million demons to take the throne. I have killed ten million to keep it. I am still killing. I will never stop.",
-    fullText: `[This book is written in Demonic. It is one of the few Demonic texts recovered in the central continent. The archive records that it travelled with a half-demon envoy during one of the rare, escorted openings of the Godseal. The envoy died after the return journey. No reliable witness says that he crossed the closed barrier alone; that version appears only in later tavern copies.
-
-[The book has 666 pages. The first 665 are in Demonic. The last is in Common Tongue. The binding, ink, and final page belong to different periods, so the claim that they were written by one hand is disputed.]
-
-[Translation of the final page, author unknown:]
-
-"I am the Demon King. I have ruled Xarnath for ten thousand years. I have killed more beings than any creature in history. I have absorbed their life-force, their mana, their souls. I have become something more than a demon. Something more than a god. Something that should not exist.
-
-I am writing this because I am bored.
-
-I have killed everything. I have conquered everything. I have absorbed everything. I am still here. I am still alive. I am still bored.
-
-I have begun to wonder if there is anything left. I have begun to wonder if there is anything worth doing. I have begun to wonder if I should simply... stop.
-
-But I cannot stop. I do not know how.
-
-So I write. I write in a language that no one can read. I write in a book that no one can find. I write in a place that no one can reach.
-
-And I wait. I wait for someone to find this book. I wait for someone to read this page. I wait for someone to understand.
-
-I am the Demon King. I am the most powerful being in the world. And I am the loneliest.
-
-— The Demon King, date unverified"
-
-[The volume is kept in the Watching Order's citadel. Its first recorded examination is dated two centuries after the Sundering. No second complete reading has been verified.]`,
-    note: "The text was recovered among the effects of a half-demon envoy after one of the rare, escorted openings of the Godseal. Later tavern copies claim the envoy crossed alone, but no record confirms this. The author's identity is disputed: the final page may be a ruler's confession, a forged political tract, or a later imitation. Its grand claims about the number of victims have not been independently verified."
-  },
-  {
-    id: "wounded-choir-prophecies",
-    title: "The Prophecies of the Wounded Choir",
-    titleFA: "پیشگویی‌های گروه کر زخمی",
-    author: "The Wounded Choir (collective)",
-    authorFA: "گروه کر زخمی (جمعی)",
-    category: "religious",
-    categoryFA: "دینی",
-    date: "Years ~500 B.S. - present",
-    language: "Common Tongue",
-    pages: 88,
-    excerpt: "When the sealed road answers two bloods, mend the stone before you name the child. — Fragment attributed to an unknown Choir scribe; translation disputed.",
-    fullText: `[This volume is an anthology maintained by the Wounded Choir, a loose network that shelters some Halfborn and Half-Demons and preserves testimony about dangerous rites. It has no central headquarters or universally accepted doctrine. The oldest surviving leaf is dated to approximately 500 B.S.; later pages were copied, annotated, and occasionally replaced.
-
-[The current binding contains eighty-eight numbered fragments, not eighty-eight verified predictions. Some were recorded before the event they appear to describe; others were added after a war, disaster, or political upheaval. Several translations conflict. The Choir preserves those differences rather than declaring one reading correct.]
-
-FRAGMENT I — COPIED BY AN UNKNOWN HAND
-"When the god-touched gather, the thrones of heaven may stand empty. Or the living may simply stop kneeling. The copyist marks both readings as possible."
-
-FRAGMENT XIII — TRANSLATION DISPUTED
-"When two bloods meet at the sealed road, the gate may answer. One choice may mend the ward; another may loosen it. The surviving line gives no name."
-
-FRAGMENT XXXIV — MARGIN NOTE ADDED 211 S.A.
-"The half-demon shall be the death of the Demon King."
-
-[Beside this line, a later archivist wrote: "Death may mean the end of his reign, his reputation, or a bargain he cannot undo. No witness agrees. Do not send a child to war on the strength of one sentence."]
-
-FRAGMENT LVI — DAMAGED INSCRIPTION
-"The Ashborn shall rise from the ashes of the fallen god. The last light may be a child, a city, or the dawn itself."
-
-[Three copies translate "Ashborn" differently: as a family name, as eyes altered by a rune, and as a poetic term for those born after the Sundering. None names Kaelen Vareth.]
-
-FRAGMENT LXXXVIII — LATE ADDITION, AUTHOR UNKNOWN
-"The world shall end when the last prophecy is fulfilled."
-
-[The final page includes the line "You are reading this." Handwriting analysis dates it centuries later than the rest of the volume. The Watching Order catalogues it as a possible joke, warning, or deliberate forgery—not a reliable account of how the world ends.]`,
-    note: "An anthology of testimony, visions, disputed translations, and later annotations preserved by the Wounded Choir. Its fragments have been used to justify protection, persecution, and political schemes, but the Choir does not accept every passage as true. The volume is valuable evidence about what people feared and believed—not proof that one person is destined to rule or destroy the world."
+    id: "grey-ledger", title: "The Grey Ledger", titleFA: "دفتر خاکستری",
+    author: "Unknown; seized from a broker's warehouse", authorFA: "نویسنده نامعلوم؛ ضبط‌شده از انبار یک دلال",
+    category: "Restricted records", categoryFA: "اسناد محدودشده", date: "Entries from 344–390 S.A.", language: "Mixed trade notation", pages: "Fragments",
+    excerpt: "A chain is not a market by itself. Beside the name of every captor there is a buyer, a transport fee and an official who chose not to look.",
+    fullText: "The surviving ledger is not a book in the usual sense. It consists of shipping tallies, coded initials, debt contracts and copied seals. Several entries appear to track abducted Kemiiri travellers from desert routes to distant markets. Other pages record payments to caravan owners and local officials.\\n\\nThe fragments do not prove every accusation attached to the names. Some initials belong to several people; some pages were added later; two copies disagree about dates. The most reliable entries are those matched by an independent port ledger or testimony from a survivor.\\n\\nThe final readable page contains a warning in another hand: 'Do not publish a list without checking it. A false accusation can put a witness in the path of the people who bought the first silence.'",
+    note: "Restricted because the names may expose witnesses and ongoing investigations. It is neither a magical book nor an infallible list of criminals; entries must be corroborated before publication."
   }
 ];
 
-/* ============================================================
-   14. GUILDS DATA — THE TWELVE BRANCHES
-   ============================================================ */
 const GUILDS_DATA = [
   {
     id: "adventurers-guild", name: "The Adventurers' Guild", icon: "swords", color: "#6ba8c9",
