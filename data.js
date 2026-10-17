@@ -60,7 +60,7 @@ const WORLD_TILES = [
   {
     icon: "dagger",
     title: "The Age of Ambition",
-    desc: "Thrones sit empty. Crowns are cheap. A peasant can rise to emperor with enough blood and enough luck. Eighty-eight times in the past thousand years, a commoner has seized a throne. Forty-one of them died within a year. Twelve still rule. The rest — the rest are forgotten, and their names have been carved from the chronicles.",
+    desc: "Across the royal annals spanning several millennia, eighty-eight commoners are recorded as having seized a throne; forty-one died within a year. The figures are incomplete: many small crowns never entered shared chronicles, and some courts counted a regent as a monarch while others did not.",
     statLabel: "Successful Usurpations",
     statValue: "88"
   },
@@ -127,7 +127,7 @@ const RACES = [
     icon: "crown",
     shortDesc: "The most numerous race of Aethermoor, and the most divided. Where elves and dwarves find unity, humans find only ambition — and the ambition of one emperor once carved the largest empire the world has ever known.",
     traits: ["Ambitious", "Numerous", "Adaptable", "Divided"],
-    fullDesc: "Humans are the youngest of the great races — created late, after the Aeldrin and Sylvaar and Draekon had already claimed their thrones. But what they lack in age, they make up for in numbers and sheer, restless will. For a thousand years after the Sundering, humanity has been a story of rise and fall, of emperors and usurpers, of kingdoms built on bones and buried by betrayal. The greatest of them all was Emperor Valerius the Unbroken, who united the warring human tribes and forged the Valerian Empire — the largest empire in recorded history. His capital still stands, built directly above the Abyss, and his bloodline still rules — though the empire has long since fractured into a dozen squabbling successor states. Humans are not inherently evil, nor inherently good. They are simply driven — by hunger, by fear, by love, by hatred — and that drive has made them the most dangerous race in the world.",
+    fullDesc: "Humans are younger than the oldest peoples of Vaelthar, but their cities, languages, and kingdoms have spread quickly. In the four centuries since the Sundering, human history has been shaped by emperors, rival courts, trade leagues, and succession wars. Emperor Valerius the Unbroken once united many human territories and founded the Valerian Empire, the largest human state recorded in the common annals. The empire later fractured into rival successor realms; the current Valerian court still claims continuity, but its authority is strongest around its central heartlands and weaker wherever local lords control roads and grain. Humans are neither inherently good nor evil. Their ambition makes them capable of extraordinary cooperation—and of ruinous betrayal.",
     secret: "The Valerian Empire is not truly dead — it is merely sleeping. The current emperor, a distant descendant of Valerius, has been quietly forging alliances and stockpiling mana-stones for forty years. He believes he is destined to reunite humanity. He is probably right. And he is willing to do anything — anything — to make it happen. Even if 'anything' means opening the Godseal.",
     stats: {
       lifespan: "60-90 years",
@@ -496,7 +496,7 @@ const HOUSES = [
     seat: "Aelthalas, the Crystal Throne",
     region: "The Silver Wood",
     motto: "The stars remember what the earth forgets.",
-    desc: "The ruling house of the Aeldrin. House Vaelor has held the Crystal Throne for over four thousand years, unbroken. They are the keepers of the Runes, the interpreters of prophecy, and — though they deny it — the imprisoners of their own goddess. Their current head, Lady Seraphine Vaelor, is the last of her line who can still cast the highest runes. And her great-granddaughter, Aelwyn, is the last Aeldrin child ever born. House Vaelor is not dying. It is already dead. It simply has not stopped moving yet.",
+    desc: "The ruling house of the Aeldrin. House Vaelor has held the Crystal Throne for over four thousand years, unbroken. They keep the runes, interpret prophecy, and—though they deny it—guard the binding beneath the Silver Wood. Their current head, Lady Seraphine Vaelor, is the last of her line who can still cast the highest runes. Her great-granddaughter Aelwyn was the first Aeldrin child born after a long interval of sterility; whether she is truly the last remains unknown. House Vaelor is fading, but it has not yet admitted how little it understands about the cause.",
     role: "Highborn of the Aeldrin, Keeper of the Old Script",
     wealth: "Immense (stagnant)",
     military: "Small but deadly",
@@ -1009,7 +1009,7 @@ const REGIONS = [
     color: "#4a1f6b",
     mapX: 700,
     mapY: 380,
-    desc: "A region in the east where the dead do not stay dead. The Dead Marches are the result of a failed resurrection ritual during the Sundering — a ritual that killed three thousand people and trapped their souls in a loop of dying and rising. The Sylvaar maintain a research station here. The dwarves maintain a wall. Neither group speaks to the other. Both have learned that the Marches are not to be trifled with. The Screaming Dead cannot be killed — only temporarily dispersed. They remember nothing of their former lives. They only scream. They have been screaming for a thousand years. They will scream for a thousand more.",
+      desc: "A region in the east where the dead do not stay dead. The Dead Marches are believed to be the result of a failed resurrection ritual during the Sundering—a ritual that killed three thousand people and trapped their souls in a loop of dying and rising. The Sylvaar maintain a research station here; the dwarves maintain a wall. Neither group speaks to the other, but both have learned that the Marches are not to be trifled with. The Screaming Dead cannot be killed, only temporarily dispersed. They remember little of their former lives. They have been screaming for four centuries, according to the oldest surviving watch records; older claims are legend.",
     control: "Contested (Sylvaar research station, dwarven wall)",
     notable: ["The Wall of Bones", "The Screaming Fields", "The Sylvaar Station", "The Charnel Pits", "The Silent Wall"],
     regionType: "necropolis",
@@ -1087,7 +1087,7 @@ const REGIONS = [
     color: "#c8e8a8",
     mapX: 380,
     mapY: 220,
-    desc: "A garden in the heart of the Silver Wood where, according to Aeldrin legend, the goddess Aelith planted the first seed of the world. The garden has been dying for a thousand years — ever since the Sundering. The Aeldrin tend it obsessively, but nothing they do stops the decay. It is the most sacred place in Aethermoor. It is also the most hopeless. The Silent Choir — the guardians of the Garden — have not spoken in centuries. They have simply waited. And wept. And waited. And wept.",
+      desc: "A garden in the heart of the Silver Wood where, according to Aeldrin legend, the goddess Aelith planted the first seed of the world. Since the Sundering 402 years ago, the garden has slowly dimmed. The Aeldrin tend it obsessively, but no known rite has stopped the decay. It remains the most sacred place in Aethermoor and a visible reminder that even the oldest magic has limits. The Silent Choir, its guardians, rarely speak in public; whether their silence is ritual, grief, or a response to the fading garden is not known.",
     control: "House Vaelor / The Silent Choir",
     notable: ["The First Tree", "The Dying Fountain", "The Silent Choir", "The Starheart Chamber", "The Vault of the First Seed"],
     regionType: "elven",
@@ -1288,7 +1288,7 @@ const TIMELINE = [
     era: "ash",
     eraName: "The Ash Age",
     title: "The Building of the Godseal",
-    desc: "The Watching Order was founded — a multi-racial order of knights, mages, and scholars dedicated to guarding the Godseal. The Order accepts members from every race except demons. Its members serve for life. There are currently 300 members. There have always been 300. When one dies, another takes their place. The Godseal has held for a thousand years. It continues to hold. For now."
+    desc: "In the years following the Sundering, the Watching Order was founded to guard the Godseal: a multi-racial order of knights, mages, and scholars. It accepts members from the known peoples except demons. The Order maintains three hundred sworn seats, training replacements before a vacancy can leave the barrier under-guarded; outsiders cannot independently verify every name on its rolls. The Godseal has held for 402 years. Its new hum is the first recorded change in its tone, and its cause remains unknown.",
   },
   {
     year: "385 S.A.",
@@ -1886,8 +1886,8 @@ const CHARACTERS = [
     age: "10,000+ (possibly much older)",
     born: "Unknown",
     allegiance: "Himself",
-    summary: "The ruler of Xarnath, the demon continent, and the most powerful being in the world. He has ruled for ten thousand years. He has killed more beings than any creature in history. He is the reason the Godseal exists. He is the reason the world holds its breath.",
-    fullBio: "No one knows where the Demon King came from. No one knows when he was born. No one knows his name. All that is known is that ten thousand years ago, he appeared in Xarnath — and he has ruled ever since. He overthrew the previous Demon King (whose name is now forgotten) and took the Bone Throne. He has ruled with absolute power ever since. He is not a person. He is an event. He is the reason the demons were exiled to Xarnath. He is the reason the Godseal was built. He is the reason the world has not been overrun by demons. He has killed more beings than any creature in history — millions, perhaps billions. He has absorbed their life-force. He has absorbed their mana. He has become something more than a demon. Something more than a god. Something that should not exist. And he is watching. He is always watching.",
+    summary: "The long-lived ruler of Xarnath, whose hold on the throne depends on keeping rival demon houses divided. The Godseal is four centuries old; his rule is far older, and the two histories are often confused in popular legend.",
+    fullBio: "No one knows where the Demon King came from, and no reliable record gives his birth year. The oldest demon chronicles place his rise in Xarnath more than ten thousand years ago, long before the Sundering. He seized the Bone Throne by overthrowing a rival ruler and has kept power by balancing the great houses, controlling the deep wells, and rewarding useful enemies as often as he punishes them. The Godseal is much younger: it was raised 402 years ago after the Sundering, when the conflict between Xarnath and Aethermoor threatened to spread across the world. The Demon King did not create the Sundering or build the seal, but he has become its most dangerous political beneficiary. His subjects say he has drained the life-force of millions; the number is not verifiable, and even his own court treats the stories as both warning and propaganda. The seal's recent hum concerns him because a failed barrier would invite invasion and give his rivals a reason to unite against him.",
     personality: "The Demon King does not have a personality in the way mortals understand it. He is not cruel for the sake of cruelty. He is not kind for the sake of kindness. He is simply... powerful. He does what he wants. He takes what he wants. He has no peers, no equals, no rivals. He has been alone for ten thousand years. He is not lonely — he does not understand loneliness. He is not bored — he does not understand boredom. He is simply... there. And he is waiting.",
     abilities: [
       "Absolute Power — The Demon King is the most powerful being in the world. He has absorbed the life-force and mana of millions. His power is beyond measurement.",
@@ -1909,7 +1909,7 @@ const CHARACTERS = [
     ],
     quotes: [
       "I have ruled for ten thousand years. I have killed more beings than you have met. I am not a person. I am an event. And I am not finished.",
-      "The Godseal will fall. It has held for a thousand years. It will not hold for a thousand more. I am patient. I am eternal. I am the Demon King.",
+      "The Godseal has held for four centuries. Stone remembers longer than kings do, but even stone can crack.",
       "I am beginning to wonder if there is anything left. I have done everything. I have killed everyone. I have conquered everything. And I am still here. Still waiting. Still alone."
     ],
     storyHooks: [
