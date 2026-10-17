@@ -590,7 +590,7 @@
       transform: 'scale(1.8)'
     });
     const borderShapes = [
-      { name: 'VALERIAN HEARTLAND', fa: 'قلب امپراتوری والریوس', color: '#d6b251', d: 'M 296 365 C 332 347 372 352 401 375 S 439 408 465 402 L 490 450 L 457 485 L 404 468 L 374 443 L 334 431 Z', x: 385, y: 389 },
+      { name: 'VALERIAN CROWNLANDS', fa: 'قلمرو تاج والریان', color: '#d6b251', d: 'M 296 365 C 332 347 372 352 401 375 S 439 408 465 402 L 490 450 L 457 485 L 404 468 L 374 443 L 334 431 Z', x: 385, y: 389 },
       { name: 'FREE CITIES', fa: 'شهرهای آزاد', color: '#9cbaab', d: 'M 532 355 L 579 335 L 621 354 L 633 394 L 606 424 L 566 422 L 540 394 Z', x: 580, y: 375 },
       { name: 'AELDRIN ENCLAVE', fa: 'قلمرو آلدِرین', color: '#c5dfd4', d: 'M 353 208 C 382 194 424 203 449 226 L 452 261 L 424 281 L 396 271 L 370 246 Z', x: 407, y: 223 },
       { name: 'FROSTSPINE HOLDS', fa: 'دژهای شان‌کوه', color: '#9bc9d4', d: 'M 104 221 C 145 199 205 204 260 224 L 278 260 L 254 290 L 197 282 L 155 258 Z', x: 189, y: 229 },
