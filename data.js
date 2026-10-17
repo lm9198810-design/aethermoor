@@ -1253,7 +1253,7 @@ const TIMELINE = [
     era: "ash",
     eraName: "The Ash Age",
     title: "The Birth of the Last Dawn",
-    desc: "Aelwyn Vaelor was born in the Crystal Throne — the first Aeldrin child in one hundred and sixty years, and the last. Her mother died in childbirth. The Silver Wood celebrated for a month. The elders did not tell the child what her birth truly meant. They still have not. They may never tell her."
+    desc: "Aelwyn Vaelor was born in the Crystal Throne in 242 S.A., the first Aeldrin child recorded after a gap of one hundred and sixty years. The Silver Wood celebrated for a month. The elders treated her birth as a sign that Aeldrin fertility might return, but one birth did not prove the binding had healed. No other Aeldrin child has been recorded since; whether Aelwyn is truly the last remains unconfirmed."
   },
   {
     year: "289 S.A.",
@@ -1373,11 +1373,11 @@ const CHARACTERS = [
       "Song of Stars (Fragment) — Aelwyn has, in secret, learned to hum a fragment of the primordial Song. She does not know what it does. She is afraid to find out."
     ],
     flaws: [
-      "The Weight of the Last — Aelwyn is the last Aeldrin child. Everyone expects her to save the race. She does not want to. She wants to live. This conflict eats at her.",
-      "Alone in a Crowd — Aelwyn has never had a friend her own age. She does not know how to be a friend. She does not know how to be loved.",
-      "The Binding's Shadow — Aelwyn's birth was only possible because the binding weakened. This means her existence is tied to the goddess's prison. If the binding's weakening is why she was born, undoing it could affect her—but neither Aelwyn nor Seraphine knows how.",
-      "The Choice — Aelith claims that freeing her may cost Aelwyn her life. Seraphine disputes that interpretation. Aelwyn has no evidence that either version is complete, and she has not decided whom to trust.",
-      "Rebellion — Aelwyn has broken more laws of the Silver Wood than any Aeldrin in history. She has read the forbidden books, walked the forbidden paths, learned the forbidden songs. She is a criminal in her own home."
+      "The Burden of Expectation — The elders treat Aelwyn as a possible answer to the Aeldrin decline. She wants the freedom to decide what kind of life she will lead.",
+      "Alone in a Crowd — Aelwyn has never had a friend her own age. She does not know how to trust someone without wondering what they want from her.",
+      "The Binding's Shadow — If the weakening of the binding made her birth possible, undoing it could affect her. Neither Aelwyn nor Seraphine knows how.",
+      "The Uncertain Choice — Aelith claims that freeing her may cost Aelwyn her life. Seraphine disputes that interpretation; neither account has been proven complete.",
+      "Rebellion — Aelwyn has broken many laws of the Silver Wood by reading forbidden books, walking forbidden paths, and learning restricted songs."
     ],
     relationships: [
       { to: "Seraphine Vaelor", type: "Grandmother / keeper of the binding", detail: "Seraphine loves Aelwyn. Aelwyn knows this. It makes the truth about the binding worse, not better." },
@@ -2388,7 +2388,7 @@ const ARTIFACTS = [
     name: "The Godseal Key",
     type: "Relic · Divine",
     origin: "Created by the gods when they built the Godseal",
-    desc: "A key that does not look like a key. It is a shard of divine light — a fragment of the Godseal itself, given to the Watching Order when the barrier was raised. It is said to be the only way to open the Godseal from the Aethermoor side. It is kept in the Watching Order's citadel, guarded by 300 knights. The Demon King has been looking for it for ten thousand years. He has never found it. He will never stop looking."
+    desc: "A key that does not look like a key. It is a shard of divine light — a fragment of the Godseal itself, entrusted to the Watching Order when the barrier was raised 402 years ago. It is said to be the only known way to open the Godseal from the Aethermoor side under controlled conditions. It is kept in the Watching Order's citadel, guarded by 300 knights. The Demon King has searched for it since the seal was raised, but there is no reliable record that he has ever found it."
   },
   {
     icon: "compass",
@@ -3067,7 +3067,7 @@ And so they carved the Black Chasm into the earth. And they raised the Godseal a
 
 CHAPTER IV: THE FIRST HUMMING
 
-And the Godseal was silent for a thousand years. And the world forgot.
+And the Godseal was silent for four centuries. And the world forgot.
 
 And then, in the Year 400 of the Ash Age, the Godseal began to hum.
 
@@ -3663,8 +3663,8 @@ const GUILDS_DATA = [
       Highborn: "An Aeldrin of high caste. Can cast spells. Can read the Old Script. Can rule. Can be on the Silent Council.",
       "Silent Council": "The ruling body of the Aeldrin. Nine members. Elected for life. Cannot speak outside the Council chamber."
     },
-    notable_members: ["Seraphine Vaelor (Silent Council, oldest living Aeldrin)", "Aelwyn Vaelor (Highborn, last Aeldrin child)", "Lord Arathor (Highborn, human ambassador — unusual)"],
-    secrets: "The Aeldrin are not dying from natural causes. Their goddess, Aelith, still lives — imprisoned beneath the Silver Wood by her own children. As long as she remains bound, the Aeldrin are sterile. They have imprisoned their own salvation. And the one child born — Aelwyn Vaelor — exists only because the binding cracked for a single decade."
+    notable_members: ["Seraphine Vaelor (Silent Council, oldest living Aeldrin)", "Aelwyn Vaelor (Highborn, first recorded Aeldrin child after a 160-year gap; no later birth is confirmed)", "Lord Arathor (Highborn, human ambassador — unusual)"],
+    secrets: "The Aeldrin birth decline is not yet fully explained. Aelith remains imprisoned beneath the Silver Wood, and a surviving ledger suggests Aelwyn was born during a brief weakening of the binding. This supports a possible connection but does not prove that the binding is the sole cause of the decline or that releasing Aelith would restore fertility safely."
   },
   {
     id: "sylvaar-court",
