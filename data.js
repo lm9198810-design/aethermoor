@@ -3350,641 +3350,333 @@ console.log('%c✅ Part 1 of 5 complete. Approx. 45KB.', 'color: #4ade80; font-s
    4. THE GREAT HOUSES, TRIBES & EMPIRES
    ============================================================ */
 const HOUSES = [
-  /* ═══════════════════════════════════════════════════════
-     ELVEN HOUSES
-     ═══════════════════════════════════════════════════════ */
   {
-    name: "House Vaelor",
-    sigil: "moon",
-    color: "#a8d8e8",
-    seat: "Aelthalas, the Crystal Throne",
-    region: "The Silver Wood",
-    motto: "The stars remember what the earth forgets.",
-    desc: "The ruling house of the Aeldrin. House Vaelor has held the Crystal Throne for over four thousand years, unbroken. They keep the runes, interpret prophecy, and—though they deny it—guard the binding beneath the Silver Wood. Their current head, Lady Seraphine Vaelor, is the last of her line who can still cast the highest runes. Her great-granddaughter Aelwyn was the first Aeldrin child born after a long interval of sterility; whether she is truly the last remains unknown. House Vaelor is fading, but it has not yet admitted how little it understands about the cause.",
-    role: "Highborn of the Aeldrin, Keeper of the Old Script",
-    wealth: "Immense (stagnant)",
-    military: "Small but deadly",
-    magic: "Runecraft (mastered), Song of Stars (fragments)",
-    allies: ["House Ironheart (trade)", "House Emberforge (trade)"],
-    enemies: ["House Shadowmere", "House Whisper"]
+    name: "House Vaelor", sigil: "moon", color: "#a8d8e8",
+    seat: "Aelthalas, the Canopy Hall", region: "The Silver Wood",
+    motto: "Keep the record; question the song.",
+    desc: "A leading elven court known for archivists, treaty scribes and canopy engineers. Vaelor influence comes from access to old records and the roads between forest settlements, not from a claim to rule every elf. Its council is split between those who want the Godseal records published and those who fear that an unverified reading could start a war.",
+    role: "Elven court and keeper of public chronicles",
+    wealth: "High (timber craft, glasswork, archives and toll agreements)",
+    military: "Moderate (trained wardens; depends on allies for large campaigns)",
+    magic: "Perception, inscription and prepared wards",
+    allies: ["House Ironheart (technical exchanges)", "The Watch (records)"],
+    enemies: ["Poachers and rival courts during succession disputes"]
   },
   {
-    name: "House Shadowmere",
-    sigil: "spider",
-    color: "#4a1f6b",
-    seat: "Ondrath, the Throne of Bone",
-    region: "The Shadowmere Depths",
-    motto: "All lights cast shadows. We are the shadow of all lights.",
-    desc: "The ruling house of the Sylvaar. Its head, Lord Vexar, is the only surviving son of the dead Queen Maelith — and the only one who knows she is dead. He maintains the illusion through a nightly ritual that is slowly killing him. When he dies, the Sylvaar will fracture into civil war. House Shadowmere knows this. Its rivals are already positioning themselves. The knives are already sharpened. The only question is who will strike first — and who will survive.",
-    role: "Shadow-King of the Sylvaar",
-    wealth: "Vast (from trade in secrets and poisons)",
-    military: "Small, elite, terrifying",
-    magic: "Voidwalking (mastered), Runecraft (forbidden)",
-    allies: ["None officially"],
-    enemies: ["Everyone, including themselves"]
+    name: "House Shadowmere", sigil: "spider", color: "#4a1f6b",
+    seat: "Ondrath, the Lower Hall", region: "The Shadowmere Depths",
+    motto: "A quiet door is still a door.",
+    desc: "An elven court whose settlements occupy caverns and old subterranean roads. Shadowmere controls several safe passages and charges for escorts; its secrecy is a political habit born from generations of raids and territorial disputes. Its officers are skilled at intelligence, but their reports are not always impartial.",
+    role: "Keeper of the lower roads and subterranean settlements",
+    wealth: "High (route fees, rare fungi and specialist craft)",
+    military: "Strong in tunnels; limited on open plains",
+    magic: "Perception, binding and prepared inscriptions",
+    allies: ["House Vaelor (uneasy cultural ties)"],
+    enemies: ["Smugglers and rival tunnel claimants"]
   },
   {
-    name: "House Whisper",
-    sigil: "eclipse",
-    color: "#2a1a4a",
-    seat: "The Silent Hall, Ondrath",
-    region: "The Shadowmere Depths",
-    motto: "We hear what others forget to hide.",
-    desc: "The Sylvaar intelligence network. Its members are identified only by the phrase 'I hear the whisper.' Its head, known only as The Whisperer, is the most feared being in the civilized world. House Whisper does not have armies. It does not have lands. It has information — and information, in Aethermoor, is worth more than gold. Its agents are everywhere. Its archives are deeper than any dungeon. Its plans are older than any kingdom.",
-    role: "Master of Spies, Keeper of Secrets",
-    wealth: "Unknown (likely vast)",
-    military: "None — but its agents are everywhere",
-    magic: "Voidwalking (mastered), Runecraft (rumored)",
-    allies: ["Unknown"],
-    enemies: ["Unknown"]
-  },
-
-  /* ═══════════════════════════════════════════════════════
-     DWARVEN HOUSES
-     ═══════════════════════════════════════════════════════ */
-  {
-    name: "House Ironheart",
-    sigil: "hammer",
-    color: "#8a6f1f",
-    seat: "Hearthforge, the Iron Hold",
-    region: "The Frostspine",
-    motto: "We forge. We do not kneel.",
-    desc: "The ruling house of the dwarves. House Ironheart has held the Iron Hold for three thousand years. Their current lord, Thane Ironheart, is the oldest living dwarf and the only person alive who has spoken with the sleeping god Vorthal. He has ruled for thirty years. He has survived four Long Winters. He has buried more friends than he can count. He is ready to die. But he has not yet decided what to do with what Vorthal told him.",
-    role: "Thane of Thanes, Keeper of the Deep Forge",
-    wealth: "Great (from iron, gold, and rune-forging)",
-    military: "Fearsome (defensive)",
-    magic: "Runecraft (mastered), Earth Magic",
-    allies: ["House Vaelor (trade)", "House Emberforge"],
-    enemies: ["Orc warbands", "House Bloodaxe"]
+    name: "House Ironheart", sigil: "hammer", color: "#8a6f1f",
+    seat: "Hearthforge, the Iron Hold", region: "The Frostspine",
+    motto: "An oath must carry weight.",
+    desc: "A major dwarven council-house responsible for water rights, tunnel safety and the defence of several mountain holds. Ironheart influence rests on engineering standards and contracts recognised across rival halls. It is respected because its systems work, not because every dwarf obeys one ruler.",
+    role: "Council-house of the Deep Halls",
+    wealth: "High (mining, engineering and toll agreements)",
+    military: "Strong in mountain defence and fortified routes",
+    magic: "Inscription, binding and craft-based mana work",
+    allies: ["House Emberforge", "House Vaelor"],
+    enemies: ["Mine saboteurs and oath-breakers"]
   },
   {
-    name: "House Emberforge",
-    sigil: "crossed-hammers",
-    color: "#b52a2a",
-    seat: "The Great Forge, Hearthforge",
-    region: "The Frostspine",
-    motto: "We shape the world, one strike at a time.",
-    desc: "The smith-house of the dwarves. Every weapon of legend in Aethermoor — including Grunna's Wrath and the Bloodaxe — was forged by House Emberforge. Their head, the Silent Smith, has not spoken in thirty years. It is said that he is working on something — something that will change the world. What that something is, no one knows. But the Silent Smith does not forge weapons for kings. He forges weapons for the end of the world.",
-    role: "Master Smith of the Dwarves",
-    wealth: "Great (from weapon-forging)",
-    military: "Moderate",
-    magic: "Runecraft (embodied in craft)",
-    allies: ["House Ironheart", "House Vaelor"],
-    enemies: ["None officially"]
+    name: "House Emberforge", sigil: "crossed-hammers", color: "#b58a43",
+    seat: "The Great Forge, Hearthforge", region: "The Frostspine",
+    motto: "Measure twice; temper once.",
+    desc: "A craft-house of metallurgists, repairers and structural engineers. Emberforge does not claim to have made every legendary weapon; its reputation comes from reliable tools, bridge fittings, lift cables and the ability to repair equipment other houses discard. The Godseal sketches in its archive have become a political burden.",
+    role: "Master craft-house and engineering college",
+    wealth: "High (metalwork, machinery and specialist repairs)",
+    military: "Small standing guard; capable defensive workshops",
+    magic: "Inscription and prepared patterns in metal",
+    allies: ["House Ironheart", "The Adventurers' Guild"],
+    enemies: ["Counterfeiters and competitors who steal apprentices"]
   },
-
-  /* ═══════════════════════════════════════════════════════
-     HUMAN EMPIRES & HOUSES
-     ═══════════════════════════════════════════════════════ */
   {
-    name: "The Valerian Empire",
-    sigil: "eagle",
-    color: "#c9a227",
-    seat: "Valerius's Rest, the Imperial City",
-    region: "The Heartlands",
-    motto: "One Empire. One Emperor. One Destiny.",
-    desc: "The largest empire in human history, founded by Emperor Valerius the Unbroken. Its capital, Valerius's Rest, is built directly above the Abyss — the 100-floor dungeon. The current emperor, a distant descendant of Valerius, has spent forty years quietly rebuilding the empire's strength. He believes he is destined to reunite humanity. He is probably right. He is also willing to do anything — anything — to make it happen.",
-    role: "Ruling House of the Valerian Empire",
-    wealth: "Immense (from trade, taxation, and dungeon loot)",
-    military: "Massive (largest standing army in Aethermoor)",
-    magic: "Breathweaving (imperial academies)",
-    allies: ["House Stormborn", "House Vareth (nominally)"],
-    enemies: ["All rival human kingdoms", "Orc warbands", "The Demon King"],
+    name: "The Valerian Empire", sigil: "eagle", color: "#c9a227",
+    seat: "Valerius's Rest, the Imperial City", region: "The Heartlands",
+    motto: "One law, many debts.",
+    desc: "The strongest central human state, but not the ruler of all humanity. Its court governs the Heartlands and claims older border treaties as imperial inheritance. The current emperor rebuilds roads, tax offices and professional regiments while negotiating with local lords who control much of the grain and transport. Its legitimacy is powerful in the centre and disputed at the edges.",
+    role: "Imperial government of the Heartlands",
+    wealth: "Very high (grain, customs, taxation and river trade)",
+    military: "Largest coordinated field army among the southern crowns",
+    magic: "Academies, battlefield shaping and imperial wards",
+    allies: ["House Stormborn (trade)", "The Adventurers' Guild (contracts)"],
+    enemies: ["Rival crowns and raiding warbands"],
     isEmpire: true,
-    emperor: "The Emperor (name unknown to most; a closely guarded secret)"
+    emperor: "Othmar Valerian"
   },
   {
-    name: "House Vareth",
-    sigil: "swords",
-    color: "#7a1a1a",
-    seat: "The Spire of Ashes, Northern Reaches",
-    region: "The Stormlands",
-    motto: "From ash, we rise.",
-    desc: "The oldest human noble house in Aethermoor — older than the Sundering. House Vareth claims descent from the mortal general who unified the human tribes after the gods fell. They rule the Stormlands from the Spire of Ashes. Their words are ominous, and their history supports them: the House has nearly fallen three times, and risen four. Their current lord, Lord Arathor Vareth, is a cold, cruel man — a man whose secret could destroy his house, and whose ambition could change the world.",
-    role: "Warden of the North",
-    wealth: "Moderate (declining)",
-    military: "Formidable (veterans of three wars)",
-    magic: "Bloodfire (secretly)",
-    allies: ["The Valerian Empire (nominally)"],
-    enemies: ["House Stormborn", "House Drakmoor"]
+    name: "House Vareth", sigil: "swords", color: "#7a1a1a",
+    seat: "The Spire of Ashes", region: "The Stormlands",
+    motto: "Hold the pass; count the cost.",
+    desc: "A border house whose forts and winter stores keep several northern roads open. Vareth provides indispensable scouts and garrisons, then uses that service to demand taxes and broad authority. It is nominally loyal to the Empire, but its commanders will not surrender control of the passes without guarantees.",
+    role: "Warden-house of the northern approaches",
+    wealth: "Moderate (tolls, land rents and military contracts)",
+    military: "Experienced border troops and scouts",
+    magic: "Field wards and practical shaping",
+    allies: ["The Valerian Empire, by treaty"],
+    enemies: ["Raiders and smugglers; political rivals in the Stormlands"]
   },
   {
-    name: "House Stormborn",
-    sigil: "lightning",
-    color: "#6ba8c9",
-    seat: "The Stormhold, Cape of Storms",
-    region: "The Stormlands",
-    motto: "We bend the wind. We do not break.",
-    desc: "A younger house, only six hundred years old, but one of the most powerful in the south. House Stormborn rose to prominence during the War of the Broken Crown, when its founder — a bastard peasant — rallied the southern lords against the Aeldrin. Their current head, Lady Lyanna Stormborn, is called the Wolf Queen for her ferocity and her habit of keeping actual wolves as pets. She has never lost a war. She has never lost a duel. She has never lost a child — because she has never had one. And she is beginning to wonder if that is a blessing or a curse.",
-    role: "Warden of the South, Admiral of the Storm Fleet",
-    wealth: "Great (from trade and naval dominance)",
-    military: "Strong (the largest navy in Aethermoor)",
-    magic: "Breathweaving",
-    allies: ["The Valerian Empire"],
-    enemies: ["House Vareth", "House Drakmoor"]
-  },
-
-  /* ═══════════════════════════════════════════════════════
-     DRAEKON CLANS
-     ═══════════════════════════════════════════════════════ */
-  {
-    name: "House Drakmoor",
-    sigil: "dragon",
-    color: "#b52a2a",
-    seat: "Kael'Dorath, the Ashen Citadel",
-    region: "The Dragon's Reach",
-    motto: "Fire is our birthright. Ash is our duty.",
-    desc: "The ruling house of the Draekon. House Drakmoor traces its line to Aeryn the Bold herself. They rule the Dragon's Reach from Kael'Dorath, a fortress built inside a dormant volcano. The current lord, Chieftain Vexa Cinderborn, is the first female to hold the seat in three hundred years. She is also the first Draekon in seven generations to have resisted the Changing. The clan elders see this as both a blessing and a curse. Vexa sees it as neither. She sees it as survival.",
-    role: "High Chieftain of the Dragon's Reach",
-    wealth: "Great (from obsidian, gold, and dragon-glass)",
-    military: "Devastating (Draekon warriors are worth ten humans each)",
-    magic: "Bloodfire (mastered), Breathweaving",
-    allies: ["House Vareth", "House Cinderborn"],
-    enemies: ["House Vaelor", "House Shadowmere", "House Stormborn"]
+    name: "House Stormborn", sigil: "lightning", color: "#6ba8c9",
+    seat: "The Stormhold, Cape of Storms", region: "The Stormlands",
+    motto: "No harbour survives alone.",
+    desc: "A coastal house whose wealth comes from ships, pilots, salt, fisheries and repair yards. Its rivalry with Vareth concerns customs, road control and who pays to maintain the storm-damaged passes; later songs exaggerate it into an eternal blood feud. Both houses depend on the same ports when winter closes the inland routes.",
+    role: "Coastal house and naval patron",
+    wealth: "High (shipping, fisheries, salt and port fees)",
+    military: "Strong fleet and coastal militia",
+    magic: "Weather-reading and practical shaping; storms are not commanded at will",
+    allies: ["The Valerian Empire (trade)"],
+    enemies: ["Pirates, customs rivals and occasional Vareth factions"]
   },
   {
-    name: "House Cinderborn",
-    sigil: "flame",
-    color: "#b52a2a",
-    seat: "The Ember Keep, Dragon's Reach",
-    region: "The Dragon's Reach",
-    motto: "We are the fire that does not die.",
-    desc: "One of the seven Great Clans of the Draekon, and the one that has produced the most dragons. The current head, Chieftainess Vexa Cinderborn, is the mother of the Ashborn Prince — though she has publicly denied this for political reasons. House Cinderborn is the most traditional of the Draekon clans. It honors the old ways. It keeps the old oaths. It remembers the old gods. And it is beginning to wonder if the old ways are worth keeping — or if it is time for something new.",
-    role: "Clan-Chief of the Cinderborn, Keeper of the Ashen Flame",
-    wealth: "Moderate (from obsidian mining and dragon-related trade)",
-    military: "Elite (Cinderborn warriors are the best of the Draekon)",
-    magic: "Bloodfire (mastered)",
-    allies: ["House Drakmoor"],
-    enemies: ["House Vaelor", "House Shadowmere"]
-  },
-  {
-    name: "House Ashborn",
-    sigil: "skull",
-    color: "#e8c547",
-    seat: "The Unbound Path (no fixed seat)",
-    region: "Wandering (mostly Dragon's Reach)",
-    motto: "We do not kneel. We do not bow. We do not burn.",
-    desc: "A new house — or perhaps not a house at all, but a rumor. House Ashborn claims no lands, no armies, no ancient lineage. It claims only a name: the Ashborn Prince, the child of prophecy, the one who will either save Aethermoor or destroy it. Some say House Ashborn is a myth. Some say it is a conspiracy. Some say it is the future. The truth, as always, is more complicated — and more dangerous.",
-    role: "The Unbound, the Prophesied, the Ashborn Prince",
-    wealth: "None (until the prophecy is fulfilled)",
-    military: "None (until the prophecy is fulfilled)",
-    magic: "Bloodfire (without cost), Ash-Eyes (unknown)",
-    allies: ["Unknown"],
-    enemies: ["Unknown"],
-    isProphecy: true
-  },
-
-  /* ═══════════════════════════════════════════════════════
-     ORC WARBANDS
-     ═══════════════════════════════════════════════════════ */
-  {
-    name: "The Red Hand",
-    sigil: "blood",
-    color: "#7a1a1a",
-    seat: "The Red Camp, the Ashen Wastes",
-    region: "The Ashen Wastes",
-    motto: "Blood for the Blood God. Skulls for the Skull Throne.",
-    desc: "The largest orc warband in the Ashen Wastes. The Red Hand is led by Warboss Karog the Red, a massive orc who has killed three rival warbosses and absorbed their warbands into his own. He dreams of conquering the human kingdoms. He is patient — for an orc. He has been raiding the borders of the Valerian Empire for twenty years. The Emperor has noticed. The Emperor is not amused.",
-    role: "Warboss of the Red Hand",
-    wealth: "Stolen (mostly)",
-    military: "Brutal (the largest orc army in the Wastes)",
-    magic: "Bloodfire (shamanic)",
-    allies: ["None officially"],
-    enemies: ["Everyone"],
+    name: "The Red Hand", sigil: "blood", color: "#7a1a1a",
+    seat: "The Red Camp", region: "The Ashen Wastes",
+    motto: "Take the well; keep the road.",
+    desc: "A powerful orc warband that raids border caravans, demands tribute from weaker camps and sells captives through brokers. Its influence depends on holding water sources and dry-season routes. Several southern merchants publicly condemn the Red Hand while privately buying the goods its raids create.",
+    role: "Orc warband and raiding coalition",
+    wealth: "High but unstable (tribute, raids and captive trade)",
+    military: "Large mobile force; vulnerable when its water routes are cut",
+    magic: "Field rites and practical combat shaping",
+    allies: ["Temporary partners among the desert clans"],
+    enemies: ["Border garrisons, rival warbands and escaped captives"],
     isWarband: true
   },
   {
-    name: "The Iron Fangs",
-    sigil: "fang",
-    color: "#8a6f1f",
-    seat: "The Broken Spire, the Ashen Wastes",
-    region: "The Ashen Wastes",
-    motto: "We take. You give. Or you die.",
-    desc: "The most feared slaver warband in the Ashen Wastes. The Iron Fangs don't just raid — they take prisoners, and they sell them. Their slaves include humans, elves, dwarves, and Kemiiri. Their leader, a cunning orc named Grishka, is the only orc in history to negotiate with the Whisperer and survive. Some say Grishka knows things about the Whisperer that no one else knows. Some say Grishka is the Whisperer's agent among the orcs. Some say Grishka is the Whisperer. No one knows for sure.",
-    role: "Slaver Warband of the Iron Fangs",
-    wealth: "Great (from the slave trade)",
-    military: "Brutal (raiders and slavers, not soldiers)",
-    magic: "None officially (Grishka has secrets)",
-    allies: ["None officially"],
-    enemies: ["Everyone, including other orcs"],
+    name: "The Iron Fangs", sigil: "fang", color: "#8a6f1f",
+    seat: "The Broken Spire", region: "The Ashen Wastes",
+    motto: "The living are counted as cargo.",
+    desc: "A slaver warband that captures travellers and sells them through layered networks of brokers. Its leaders hide behind debt papers and distant buyers, making simple military victory insufficient: ending the trade requires finding the officials, merchants and caravan owners who finance it.",
+    role: "Orc slaver warband",
+    wealth: "High (illegal captive trade and protection payments)",
+    military: "Mobile raiders and a network of informants",
+    magic: "No unified tradition; hired specialists and local rites",
+    allies: ["Corrupt brokers and opportunistic camps"],
+    enemies: ["Escaped captives, reforming clans and anti-trafficking networks"],
     isWarband: true
   },
   {
-    name: "The Broken Skull",
-    sigil: "skull",
-    color: "#4a4438",
-    seat: "The Fallen City, the Ashen Wastes",
-    region: "The Ashen Wastes",
-    motto: "All things fall. Even gods.",
-    desc: "The smallest and strangest of the major orc warbands. The Broken Skull is not a warrior warband — it is a shamanic cult. Its members believe that Karok, the orc creator-god, is not truly dead — only sleeping. They believe that if they can gather the seven fragments of the Karoknul, their god will return and the orcs will be free. The Broken Skull does not raid for slaves or loot. It raids for knowledge, for artifacts, for fragments. It is the only orc warband that reads.",
-    role: "Shamanic Warband of the Broken Skull, Keepers of Karok's Promise",
-    wealth: "Poor (they do not value wealth)",
-    military: "Weak (few warriors, mostly shamans)",
-    magic: "Bloodfire (shamanic), forbidden rituals",
-    allies: ["None officially"],
-    enemies: ["Everyone, including other orcs"],
+    name: "The Broken Skull", sigil: "skull", color: "#4a4438",
+    seat: "The Fallen City", region: "The Ashen Wastes",
+    motto: "Every story must face the stone.",
+    desc: "A small orcish faction that preserves old songs, clan laws and contradictory accounts of Karok. Some members venerate Karok as a god; others believe the name belonged to a war-chief. Unlike the larger warbands, the Broken Skull raids for manuscripts and records as often as for livestock. Its faith does not prove the figure it venerates existed as a deity.",
+    role: "Orcish archive-cult and political faction",
+    wealth: "Low (relic trade and support from scattered camps)",
+    military: "Small, relying on scouts and terrain",
+    magic: "Ritual tradition; supernatural claims remain unverified",
+    allies: ["Some oral historians and dissident clans"],
+    enemies: ["Warbands that burn archives and rival claimants to its records"],
     isWarband: true
   },
-
-  /* ═══════════════════════════════════════════════════════
-     GUILDS & OTHER FACTIONS
-     ═══════════════════════════════════════════════════════ */
   {
-    name: "The Adventurers' Guild",
-    sigil: "swords",
-    color: "#6ba8c9",
-    seat: "The Great Hall, Valerius's Rest (headquarters)",
-    region: "Valerius's Rest (headquarters), plus 12 branches across Aethermoor",
-    motto: "We go where others fear to tread.",
-    desc: "The Adventurers' Guild is the largest and most powerful organization in Aethermoor. It is not a kingdom, not a house, not a warband. It is a guild — a community of adventurers, scholars, merchants, and monster-hunters who have banded together for mutual protection and profit. Its 12 branches span the continent. Its headquarters, in Valerius's Rest, sits beside the Abyss — the 100-floor dungeon that no one has conquered. The Guild's members are of every race. Its leaders are of every race. Its purpose is simple: explore the unknown, kill the dangerous, and sell what they find.",
-    role: "The largest adventuring guild in Aethermoor (12 branches)",
-    wealth: "Immense (from monster-loot, dungeon-loot, and mana-stone trade)",
-    military: "None officially (but its members are warriors of every level and rank)",
-    magic: "All schools (its members include mages of every tradition)",
-    allies: ["The Valerian Empire (trade)", "House Vaelor (trade)", "House Ironheart (trade)"],
-    enemies: ["None officially (but it has many rivals and enemies)"],
+    name: "The Adventurers' Guild", sigil: "swords", color: "#6ba8c9",
+    seat: "The Great Hall, Black Basin", region: "Twelve branches across Aethermoor",
+    motto: "Return with proof.",
+    desc: "A multi-peoples institution that registers expeditions, tracks dangerous routes, pays for rescues and records what its members actually witnessed. Its twelve-seat council balances regions and professions but remains vulnerable to wealthy sponsors. The largest hall lies by the Abyss, where supplies, surveyors and healers are always needed.",
+    role: "Continental expedition and rescue guild",
+    wealth: "High (membership, contracts, salvage and surveying)",
+    military: "No standing army; members are organised by mission",
+    magic: "All learned practices; no guild-exclusive school",
+    allies: ["Local governments under contract", "House Emberforge"],
+    enemies: ["Counterfeiters, predatory sponsors and dangerous unregistered expeditions"],
     isGuild: true,
-    headquarters: "Valerius's Rest (beside the Abyss)",
+    headquarters: "The Great Hall, Black Basin",
     branches: 12
   },
   {
-    name: "The Iron Pact",
-    sigil: "crossed-hammers",
-    color: "#8a6f1f",
-    seat: "The Iron Hold, Hearthforge (dwarven district)",
-    region: "The Frostspine (dwarven districts)",
-    motto: "By iron and oath, we stand.",
-    desc: "The largest guild in the Frostspine, and the only one that focuses exclusively on dwarven craft and trade. The Iron Pact is a guild of smiths, engineers, and miners. Its members are dwarves (mostly), but a handful of humans and elves have earned their way in over the centuries. The Pact controls the weapon-forging industry of Aethermoor. Every weapon of legend in history — including the Bloodaxe and Grunna's Wrath — was either forged by the Pact or forged by a smith who learned their craft from the Pact.",
-    role: "The largest craft-guild in Aethermoor (dwarven)",
-    wealth: "Great (from weapon-forging and rune-crafting)",
-    military: "Moderate (its members are craftsmen, not soldiers — but some of them are both)",
-    magic: "Runecraft (mastered), Earth Magic",
-    allies: ["House Ironheart", "House Emberforge", "The Adventurers' Guild (trade)"],
-    enemies: ["None officially"],
+    name: "The Iron Pact", sigil: "crossed-hammers", color: "#8a6f1f",
+    seat: "The Iron Hold, Hearthforge", region: "The Frostspine",
+    motto: "A tool must outlast its maker.",
+    desc: "A federation of miners, smiths, lift engineers and repair crews. Unlike a noble house, membership is earned through apprenticeship and certification. The Pact maintains some of the safest deep roads and most reliable expedition equipment; it does not control all dwarven craftsmanship or every forge.",
+    role: "Inter-hold craft and engineering federation",
+    wealth: "High (tools, contracts and maintenance)",
+    military: "Limited guards and specialists trained for rescue",
+    magic: "Inscription embedded in tools and mechanisms",
+    allies: ["House Ironheart", "The Adventurers' Guild"],
+    enemies: ["Unsafe operators, counterfeit equipment sellers and contract breakers"],
     isGuild: true,
     branches: 3
-  },
-  {
-    name: "The Silent Choir",
-    sigil: "star",
-    color: "#e8c547",
-    seat: "The Fading Garden, the Silver Wood",
-    region: "The Fading Garden (and scattered throughout Aethermoor)",
-    motto: "We remember what the world has forgotten.",
-    desc: "The Silent Choir is not a guild, nor a house, nor a warband. It is a mystery. Its members are the guardians of the Fading Garden — the sacred grove where the goddess Aelith is said to have planted the first seed of the world. The Silent Choir has not spoken in centuries. Its members communicate only through written notes and gestures. Its purpose, if it has one, is unknown. Some say the Silent Choir is a cult. Some say it is a secret society. Some say it is the oldest organization in Aethermoor — older than the Aeldrin, older than the Sundering, older than the gods. Some say it does not exist at all.",
-    role: "The secretive guardians of the Fading Garden",
-    wealth: "Unknown (likely vast, but unmeasured)",
-    military: "None (but its members are not to be trifled with)",
-    magic: "Runecraft (rumored), Song of Stars (rumored)",
-    allies: ["House Vaelor (nominally)"],
-    enemies: ["Unknown"],
-    isGuild: true
   }
 ];
 
-/* ============================================================
-   5. REGIONS OF THE WORLD — FULL PROFILES
-   (21 regions, including Xarnath, Black Chasm, Godseal, Mistlands)
-   ============================================================ */
 const REGIONS = [
-  /* ═══════════════════════════════════════════════════════
-     THE DEMON CONTINENT: XARNATH
-     ═══════════════════════════════════════════════════════ */
   {
-    id: "xarnath",
-    name: "Xarnath, the Demon Continent",
-    type: "Basalt highlands, salt flats, geothermal basins",
-    color: "#3d0a0a",
-    mapX: 500,
-    mapY: 40,
-    desc: "Xarnath lies north of the Black Chasm, beyond two continent-length mountain walls whose upper ridges remain snowbound even above the ash storms. The land is severe rather than empty: basalt plateaus, salt flats, deep aquifers, warm ravines, and fungus fields support fortified cities. Varkhast controls the northern mineral road; Cinder Wells survives around one of the few reliable deep-water basins; the Blackglass Exchange hosts guarded bargains between rival demon houses. The Bone Throne is the Demon King's capital, but his control depends on treaties, hostages, and a careful balance of power. Xarnath is dangerous to outsiders because its geography and politics are hostile—not because nothing lives there.",
-    control: "The Demon King (absolute rule)",
-    notable: ["The Bone Throne", "The Storm-Sky", "The Black Wastes", "The Forgotten Depths", "The Demon Council"],
-    regionType: "demon",
-    dangerLevel: "Extinction",
-    travelAdvisory: "NO ENTRY. All travel forbidden by the Valerian Empire, the Adventurers' Guild, and every other major power."
-  },
-
-  /* ═══════════════════════════════════════════════════════
-     THE DIVINE DIVIDE (GORGE + BARRIER)
-     ═══════════════════════════════════════════════════════ */
-  {
-    id: "black-chasm",
-    name: "The Black Chasm",
-    type: "Great gorge (divine)",
-    color: "#1a0a0a",
-    mapX: 330,
-    mapY: 130,
-    desc: "The Black Chasm is a continent-scale rift left by the Sundering. Its depth is hidden by a permanent black haze, and the cliffs are ringed by twin ranges of jagged mountains so high and unstable that ordinary roads cannot cross them. Avalanches, mana storms, and broken stone make attempts to go around the gorge almost as lethal as crossing it. The Godseal is the only maintained passage. No bridge has survived elsewhere, and no verified expedition has crossed the mountain wall. Stories of things moving in the depth are numerous; proof is not.",
-    control: "None (divine-wrought)",
-    notable: ["The Godseal", "The Depths", "The Watching Stones", "The Fallen Bridge", "The Demon's Side"],
-    regionType: "divine",
-    dangerLevel: "Extreme",
-    travelAdvisory: "The Chasm itself is impassable. Only the Godseal is safe — and even that is not entirely safe."
+    id: "xarnath", name: "Xarnath, the Northern Continent", type: "Basalt highlands, salt flats and geothermal basins",
+    color: "#3d0a0a", mapX: 500, mapY: 40,
+    desc: "Xarnath stretches beyond the northern edge of most southern maps. Demons dominate its courts, but it is not inhabited by demons alone: other peoples, subject settlements, dangerous fauna and independent enclaves exist across its vast distances. Basalt cities cluster around deep wells and geothermal valleys. The Demon King claims absolute rule, yet local courts bargain, resist and wait for weakness.",
+    control: "The Demon King and rival northern courts", notable: ["The Bone Throne", "The Basalt Wells", "The Northern Courts", "Unmapped Salt Roads"],
+    regionType: "demon", dangerLevel: "High; local conditions vary",
+    travelAdvisory: "Entry requires a negotiated passage and reliable local guides. Southern maps do not show the full extent of the continent."
   },
   {
-    id: "godseal",
-    name: "The Godseal",
-    type: "Divine barrier (the only crossing)",
-    color: "#e8c547",
-    mapX: 500,
-    mapY: 131,
-    desc: "The Godseal is the sole maintained crossing between Aethermoor and Xarnath. It is not an ordinary dam or a bridge: rune-carved pylons and a sealed span anchor a wall of divine force across the deepest part of the Black Chasm. No surviving record names its builders or fully explains its mechanism. Since the Sundering, 402 years ago, it has prevented any organized army from crossing. The Watching Order guards the structure and maintains three hundred sworn seats, recruiting across the known peoples. The recent hum is a measurable change in the wards, but its cause is still unknown; the Order has found no proof that the seal is failing.",
-    control: "The Watching Order (multi-racial)",
-    notable: ["The Barrier", "The Rune-Carved Gate", "The Watching Order's Citadel", "The Pilgrims' Path", "The Demon's Side"],
-    regionType: "divine",
-    dangerLevel: "Extreme",
-    travelAdvisory: "Entry to the Godseal itself is forbidden to all but the Watching Order. Pilgrims may approach the Gate from the Aethermoor side. NO ONE may cross."
-  },
-
-  /* ═══════════════════════════════════════════════════════
-     THE MAIN CONTINENT: NORTHERN REGIONS
-     ═══════════════════════════════════════════════════════ */
-  {
-    id: "frostspine",
-    name: "The Frostspine",
-    type: "Mountain range",
-    color: "#6ba8c9",
-    mapX: 220,
-    mapY: 260,
-    desc: "A mountain range so tall that its peaks are permanently lost in cloud. The dwarves live here, in cliff-cities carved into the rock. Beneath the mountains, something sleeps — something the dwarves call Vorthal, and something the other races call superstition. The Frostspine is the coldest place in Aethermoor. Blizzards here can kill an unprepared traveler in minutes. The dwarves have learned to survive — and to thrive. The Frostspine is not just a mountain range. It is a civilization — an entire world beneath the world, carved into the stone by ten thousand years of dwarven craft.",
-    control: "House Ironheart (Dwarves)",
-    notable: ["Hearthforge", "The Sleeping Throne", "The Ice Caverns", "The Deep Forge", "The Eye of Vorthal"],
-    regionType: "dwarven",
-    dangerLevel: "High",
-    travelAdvisory: "Dwarven escorts are required beyond the outer peaks. Deep caverns are closed to outsiders."
+    id: "black-chasm", name: "The Black Chasm", type: "Immense gorge and broken escarpments",
+    color: "#1a0a0a", mapX: 330, mapY: 130,
+    desc: "A vast gorge and a maze of steep ridges separate Aethermoor from Xarnath. The deepest reaches are poorly surveyed, and landslides can close a route overnight. The difficulty is not merely crossing a line on a map: an army cannot spread out, turn its flanks or keep long supply trains safe in the narrow approaches. The Godseal is the only maintained crossing, not the only physically imaginable path.",
+    control: "No single state; approaches are watched by several powers", notable: ["The Upper Ledges", "The Broken Ridges", "The Old Survey Posts"],
+    regionType: "geographic", dangerLevel: "Extreme",
+    travelAdvisory: "Do not use an old pass without current reports. A breach in the Godseal would not make the gorge an easy invasion road."
   },
   {
-    id: "silver-wood",
-    name: "The Silver Wood",
-    type: "Ancient forest",
-    color: "#a8d8e8",
-    mapX: 430,
-    mapY: 260,
-    desc: "A forest of silver-barked trees that have never known fire. It is home to the Aeldrin, and to creatures older than the gods. Time moves differently here — a day in the Silver Wood can be a year outside. The trees themselves are said to hum with ancient magic, and their leaves never fall. The forest's heart is the Fading Garden — the most sacred place in Aethermoor. The Silver Wood is not just a forest. It is a memory — a memory of what the world was like before the Sundering, before the gods died, before everything went wrong. The Aeldrin tend this memory. They do not let it fade.",
-    control: "House Vaelor (Aeldrin)",
-    notable: ["Aelthalas", "The Crystal Throne", "The Fading Garden", "The Silent Choir", "The First Tree"],
-    regionType: "elven",
-    dangerLevel: "Moderate",
-    travelAdvisory: "Entry is permitted by permission of House Vaelor. Do not stray from the paths. Time does not work here as it does elsewhere."
+    id: "godseal", name: "The Godseal", type: "Ancient dam, causeway and guarded crossing",
+    color: "#e8c547", mapX: 500, mapY: 131,
+    desc: "The Godseal is the name used for a colossal dam-and-causeway complex spanning the most navigable part of the Chasm. Its name comes from old religious stories; no physical evidence proves that a god built it. The structure controls water, supports a narrow crossing and contains chambers whose original purpose is unclear. A multi-peoples Watch maintains the route. Even if the dam is breached, falling stone, currents and cramped approaches would make a military crossing perilous.",
+    control: "The Watch maintains passage; neighbouring states contest influence", notable: ["The Upper Gate", "The Sealed Basin", "The Watch Archives", "The Exposed Mark"],
+    regionType: "constructed mystery", dangerLevel: "Extreme",
+    travelAdvisory: "Passage is controlled and inspected. Pilgrims may visit designated areas; no authority can certify the structure's original purpose."
   },
   {
-    id: "ashen-wastes",
-    name: "The Ashen Wastes",
-    type: "Desolate plain",
-    color: "#7a6f5e",
-    mapX: 600,
-    mapY: 320,
-    desc: "The scar left by the Sundering. Once the Sunlit Plains, the breadbasket of Aethermoor, now a wasteland of grey dust and shattered stone. Nothing grows here. Nothing lives here except the orcs, who have made it their home and their fortress. The wastes are dotted with the ruins of old kingdoms — broken towers, shattered temples, and the bones of things that should not have existed. The orcs do not build cities. They build camps. They do not farm. They raid. They do not trade. They take. And yet — somehow, impossibly — they have built a civilization here. A brutal civilization. A cruel civilization. But a civilization nonetheless.",
-    control: "Orc warbands (Red Hand, Iron Fangs, Broken Skull, and dozens of smaller bands)",
-    notable: ["The Red Camp", "The Cracks", "The Bone Fields", "The Iron Fangs' Hold", "The Broken Spire"],
-    regionType: "orcish",
-    dangerLevel: "Extreme",
-    travelAdvisory: "NO ENTRY. The Ashen Wastes are orc territory. Anyone entering the Wastes without a warband escort is considered prey."
-  },
-
-  /* ═══════════════════════════════════════════════════════
-     THE MAIN CONTINENT: CENTRAL REGIONS
-     ═══════════════════════════════════════════════════════ */
-  {
-    id: "heartlands",
-    name: "The Heartlands",
-    type: "Imperial heartland",
-    color: "#e8c547",
-    mapX: 400,
-    mapY: 420,
-    desc: "The heart of the Valerian Empire — the largest empire in human history. The Heartlands are the most fertile, most populous, and most heavily fortified region in Aethermoor. At its center sits Valerius's Rest, the Imperial City — and directly beneath it, the Abyss, the 100-floor dungeon that no one has ever conquered. The Heartlands are the center of human civilization. They are also the center of human ambition. Every noble house, every merchant guild, every adventurer's guild, every secret society — all of them have their eyes on the Heartlands. All of them have their plans.",
-    control: "The Valerian Empire",
-    notable: ["Valerius's Rest", "The Abyss", "The Imperial Palace", "The Grand Academy", "The Guild Quarter"],
-    regionType: "human",
-    dangerLevel: "Low (within the cities), High (in the Abyss)",
-    travelAdvisory: "Entry is permitted. The Abyss requires Guild-issued permits. The Imperial Palace is closed to outsiders."
+    id: "frostspine", name: "The Frostspine", type: "Mountain range and dwarf holds",
+    color: "#6ba8c9", mapX: 220, mapY: 260,
+    desc: "A long wall of high peaks, glaciers and engineered tunnels. Dwarven holds control many mines, reservoirs and safe roads, though independent settlements occupy the outer slopes. Winter closes minor passes, while disputes over runoff and ore rights are settled by charters rather than one monarch. The oldest technical drawings here include joints resembling part of the Godseal.",
+    control: "Dwarven councils, including House Ironheart", notable: ["Hearthforge", "The Deep Halls", "The Ice Pass", "The Old Liftworks"],
+    regionType: "dwarven", dangerLevel: "High",
+    travelAdvisory: "Use a registered guide beyond the outer peaks. Deep tunnels may be closed for maintenance or council dispute."
   },
   {
-    id: "stormlands",
-    name: "The Stormlands",
-    type: "Coastal region",
-    color: "#6ba8c9",
-    mapX: 200,
-    mapY: 460,
-    desc: "A region of cliffs, storms, and salt. The Stormlands are the traditional heart of human civilization in Aethermoor — though its two ruling houses, Vareth and Stormborn, have been feuding for six hundred years. Storms roll in from the Sea of Sorrow almost daily. The people have learned to build for wind. They have also learned to fight for what they have. The Stormlands produce the best sailors, the best naval officers, and the best storm-mages in Aethermoor. They also produce the best grudges. The feud between Vareth and Stormborn is not just politics. It is personal. It is generational. It is the reason the Stormlands have never been conquered — because the two houses would rather fight each other than fight a foreign enemy. And yet — somehow — the Stormlands have held together for six hundred years. Somehow.",
-    control: "House Stormborn (south), House Vareth (north)",
-    notable: ["The Spire of Ashes", "The Stormhold", "The Sea of Sorrow", "The Cape of Storms", "The Wind Temples"],
-    regionType: "human",
-    dangerLevel: "Moderate",
-    travelAdvisory: "Entry is permitted. Avoid the borders between Vareth and Stormborn lands during the raiding season."
+    id: "silver-wood", name: "The Silver Wood", type: "Ancient forest and canopy settlements",
+    color: "#a8d8e8", mapX: 430, mapY: 260,
+    desc: "A broad woodland of enormous trees, living bridges and settlements built high among the branches. Elven courts maintain public roads and protected groves, while independent villages keep their own customs. The forest's reputation for magic comes from centuries of careful land stewardship and specialist mana practice; paths and seasons still obey natural limits.",
+    control: "Several elven courts; House Vaelor is influential but not sovereign over all elves", notable: ["Aelthalas", "The Canopy Hall", "The Fading Garden", "The Treaty Roads"],
+    regionType: "elven", dangerLevel: "Moderate",
+    travelAdvisory: "Stay on marked paths in protected groves. Visitors are welcome where local councils permit passage."
   },
   {
-    id: "shadowmere",
-    name: "The Shadowmere Depths",
-    type: "Underground realm",
-    color: "#4a1f6b",
-    mapX: 480,
-    mapY: 500,
-    desc: "A vast network of caverns beneath Aethermoor, home to the Sylvaar. No natural light reaches here. The Sylvaar have built cities of obsidian and bone, lit by phosphorescent fungi and by magic. The Depths are said to extend under the entire continent — and perhaps beyond. Some tunnels lead to places that should not exist. Some tunnels lead to places that should not be remembered. The Sylvaar know all of this. They have known it for ten thousand years. They have never told anyone. They never will.",
-    control: "House Shadowmere (Sylvaar)",
-    notable: ["Ondrath", "The Throne of Bone", "The Silent Hall", "The Long Shadow Paths", "The Obsidian Cathedral"],
-    regionType: "sylvaar",
-    dangerLevel: "Extreme",
-    travelAdvisory: "NO ENTRY. The Depths are Sylvaar territory. Anyone entering without an invitation is considered an enemy."
+    id: "ashen-wastes", name: "The Ashen Wastes", type: "Arid plain, dunes and dry riverbeds",
+    color: "#7a6f5e", mapX: 600, mapY: 320,
+    desc: "A dry and frequently wind-scoured region where access to wells matters more than formal borders. Orc warbands dominate many caravan routes through tribute, raids and captive-taking. Kemiiri caravans, free camps and smaller settlements survive by negotiation, evasion or alliance. The Wastes are not empty: abandoned wells and old roads record cycles of settlement and collapse.",
+    control: "Rival orc warbands and scattered independent camps", notable: ["The Red Camp", "The Broken Spire", "The Fallen City", "The Glass Wells"],
+    regionType: "orcish and mixed", dangerLevel: "High to extreme",
+    travelAdvisory: "Travel with a current water-route report. An escort can protect a caravan, but may also demand tribute or conceal its own interests."
   },
   {
-    id: "broken-steppe",
-    name: "The Broken Steppe",
-    type: "Grassland",
-    color: "#8a6f1f",
-    mapX: 460,
-    mapY: 560,
-    desc: "A vast grassland in the south-center of Aethermoor, home to nomadic tribes and the ruins of forgotten civilizations. The Steppe is technically neutral ground — no kingdom claims it — but in practice, it is controlled by whoever is strongest at the moment. Currently, that is a coalition of Kemiiri packs. The Steppe is dotted with standing stones — ancient markers from a civilization that predates the gods. Their purpose is unknown. Their power is undeniable. Some say the standing stones are the key to the Abyss. Some say the standing stones are the key to the Godseal. Some say the standing stones are the key to everything.",
-    control: "Kemiiri coalition (loose)",
-    notable: ["The Standing Stones", "The Wandering Court", "The Grey Pack's Den", "The Silent Monoliths", "The Nomad's Rest"],
-    regionType: "neutral",
-    dangerLevel: "Moderate",
-    travelAdvisory: "Entry is permitted. Travel with a local guide. The standing stones are sacred — do not touch them."
-  },
-
-  /* ═══════════════════════════════════════════════════════
-     THE MAIN CONTINENT: SOUTHERN REGIONS
-     ═══════════════════════════════════════════════════════ */
-  {
-    id: "sunlit-coast",
-    name: "The Sunlit Coast",
-    type: "Coastal region",
-    color: "#e8c547",
-    mapX: 340,
-    mapY: 600,
-    desc: "The southern coast of Aethermoor, warm and fertile. The Sunlit Coast is the only part of the continent that was not scarred by the Sundering — a fact that has made it both a refuge and a target. The cities here are wealthy, cultured, and constantly at war with each other. The Sunlit Coast is home to the Sun Temple — the last temple to a living god. Or, at least, a god that was living. The priests are no longer sure. The Sun Temple has not spoken in centuries. Its doors are open. Its fires are lit. Its priests are silent. No one knows why. No one wants to ask.",
-    control: "Various city-states (the Merchant Princes)",
-    notable: ["The Golden Harbor", "The Sun Temple", "The Merchant Princes", "The Coral Gardens", "The Silent Scholar"],
-    regionType: "human",
-    dangerLevel: "Low",
-    travelAdvisory: "Entry is permitted. The Sun Temple is open to all. The Silent Scholar accepts no visitors."
+    id: "heartlands", name: "The Heartlands", type: "Fertile river basin and imperial provinces",
+    color: "#e8c547", mapX: 400, mapY: 420,
+    desc: "The richest grain basin of the southern continent and the administrative core of the Valerian Empire. The imperial city is a centre of taxation, law, academies and rivalry between nobles. The Abyss lies in the separate Black Basin, several days away; its wealth influences the Empire without sitting beneath its palace. Outside the main roads, local lords and merchant syndicates often exercise more power than distant officials.",
+    control: "The Valerian Empire and provincial authorities", notable: ["Valerius's Rest", "The Imperial Archive", "The Grand Academy", "The Grain Roads"],
+    regionType: "human", dangerLevel: "Low in guarded towns; variable on roads",
+    travelAdvisory: "Entry is generally permitted. Inspect tolls and provincial warrants; imperial law is not enforced evenly."
   },
   {
-    id: "dragons-reach",
-    name: "The Dragon's Reach",
-    type: "Volcanic peninsula",
-    color: "#b52a2a",
-    mapX: 750,
-    mapY: 560,
-    desc: "A peninsula of black rock and active volcanoes, home to the Draekon. The air is thick with ash and the smell of sulfur. The ground is warm to the touch. Dragons — real dragons, transformed from Draekon — have been spotted here for the first time in three hundred years. The Dragon's Reach is not just a place. It is a transformation. Every Draekon who undergoes the Changing walks into the Dragon's Reach as one thing and walks out as another. Some walk out. Some do not. The Dragon's Reach does not care. It is fire. It is ash. It is the oldest magic in the world.",
-    control: "House Drakmoor (Draekon)",
-    notable: ["Kael'Dorath", "The Ashen Citadel", "The Fire-Lake", "The Ember Keep", "The Changing Pools"],
-    regionType: "draekon",
-    dangerLevel: "Extreme",
-    travelAdvisory: "Entry is permitted by permission of House Drakmoor. Do not approach the Changing Pools. Do not approach the Fire-Lake. Do not approach the dragons."
-  },
-
-  /* ═══════════════════════════════════════════════════════
-     MYSTICAL & ANOMALOUS REGIONS
-     ═══════════════════════════════════════════════════════ */
-  {
-    id: "godfall",
-    name: "The Godfall",
-    type: "Ruined battlefield",
-    color: "#c9a227",
-    mapX: 300,
-    mapY: 340,
-    desc: "The place where the war of the gods ended. A plain of glass and bone, still hot to the touch four centuries after the Sundering. The corpses of three gods lie here, unburied, unrotted. No one goes to the Godfall. Those who do rarely return, and when they do, they are... changed. The glass sea is said to reflect not what is, but what should have been. Looking into it is said to drive men mad. Or to grant them visions of the truth. Some say the Godfall is the key to the Sundering. Some say the Godfall is the key to the gods themselves. Some say the Godfall is the key to everything — and that is why no one goes there.",
-    control: "None",
-    notable: ["The Glass Sea", "The Fallen Three", "The Altar of Ashes", "The Godstone", "The Mad Pilgrims"],
-    regionType: "mystical",
-    dangerLevel: "Extreme (beyond measurement)",
-    travelAdvisory: "NO ENTRY. The Godfall is forbidden by every major power. Anyone entering the Godfall is beyond rescue. Beyond help. Beyond hope."
+    id: "stormlands", name: "The Stormlands", type: "Cliff coast and wind-scoured farmland",
+    color: "#6ba8c9", mapX: 200, mapY: 460,
+    desc: "A rugged coastline where ports survive through seawalls, pilot guilds and carefully maintained roads. Houses Vareth and Stormborn compete over customs, garrisons and the cost of keeping inland passes open. Their rivalry has flared into small wars, but neither can afford to lose the shared harbours on which both depend.",
+    control: "House Stormborn along the coast; House Vareth near the northern roads", notable: ["The Spire of Ashes", "The Stormhold", "The Cape of Storms", "The Salt Road"],
+    regionType: "human", dangerLevel: "Moderate",
+    travelAdvisory: "Check the weather and local toll notices. During a succession dispute, roads may be closed without warning."
   },
   {
-    id: "sunken-kingdoms",
-    name: "The Sunken Kingdoms",
-    type: "Underwater ruins",
-    color: "#2a1a4a",
-    mapX: 550,
-    mapY: 650,
-    desc: "The ruins of five kingdoms that sank beneath the Sea of Sorrow during the Sundering. Their towers still stand, visible through the waves on a clear day. The Sunken Kingdoms are home to things that were once human and no longer are. The Drowned — as they are called — are not hostile by nature. They are simply hungry. And they remember, in some twisted way, the lives they once lived. Treasure hunters dive here. Few return. Those who do speak of the Drowned — of cities beneath the waves, of temples to forgotten gods, of treasures beyond imagining. They also speak of the Deep Roads — tunnels beneath the sea that lead to places no human has ever seen. Or ever should.",
-    control: "None (mostly)",
-    notable: ["The Drowned Throne", "The Coral Cathedral", "The Deep Roads", "The Pearl Fissure", "The Silent Reef"],
-    regionType: "mystical",
-    dangerLevel: "Extreme",
-    travelAdvisory: "Diving is permitted for experienced treasure-hunters. The Deep Roads are forbidden. Those who enter do not return."
+    id: "shadowmere", name: "The Shadowmere Depths", type: "Subterranean elven settlements and old tunnels",
+    color: "#4a1f6b", mapX: 480, mapY: 500,
+    desc: "A network of caverns and built roads beneath the central forests. Several elven communities, often called Sylvaar in older texts, maintain settlements lit by phosphorescent fungi and carefully placed lamps. They are not a separate species, and no one court knows every passage. Some tunnels are natural; others appear to be engineered for a purpose no current inhabitant can explain.",
+    control: "Local subterranean councils; House Shadowmere holds key passages", notable: ["Ondrath", "The Lower Hall", "The Long Shadow Paths", "The Old Vent Shafts"],
+    regionType: "elven", dangerLevel: "High",
+    travelAdvisory: "Enter with local permission. Unmapped tunnels may have bad air, unstable ceilings or disputed ownership."
   },
   {
-    id: "dead-marches",
-    name: "The Dead Marches",
-    type: "Necropolis",
-    color: "#4a1f6b",
-    mapX: 700,
-    mapY: 380,
-      desc: "A region in the east where the dead do not stay dead. The Dead Marches are believed to be the result of a failed resurrection ritual during the Sundering—a ritual that killed three thousand people and trapped their souls in a loop of dying and rising. The Sylvaar maintain a research station here; the dwarves maintain a wall. Neither group speaks to the other, but both have learned that the Marches are not to be trifled with. The Screaming Dead cannot be killed, only temporarily dispersed. They remember little of their former lives. They have been screaming for four centuries, according to the oldest surviving watch records; older claims are legend.",
-    control: "Contested (Sylvaar research station, dwarven wall)",
-    notable: ["The Wall of Bones", "The Screaming Fields", "The Sylvaar Station", "The Charnel Pits", "The Silent Wall"],
-    regionType: "necropolis",
-    dangerLevel: "Extreme",
-    travelAdvisory: "NO ENTRY. The Dead Marches are forbidden by every major power. The Wall of Bones is the only safe place — and even that is not entirely safe."
+    id: "broken-steppe", name: "The Broken Steppe", type: "Grassland, caravan routes and old standing stones",
+    color: "#8a6f1f", mapX: 460, mapY: 560,
+    desc: "A wide grassland crossed by seasonal herds and routes linking the interior to desert markets. Kemiiri family caravans, human herders, independent orc camps and small towns share the region uneasily. Standing stones mark old boundaries and water points. Some are older than the oldest surviving maps; their purpose and any claimed power remain disputed.",
+    control: "No unified ruler; local caravan leagues and camp councils", notable: ["The Standing Stones", "The Wandering Court", "The Grey Pack's Den", "The Nomad's Rest"],
+    regionType: "mixed", dangerLevel: "Moderate",
+    travelAdvisory: "Hire a guide who knows seasonal water. Do not assume a neutral route is unclaimed or safe."
   },
   {
-    id: "whispering-forest",
-    name: "The Whispering Forest",
-    type: "Haunted forest",
-    color: "#2a1a4a",
-    mapX: 120,
-    mapY: 360,
-    desc: "A forest in the west where the trees remember everything that has ever happened beneath them — and sometimes speak. The Whispering Forest is avoided by all sane people. It is frequented by the insane, the desperate, and the Kemiiri. It is said that if you listen long enough, the trees will tell you your own future. It is also said that most people who hear it go mad. Both rumors are true. The forest is not hostile. It is not evil. It is simply old — older than the gods, older than the Sundering, older than the world. And it remembers. And it speaks. And sometimes — just sometimes — it tells the truth.",
-    control: "None",
-    notable: ["The Speaking Grove", "The Memory Pools", "The Kemiiri Packs", "The First Tree's Root", "The Silent Choir's Retreat"],
-    regionType: "mystical",
-    dangerLevel: "Moderate to Extreme (depends on the forest's mood)",
-    travelAdvisory: "Entry is permitted. Do not listen to the trees for more than a few moments at a time. Do not eat the fruit. Do not drink the water. Do not sleep in the forest."
+    id: "sunlit-coast", name: "The Sunlit Coast", type: "Warm coast, ports and rival city-states",
+    color: "#e8c547", mapX: 340, mapY: 600,
+    desc: "A wealthy southern shore of fisheries, gardens, shipyards and competing merchant cities. The coast escaped some of the most visible fractures of the Sundering, but this has made its ports a refuge and a prize. Local temples still burn lamps to old powers; their rituals are part of civic life, not evidence that a living god answers them.",
+    control: "Independent city-states and merchant councils", notable: ["The Golden Harbor", "The Coral Gardens", "The Salt Exchange", "The Old Beacon"],
+    regionType: "human and coastal", dangerLevel: "Low in ports; moderate offshore",
+    travelAdvisory: "Port entry is usually open to licensed merchants. Customs law differs from city to city."
   },
   {
-    id: "veil",
-    name: "The Veil",
-    type: "Magical anomaly",
-    color: "#6d4fa8",
-    mapX: 850,
-    mapY: 260,
-    desc: "A region in the northeast where reality is... thin. The Veil is a place where the boundaries between worlds are weak, and things from other realities can slip through. The Aeldrin maintain a fortress here — the Veilwatch — to monitor and contain the incursions. It is the most dangerous posting in Aethermoor. The soldiers stationed here serve for five years. Most do not survive. Those who do are never quite the same. The Veil is not a place. It is a tear. It is a wound in reality. It is a door that should never have been opened. And it is opening wider.",
-    control: "House Vaelor (garrison)",
-    notable: ["The Veilwatch", "The Rift", "The Watching Stones", "The Threshold", "The Silent Watch"],
-    regionType: "anomaly",
-    dangerLevel: "Extreme",
-    travelAdvisory: "NO ENTRY. The Veil is forbidden by every major power. The Veilwatch does not accept visitors. The Rift does not accept anything — it only takes."
-  },
-
-  /* ═══════════════════════════════════════════════════════
-     THE MISTLANDS (Unknown Island)
-     ═══════════════════════════════════════════════════════ */
-  {
-    id: "mistlands",
-    name: "The Mistlands",
-    type: "Unknown island",
-    color: "#4a4438",
-    mapX: 80,
-    mapY: 560,
-    desc: "Far to the west, beyond the Sea of Sorrow, lies an island wrapped in perpetual mist. Every ship sent to explore it has vanished. Every adventurer who has gone has not returned. The Mistlands are not on any official map — but they are on every sailor's chart, marked with a single word: 'Don't.' Some say the Mistlands are a myth. Some say they are a graveyard. Some say they are the original home of the Kemiiri — the place where the sorcerer-king first created them. Some say they are the true birthplace of the gods. Some say the mist is not a cloud — it is a living thing. No one knows. No one will know. The mist keeps its secrets.",
-    control: "Unknown",
-    notable: ["The Mist", "The Unseen Shore", "The Lost Expeditions", "The Silent Ships", "The Watchers in the Mist"],
-    regionType: "unknown",
-    dangerLevel: "Unknown (presumed extinction-level)",
-    travelAdvisory: "NO ENTRY. The Mistlands are forbidden by every major power. Every expedition has failed. Every expedition has vanished. The mist does not give back what it takes."
-  },
-
-  /* ═══════════════════════════════════════════════════════
-     SECONDARY REGIONS (for map detail)
-     ═══════════════════════════════════════════════════════ */
-  {
-    id: "iron-coast",
-    name: "The Iron Coast",
-    type: "Coastal region (dwarven)",
-    color: "#8a6f1f",
-    mapX: 180,
-    mapY: 580,
-    desc: "A rugged stretch of coastline along the western edge of the Frostspine, controlled by the dwarves of House Ironheart. The Iron Coast is the only dwarven port in Aethermoor — the only place where dwarven ships set sail. It is not a large port. It is not a beautiful port. It is a port of iron and stone, where the waves crash against cliffs carved into dwarven shipyards. The dwarves do not build ships for trade. They build ships for war. And they are very, very good at it.",
-    control: "House Ironheart (Dwarves)",
-    notable: ["The Iron Port", "The Cliff-Docks", "The Forge-Ships", "The Deep-Water Anchorage", "The Watchtowers"],
-    regionType: "dwarven",
-    dangerLevel: "Low",
-    travelAdvisory: "Entry is permitted for trade. Dwarven shipyards are closed to outsiders."
+    id: "dragons-reach", name: "The Dragon's Reach", type: "Volcanic peninsula and obsidian uplands",
+    color: "#b52a2a", mapX: 750, mapY: 560,
+    desc: "A peninsula of black rock, active vents and ash-dark beaches. Obsidian, heat-resistant stone and mineral glass support a hard-working coastal economy, while sudden gas pockets and shifting lava tubes make travel dangerous. Stories of enormous dragons survive in the region, but no verified recent sighting establishes a living ancient dragon or a people who transform into one.",
+    control: "Local ash-forge settlements and competing coastal lords", notable: ["The Ashen Citadel", "The Fire-Lake", "The Ember Keep", "The Obsidian Shore"],
+    regionType: "volcanic", dangerLevel: "High to extreme",
+    travelAdvisory: "Avoid vent fields after rain and never enter a lava tube without a qualified guide."
   },
   {
-    id: "fading-garden",
-    name: "The Fading Garden",
-    type: "Sacred grove (Aeldrin)",
-    color: "#c8e8a8",
-    mapX: 380,
-    mapY: 220,
-      desc: "A garden in the heart of the Silver Wood where, according to Aeldrin legend, the goddess Aelith planted the first seed of the world. Since the Sundering 402 years ago, the garden has slowly dimmed. The Aeldrin tend it obsessively, but no known rite has stopped the decay. It remains the most sacred place in Aethermoor and a visible reminder that even the oldest magic has limits. The Silent Choir, its guardians, rarely speak in public; whether their silence is ritual, grief, or a response to the fading garden is not known.",
-    control: "House Vaelor / The Silent Choir",
-    notable: ["The First Tree", "The Dying Fountain", "The Silent Choir", "The Starheart Chamber", "The Vault of the First Seed"],
-    regionType: "elven",
-    dangerLevel: "Low (but sacred)",
-    travelAdvisory: "Pilgrimage is permitted. Touching the First Tree is forbidden. The Silent Choir does not speak — do not attempt to make them."
+    id: "godfall", name: "The Godfall", type: "Glass plain and ruined battlefield; name disputed",
+    color: "#c9a227", mapX: 300, mapY: 340,
+    desc: "A plain of vitrified sand and broken stone that local storytellers call the Godfall. There is no verified evidence of divine corpses or a battle between gods. The ground is glassy in broad patches, and some outcrops retain heat long after sunset. The most credible accounts point to an ancient fire or catastrophic release of energy, but the cause is unknown.",
+    control: "No recognised government; survey access is contested", notable: ["The Glass Plain", "The Ash Marker", "The Broken Survey Tower", "The Pilgrim Road"],
+    regionType: "anomalous terrain", dangerLevel: "High",
+    travelAdvisory: "Use protective footwear and check ground temperature. Claims of visions or madness are not independently verified."
   },
   {
-    id: "ember-fields",
-    name: "The Ember Fields",
-    type: "Volcanic plain",
-    color: "#b52a2a",
-    mapX: 700,
-    mapY: 620,
-    desc: "A stretch of volcanic plain south of the Dragon's Reach, where the ground is permanently warm and the air smells of sulfur. The Ember Fields are the training grounds of the Draekon — the place where young Draekon learn to fight, to endure, and to embrace the fire within themselves. It is also the place where the Changing most often occurs. Every young Draekon walks into the Ember Fields. Not all of them walk out.",
-    control: "House Drakmoor (Draekon)",
-    notable: ["The Training Grounds", "The Changing Pools", "The Fire-Lake", "The Ashen Arena", "The Dragon's Maw"],
-    regionType: "draekon",
-    dangerLevel: "High",
-    travelAdvisory: "Entry is permitted by permission of House Drakmoor. Do not approach the Changing Pools. Do not approach the Fire-Lake. Do not approach the Dragon's Maw."
+    id: "sunken-kingdoms", name: "The Sunken Kingdoms", type: "Flooded coastal ruins and submerged roads",
+    color: "#2a1a4a", mapX: 550, mapY: 650,
+    desc: "Ruins of old harbour towns and low-lying settlements submerged by coastal shifts after the Sundering. Their drowned streets attract salvage crews and historians, but unstable walls, currents and trapped air make exploration lethal. Tales of a single king and a cursed realm grew from several unrelated sites and should not be treated as one confirmed history.",
+    control: "No single authority; salvage claims overlap", notable: ["The Pearl Steps", "The Lower Harbour", "The Flooded Archive", "The Bell Tower"],
+    regionType: "coastal ruins", dangerLevel: "High underwater",
+    travelAdvisory: "Salvage requires local permits. Dive only with a partner, redundant air and a mapped return line."
+  },
+  {
+    id: "dead-marches", name: "The Dead Marches", type: "Salt marsh, old battle lines and abandoned settlements",
+    color: "#4a1f6b", mapX: 700, mapY: 380,
+    desc: "A bleak stretch of marsh and salt flats where a long conflict destroyed drainage works and scattered villages. Travellers report distant calls, repeated sounds and lights in fog. Such accounts are real as testimony but do not prove that the dead have returned; wind, mineral vapour and disorientation have all been proposed. The area remains valuable for salt and old military records.",
+    control: "Contested by local councils, researchers and salt traders", notable: ["The Wall of Salt", "The Old Barracks", "The Reed Road", "The Lost Muster Rolls"],
+    regionType: "marsh and ruins", dangerLevel: "Moderate to high",
+    travelAdvisory: "Mark your route and avoid travelling alone in fog. Do not follow lights off the mapped roads."
+  },
+  {
+    id: "whispering-forest", name: "The Whispering Forest", type: "Dense forest with unusual acoustics",
+    color: "#2a1a4a", mapX: 120, mapY: 360,
+    desc: "A forest in which wind through hollows and long root tunnels produces sounds resembling distant speech. Some trees have grown around old boundary markers and abandoned shelters. Local stories call the sounds warnings from the forest; field researchers cannot establish that the forest is speaking, but the acoustic effect can disorient travellers.",
+    control: "Local foresters and scattered communities", notable: ["The Echo Hollows", "The Root Bridge", "The Abandoned Shelter", "The Old Boundary Stones"],
+    regionType: "forest", dangerLevel: "Moderate",
+    travelAdvisory: "Use marked routes, carry a compass and avoid eating unknown berries. Sound alone is not a safe guide."
+  },
+  {
+    id: "veil", name: "The Veil", type: "Mana disturbance and unstable weather front",
+    color: "#6d4fa8", mapX: 850, mapY: 260,
+    desc: "A region where compasses drift, visibility changes rapidly and traces of mana appear without a clear source. The disturbance has been measured, but its cause is not understood. Some call it a tear in reality; others point to mineral deposits and charged storms. No stable portal or passage to another realm has been demonstrated.",
+    control: "No settled control; nearby courts dispute survey rights", notable: ["The Drift Line", "The Bent Compass", "The Weather Station", "The Silent Marker"],
+    regionType: "anomaly", dangerLevel: "High",
+    travelAdvisory: "Survey in pairs, mark each change in direction and do not rely on a single compass reading."
+  },
+  {
+    id: "mistlands", name: "The Mistlands", type: "Uncharted island beyond persistent sea fog",
+    color: "#4a4438", mapX: 80, mapY: 560,
+    desc: "An island known from sailors' charts but not securely mapped. Persistent fog, dangerous reefs and strong cross-currents have defeated several expeditions. No returning crew has provided a trustworthy survey of the interior. The island is not necessarily supernatural; it is simply beyond reliable knowledge.",
+    control: "Unknown; no government has established a lasting claim", notable: ["The Outer Reefs", "The White Shoal", "The Unmapped Interior"],
+    regionType: "unknown", dangerLevel: "Unknown",
+    travelAdvisory: "Do not treat tavern maps as navigation charts. Expeditions require soundings, spare vessels and a clear retreat plan."
+  },
+  {
+    id: "iron-coast", name: "The Iron Coast", type: "Rocky coast and repair harbours",
+    color: "#8a6f1f", mapX: 180, mapY: 580,
+    desc: "A wind-beaten coast known for ship repair, iron-rich stone and small protected harbours. Dwarven engineers maintain several docks under treaty, but the shoreline also supports human and Kemiiri fishing villages. The coast's political value lies in its ability to keep ships and cargo moving after storms.",
+    control: "Harbour councils under agreements with the mountain holds", notable: ["The Iron Quays", "The Repair Yards", "The Red Lantern Harbour"],
+    regionType: "coastal and mixed", dangerLevel: "Low to moderate",
+    travelAdvisory: "Trade is generally welcome; shipyard access is restricted during military repairs."
+  },
+  {
+    id: "fading-garden", name: "The Fading Garden", type: "Protected grove of rare old-growth trees",
+    color: "#c8e8a8", mapX: 380, mapY: 220,
+    desc: "A small grove named for an unusually slow-growing silver-barked tree whose oldest specimens have begun to decline. Some elven traditions say the grove was planted by Aelith, a revered figure in their songs; other accounts describe ordinary foresters protecting a rare species. The grove is culturally important, but no divine presence has been verified.",
+    control: "Protected jointly by local elven councils and grove-keepers", notable: ["The Old Silver Tree", "The Seed Vault", "The Quiet Path"],
+    regionType: "protected woodland", dangerLevel: "Low",
+    travelAdvisory: "Visitors may enter by permission. Harvesting seed or cutting wood is prohibited."
+  },
+  {
+    id: "ember-fields", name: "The Ember Fields", type: "Volcanic ash plain and mineral vents",
+    color: "#b52a2a", mapX: 700, mapY: 620,
+    desc: "A black plain of old lava flows, mineral springs and ash-rich soil. Settlements mine obsidian and cultivate hardy plants in cooler margins. The terrain is hazardous after heavy rain, when gases gather in low ground and crusted lava can break beneath travellers. Old songs link the fields to dragons and fire spirits; current surveys record vents, heat and minerals, not confirmed spirits.",
+    control: "Independent settlements and mineral leases", notable: ["The Warm Springs", "The Glass Fields", "The North Vent", "The Old Kilns"],
+    regionType: "volcanic", dangerLevel: "High near active vents",
+    travelAdvisory: "Follow marked mineral roads and avoid low ground during still weather."
   }
 ];
 
-/* ============================================================
-   CONTINUED IN PART 3 — Timeline + Characters
-   ============================================================ */
-console.log('%c◈ DATA.JS PART 2 LOADED ◈ — Houses/Tribes + Regions', 'color: #e8c547; font-family: serif; font-size: 14px; letter-spacing: 0.2em;');
-console.log('%cHouses/Tribes: ' + HOUSES.length + ' | Regions: ' + REGIONS.length, 'color: #7a6f5e; font-style: italic;');
-console.log('%c✅ Part 2 of 5 complete. Approx. 40KB. Total so far: ~85KB.', 'color: #4ade80; font-style: italic;');
-
-/* ============================================================
-   6. THE TIMELINE — FULL CHRONICLE
-   (32 events from the Age of Dawn to the Present Day)
-   ============================================================ */
 const TIMELINE = [
   {
     year: "~3,200 B.S.", era: "dawn", eraName: "Age of Dawn",
