@@ -6,6 +6,7 @@ on:
       - main
       - "feature/**"
       - "fix/**"
+      - "world-canon-rebuild-v1"
   pull_request:
   workflow_dispatch:
 
