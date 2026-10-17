@@ -61,7 +61,7 @@
   <symbol id="coin" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="2.7" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><circle cx="32" cy="32" r="18"/><path d="M38 21 Q32 16 26 21 Q21 27 32 31 Q43 35 38 42 Q32 48 25 42 M32 16 V48"/></g></symbol>
   <symbol id="lightning" viewBox="0 0 64 64"><path d="M37 4 L13 35 H29 L25 60 L52 26 H36 Z" fill="none" stroke="currentColor" stroke-width="2.9" stroke-linejoin="round"/></symbol>
   <symbol id="fang" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="2.7" stroke-linejoin="round"><path d="M14 8 Q22 12 32 8 Q42 12 50 8 L47 35 Q45 48 32 57 Q19 48 17 35 Z"/><path d="M24 17 L27 37 L32 48 L37 37 L40 17"/></g></symbol>
-  <symbol id="gate" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="2.7" stroke-linejoin="round"><path d="M10 56 V17 Q32 -1 54 17 V56 Z"/><path d="M18 56 V23 Q32 11 46 23 V56 M25 56 V35 Q32 25 39 35 V56"/><path d="M5 56 H59"/></g></symbol>
+  
 
   <!-- House and faction marks: one shield silhouette, individual lore-specific crests. -->
   <symbol id="crest-vaelor" viewBox="0 0 64 64"><path d="M8 7 H56 V31 Q53 48 32 59 Q11 48 8 31 Z" fill="#0b1521" stroke="currentColor" stroke-width="2.2"/><path d="M13 12 H51 V30 Q48 44 32 53 Q16 44 13 30 Z" fill="none" stroke="currentColor" stroke-opacity=".45"/><use href="#moon" x="16" y="12" width="32" height="32"/><path d="M32 43 L35 49 L32 47 L29 49 Z" fill="currentColor"/></symbol>
