@@ -126,17 +126,31 @@
       </p>
     </header>
     <div class="map-wrapper">
-      <div class="map-frame">
-        <div class="map-corner tl"></div>
-        <div class="map-corner tr"></div>
-        <div class="map-corner bl"></div>
-        <div class="map-corner br"></div>
-        <svg id="worldMap" class="world-map" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="map-tooltip" id="mapTooltip"></div>
-      </div>
-      <div class="map-legend">
-        <div class="legend-title">◆ <span data-i18n="map_legend_title">The Lands of Aethermoor</span> ◆</div>
-        <div class="legend-grid" id="mapLegend"></div>
+      <div class="map-main">
+        <div class="map-toolbar" role="toolbar" aria-label="Atlas controls">
+          <div class="map-toolbar-group">
+            <button type="button" class="map-control-btn" id="mapZoomIn" aria-label="Zoom in" data-i18n="map_zoom_in">＋ Zoom in</button>
+            <button type="button" class="map-control-btn" id="mapZoomOut" aria-label="Zoom out" data-i18n="map_zoom_out">− Zoom out</button>
+            <button type="button" class="map-control-btn" id="mapResetView" data-i18n="map_reset">Reset view</button>
+          </div>
+          <div class="map-toolbar-group">
+            <button type="button" class="map-control-btn is-active" id="mapBordersToggle" aria-pressed="true" data-i18n="map_borders_on">Borders: on</button>
+            <button type="button" class="map-control-btn is-active" id="mapCitiesToggle" aria-pressed="true" data-i18n="map_cities_on">Cities: on</button>
+          </div>
+          <span class="map-hint" data-i18n="map_hint">Scroll to zoom · drag to pan · select a marker for lore</span>
+        </div>
+        <div class="map-frame">
+          <div class="map-corner tl"></div>
+          <div class="map-corner tr"></div>
+          <div class="map-corner bl"></div>
+          <div class="map-corner br"></div>
+          <svg id="worldMap" class="world-map" viewBox="0 0 1800 1260" preserveAspectRatio="xMidYMid meet"></svg>
+          <div class="map-tooltip" id="mapTooltip"></div>
+        </div>
+        <div class="map-legend">
+          <div class="legend-title">◆ <span data-i18n="map_legend_title">Lands, peoples & borders</span> ◆</div>
+          <div class="legend-grid" id="mapLegend"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -152,10 +166,9 @@
     </header>
     <div class="filter-bar" id="raceFilters">
       <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All Races</button>
-      <button class="filter-btn" data-filter="human" data-i18n="filter_human">Humanoid</button>
-      <button class="filter-btn" data-filter="elven" data-i18n="filter_elven">Elven</button>
+      <button class="filter-btn" data-filter="humanoid" data-i18n="filter_humanoid">Humanoid peoples</button>
       <button class="filter-btn" data-filter="beast" data-i18n="filter_beast">Beastfolk</button>
-      <button class="filter-btn" data-filter="divine" data-i18n="filter_divine">Divine</button>
+      <button class="filter-btn" data-filter="otherworldly" data-i18n="filter_otherworldly">Otherworldly</button>
     </div>
     <div class="races-grid" id="racesGrid"></div>
   </section>
