@@ -4225,6 +4225,11 @@ const MAP_DATA = {
       "path": "M 514 554 C 558 568 597 579 639 580"
     }
   ],
+  geographicLabels: [
+    { id: "severing-ranges", name: "The Severing Ranges", faName: "رشته‌کوه‌های حائل", x: 698, y: 230, rotation: -3 },
+    { id: "black-chasm-title", name: "THE BLACK CHASM", faName: "دره‌ی سیاه", x: 280, y: 170, rotation: -1 },
+    { id: "sea-of-sorrow", name: "Sea of Sorrow", faName: "دریای اندوه", x: 560, y: 687, rotation: 0 }
+  ],
   landmarks: [
     { name: "The Godseal", x: 500, y: 90, type: "divine", icon: "gate" },
     { name: "The Black Chasm", x: 500, y: 130, type: "divine", icon: "eclipse" },
