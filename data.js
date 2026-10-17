@@ -1450,7 +1450,7 @@ const CHARACTERS = [
     id: "kaelen",
     name: "Kaelen Vareth",
     title: "The Ashborn Prince",
-    faction: "House Ashborn (unknown to him)",
+    faction: "House Vareth (official record; disputed)",
     status: "Alive",
     statusColor: "#e8c547",
     icon: "swords",
@@ -1460,18 +1460,18 @@ const CHARACTERS = [
     allegiance: "None (formerly House Vareth)",
     summary: "A young wanderer whose ash-colored eyes can disrupt weapons and runes. His birth records conflict, and the few witnesses who know the truth disagree about what he is.",
     fullBio: "Kaelen was born in the Stormlands during a thunderstorm that lasted three days. The public record names a noblewoman of House Vareth as his mother and says she died in childbirth; the record is inconsistent with several surviving midwife notes, and no one has proved who his biological parents were. He was raised in the Spire of Ashes by his uncle, Lord Arathor Vareth, who treated him with cold indifference. At sixteen, while a guardsman beat him for stealing bread, his grey eyes turned ash-colored and the man's sword shattered in his hand. Kaelen fled that night. In the eight years since, he has learned a little about controlling the effect but still cannot explain whether it is divine, demonic, or something caused by the old wards. He is now in the Dragon's Reach investigating a dragon awakened in 398 S.A.; he has heard that Vexa Cinderborn may know something about his birth, but he has not confirmed the claim. Several powers have asked questions about his ability, for different and not always sinister reasons. None has proved that any prophecy is about him.",
-    personality: "Quiet, watchful, and slow to trust. Kaelen speaks rarely and, when he does, it is with the precision of someone who has learned that words can be weapons. He is kind to those weaker than himself — a trait that has gotten him into more trouble than any of his enemies. He has a dark sense of humor that surfaces only with people he trusts. He does not believe in destiny, gods, or prophecy. He believes in survival, and in the small kindnesses that make survival worth the effort.",
+    personality: "Quiet, watchful, and slow to trust. Kaelen speaks rarely and, when he does, it is with the precision of someone who has learned that words can be weapons. He is kind to those weaker than himself—a trait that has gotten him into more trouble than any of his enemies. He has a dark sense of humor that surfaces only with people he trusts. He does not believe in destiny, gods, or prophecy. He believes in survival, and in the small kindnesses that make survival worth the effort.",
     abilities: [
-      "Ash-Eyes — When angered or in danger, Kaelen's eyes turn the color of ash, and his power manifests. The exact nature of this power is unknown, but it appears to involve the destruction of physical objects (weapons, walls, chains) on a fundamental level.",
-      "Preternatural Reflexes — Kaelen reacts faster than any human should be able to. He has dodged arrows, caught blades, and once walked through a collapsing building without a scratch.",
-      "Bloodfire Affinity — Kaelen has recently discovered that he can cast Bloodfire spells without burning his own blood. This should be impossible. He has not told anyone.",
-      "Resistance to Runes — Runes carved on Kaelen's skin fade within hours. The Aeldrin have never seen this before. They are very interested in him."
+      "Ash-Eyes — When angered or in danger, Kaelen's eyes turn the color of ash and his power manifests. The exact nature of this power is unknown; so far, witnesses have seen it shatter physical objects and interfere with nearby runes.",
+      "Preternatural Reflexes — Kaelen reacts faster than most humans, but his limits are unclear. Accounts of him dodging arrows and surviving a collapse have not all been independently verified.",
+      "Bloodfire Affinity — Kaelen has recently discovered that he can cast simple Bloodfire spells without burning his own blood. He does not yet know whether this is an innate trait or a temporary interaction with his ash-eye ability.",
+      "Resistance to Runes — Runes carved on Kaelen's skin fade within hours. A few Aeldrin scholars have recorded similar failures on unstable subjects, but none has explained this case."
     ],
     flaws: [
-      "The Flaw of Silence — Kaelen cannot speak the name of his father. When he tries, his voice fails, and he feels a sharp pain in his chest. He does not know why.",
-      "Temper — When his eyes turn ash-colored, Kaelen loses control. He has killed people in this state. He does not remember doing so.",
-      "Trust Issues — Kaelen has been betrayed by everyone he has ever loved. He expects betrayal, and often creates it.",
-      "The Wound — Kaelen carries a wound on his chest that will not heal. It appeared the night his eyes first changed. It sometimes bleeds when he uses his power. It sometimes bleeds for no reason at all."
+      "The Flaw of Silence — Kaelen cannot speak the name of his father. When he tries, his voice fails and he feels a sharp pain in his chest. He does not know why.",
+      "Temper — When his eyes turn ash-colored, Kaelen can lose control. He remembers fragments of one violent episode but cannot account for every injury that followed.",
+      "Trust Issues — Kaelen expects betrayal, partly because his guardian's records and behavior have never agreed. He often withdraws before another person has a chance to explain.",
+      "The Wound — Kaelen carries a wound on his chest that will not heal. It first appeared the night his eyes changed. It sometimes bleeds when he uses his power; its cause is unknown."
     ],
     relationships: [
       { to: "Vexa Cinderborn", type: "Possible biological mother", detail: "Several clues connect Vexa to Kaelen's birth, but the surviving records disagree. She has not spoken to him, and her reasons for keeping silent are not fully known." },
@@ -1480,14 +1480,8 @@ const CHARACTERS = [
       { to: "The Whisperer", type: "Interested observer", detail: "The Whisperer has collected reports of Kaelen's rune reactions. Whether they want to protect, study, or exploit him is unknown." },
       { to: "Aelwyn Vaelor", type: "Unmet; possible research overlap", detail: "Aelwyn's work concerns a binding beneath the Silver Wood; Kaelen's eyes disrupt some runes. A few scholars suspect a shared cause, but the evidence is too thin to establish a connection." }
     ],
-      { to: "Vexa Cinderborn", type: "Mother (unknown to him)", detail: "She has been searching for him for twenty-four years. She has not yet found him." },
-      { to: "Lord Arathor Vareth", type: "Uncle (abuser)", detail: "Arathor knows the truth about Kaelen's parentage. He has been paid handsomely to keep silent." },
-      { to: "Nyx the Shadow-Speaker", type: "Reluctant Ally", detail: "They met in a prison cell in Ondrath. They escaped together. They do not trust each other, but they have learned to work together." },
-      { to: "The Whisperer", type: "Unknown Observer", detail: "The Whisperer has been watching Kaelen since he was a child. The reason is unknown." },
-      { to: "Aelwyn Vaelor", type: "Unknown to Each Other", detail: "They have never met. But both are connected to the binding. Their meeting is inevitable." }
-    ],
     quotes: [
-      "I do not believe in prophecy. I believe in surviving the day. Tomorrow is a lie the gods tell to keep us moving.",
+      "I do not believe in prophecy. I believe in surviving the day. Tomorrow is a promise no god has explained.",
       "I have killed men. I have watched men die. I have held them as they wept for their mothers. And I am still here, asking why.",
       "If I am the Ashborn Prince, then the prophecy is a joke. I am not a prince. I am not a savior. I am a man who has learned that the only thing worth protecting is the person standing next to you."
     ],
@@ -1496,11 +1490,8 @@ const CHARACTERS = [
       "His chest wound appears after unusual rune reactions and worsens when he uses his ash-eye ability. Its source is unknown; no evidence shows that healing him would heal the world.",
       "The dragon that awoke in 398 S.A. is linked to House Cinderborn politics. Whether it is related to Kaelen's family is unconfirmed."
     ]
-      "Kaelen is being hunted by three different factions — the Aeldrin Council (who want to study him), the Sylvaar (who want to weaponize him), and the Wounded Choir (who want to protect him).",
-      "His wound is connected to the Sundering. If he ever learns the truth, he will have to choose between healing himself and healing the world.",
-      "The dragon that awoke in 398 S.A. is Kaelen's half-sister. She is searching for him. She is not searching to help him."
-    ]
   },
+
   {
     id: "emperor-valerius",
     name: "The Emperor",
