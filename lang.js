@@ -2767,3 +2767,30 @@ console.log('%cBooks: ' + Object.keys(FA_DATA.books).length + ' | Guilds: ' + Ob
 console.log('%c◈◈◈ LANG.JS COMPLETE ◈◈◈', 'color: #4ade80; font-weight: bold; font-size: 16px; letter-spacing: 0.3em;');
 console.log('%c✅ All 6 parts loaded. Approx. 350KB total.', 'color: #4ade80; font-weight: bold;');
 console.log('%c🌑 The chronicle is complete.', 'color: #7a6f5e; font-style: italic;');
+
+/* ============ PATCH: Persian character names ============ */
+const CHAR_NAMES_FA = {
+  aelwyn: "آئلوین وِیلور",
+  seraphine: "سرافین وِیلور",
+  kaelen: "کائلن وارِث",
+  "emperor-valerius": "امپراتور والریوس دوم",
+  "lord-arathor": "لرد آراتور وارِث",
+  vexa: "وِکسا سیندبورن",
+  morag: "موراگ بلاداَکس",
+  vexar: "لرد وِکسار",
+  whisperer: "زمزمه‌گر",
+  karog: "کارُگ سرخ",
+  nyx: "نیکس زمزمه‌گر سایه",
+  "demon-king": "پادشاه شیاطین",
+  aelith: "آئلیث",
+  "thane-ironheart": "تان آیرون‌هارت",
+  aeryn: "آئیرین دلیر",
+  grunna: "گرونا آیرون‌باند",
+  "silent-smith": "آهنگر خاموش",
+  vorthal: "وُرثال"
+};
+Object.keys(CHAR_NAMES_FA).forEach(id => {
+  if (FA_DATA.characters[id] && !FA_DATA.characters[id].name) {
+    FA_DATA.characters[id].name = CHAR_NAMES_FA[id];
+  }
+});

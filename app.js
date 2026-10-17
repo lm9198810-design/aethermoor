@@ -564,6 +564,7 @@
     if (!grid || typeof CHARACTERS === 'undefined') return;
     grid.innerHTML = '';
     CHARACTERS.forEach(char => {
+      const name = getContent('characters', char.id, 'name', char.name);
       const title = getContent('characters', char.id, 'title', char.title);
       const faction = getContent('characters', char.id, 'faction', char.faction);
       const status = getContent('characters', char.id, 'status', char.status);
@@ -572,7 +573,7 @@
         el('div', { class: 'char-portrait', text: char.icon }),
         el('div', { class: 'char-overlay' }, [
           el('div', { class: 'char-faction', text: faction }),
-          el('h3', { class: 'char-name', text: char.name }),
+          el('h3', { class: 'char-name', text: name }),
           el('div', { class: 'char-title', text: title }),
           el('div', { class: 'char-status', style: `--status-color: ${char.statusColor}` }, [
             el('span', { class: 'dot' }),
@@ -591,6 +592,7 @@
     const body = $('#characterModalBody');
     if (!body) return;
     
+    const name = getContent('characters', char.id, 'name', char.name);
     const title = getContent('characters', char.id, 'title', char.title);
     const faction = getContent('characters', char.id, 'faction', char.faction);
     const race = getContent('characters', char.id, 'race', char.race);
@@ -610,7 +612,7 @@
         <div class="modal-char-icon">${char.icon}</div>
         <div>
           <div class="modal-char-faction">${escapeHtml(faction)}</div>
-          <h2 class="modal-char-name">${escapeHtml(char.name)}</h2>
+          <h2 class="modal-char-name">${escapeHtml(name)}</h2>
           <div class="modal-char-title">${escapeHtml(title)}</div>
         </div>
       </div>
@@ -900,6 +902,28 @@
     
     const abyss = DUNGEONS_DATA.theAbyss;
     
+    const L = CURRENT_LANG === 'fa' ? {
+      floors: 'طبقات',
+      explored: 'کاوش‌شده',
+      floor40: 'رسیده به طبقه ۴۰',
+      floor100: 'رسیده به طبقه ۱۰۰',
+      themes: 'تِم‌های طبقات',
+      bosses: 'رئیس‌ها',
+      rules: 'قوانین هاویه',
+      facts: 'نکات قابل توجه',
+      otherDungeons: 'دنجن‌های دیگر آرکِیا'
+    } : {
+      floors: 'Floors',
+      explored: 'Explored',
+      floor40: 'Reached Floor 40',
+      floor100: 'Reached Floor 100',
+      themes: 'Floor Themes',
+      bosses: 'Bosses',
+      rules: 'Rules of the Abyss',
+      facts: 'Notable Facts',
+      otherDungeons: 'Other Dungeons of Aethermoor'
+    };
+    
     // Abyss header
     container.appendChild(el('div', { class: 'abyss-header' }, [
       el('span', { class: 'abyss-icon', text: '🕳️' }),
@@ -908,19 +932,19 @@
       el('div', { class: 'abyss-stats' }, [
         el('div', { class: 'abyss-stat' }, [
           el('span', { class: 'abyss-stat-num', text: abyss.floors }),
-          el('span', { class: 'abyss-stat-label', text: 'Floors' })
+          el('span', { class: 'abyss-stat-label', text: L.floors })
         ]),
         el('div', { class: 'abyss-stat' }, [
           el('span', { class: 'abyss-stat-num', text: abyss.exploredFloors }),
-          el('span', { class: 'abyss-stat-label', text: 'Explored' })
+          el('span', { class: 'abyss-stat-label', text: L.explored })
         ]),
         el('div', { class: 'abyss-stat' }, [
           el('span', { class: 'abyss-stat-num', text: '200' }),
-          el('span', { class: 'abyss-stat-label', text: 'Reached Floor 40' })
+          el('span', { class: 'abyss-stat-label', text: L.floor40 })
         ]),
         el('div', { class: 'abyss-stat' }, [
           el('span', { class: 'abyss-stat-num', text: '0' }),
-          el('span', { class: 'abyss-stat-label', text: 'Reached Floor 100' })
+          el('span', { class: 'abyss-stat-label', text: L.floor100 })
         ])
       ]),
       el('p', { class: 'abyss-desc', text: abyss.description })
@@ -928,7 +952,7 @@
 
     // Themes
     const themesSection = el('div', { class: 'abyss-section' }, [
-      el('h3', { class: 'abyss-section-title', text: 'Floor Themes' })
+      el('h3', { class: 'abyss-section-title', text: L.themes })
     ]);
     const themeList = el('div', { class: 'theme-list' });
     abyss.themes.forEach(theme => {
@@ -945,7 +969,7 @@
 
     // Bosses
     const bossesSection = el('div', { class: 'abyss-section' }, [
-      el('h3', { class: 'abyss-section-title', text: 'Bosses' })
+      el('h3', { class: 'abyss-section-title', text: L.bosses })
     ]);
     const bossList = el('div', { class: 'boss-list' });
     abyss.bosses.forEach(boss => {
@@ -960,7 +984,7 @@
 
     // Rules
     const rulesSection = el('div', { class: 'abyss-section' }, [
-      el('h3', { class: 'abyss-section-title', text: 'Rules of the Abyss' })
+      el('h3', { class: 'abyss-section-title', text: L.rules })
     ]);
     const rulesList = el('ul', { class: 'rules-list' });
     abyss.rules.forEach(rule => {
@@ -971,7 +995,7 @@
 
     // Facts
     const factsSection = el('div', { class: 'abyss-section' }, [
-      el('h3', { class: 'abyss-section-title', text: 'Notable Facts' })
+      el('h3', { class: 'abyss-section-title', text: L.facts })
     ]);
     const factsList = el('ul', { class: 'facts-list' });
     abyss.notableFacts.forEach(fact => {
@@ -982,7 +1006,7 @@
 
     // Other dungeons
     const otherSection = el('div', { class: 'abyss-section' }, [
-      el('h3', { class: 'abyss-section-title', text: 'Other Dungeons of Aethermoor' })
+      el('h3', { class: 'abyss-section-title', text: L.otherDungeons })
     ]);
     const otherGrid = el('div', { class: 'other-dungeons' });
     DUNGEONS_DATA.otherDungeons.forEach(d => {
@@ -1088,12 +1112,21 @@
         arr.forEach(item => {
           const name = item.name || item.title;
           let displayName = name;
-          if (categoryKey && CURRENT_LANG === 'fa') {
-            displayName = getContent(categoryKey, name, 'name', name);
-            if (!displayName || displayName === name) {
-              displayName = getContent(categoryKey, name, 'title', name);
+          
+          if (categoryKey && CURRENT_LANG === 'fa' && typeof FA_DATA !== 'undefined') {
+            const category = FA_DATA[categoryKey];
+            if (category) {
+              const lookupKeys = [item.id, item.name, item.title].filter(Boolean);
+              let entry = null;
+              for (const key of lookupKeys) {
+                if (category[key]) { entry = category[key]; break; }
+              }
+              if (entry) {
+                displayName = entry.name || entry.title || name;
+              }
             }
           }
+          
           index.push({
             cat, type, route,
             name: displayName,
@@ -1112,8 +1145,8 @@
       add(GODS, 'God', 'god', 'codex', 'gods');
       add(CREATURES, 'Creature', 'creature', 'codex', 'creatures');
       add(PROPHECIES, 'Prophecy', 'prophecy', 'codex', 'prophecies');
-      add(BOOKS, 'Book', 'book', 'library', null);
-      add(GUILDS_DATA, 'Guild', 'guild', 'guilds', null);
+      add(BOOKS, 'Book', 'book', 'library', 'books');
+      add(GUILDS_DATA, 'Guild', 'guild', 'guilds', 'guilds');
       
       const matches = index.filter(item => item.searchText.includes(q)).slice(0, 10);
       
