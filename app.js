@@ -1,26 +1,24 @@
 /* ============================================================
    AETHERMOOR — APPLICATION LOGIC
-   Renders the world, the living map, all interactions
-   Bilingual support: EN / FA
+   SPA with Hash Routing · 13 Pages · Bilingual EN/FA
+   Version: 3.0
    ============================================================ */
 
 (function() {
   'use strict';
 
+  /* ============ HELPERS ============ */
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
   const SVGNS = 'http://www.w3.org/2000/svg';
 
-  /* ============ GLOBAL STATE ============ */
-  let CURRENT_LANG = localStorage.getItem('aethermoor_lang') || 'en';
-
-  /* ============ HELPERS ============ */
   const el = (tag, attrs = {}, children = []) => {
     const node = document.createElement(tag);
     Object.entries(attrs).forEach(([k, v]) => {
       if (k === 'class') node.className = v;
       else if (k === 'html') node.innerHTML = v;
       else if (k === 'text') node.textContent = v;
+      else if (k.startsWith('data-')) node.setAttribute(k, v);
       else node.setAttribute(k, v);
     });
     children.forEach(c => {
@@ -43,14 +41,18 @@
     }[m]));
   };
 
+  /* ============ GLOBAL STATE ============ */
+  let CURRENT_LANG = localStorage.getItem('aethermoor_lang') || 'en';
+  let CURRENT_PAGE = 'home';
+  let CURRENT_CODEX_TAB = 'artifacts';
+  const renderedPages = new Set();
+
   /* ============ TRANSLATION HELPERS ============ */
-  // UI string lookup
   const t = (key) => {
     if (typeof UI_TEXT === 'undefined') return key;
     return UI_TEXT[CURRENT_LANG]?.[key] || UI_TEXT.en?.[key] || key;
   };
 
-  // Get content by key from FA_DATA (Persian) or original object (English)
   const getContent = (category, keyOrName, field, fallback) => {
     if (CURRENT_LANG === 'fa' && typeof FA_DATA !== 'undefined') {
       const cat = FA_DATA[category];
@@ -62,7 +64,7 @@
     return fallback;
   };
 
-  // Apply data-i18n attributes across the static HTML
+  /* ============ APPLY UI TRANSLATIONS ============ */
   const applyUITranslations = () => {
     document.documentElement.lang = CURRENT_LANG === 'fa' ? 'fa' : 'en';
     document.documentElement.dir = CURRENT_LANG === 'fa' ? 'rtl' : 'ltr';
@@ -79,7 +81,6 @@
       if (txt) node.setAttribute('placeholder', txt);
     });
     
-    // Update language toggle button
     const langCode = $('#langCode');
     if (langCode) langCode.textContent = CURRENT_LANG === 'fa' ? 'FA' : 'EN';
   };
@@ -94,137 +95,157 @@
     setTimeout(() => loader.classList.add('hidden'), 3500);
   }
 
-  /* ============ NAVIGATION ============ */
-  function initNavigation() {
+  /* ============ NAVIGATION SCROLL EFFECT ============ */
+  function initNavScroll() {
     const nav = $('#navbar');
+    if (!nav) return;
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+  }
+
+  /* ============ MOBILE TOGGLE ============ */
+  function initMobileToggle() {
     const navToggle = $('#navToggle');
     const navLinks = $('#navLinks');
-    
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
-    }, { passive: true });
-    
-    if (navToggle) {
-      navToggle.addEventListener('click', () => {
-        navToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-      });
-    }
-    
-    $$('a[data-scroll]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const href = a.getAttribute('href');
-        if (!href || !href.startsWith('#')) return;
-        const target = $(href);
-        if (!target) return;
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        if (navLinks.classList.contains('active')) {
-          navToggle.classList.remove('active');
-          navLinks.classList.remove('active');
-        }
-      });
-    });
-    
-    const sections = $$('section[id], header[id]');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          $$('.nav-links a').forEach(a => {
-            a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-          });
-        }
-      });
-    }, { rootMargin: '-40% 0px -55% 0px' });
-    sections.forEach(s => observer.observe(s));
-  }
-
-  /* ============ LANGUAGE TOGGLE ============ */
-  function initLanguageToggle() {
-    const btn = $('#langToggle');
-    if (!btn) return;
-    
-    btn.addEventListener('click', () => {
-      CURRENT_LANG = CURRENT_LANG === 'en' ? 'fa' : 'en';
-      localStorage.setItem('aethermoor_lang', CURRENT_LANG);
-      applyUITranslations();
-      reRenderAll();
-      
-      // Update document title
-      document.title = CURRENT_LANG === 'fa' 
-        ? 'آرکِیا | قلمرو از هم شکسته' 
-        : 'Aethermoor | The Sundered Realm';
+    if (!navToggle) return;
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
     });
   }
 
-  /* ============ HERO PARTICLES ============ */
-  function initParticles() {
-    const container = $('#heroParticles');
-    if (!container) return;
-    container.innerHTML = '';
-    for (let i = 0; i < 50; i++) {
-      const p = el('div', { class: 'hero-particle' });
-      p.style.left = Math.random() * 100 + '%';
-      p.style.animationDuration = (8 + Math.random() * 12) + 's';
-      p.style.animationDelay = (Math.random() * 8) + 's';
-      p.style.opacity = 0.3 + Math.random() * 0.5;
-      const size = 1 + Math.random() * 2.5;
-      p.style.width = size + 'px';
-      p.style.height = size + 'px';
-      container.appendChild(p);
+  /* ============================================================
+     SPA ROUTER
+     ============================================================ */
+  
+  const VALID_ROUTES = ['home', 'world', 'map', 'races', 'magic', 'characters',
+                        'houses', 'regions', 'timeline', 'codex', 'library',
+                        'guilds', 'dungeons'];
+
+  function getRouteFromHash() {
+    const hash = window.location.hash.replace(/^#\/?/, '');
+    if (!hash) return 'home';
+    const route = hash.split('/')[0];
+    return VALID_ROUTES.includes(route) ? route : 'home';
+  }
+
+  function navigateTo(route) {
+    if (!VALID_ROUTES.includes(route)) route = 'home';
+    
+    // Hide all pages
+    $$('.page').forEach(p => p.classList.remove('active'));
+    
+    // Show target page
+    const targetPage = $(`.page[data-page="${route}"]`);
+    if (!targetPage) return;
+    
+    // Lazy render
+    if (!renderedPages.has(route)) {
+      renderPage(route);
+      renderedPages.add(route);
+    }
+    
+    targetPage.classList.add('active');
+    CURRENT_PAGE = route;
+    
+    // Update nav active state
+    $$('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.dataset.route === route);
+    });
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    
+    // Close mobile menu
+    const navLinks = $('#navLinks');
+    const navToggle = $('#navToggle');
+    if (navLinks) navLinks.classList.remove('active');
+    if (navToggle) navToggle.classList.remove('active');
+  }
+
+  function initRouter() {
+    window.addEventListener('hashchange', () => {
+      navigateTo(getRouteFromHash());
+    });
+    
+    // Initial navigation
+    const initialRoute = getRouteFromHash();
+    if (!window.location.hash) {
+      window.location.hash = '#/home';
+    }
+    navigateTo(initialRoute);
+  }
+
+  /* ============================================================
+     PAGE RENDERERS
+     ============================================================ */
+  
+  function renderPage(route) {
+    switch (route) {
+      case 'home': renderHome(); break;
+      case 'world': renderWorld(); break;
+      case 'map': renderMap(); break;
+      case 'races': renderRaces(); initRaceFilters(); break;
+      case 'magic': renderMagic(); break;
+      case 'characters': renderCharacters(); break;
+      case 'houses': renderHouses(); break;
+      case 'regions': renderRegions(); break;
+      case 'timeline': renderTimeline(); initTimelineFilters(); break;
+      case 'codex': renderCodex(CURRENT_CODEX_TAB); initCodexTabs(); break;
+      case 'library': renderLibrary(); break;
+      case 'guilds': renderGuilds(); break;
+      case 'dungeons': renderDungeons(); break;
     }
   }
 
-  /* ============ STAT COUNTERS ============ */
-  function initCounters() {
-    const stats = $$('.stat-num');
-    if (!stats.length) return;
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        if (el.dataset.animated === 'true') return;
-        el.dataset.animated = 'true';
-        const target = parseInt(el.dataset.count, 10);
-        const duration = 1800;
-        const start = performance.now();
-        const tick = (now) => {
-          const t2 = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - t2, 3);
-          const value = Math.floor(target * eased);
-          el.textContent = value.toLocaleString('en-US');
-          if (t2 < 1) requestAnimationFrame(tick);
-          else el.textContent = target.toLocaleString('en-US') + (target > 100 ? '+' : '');
-        };
-        requestAnimationFrame(tick);
-      });
-    }, { threshold: 0.5 });
-    stats.forEach(s => observer.observe(s));
+  /* ============ HOME ============ */
+  function renderHome() {
+    // Home content is already in HTML; just animate counters
+    initCounters();
   }
 
-  /* ============ LIVING MAP ============ */
+  /* ============ WORLD ============ */
+  function renderWorld() {
+    const grid = $('#worldGrid');
+    if (!grid || typeof WORLD_TILES === 'undefined') return;
+    grid.innerHTML = '';
+    WORLD_TILES.forEach((tile, i) => {
+      grid.appendChild(el('div', {
+        class: 'world-tile',
+        style: `animation-delay: ${i * 0.06}s`
+      }, [
+        el('span', { class: 'tile-icon', text: tile.icon }),
+        el('h3', { text: tile.title }),
+        el('p', { text: tile.desc }),
+        el('div', { class: 'tile-stat' }, [
+          el('span', { text: tile.statLabel }),
+          el('span', { text: tile.statValue })
+        ])
+      ]));
+    });
+  }
+
+  /* ============ MAP ============ */
   function renderMap() {
     const svg = $('#worldMap');
     const tooltip = $('#mapTooltip');
     const legend = $('#mapLegend');
     if (!svg || typeof MAP_DATA === 'undefined') return;
     
-    // Clear previous content (important for language switch)
     svg.innerHTML = '';
     if (legend) legend.innerHTML = '';
     
     const { viewBox, regions } = MAP_DATA;
     svg.setAttribute('viewBox', viewBox);
 
-    // === Water background ===
+    // Water background
     svg.appendChild(svgEl('rect', {
       x: 0, y: 0, width: 1000, height: 700,
       fill: 'url(#oceanGradient)'
     }));
 
-    // === Defs ===
+    // Defs
     const defs = svgEl('defs');
     
     const oceanGrad = svgEl('radialGradient', { id: 'oceanGradient', cx: '50%', cy: '50%', r: '70%' });
@@ -249,7 +270,6 @@
       'stroke-width': '0.5'
     }));
     defs.appendChild(gridPattern);
-
     svg.appendChild(defs);
 
     svg.appendChild(svgEl('rect', {
@@ -258,16 +278,78 @@
       'pointer-events': 'none'
     }));
 
-    const continent = svgEl('path', {
-      d: `M 80 200 Q 100 60 220 40 L 340 60 Q 400 40 480 70 L 560 100 Q 620 80 700 100 L 780 60 Q 880 40 950 90 L 970 200 Q 990 300 960 400 L 980 500 Q 950 620 840 640 L 700 620 Q 620 640 540 620 L 400 660 Q 280 680 180 640 L 60 500 Q 40 380 60 280 Q 60 230 80 200 Z`,
-      fill: 'rgba(23, 15, 40, 0.6)',
-      stroke: 'rgba(201, 162, 39, 0.15)',
-      'stroke-width': '1',
+    // Continent silhouettes
+    const mainContinent = svgEl('path', {
+      d: `M 100 300 Q 150 200 250 220 L 350 240 Q 420 220 480 240 L 560 260 Q 620 240 700 260 L 780 280 Q 850 260 920 300 L 940 400 Q 950 480 900 540 Q 820 600 720 580 L 620 600 Q 540 620 460 600 L 380 620 Q 300 640 220 600 L 140 540 Q 80 460 100 380 Q 100 330 100 300 Z`,
+      fill: 'rgba(23, 15, 40, 0.55)',
+      stroke: 'rgba(201, 162, 39, 0.2)',
+      'stroke-width': '1.5',
       'pointer-events': 'none'
     });
-    svg.appendChild(continent);
+    svg.appendChild(mainContinent);
 
-    // === Regions ===
+    // Xarnath silhouette (north)
+    const xarnath = svgEl('path', {
+      d: `M 200 0 L 800 0 L 780 40 Q 700 70 600 80 Q 550 100 500 95 Q 450 100 400 80 Q 300 70 220 40 Z`,
+      fill: 'rgba(61, 10, 10, 0.6)',
+      stroke: 'rgba(122, 26, 26, 0.4)',
+      'stroke-width': '1.5',
+      'pointer-events': 'none'
+    });
+    svg.appendChild(xarnath);
+
+    // Black Chasm (the dark line across)
+    const chasm = svgEl('path', {
+      d: `M 100 130 Q 500 145 900 130`,
+      stroke: '#1a0a0a',
+      'stroke-width': '20',
+      fill: 'none',
+      'stroke-linecap': 'round',
+      'pointer-events': 'none',
+      opacity: '0.85'
+    });
+    svg.appendChild(chasm);
+
+    // Godseal (the barrier — dashed line above chasm)
+    const godseal = svgEl('path', {
+      d: `M 250 90 Q 500 75 750 90`,
+      stroke: '#e8c547',
+      'stroke-width': '3',
+      fill: 'none',
+      'stroke-dasharray': '8,6',
+      'pointer-events': 'none',
+      opacity: '0.9'
+    });
+    svg.appendChild(godseal);
+
+    // Godseal label
+    const godsealLabel = svgEl('text', {
+      x: 500, y: 70, 'text-anchor': 'middle',
+      'font-family': 'Cinzel, serif', 'font-size': '11px',
+      fill: '#e8c547', 'letter-spacing': '0.15em', 'pointer-events': 'none'
+    });
+    godsealLabel.textContent = 'THE GODSEAL';
+    svg.appendChild(godsealLabel);
+
+    // Chasm label
+    const chasmLabel = svgEl('text', {
+      x: 500, y: 165, 'text-anchor': 'middle',
+      'font-family': 'Cinzel, serif', 'font-size': '10px',
+      fill: '#7a1a1a', 'letter-spacing': '0.15em', 'pointer-events': 'none'
+    });
+    chasmLabel.textContent = 'THE BLACK CHASM';
+    svg.appendChild(chasmLabel);
+
+    // Xarnath label
+    const xarnathLabel = svgEl('text', {
+      x: 500, y: 40, 'text-anchor': 'middle',
+      'font-family': 'Cinzel, serif', 'font-size': '14px',
+      fill: '#b52a2a', 'letter-spacing': '0.25em', 'pointer-events': 'none'
+    });
+    xarnathLabel.textContent = 'XARNATH';
+    svg.appendChild(xarnathLabel);
+
+    // Regions
     const regionLayer = svgEl('g', { id: 'regionLayer' });
     regions.forEach(region => {
       const displayName = CURRENT_LANG === 'fa' 
@@ -278,9 +360,9 @@
         : region.control;
       
       const circle = svgEl('circle', {
-        cx: region.x, cy: region.y, r: 22,
+        cx: region.x, cy: region.y, r: 20,
         fill: region.color,
-        'fill-opacity': '0.35',
+        'fill-opacity': '0.4',
         stroke: region.color,
         'stroke-width': '2',
         class: 'map-region',
@@ -289,36 +371,24 @@
       });
       
       circle.addEventListener('mouseenter', (e) => {
-        circle.setAttribute('fill-opacity', '0.65');
-        circle.setAttribute('r', '26');
+        circle.setAttribute('fill-opacity', '0.7');
+        circle.setAttribute('r', '24');
         showTooltip(tooltip, displayName, displayControl, e);
       });
       
       circle.addEventListener('mousemove', (e) => moveTooltip(tooltip, e));
       
       circle.addEventListener('mouseleave', () => {
-        circle.setAttribute('fill-opacity', '0.35');
-        circle.setAttribute('r', '22');
+        circle.setAttribute('fill-opacity', '0.4');
+        circle.setAttribute('r', '20');
         hideTooltip(tooltip);
       });
       
       circle.addEventListener('click', () => selectRegion(region.id));
-      
       regionLayer.appendChild(circle);
 
-      // Capital dot
-      const capDot = svgEl('circle', {
-        cx: region.x, cy: region.y - 30, r: 4,
-        fill: '#e8c547',
-        stroke: '#050308',
-        'stroke-width': '1.5',
-        'pointer-events': 'none'
-      });
-      regionLayer.appendChild(capDot);
-
-      // Label (use English name in map for clarity even in FA, OR use Persian)
       const label = svgEl('text', {
-        x: region.x, y: region.y + 42,
+        x: region.x, y: region.y + 38,
         class: 'map-region-label',
         'pointer-events': 'none'
       });
@@ -327,21 +397,15 @@
     });
     svg.appendChild(regionLayer);
 
-    // === Legend ===
-    if (legend) {
-      regions.forEach(region => {
-        const displayName = CURRENT_LANG === 'fa' 
-          ? getContent('regions', region.id, 'name', region.name)
-          : region.name;
-        const item = el('div', { class: 'legend-item', 'data-region': region.id });
+    // Legend
+    if (legend && MAP_DATA.legends) {
+      MAP_DATA.legends.forEach(lg => {
+        const item = el('div', { class: 'legend-item' });
         const dot = el('span', { class: 'legend-dot' });
-        dot.style.background = region.color;
-        dot.style.color = region.color;
+        dot.style.background = lg.color;
+        dot.style.color = lg.color;
         item.appendChild(dot);
-        item.appendChild(el('div', { class: 'legend-name', text: displayName }));
-        item.addEventListener('click', () => selectRegion(region.id));
-        item.addEventListener('mouseenter', () => highlightRegion(region.id, true));
-        item.addEventListener('mouseleave', () => highlightRegion(region.id, false));
+        item.appendChild(el('div', { class: 'legend-name', text: lg.label }));
         legend.appendChild(item);
       });
     }
@@ -365,68 +429,29 @@
     tooltip.classList.remove('active');
   }
 
-  function highlightRegion(id, on) {
-    const circle = $(`[data-region="${id}"]`, $('#worldMap'));
-    if (circle && circle.tagName === 'circle') {
-      circle.setAttribute('fill-opacity', on ? '0.65' : '0.35');
-      circle.setAttribute('r', on ? '26' : '22');
-    }
-    const legendItem = $(`.legend-item[data-region="${id}"]`);
-    if (legendItem) legendItem.classList.toggle('active', on);
-  }
-
   function selectRegion(id) {
     const region = MAP_DATA.regions.find(r => r.id === id);
     if (!region) return;
-    
-    $$('.map-region').forEach(c => c.classList.remove('selected'));
-    const circle = $(`[data-region="${id}"]`, $('#worldMap'));
-    if (circle) circle.classList.add('selected');
-    
-    $$('.legend-item').forEach(i => i.classList.remove('active'));
-    const legendItem = $(`.legend-item[data-region="${id}"]`);
-    if (legendItem) legendItem.classList.add('active');
-    
-    // Scroll to corresponding region card
-    const displayName = CURRENT_LANG === 'fa'
-      ? getContent('regions', region.id, 'name', region.name)
-      : region.name;
-    const regionCard = $$('.region-card').find(card => {
-      const nameEl = card.querySelector('.region-name');
-      return nameEl && nameEl.textContent === displayName;
-    });
-    if (regionCard) {
-      setTimeout(() => {
-        regionCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        regionCard.style.borderColor = 'var(--gold-bright)';
-        regionCard.style.boxShadow = '0 0 60px var(--gold-glow-strong)';
-        setTimeout(() => {
-          regionCard.style.borderColor = '';
-          regionCard.style.boxShadow = '';
-        }, 2500);
-      }, 300);
-    }
-  }
-
-  /* ============ WORLD TILES ============ */
-  function renderWorld() {
-    const grid = $('#worldGrid');
-    if (!grid || typeof WORLD_TILES === 'undefined') return;
-    grid.innerHTML = '';
-    WORLD_TILES.forEach((tile, i) => {
-      grid.appendChild(el('div', {
-        class: 'world-tile',
-        style: `animation-delay: ${i * 0.08}s`
-      }, [
-        el('span', { class: 'tile-icon', text: tile.icon }),
-        el('h3', { text: tile.title }),
-        el('p', { text: tile.desc }),
-        el('div', { class: 'tile-stat' }, [
-          el('span', { text: tile.statLabel }),
-          el('span', { text: tile.statValue })
-        ])
-      ]));
-    });
+    // Navigate to regions page and highlight
+    window.location.hash = '#/regions';
+    setTimeout(() => {
+      const cards = $$('.region-card');
+      const displayName = CURRENT_LANG === 'fa'
+        ? getContent('regions', region.id, 'name', region.name)
+        : region.name;
+      cards.forEach(card => {
+        const nameEl = card.querySelector('.region-name');
+        if (nameEl && nameEl.textContent === displayName) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          card.style.borderColor = 'var(--gold-bright)';
+          card.style.boxShadow = '0 0 60px var(--gold-glow-strong)';
+          setTimeout(() => {
+            card.style.borderColor = '';
+            card.style.boxShadow = '';
+          }, 2500);
+        }
+      });
+    }, 500);
   }
 
   /* ============ RACES ============ */
@@ -441,41 +466,31 @@
       const shortDesc = getContent('races', race.id, 'shortDesc', race.shortDesc);
       const secret = getContent('races', race.id, 'secret', race.secret);
       
-      // Traits — kept in English as proper nouns (e.g. "Ageless")
-      const traits = race.traits;
-      
       const card = el('article', {
         class: 'race-card',
         'data-race-id': race.id,
-        style: `animation-delay: ${i * 0.06}s`
+        style: `animation-delay: ${i * 0.05}s`
       });
       card.appendChild(el('div', { class: 'race-card-inner' }, [
         el('span', { class: 'race-icon', text: race.icon }),
         el('h3', { class: 'race-name', text: name }),
         el('div', { class: 'race-epithet', text: epithet }),
         el('p', { class: 'race-desc', text: shortDesc }),
-        el('div', { class: 'race-traits' }, traits.map(tr => el('span', { class: 'race-trait', text: tr }))),
+        el('div', { class: 'race-traits' }, race.traits.map(tr => el('span', { class: 'race-trait', text: tr }))),
         el('div', { class: 'race-secret', text: secret })
       ]));
       grid.appendChild(card);
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width) * 100 + '%');
-        card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height) * 100 + '%');
-      });
     });
   }
 
   function initRaceFilters() {
     const bar = $('#raceFilters');
-    if (!bar) return;
-    // Remove old listeners by cloning
-    const newBar = bar.cloneNode(true);
-    bar.parentNode.replaceChild(newBar, bar);
-    newBar.addEventListener('click', (e) => {
+    if (!bar || bar.dataset.init === 'true') return;
+    bar.dataset.init = 'true';
+    bar.addEventListener('click', (e) => {
       const btn = e.target.closest('.filter-btn');
       if (!btn) return;
-      $$('.filter-btn', newBar).forEach(b => b.classList.remove('active'));
+      $$('.filter-btn', bar).forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       renderRaces(btn.dataset.filter);
     });
@@ -504,10 +519,22 @@
         el('div', { class: 'magic-tag', text: tag }),
         el('p', { class: 'magic-desc', text: desc }),
         el('div', { class: 'magic-meta' }, [
-          el('div', { class: 'magic-meta-item' }, [el('span', { class: 'label', text: t('magic_label_source') }), el('span', { class: 'value', text: source })]),
-          el('div', { class: 'magic-meta-item' }, [el('span', { class: 'label', text: t('magic_label_cost') }), el('span', { class: 'value', text: cost })]),
-          el('div', { class: 'magic-meta-item' }, [el('span', { class: 'label', text: t('magic_label_users') }), el('span', { class: 'value', text: users })]),
-          el('div', { class: 'magic-meta-item' }, [el('span', { class: 'label', text: t('magic_label_use') }), el('span', { class: 'value', text: combatUse })])
+          el('div', { class: 'magic-meta-item' }, [
+            el('span', { class: 'label', text: t('magic_label_source') }),
+            el('span', { class: 'value', text: source })
+          ]),
+          el('div', { class: 'magic-meta-item' }, [
+            el('span', { class: 'label', text: t('magic_label_cost') }),
+            el('span', { class: 'value', text: cost })
+          ]),
+          el('div', { class: 'magic-meta-item' }, [
+            el('span', { class: 'label', text: t('magic_label_users') }),
+            el('span', { class: 'value', text: users })
+          ]),
+          el('div', { class: 'magic-meta-item' }, [
+            el('span', { class: 'label', text: t('magic_label_use') }),
+            el('span', { class: 'value', text: combatUse })
+          ])
         ])
       ]));
     });
@@ -564,7 +591,6 @@
     const body = $('#characterModalBody');
     if (!body) return;
     
-    const isFa = CURRENT_LANG === 'fa';
     const title = getContent('characters', char.id, 'title', char.title);
     const faction = getContent('characters', char.id, 'faction', char.faction);
     const race = getContent('characters', char.id, 'race', char.race);
@@ -597,30 +623,15 @@
       <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_summary'))}</div><p>${escapeHtml(summary)}</p></div>
       <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_biography'))}</div><p>${escapeHtml(fullBio)}</p></div>
       <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_personality'))}</div><p>${escapeHtml(personality)}</p></div>
-      <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_abilities'))}</div><ul style="list-style:none;padding:0;">${abilities.map(a => `<li style="padding:0.75rem 0;border-bottom:1px solid rgba(201,162,39,0.08);font-family:var(--font-serif);color:var(--text-secondary);line-height:1.75;">${escapeHtml(a)}</li>`).join('')}</ul></div>
-      <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_flaws'))}</div><ul style="list-style:none;padding:0;">${flaws.map(f => `<li style="padding:0.75rem 0;border-bottom:1px solid rgba(122,26,26,0.15);font-family:var(--font-serif);color:#c89a9a;line-height:1.75;">${escapeHtml(f)}</li>`).join('')}</ul></div>
-      <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_relationships'))}</div><ul style="list-style:none;padding:0;">${relationships.map(r => `<li style="padding:0.75rem 0;border-bottom:1px solid rgba(201,162,39,0.08);"><div style="font-family:var(--font-display);color:var(--gold-bright);font-size:0.95rem;margin-bottom:0.25rem;">${escapeHtml(r.to)} <span style="font-size:0.75rem;color:var(--text-muted);letter-spacing:0.1em;">— ${escapeHtml(r.type)}</span></div><div style="font-family:var(--font-serif);color:var(--text-secondary);font-size:0.95rem;">${escapeHtml(r.detail)}</div></li>`).join('')}</ul></div>
-      <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_quotes'))}</div>${quotes.map(q => `<p style="font-style:italic;color:var(--gold-dim);border-left:2px solid var(--gold);padding-left:1rem;margin:1rem 0;">"${escapeHtml(q)}"</p>`).join('')}</div>
-      <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_story_hooks'))}</div><ul style="list-style:none;padding:0;">${storyHooks.map(h => `<li style="padding:0.75rem 0;border-bottom:1px solid rgba(201,162,39,0.08);font-family:var(--font-serif);color:var(--text-secondary);line-height:1.75;">${escapeHtml(h)}</li>`).join('')}</ul></div>
+      <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_abilities'))}</div><ul class="modal-list">${abilities.map(a => `<li>${escapeHtml(a)}</li>`).join('')}</ul></div>
+      <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_flaws'))}</div><ul class="modal-list flaws">${flaws.map(f => `<li>${escapeHtml(f)}</li>`).join('')}</ul></div>
+      <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_relationships'))}</div>${relationships.map(r => `<div class="modal-relationship"><div class="modal-rel-to">${escapeHtml(r.to)}</div><div class="modal-rel-type">${escapeHtml(r.type)}</div><div class="modal-rel-detail">${escapeHtml(r.detail)}</div></div>`).join('')}</div>
+      <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_quotes'))}</div>${quotes.map(q => `<p class="modal-quote">"${escapeHtml(q)}"</p>`).join('')}</div>
+      <div class="modal-section"><div class="modal-section-title">${escapeHtml(t('modal_story_hooks'))}</div><ul class="modal-list">${storyHooks.map(h => `<li>${escapeHtml(h)}</li>`).join('')}</ul></div>
     `;
     
     $('#characterModal').classList.add('active');
     document.body.classList.add('modal-open');
-  }
-
-  function initModal() {
-    const modal = $('#characterModal');
-    if (!modal) return;
-    // Prevent duplicate listeners
-    if (modal.dataset.init === 'true') return;
-    modal.dataset.init = 'true';
-    
-    $$('[data-close]', modal).forEach(el => el.addEventListener('click', closeModal));
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-    function closeModal() {
-      modal.classList.remove('active');
-      document.body.classList.remove('modal-open');
-    }
   }
 
   /* ============ HOUSES ============ */
@@ -631,7 +642,6 @@
     HOUSES.forEach(house => {
       const name = getContent('houses', house.name, 'name', house.name);
       const seat = getContent('houses', house.name, 'seat', house.seat);
-      const region = getContent('houses', house.name, 'region', house.region);
       const motto = getContent('houses', house.name, 'motto', house.motto);
       const desc = getContent('houses', house.name, 'desc', house.desc);
       const wealth = getContent('houses', house.name, 'wealth', house.wealth);
@@ -665,10 +675,10 @@
       const desc = getContent('regions', region.id, 'desc', region.desc);
       const control = getContent('regions', region.id, 'control', region.control);
       
-      const card = el('article', {
+      grid.appendChild(el('article', {
         class: 'region-card',
-        'data-region-name': region.name,
-        style: `--region-color: ${region.color}`
+        style: `--region-color: ${region.color}`,
+        'data-region-name': region.name
       }, [
         el('h3', { class: 'region-name', text: name }),
         el('div', { class: 'region-type', text: type }),
@@ -677,15 +687,7 @@
           document.createTextNode(t('region_label_controlled') + ': '),
           el('strong', { text: control })
         ])
-      ]);
-      card.addEventListener('click', () => {
-        const mapRegion = MAP_DATA.regions.find(r => r.name === region.name);
-        if (mapRegion) {
-          $('#map').scrollIntoView({ behavior: 'smooth' });
-          setTimeout(() => selectRegion(mapRegion.id), 500);
-        }
-      });
-      grid.appendChild(card);
+      ]));
     });
   }
 
@@ -724,9 +726,8 @@
   }
 
   function initTimelineFilters() {
-    const controls = $('.timeline-controls');
-    if (!controls) return;
-    if (controls.dataset.init === 'true') return;
+    const controls = $('#timelineControls');
+    if (!controls || controls.dataset.init === 'true') return;
     controls.dataset.init = 'true';
     controls.addEventListener('click', (e) => {
       const btn = e.target.closest('.era-btn');
@@ -739,20 +740,21 @@
 
   /* ============ CODEX ============ */
   function renderCodex(tab = 'artifacts') {
+    CURRENT_CODEX_TAB = tab;
     const content = $('#codexContent');
     if (!content) return;
     content.innerHTML = '';
     
     const dataMap = {
-      artifacts: { data: ARTIFACTS, typeKey: 'type', categoryKey: 'artifacts' },
-      gods: { data: GODS, typeKey: 'domain', nameKey: 'name', descKey: 'desc', extraKey: 'status', categoryKey: 'gods' },
-      creatures: { data: CREATURES, typeKey: 'class', nameKey: 'name', descKey: 'desc', extraKey: 'danger', categoryKey: 'creatures' },
-      prophecies: { data: PROPHECIES, typeKey: 'source', nameKey: 'title', descKey: 'text', extraKey: 'status', categoryKey: 'prophecies' },
-      languages: { data: LANGUAGES, typeKey: 'script', nameKey: 'name', descKey: 'desc', extraKey: 'speakers', categoryKey: 'languages' }
+      artifacts: { data: typeof ARTIFACTS !== 'undefined' ? ARTIFACTS : [], typeKey: 'type', categoryKey: 'artifacts' },
+      gods: { data: typeof GODS !== 'undefined' ? GODS : [], typeKey: 'domain', nameKey: 'name', descKey: 'desc', extraKey: 'status', categoryKey: 'gods' },
+      creatures: { data: typeof CREATURES !== 'undefined' ? CREATURES : [], typeKey: 'class', nameKey: 'name', descKey: 'desc', extraKey: 'danger', categoryKey: 'creatures' },
+      prophecies: { data: typeof PROPHECIES !== 'undefined' ? PROPHECIES : [], typeKey: 'source', nameKey: 'title', descKey: 'text', extraKey: 'status', categoryKey: 'prophecies' },
+      languages: { data: typeof LANGUAGES !== 'undefined' ? LANGUAGES : [], typeKey: 'script', nameKey: 'name', descKey: 'desc', extraKey: 'speakers', categoryKey: 'languages' }
     };
     
     const config = dataMap[tab];
-    if (!config || !config.data) return;
+    if (!config) return;
     
     const grid = el('div', { class: 'codex-grid' });
     config.data.forEach(item => {
@@ -766,21 +768,17 @@
       const cls = getContent(config.categoryKey, nameKey, 'class', item.class);
       const source = getContent(config.categoryKey, nameKey, 'source', item.source);
       const script = getContent(config.categoryKey, nameKey, 'script', item.script);
-      
       const displayType = type || domain || cls || source || script;
       
       const descKey = config.descKey || 'desc';
       let desc = getContent(config.categoryKey, nameKey, descKey, item[descKey]);
-      if (tab === 'prophecies') {
-        desc = getContent(config.categoryKey, nameKey, 'text', item.text);
-      }
+      if (tab === 'prophecies') desc = getContent(config.categoryKey, nameKey, 'text', item.text);
       
       const extra = getContent(config.categoryKey, nameKey, config.extraKey, item[config.extraKey]);
       
       let extraLabel = '';
-      if (tab === 'prophecies') extraLabel = (CURRENT_LANG === 'fa' ? 'وضعیت: ' : t('codex_label_status') + ': ');
+      if (tab === 'prophecies' || tab === 'gods') extraLabel = (CURRENT_LANG === 'fa' ? 'وضعیت: ' : t('codex_label_status') + ': ');
       else if (tab === 'creatures') extraLabel = (CURRENT_LANG === 'fa' ? 'خطر: ' : t('codex_label_danger') + ': ');
-      else if (tab === 'gods') extraLabel = (CURRENT_LANG === 'fa' ? 'وضعیت: ' : t('codex_label_status') + ': ');
       else if (tab === 'languages') extraLabel = (CURRENT_LANG === 'fa' ? 'گویشوران: ' : t('codex_label_speakers') + ': ');
       
       grid.appendChild(el('div', { class: 'codex-item' }, [
@@ -789,7 +787,7 @@
         el('div', { class: 'codex-item-type', text: displayType }),
         el('p', { class: 'codex-item-desc', text: desc }),
         extra ? el('div', {
-          style: 'margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(201,162,39,0.1);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);',
+          style: 'margin-top:0.9rem;padding-top:0.9rem;border-top:1px solid rgba(201,162,39,0.1);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);',
           text: extraLabel + extra
         }) : null
       ]));
@@ -799,8 +797,7 @@
 
   function initCodexTabs() {
     const tabs = $('#codexTabs');
-    if (!tabs) return;
-    if (tabs.dataset.init === 'true') return;
+    if (!tabs || tabs.dataset.init === 'true') return;
     tabs.dataset.init = 'true';
     tabs.addEventListener('click', (e) => {
       const tab = e.target.closest('.codex-tab');
@@ -811,16 +808,264 @@
     });
   }
 
+  /* ============ LIBRARY (Books) ============ */
+  function renderLibrary() {
+    const grid = $('#booksGrid');
+    if (!grid || typeof BOOKS === 'undefined') return;
+    grid.innerHTML = '';
+    BOOKS.forEach(book => {
+      const title = CURRENT_LANG === 'fa' && book.titleFA ? book.titleFA : book.title;
+      const author = CURRENT_LANG === 'fa' && book.authorFA ? book.authorFA : book.author;
+      const category = CURRENT_LANG === 'fa' && book.categoryFA ? book.categoryFA : book.category;
+      
+      const card = el('article', { class: 'book-card', 'data-book-id': book.id }, [
+        el('span', { class: 'book-icon', text: '📖' }),
+        el('div', { class: 'book-category', text: category }),
+        el('h3', { class: 'book-title', text: title }),
+        el('div', { class: 'book-author', text: author }),
+        el('p', { class: 'book-excerpt', text: book.excerpt }),
+        el('div', { class: 'book-footer' }, [
+          el('span', { text: `${book.pages} pages · ${book.date}` }),
+          el('span', { class: 'book-read-btn', text: 'Read →' })
+        ])
+      ]);
+      grid.appendChild(card);
+      card.addEventListener('click', () => openBookModal(book.id));
+    });
+  }
+
+  function openBookModal(bookId) {
+    const book = BOOKS.find(b => b.id === bookId);
+    if (!book) return;
+    const reader = $('#bookReader');
+    if (!reader) return;
+    
+    const title = CURRENT_LANG === 'fa' && book.titleFA ? book.titleFA : book.title;
+    const author = CURRENT_LANG === 'fa' && book.authorFA ? book.authorFA : book.author;
+    
+    reader.innerHTML = `
+      <h1>${escapeHtml(title)}</h1>
+      <div class="book-reader-author">by ${escapeHtml(author)}</div>
+      <div class="book-reader-meta">
+        <span>${escapeHtml(book.date)}</span>
+        <span>${escapeHtml(book.language)}</span>
+        <span>${book.pages} pages</span>
+      </div>
+      <div class="book-reader-text">${escapeHtml(book.fullText)}</div>
+      ${book.note ? `<div class="book-reader-note">${escapeHtml(book.note)}</div>` : ''}
+    `;
+    
+    $('#bookModal').classList.add('active');
+    document.body.classList.add('modal-open');
+  }
+
+  /* ============ GUILDS ============ */
+  function renderGuilds() {
+    const grid = $('#guildsGrid');
+    if (!grid || typeof GUILDS_DATA === 'undefined') return;
+    grid.innerHTML = '';
+    GUILDS_DATA.forEach(guild => {
+      const card = el('article', {
+        class: 'guild-card',
+        style: `--guild-color: ${guild.color}`
+      }, [
+        el('span', { class: 'guild-icon', text: guild.icon }),
+        el('h3', { class: 'guild-name', text: guild.name }),
+        el('div', { class: 'guild-founded', text: `Founded ${guild.founded} · ${guild.branches} ${guild.branches === 1 ? 'branch' : 'branches'}` }),
+        el('p', { class: 'guild-purpose', text: guild.purpose }),
+        el('div', { class: 'guild-ranks' }, 
+          (Array.isArray(guild.ranks) ? guild.ranks : []).map(r => el('span', { class: 'guild-rank', text: r }))
+        ),
+        el('div', { class: 'guild-meta' }, [
+          el('span', {}, [document.createTextNode('HQ: '), el('strong', { text: guild.headquarters })]),
+          el('span', {}, [document.createTextNode('Notable: '), el('strong', { text: (guild.notable_members || []).length + ' members' })])
+        ])
+      ]);
+      grid.appendChild(card);
+    });
+  }
+
+  /* ============ DUNGEONS ============ */
+  function renderDungeons() {
+    const container = $('#dungeonsContent');
+    if (!container || typeof DUNGEONS_DATA === 'undefined') return;
+    container.innerHTML = '';
+    
+    const abyss = DUNGEONS_DATA.theAbyss;
+    
+    // Abyss header
+    container.appendChild(el('div', { class: 'abyss-header' }, [
+      el('span', { class: 'abyss-icon', text: '🕳️' }),
+      el('h2', { class: 'abyss-name', text: abyss.name }),
+      el('div', { class: 'abyss-location', text: abyss.location }),
+      el('div', { class: 'abyss-stats' }, [
+        el('div', { class: 'abyss-stat' }, [
+          el('span', { class: 'abyss-stat-num', text: abyss.floors }),
+          el('span', { class: 'abyss-stat-label', text: 'Floors' })
+        ]),
+        el('div', { class: 'abyss-stat' }, [
+          el('span', { class: 'abyss-stat-num', text: abyss.exploredFloors }),
+          el('span', { class: 'abyss-stat-label', text: 'Explored' })
+        ]),
+        el('div', { class: 'abyss-stat' }, [
+          el('span', { class: 'abyss-stat-num', text: '200' }),
+          el('span', { class: 'abyss-stat-label', text: 'Reached Floor 40' })
+        ]),
+        el('div', { class: 'abyss-stat' }, [
+          el('span', { class: 'abyss-stat-num', text: '0' }),
+          el('span', { class: 'abyss-stat-label', text: 'Reached Floor 100' })
+        ])
+      ]),
+      el('p', { class: 'abyss-desc', text: abyss.description })
+    ]));
+
+    // Themes
+    const themesSection = el('div', { class: 'abyss-section' }, [
+      el('h3', { class: 'abyss-section-title', text: 'Floor Themes' })
+    ]);
+    const themeList = el('div', { class: 'theme-list' });
+    abyss.themes.forEach(theme => {
+      themeList.appendChild(el('div', { class: 'theme-item' }, [
+        el('div', { class: 'theme-range', text: `Floors ${theme.range}` }),
+        el('div', {}, [
+          el('div', { class: 'theme-name', text: theme.theme }),
+          el('div', { class: 'theme-desc', text: theme.description })
+        ])
+      ]));
+    });
+    themesSection.appendChild(themeList);
+    container.appendChild(themesSection);
+
+    // Bosses
+    const bossesSection = el('div', { class: 'abyss-section' }, [
+      el('h3', { class: 'abyss-section-title', text: 'Bosses' })
+    ]);
+    const bossList = el('div', { class: 'boss-list' });
+    abyss.bosses.forEach(boss => {
+      bossList.appendChild(el('div', { class: 'boss-item' }, [
+        el('div', { class: 'boss-floor', text: `Floor ${boss.floor}` }),
+        el('div', { class: 'boss-name', text: boss.name }),
+        el('div', { class: 'boss-desc', text: boss.description })
+      ]));
+    });
+    bossesSection.appendChild(bossList);
+    container.appendChild(bossesSection);
+
+    // Rules
+    const rulesSection = el('div', { class: 'abyss-section' }, [
+      el('h3', { class: 'abyss-section-title', text: 'Rules of the Abyss' })
+    ]);
+    const rulesList = el('ul', { class: 'rules-list' });
+    abyss.rules.forEach(rule => {
+      rulesList.appendChild(el('li', { text: rule }));
+    });
+    rulesSection.appendChild(rulesList);
+    container.appendChild(rulesSection);
+
+    // Facts
+    const factsSection = el('div', { class: 'abyss-section' }, [
+      el('h3', { class: 'abyss-section-title', text: 'Notable Facts' })
+    ]);
+    const factsList = el('ul', { class: 'facts-list' });
+    abyss.notableFacts.forEach(fact => {
+      factsList.appendChild(el('li', { text: fact }));
+    });
+    factsSection.appendChild(factsList);
+    container.appendChild(factsSection);
+
+    // Other dungeons
+    const otherSection = el('div', { class: 'abyss-section' }, [
+      el('h3', { class: 'abyss-section-title', text: 'Other Dungeons of Aethermoor' })
+    ]);
+    const otherGrid = el('div', { class: 'other-dungeons' });
+    DUNGEONS_DATA.otherDungeons.forEach(d => {
+      otherGrid.appendChild(el('div', { class: 'other-dungeon' }, [
+        el('h4', { class: 'other-dungeon-name', text: d.name }),
+        el('div', { class: 'other-dungeon-location', text: d.location }),
+        el('p', { class: 'other-dungeon-desc', text: d.description }),
+        el('div', { class: 'other-dungeon-meta' }, [
+          el('span', {}, [document.createTextNode('Floors: '), el('strong', { text: d.floors })]),
+          el('span', {}, [document.createTextNode('Boss: '), el('strong', { text: d.boss.split('—')[0].trim() })])
+        ])
+      ]));
+    });
+    otherSection.appendChild(otherGrid);
+    container.appendChild(otherSection);
+  }
+
+  /* ============ COUNTERS (Hero stats) ============ */
+  function initCounters() {
+    const stats = $$('.stat-num');
+    if (!stats.length) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        if (el.dataset.animated === 'true') return;
+        el.dataset.animated = 'true';
+        const target = parseInt(el.dataset.count, 10);
+        const duration = 1600;
+        const start = performance.now();
+        const tick = (now) => {
+          const t2 = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - t2, 3);
+          const value = Math.floor(target * eased);
+          el.textContent = value.toLocaleString('en-US');
+          if (t2 < 1) requestAnimationFrame(tick);
+          else el.textContent = target.toLocaleString('en-US') + (target > 100 ? '+' : '');
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.5 });
+    stats.forEach(s => observer.observe(s));
+  }
+
+  /* ============ MODALS ============ */
+  function initModals() {
+    // Close handlers
+    document.addEventListener('click', (e) => {
+      if (e.target.matches('[data-close]') || e.target.closest('[data-close]')) {
+        $$('.modal').forEach(m => m.classList.remove('active'));
+        document.body.classList.remove('modal-open');
+      }
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        $$('.modal').forEach(m => m.classList.remove('active'));
+        document.body.classList.remove('modal-open');
+      }
+    });
+  }
+
+  /* ============ LANGUAGE TOGGLE ============ */
+  function initLanguageToggle() {
+    const btn = $('#langToggle');
+    if (!btn) return;
+    
+    btn.addEventListener('click', () => {
+      CURRENT_LANG = CURRENT_LANG === 'en' ? 'fa' : 'en';
+      localStorage.setItem('aethermoor_lang', CURRENT_LANG);
+      applyUITranslations();
+      
+      // Clear rendered cache so pages re-render
+      renderedPages.clear();
+      // Re-render current page
+      renderPage(CURRENT_PAGE);
+      renderedPages.add(CURRENT_PAGE);
+      
+      document.title = CURRENT_LANG === 'fa' 
+        ? 'آرکِیا | قلمرو از هم شکسته' 
+        : 'Aethermoor | The Sundered Realm';
+    });
+  }
+
   /* ============ SEARCH ============ */
   function initSearch() {
     const input = $('#globalSearch');
     const results = $('#searchResults');
     if (!input || !results) return;
-    if (input.dataset.init === 'true') {
-      // Rebuild index on language change is fine; just clear
-      return;
-    }
-    input.dataset.init = 'true';
     
     input.addEventListener('input', () => {
       const q = input.value.trim().toLowerCase();
@@ -831,7 +1076,7 @@
       }
       
       const index = [];
-      const add = (arr, cat, type, categoryKey) => {
+      const add = (arr, cat, type, route, categoryKey) => {
         if (typeof arr === 'undefined') return;
         arr.forEach(item => {
           const name = item.name || item.title;
@@ -843,7 +1088,7 @@
             }
           }
           index.push({
-            cat, type,
+            cat, type, route,
             name: displayName,
             searchText: (name + ' ' + displayName).toLowerCase(),
             id: item.id || name.toLowerCase().replace(/\s+/g, '-')
@@ -851,15 +1096,17 @@
         });
       };
       
-      add(CHARACTERS, 'Character', 'character', 'characters');
-      add(RACES, 'Race', 'race', 'races');
-      add(HOUSES, 'House', 'house', 'houses');
-      add(REGIONS, 'Region', 'region', 'regions');
-      add(ARTIFACTS, 'Artifact', 'artifact', 'artifacts');
-      add(MAGIC_SCHOOLS, 'Magic', 'magic', 'magic');
-      add(GODS, 'God', 'god', 'gods');
-      add(CREATURES, 'Creature', 'creature', 'creatures');
-      add(PROPHECIES, 'Prophecy', 'prophecy', 'prophecies');
+      add(CHARACTERS, 'Character', 'character', 'characters', 'characters');
+      add(RACES, 'Race', 'race', 'races', 'races');
+      add(HOUSES, 'House', 'house', 'houses', 'houses');
+      add(REGIONS, 'Region', 'region', 'regions', 'regions');
+      add(ARTIFACTS, 'Artifact', 'artifact', 'codex', 'artifacts');
+      add(MAGIC_SCHOOLS, 'Magic', 'magic', 'magic', 'magic');
+      add(GODS, 'God', 'god', 'codex', 'gods');
+      add(CREATURES, 'Creature', 'creature', 'codex', 'creatures');
+      add(PROPHECIES, 'Prophecy', 'prophecy', 'codex', 'prophecies');
+      add(BOOKS, 'Book', 'book', 'library', null);
+      add(GUILDS_DATA, 'Guild', 'guild', 'guilds', null);
       
       const matches = index.filter(item => item.searchText.includes(q)).slice(0, 10);
       
@@ -878,24 +1125,9 @@
         item.addEventListener('click', () => {
           results.classList.remove('active');
           input.value = '';
-          if (m.type === 'character') openCharacterModal(m.id);
-          else if (m.type === 'race') {
-            const c = $(`[data-race-id="${m.id}"]`);
-            if (c) {
-              c.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              c.style.borderColor = 'var(--gold-bright)';
-              setTimeout(() => c.style.borderColor = '', 2500);
-            }
-          } else if (m.type === 'region') {
-            const mapRegion = MAP_DATA.regions.find(r => r.id === m.id);
-            if (mapRegion) {
-              $('#map').scrollIntoView({ behavior: 'smooth' });
-              setTimeout(() => selectRegion(mapRegion.id), 500);
-            }
-          } else {
-            const target = $(`#${m.type}s`) || $('#codex');
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
-          }
+          window.location.hash = '#/' + m.route;
+          if (m.type === 'character') setTimeout(() => openCharacterModal(m.id), 400);
+          if (m.type === 'book') setTimeout(() => openBookModal(m.id), 400);
         });
         results.appendChild(item);
       });
@@ -907,78 +1139,24 @@
     });
   }
 
-  /* ============ SCROLL ANIMATIONS ============ */
-  function initScrollAnimations() {
-    const targets = $$('.world-tile, .race-card, .magic-school, .char-card, .house-card, .region-card, .codex-item');
-    if (!targets.length) return;
-    targets.forEach(t2 => {
-      t2.style.opacity = '0';
-      t2.style.transform = 'translateY(30px)';
-      t2.style.transition = 'opacity 0.7s cubic-bezier(0.19, 1, 0.22, 1), transform 0.7s cubic-bezier(0.19, 1, 0.22, 1)';
-    });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const el2 = entry.target;
-          setTimeout(() => {
-            el2.style.opacity = '1';
-            el2.style.transform = 'translateY(0)';
-          }, parseInt(el2.style.animationDelay) || 0);
-          observer.unobserve(el2);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    targets.forEach(t2 => observer.observe(t2));
-  }
-
-  /* ============ RE-RENDER ALL (for language switch) ============ */
-  function reRenderAll() {
-    renderMap();
-    renderWorld();
-    renderRaces();
-    renderMagic();
-    renderCharacters();
-    renderHouses();
-    renderRegions();
-    renderTimeline();
-    renderCodex($('.codex-tab.active')?.dataset.tab || 'artifacts');
-    requestAnimationFrame(() => setTimeout(initScrollAnimations, 50));
-  }
-
   /* ============ INIT ============ */
   function init() {
     initLoader();
     applyUITranslations();
-    initNavigation();
+    initNavScroll();
+    initMobileToggle();
+    initModals();
     initLanguageToggle();
-    initParticles();
-    initCounters();
-    
-    renderMap();
-    renderWorld();
-    renderRaces();
-    initRaceFilters();
-    renderMagic();
-    renderCharacters();
-    initModal();
-    renderHouses();
-    renderRegions();
-    renderTimeline();
-    initTimelineFilters();
-    renderCodex('artifacts');
-    initCodexTabs();
     initSearch();
+    initRouter();
     
-    requestAnimationFrame(() => setTimeout(initScrollAnimations, 100));
-    
-    // Update title based on language
     document.title = CURRENT_LANG === 'fa'
       ? 'آرکِیا | قلمرو از هم شکسته'
       : 'Aethermoor | The Sundered Realm';
     
-    console.log('%c◈ AETHERMOOR LOADED ◈', 'color: #e8c547; font-family: serif; font-size: 16px; letter-spacing: 0.3em;');
-    console.log('%cLanguage: ' + CURRENT_LANG.toUpperCase(), 'color: #c9a227; font-style: italic;');
-    console.log('%cThe chronicle is complete. The world is waiting.', 'color: #7a6f5e; font-style: italic; font-family: serif;');
+    console.log('%c◈ AETHERMOOR SPA LOADED ◈', 'color: #e8c547; font-family: serif; font-size: 16px; letter-spacing: 0.3em;');
+    console.log('%c13 pages · Hash routing · Bilingual EN/FA', 'color: #c9a227; font-style: italic;');
+    console.log('%c"Navigate the realm."', 'color: #7a6f5e; font-style: italic;');
   }
 
   if (document.readyState === 'loading') {
@@ -986,4 +1164,5 @@
   } else {
     init();
   }
+
 })();
