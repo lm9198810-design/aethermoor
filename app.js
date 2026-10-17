@@ -319,7 +319,170 @@
     });
   }
 
-  /* ============ MAP ============ */
+  /* ============ INTERACTIVE FANTASY ATLAS ============ */
+  const MAP_VIEW = { x: 0, y: 0, w: 1800, h: 1260, borders: true, cities: true, drag: null };
+
+  function applyMapView(svg) {
+    svg.setAttribute('viewBox', [MAP_VIEW.x, MAP_VIEW.y, MAP_VIEW.w, MAP_VIEW.h].join(' '));
+  }
+
+  function zoomMapAt(svg, factor, clientX, clientY) {
+    const rect = svg.getBoundingClientRect();
+    const px = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    const py = Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
+    const nextW = Math.max(450, Math.min(1800, MAP_VIEW.w * factor));
+    const nextH = nextW * 0.7;
+    const worldX = MAP_VIEW.x + px * MAP_VIEW.w;
+    const worldY = MAP_VIEW.y + py * MAP_VIEW.h;
+    MAP_VIEW.x = Math.max(0, Math.min(1800 - nextW, worldX - px * nextW));
+    MAP_VIEW.y = Math.max(0, Math.min(1260 - nextH, worldY - py * nextH));
+    MAP_VIEW.w = nextW;
+    MAP_VIEW.h = nextH;
+    applyMapView(svg);
+  }
+
+  function updateMapControlLabels() {
+    const borders = $('#mapBordersToggle');
+    const cities = $('#mapCitiesToggle');
+    if (borders) {
+      borders.textContent = t(MAP_VIEW.borders ? 'map_borders_on' : 'map_borders_off');
+      borders.setAttribute('aria-pressed', String(MAP_VIEW.borders));
+      borders.classList.toggle('is-active', MAP_VIEW.borders);
+    }
+    if (cities) {
+      cities.textContent = t(MAP_VIEW.cities ? 'map_cities_on' : 'map_cities_off');
+      cities.setAttribute('aria-pressed', String(MAP_VIEW.cities));
+      cities.classList.toggle('is-active', MAP_VIEW.cities);
+    }
+  }
+
+  function initMapControls(svg) {
+    if (svg.dataset.mapControlsInit === 'true') return;
+    svg.dataset.mapControlsInit = 'true';
+    $('#mapZoomIn')?.addEventListener('click', () => zoomMapAt(svg, 0.78, svg.getBoundingClientRect().left + svg.clientWidth / 2, svg.getBoundingClientRect().top + svg.clientHeight / 2));
+    $('#mapZoomOut')?.addEventListener('click', () => zoomMapAt(svg, 1.28, svg.getBoundingClientRect().left + svg.clientWidth / 2, svg.getBoundingClientRect().top + svg.clientHeight / 2));
+    $('#mapResetView')?.addEventListener('click', () => {
+      MAP_VIEW.x = 0; MAP_VIEW.y = 0; MAP_VIEW.w = 1800; MAP_VIEW.h = 1260;
+      applyMapView(svg);
+    });
+    $('#mapBordersToggle')?.addEventListener('click', () => {
+      MAP_VIEW.borders = !MAP_VIEW.borders;
+      svg.querySelector('.map-border-layer')?.classList.toggle('is-hidden', !MAP_VIEW.borders);
+      updateMapControlLabels();
+    });
+    $('#mapCitiesToggle')?.addEventListener('click', () => {
+      MAP_VIEW.cities = !MAP_VIEW.cities;
+      svg.querySelector('.map-city-layer')?.classList.toggle('is-hidden', !MAP_VIEW.cities);
+      updateMapControlLabels();
+    });
+    svg.addEventListener('wheel', event => {
+      event.preventDefault();
+      zoomMapAt(svg, event.deltaY < 0 ? 0.86 : 1.16, event.clientX, event.clientY);
+    }, { passive: false });
+    svg.addEventListener('pointerdown', event => {
+      if (event.target.closest('.map-region-marker, .map-city-marker')) return;
+      MAP_VIEW.drag = { id: event.pointerId, x: event.clientX, y: event.clientY, viewX: MAP_VIEW.x, viewY: MAP_VIEW.y };
+      svg.classList.add('is-panning');
+      svg.setPointerCapture(event.pointerId);
+    });
+    svg.addEventListener('pointermove', event => {
+      if (!MAP_VIEW.drag || MAP_VIEW.drag.id !== event.pointerId) return;
+      const rect = svg.getBoundingClientRect();
+      MAP_VIEW.x = Math.max(0, Math.min(1800 - MAP_VIEW.w, MAP_VIEW.drag.viewX - (event.clientX - MAP_VIEW.drag.x) * MAP_VIEW.w / rect.width));
+      MAP_VIEW.y = Math.max(0, Math.min(1260 - MAP_VIEW.h, MAP_VIEW.drag.viewY - (event.clientY - MAP_VIEW.drag.y) * MAP_VIEW.h / rect.height));
+      applyMapView(svg);
+    });
+    const endPan = event => {
+      if (MAP_VIEW.drag && MAP_VIEW.drag.id === event.pointerId) MAP_VIEW.drag = null;
+      svg.classList.remove('is-panning');
+    };
+    svg.addEventListener('pointerup', endPan);
+    svg.addEventListener('pointercancel', endPan);
+    updateMapControlLabels();
+  }
+
+  function renderAtlasOverlays(svg, tooltip) {
+    const terrain = svgEl('g', { class: 'map-terrain-detail', transform: 'scale(1.8)' });
+    // The Divine Divide is a natural wall as well as a divine wound: layered ridges make
+    // the Black Chasm a continent-scale barrier, not a passable valley.
+    terrain.appendChild(svgEl('path', { d: 'M 52 151 C 170 137 255 158 350 148 S 540 142 640 153 S 825 139 948 151', fill: 'none', stroke: '#202a2e', 'stroke-width': 22, 'stroke-linecap': 'round', opacity: '.95' }));
+    terrain.appendChild(svgEl('path', { d: 'M 52 151 C 170 137 255 158 350 148 S 540 142 640 153 S 825 139 948 151', fill: 'none', stroke: '#a9a38b', 'stroke-width': 1.8', 'stroke-linecap': 'round', opacity: '.8' }));
+    for (let i = 0; i < 28; i++) {
+      const x = 66 + i * 32;
+      const y = 150 + Math.sin(i * 1.7) * 7;
+      const height = 23 + (i % 4) * 5 + (i % 7 === 0 ? 9 : 0);
+      const peak = svgEl('g', { opacity: i % 3 === 0 ? '.98' : '.84' });
+      peak.appendChild(svgEl('path', { d: `M ${x - 22} ${y + 17} L ${x} ${y - height} L ${x + 25} ${y + 17} Z`, fill: '#303638', stroke: '#9b9a87', 'stroke-width': 1.2 }));
+      peak.appendChild(svgEl('path', { d: `M ${x - 8} ${y - height + 13} L ${x} ${y - height} L ${x + 9} ${y - height + 13} L ${x + 2} ${y - height + 10} L ${x} ${y - height + 15} L ${x - 3} ${y - height + 10} Z`, fill: '#d8d7c7', opacity: '.9' }));
+      terrain.appendChild(peak);
+    }
+    // A second broken ridge makes the gorge difficult to bypass even far from the seal.
+    terrain.appendChild(svgEl('path', { d: 'M 70 181 Q 180 165 275 184 T 480 179 T 690 184 T 930 178', fill: 'none', stroke: '#111a20', 'stroke-width': 10, opacity: '.9' }));
+    // Trade roads and rivers are deliberately subtle, so political labels remain legible.
+    terrain.appendChild(svgEl('path', { d: 'M 415 272 C 390 315 430 355 405 405 S 430 470 455 510 S 470 575 420 620', fill: 'none', stroke: '#6aa8b4', 'stroke-width': 2.2, opacity: '.7' }));
+    terrain.appendChild(svgEl('path', { d: 'M 220 278 C 260 310 310 318 335 350 S 380 395 405 405', fill: 'none', stroke: '#8b7951', 'stroke-width': 2, 'stroke-dasharray': '5 4', opacity: '.9' }));
+    terrain.appendChild(svgEl('path', { d: 'M 405 405 C 470 390 515 390 585 410 S 660 470 735 545', fill: 'none', stroke: '#8b7951', 'stroke-width': 2, 'stroke-dasharray': '5 4', opacity: '.9' }));
+    const divideLabel = svgEl('text', { x: 500, y: 211, 'text-anchor': 'middle', fill: '#e0d3ac', 'font-size': 9, 'font-family': 'Cinzel,serif', 'letter-spacing': 1.5, stroke: '#07111c', 'stroke-width': 2.5, 'paint-order': 'stroke' });
+    divideLabel.textContent = CURRENT_LANG === 'fa' ? 'دیواره‌ی الهی — گذرناپذیر' : 'THE DIVINE DIVIDE · IMPASSABLE HIGH WALL';
+    terrain.appendChild(divideLabel);
+    svg.appendChild(terrain);
+
+    const borders = svgEl('g', { class: 'map-border-layer' + (MAP_VIEW.borders ? '' : ' is-hidden'), transform: 'scale(1.8)' });
+    const borderLines = [
+      { name: 'VALERIAN SUCCESSOR REALMS', d: 'M 270 352 C 310 325 348 338 378 358 S 442 353 476 378 S 526 422 520 465', x: 405, y: 372 },
+      { name: 'AELDRIN ENCLAVE', d: 'M 333 207 C 365 190 416 196 456 224 S 459 263 424 285', x: 394, y: 218 },
+      { name: 'FROSTSPINE HOLDS', d: 'M 104 219 C 145 197 205 201 260 224 S 282 254 276 285', x: 190, y: 214 },
+      { name: 'STORMLAND LEAGUE', d: 'M 84 392 C 128 376 178 402 220 426 S 246 461 234 493', x: 159, y: 411 },
+      { name: 'SYLVAAR BELOW', d: 'M 389 453 C 425 432 478 442 522 470 S 533 511 507 545', x: 464, y: 462 },
+      { name: 'ASHEN FREE CITIES', d: 'M 588 286 C 632 277 679 299 705 330 S 720 367 705 392', x: 650, y: 306 },
+      { name: 'DRAEKON CLANS', d: 'M 654 492 C 700 474 756 489 800 525 S 802 574 778 612', x: 730, y: 503 },
+      { name: 'MISTLAND WARDS', d: 'M 48 527 C 73 512 105 523 124 547 S 119 584 91 596', x: 88, y: 536 }
+    ];
+    borderLines.forEach(b => {
+      borders.appendChild(svgEl('path', { d: b.d, class: 'map-border-line' }));
+      const label = svgEl('text', { x: b.x, y: b.y, class: 'map-border-label', 'text-anchor': 'middle' });
+      label.textContent = b.name;
+      borders.appendChild(label);
+    });
+    svg.appendChild(borders);
+
+    const places = [
+      { name: "Valerius's Rest", fa: 'آرامگاه والریوس', x: 400, y: 420, region: 'heartlands', note: 'Imperial capital built above the Abyss; court factions dispute the succession.' },
+      { name: 'Aelthalas', fa: 'آئل‌تالاس', x: 430, y: 242, region: 'silver-wood', note: 'The Aeldrin crystal capital, sheltered within the Silver Wood.' },
+      { name: 'Hearthforge', fa: 'آتشگاه', x: 220, y: 246, region: 'frostspine', note: 'The dwarven Iron Hold, carved deep into the Frostspine.' },
+      { name: 'Ondrath', fa: 'اوندراِث', x: 480, y: 500, region: 'shadowmere', note: 'The Sylvaar seat beneath the earth; its court hides the truth of its queen.' },
+      { name: "Kael'Dorath", fa: 'کائل‌دورات', x: 750, y: 560, region: 'dragons-reach', note: 'The Ashen Citadel of the Draekon clans.' },
+      { name: 'Stormwatch', fa: 'دیده‌بان توفان', x: 185, y: 452, region: 'stormlands', note: 'A fortified port that watches the western storm routes.' },
+      { name: 'Thornhollow', fa: 'تورن‌هالو', x: 122, y: 357, region: 'whispering-forest', note: 'A forest town whose old roads vanish under the Whispering Forest.' },
+      { name: 'Redhaven', fa: 'بندر سرخ', x: 585, y: 405, region: 'ashen-wastes', note: 'A disputed caravan port linking the central roads to the eastern wastes.' },
+      { name: 'Ashen Gate', fa: 'دروازه‌ی خاکستر', x: 610, y: 321, region: 'ashen-wastes', note: 'A fortified crossing on the old imperial road.' },
+      { name: 'Mistport', fa: 'بندر مه', x: 78, y: 560, region: 'mistlands', note: 'A remote harbor whose charts are unreliable even in calm weather.' },
+      { name: 'Godfall Abbey', fa: 'صومعه‌ی سقوط خدا', x: 300, y: 340, region: 'godfall', note: 'A ruined sanctuary built where divine weapons struck the earth.' },
+      { name: 'Irondeep', fa: 'ژرف‌آهن', x: 180, y: 580, region: 'iron-coast', note: 'A dwarven trade enclave on the iron coast.' },
+      { name: 'Sunspire', fa: 'خورشیدمنار', x: 340, y: 600, region: 'sunlit-coast', note: 'A coastal market city known for salt, glass, and sea charts.' },
+      { name: 'Emberfall', fa: 'اخگرفرود', x: 700, y: 620, region: 'ember-fields', note: 'A settlement built along the safe edge of the volcanic fields.' }
+    ];
+    const cityLayer = svgEl('g', { class: 'map-city-layer' + (MAP_VIEW.cities ? '' : ' is-hidden'), transform: 'scale(1.8)' });
+    places.forEach(place => {
+      const shownName = CURRENT_LANG === 'fa' ? place.fa : place.name;
+      const marker = svgEl('g', { class: 'map-city-marker', tabindex: '0', role: 'button', 'aria-label': shownName });
+      marker.appendChild(svgEl('circle', { cx: place.x, cy: place.y, r: 7, class: 'map-city-ring' }));
+      marker.appendChild(svgEl('circle', { cx: place.x, cy: place.y, r: 3.1, class: 'map-city-dot' }));
+      const label = svgEl('text', { x: place.x, y: place.y - 10, class: 'map-city-label' });
+      label.textContent = shownName;
+      marker.appendChild(label);
+      marker.addEventListener('mouseenter', event => showTooltip(tooltip, shownName, CURRENT_LANG === 'fa' ? place.fa + ' · ' + place.note : place.note, event));
+      marker.addEventListener('mousemove', event => moveTooltip(tooltip, event));
+      marker.addEventListener('mouseleave', () => hideTooltip(tooltip));
+      marker.addEventListener('click', () => selectRegion(place.region));
+      marker.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectRegion(place.region); }
+      });
+      cityLayer.appendChild(marker);
+    });
+    svg.appendChild(cityLayer);
+  }
+
   function renderMap() {
     const svg = $('#worldMap');
     const tooltip = $('#mapTooltip');
@@ -329,8 +492,8 @@
     svg.innerHTML = '';
     if (legend) legend.innerHTML = '';
 
-    const { viewBox, regions } = MAP_DATA;
-    svg.setAttribute('viewBox', viewBox);
+    const { regions } = MAP_DATA;
+    applyMapView(svg);
     svg.setAttribute('role', 'group');
     svg.setAttribute('aria-label', CURRENT_LANG === 'fa' ? 'نقشهٔ تعاملی جهان اترمور' : 'Interactive atlas of Aethermoor');
 
@@ -338,11 +501,13 @@
     // Region markers and labels are a separate interactive layer above the illustration.
     svg.appendChild(svgEl('image', {
       href: 'assets/aethermoor-map.svg',
-      x: 0, y: 0, width: 1000, height: 700,
+      x: 0, y: 0, width: 1800, height: 1260,
       preserveAspectRatio: 'none',
       'pointer-events': 'none',
       class: 'map-artwork'
     }));
+
+    renderAtlasOverlays(svg, tooltip);
 
     const labelOffsets = {
       'xarnath': { dx: 0, dy: -18 },
@@ -368,7 +533,7 @@
       'ember-fields': { dx: 18, dy: 33 }
     };
 
-    const regionLayer = svgEl('g', { id: 'regionLayer', class: 'map-region-layer' });
+    const regionLayer = svgEl('g', { id: 'regionLayer', class: 'map-region-layer', transform: 'scale(1.8)' });
     regions.forEach(region => {
       const displayName = CURRENT_LANG === 'fa'
         ? getContent('regions', region.id, 'name', region.name)
@@ -483,6 +648,8 @@
         legend.appendChild(item);
       });
     }
+    initMapControls(svg);
+    updateMapControlLabels();
   }
 
   function showTooltip(tooltip, title, sub, e) {
