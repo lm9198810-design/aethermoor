@@ -168,12 +168,18 @@
       if (txt) node.textContent = txt;
     });
     
-    $$('[data-i18n-placeholder]').forEach(node => {
+    $('[data-i18n-placeholder]').forEach(node => {
       const key = node.getAttribute('data-i18n-placeholder');
       const txt = t(key);
       if (txt) node.setAttribute('placeholder', txt);
     });
-    
+
+    $('[data-i18n-title]').forEach(node => {
+      const key = node.getAttribute('data-i18n-title');
+      const txt = t(key);
+      if (txt) node.setAttribute('title', txt);
+    });
+
     const langCode = $('#langCode');
     if (langCode) langCode.textContent = CURRENT_LANG === 'fa' ? 'FA' : 'EN';
   };
@@ -319,189 +325,342 @@
     });
   }
 
-  /* ============ MAP ============ */
+  /* ============ MAP / INTERACTIVE ATLAS ============ */
   function renderMap() {
     const svg = $('#worldMap');
     const tooltip = $('#mapTooltip');
     const legend = $('#mapLegend');
+    const inspector = $('#mapInspector');
+    const placeList = $('#mapPlaceList');
+    const atlas = $('#mapAtlas');
     if (!svg || typeof MAP_DATA === 'undefined') return;
 
-    svg.innerHTML = '';
-    if (legend) legend.innerHTML = '';
+    // Refresh static controls when the map is rendered again after a language change.
+    ['mapZoomIn', 'mapZoomOut', 'mapZoomReset', 'mapFullscreen',
+     'mapBordersToggle', 'mapSettlementsToggle', 'mapNamesToggle'].forEach(id => {
+      const node = $('#' + id);
+      if (!node || !node.parentNode) return;
+      const oldChecked = 'checked' in node ? node.checked : undefined;
+      const fresh = node.cloneNode(true);
+      if (oldChecked !== undefined) fresh.checked = oldChecked;
+      node.parentNode.replaceChild(fresh, node);
+    });
 
-    const { viewBox, regions } = MAP_DATA;
-    svg.setAttribute('viewBox', viewBox);
+    svg.replaceChildren();
+    if (legend) legend.replaceChildren();
+    if (placeList) placeList.replaceChildren();
+    svg.setAttribute('viewBox', MAP_DATA.viewBox || '0 0 1000 700');
     svg.setAttribute('role', 'group');
-    svg.setAttribute('aria-label', CURRENT_LANG === 'fa' ? 'نقشهٔ تعاملی جهان اترمور' : 'Interactive atlas of Aethermoor');
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    svg.setAttribute('aria-label', CURRENT_LANG === 'fa'
+      ? 'نقشه‌ی تعاملی وِیلتار؛ با چرخ ماوس زوم کن و برای جابه‌جایی نقشه را بکش.'
+      : 'Interactive atlas of Vaelthar. Use the mouse wheel to zoom and drag to pan.');
+    svg.style.touchAction = 'none';
 
-    // The artwork preserves the site's original continent and Xarnath silhouettes.
-    // Region markers and labels are a separate interactive layer above the illustration.
-    svg.appendChild(svgEl('image', {
-      href: 'assets/aethermoor-map.svg',
-      x: 0, y: 0, width: 1000, height: 700,
-      preserveAspectRatio: 'none',
-      'pointer-events': 'none',
-      class: 'map-artwork'
+    const regions = MAP_DATA.regions || [];
+    const settlements = MAP_DATA.settlements || [];
+    const viewport = svgEl('g', { id: 'mapViewport' });
+    svg.appendChild(viewport);
+    viewport.appendChild(svgEl('image', {
+      href: 'assets/aethermoor-map.svg', x: 0, y: 0,
+      width: 1000, height: 700, preserveAspectRatio: 'none',
+      'pointer-events': 'none', class: 'map-artwork'
     }));
 
-    const labelOffsets = {
-      'xarnath': { dx: 0, dy: -18 },
-      'godseal': { dx: 64, dy: -7 },
-      'black-chasm': { dx: 72, dy: 16 },
-      'frostspine': { dx: -12, dy: 35 },
-      'silver-wood': { dx: 32, dy: 36 },
-      'ashen-wastes': { dx: 16, dy: 35 },
-      'heartlands': { dx: 0, dy: 38 },
-      'stormlands': { dx: -10, dy: 35 },
-      'shadowmere': { dx: 0, dy: 36 },
-      'broken-steppe': { dx: -8, dy: 34 },
-      'sunlit-coast': { dx: -10, dy: 29 },
-      'dragons-reach': { dx: -16, dy: 34 },
-      'godfall': { dx: -18, dy: 35 },
-      'sunken-kingdoms': { dx: 0, dy: -17 },
-      'dead-marches': { dx: 22, dy: 35 },
-      'whispering-forest': { dx: 10, dy: 34 },
-      'veil': { dx: 0, dy: 35 },
-      'mistlands': { dx: 0, dy: 28 },
-      'iron-coast': { dx: 0, dy: 34 },
-      'fading-garden': { dx: -18, dy: -19 },
-      'ember-fields': { dx: 18, dy: 33 }
+    const borders = svgEl('g', { id: 'mapPoliticalBorders', class: 'map-political-borders' });
+    (MAP_DATA.politicalBorders || []).forEach(border => {
+      borders.appendChild(svgEl('path', {
+        d: border.path, class: 'map-political-border',
+        'data-border-id': border.id
+      }));
+    });
+    viewport.appendChild(borders);
+
+    const geographicLabels = svgEl('g', {
+      id: 'mapGeographicLabels', class: 'map-geographic-labels', 'pointer-events': 'none'
+    });
+    (MAP_DATA.geographicLabels || []).forEach(place => {
+      const attrs = { x: place.x, y: place.y, class: 'map-geographic-label', 'text-anchor': 'middle' };
+      if (place.rotation) attrs.transform = 'rotate(' + place.rotation + ' ' + place.x + ' ' + place.y + ')';
+      const label = svgEl('text', attrs);
+      label.textContent = CURRENT_LANG === 'fa' ? (place.faName || place.name) : place.name;
+      geographicLabels.appendChild(label);
+    });
+    viewport.appendChild(geographicLabels);
+
+    const displayRegionName = id => {
+      const region = regions.find(item => item.id === id);
+      if (!region) return '';
+      return CURRENT_LANG === 'fa' ? getContent('regions', id, 'name', region.name) : region.name;
+    };
+    const displayPlaceName = place => CURRENT_LANG === 'fa' ? (place.faName || place.name) : place.name;
+    const offsets = {
+      'xarnath': [0,-23], 'black-chasm': [-92,20], 'godseal': [68,0],
+      'frostspine': [-18,-22], 'silver-wood': [23,31], 'ashen-wastes': [20,32],
+      'heartlands': [-3,33], 'stormlands': [-16,31], 'shadowmere': [0,30],
+      'broken-steppe': [-10,30], 'sunlit-coast': [-10,-22], 'dragons-reach': [6,27],
+      'godfall': [-14,-22], 'sunken-kingdoms': [-12,-24], 'dead-marches': [8,31],
+      'whispering-forest': [18,30], 'veil': [-7,-24], 'mistlands': [14,29],
+      'iron-coast': [-12,-25], 'fading-garden': [-18,-22], 'ember-fields': [8,-22]
     };
 
-    const regionLayer = svgEl('g', { id: 'regionLayer', class: 'map-region-layer' });
-    regions.forEach(region => {
-      const displayName = CURRENT_LANG === 'fa'
-        ? getContent('regions', region.id, 'name', region.name)
-        : region.name;
-      const displayControl = CURRENT_LANG === 'fa'
-        ? getContent('regions', region.id, 'control', region.control)
-        : region.control;
-      const offset = labelOffsets[region.id] || { dx: 0, dy: 34 };
-      const labelX = region.x + offset.dx;
-      const labelY = region.y + offset.dy;
-      const estimatedWidth = displayName.length * (CURRENT_LANG === 'fa' ? 5.4 : 5.9) + 18;
-      const labelWidth = Math.max(56, Math.min(184, estimatedWidth));
+    const regionLayer = svgEl('g', { id: 'mapRegionLayer', class: 'map-region-layer' });
+    const cityLayer = svgEl('g', { id: 'mapSettlementLayer', class: 'map-settlement-layer' });
+    const cityLabels = svgEl('g', { id: 'mapSettlementLabels', class: 'map-settlement-labels', 'pointer-events': 'none' });
+    let scale = 1, tx = 0, ty = 0, drag = null, moved = false, ignoreClick = false;
 
-      const marker = svgEl('g', {
-        class: 'map-region-marker',
-        'data-region': region.id,
-        style: '--region-color: ' + region.color,
-        tabindex: '0',
-        role: 'button',
-        'aria-label': displayName
+    const setSelected = marker => {
+      svg.querySelectorAll('.is-selected').forEach(node => node.classList.remove('is-selected'));
+      if (marker) marker.classList.add('is-selected');
+      if (placeList) placeList.querySelectorAll('.map-place-link').forEach(button => {
+        button.classList.toggle('is-selected', !!marker && button.dataset.placeId === marker.dataset.place);
       });
-      marker.appendChild(svgEl('circle', {
-        cx: region.x, cy: region.y, r: 17,
-        class: 'map-marker-halo'
-      }));
-      marker.appendChild(svgEl('circle', {
-        cx: region.x, cy: region.y, r: 10,
-        class: 'map-marker-ring'
-      }));
-      marker.appendChild(svgEl('path', {
-        d: 'M ' + region.x + ' ' + (region.y - 5) +
-           ' L ' + (region.x + 5) + ' ' + region.y +
-           ' L ' + region.x + ' ' + (region.y + 5) +
-           ' L ' + (region.x - 5) + ' ' + region.y + ' Z',
-        class: 'map-marker-gem'
-      }));
-      marker.appendChild(svgEl('circle', {
-        cx: region.x, cy: region.y, r: 1.35,
-        class: 'map-marker-core'
-      }));
+    };
 
-      const labelGroup = svgEl('g', { class: 'map-label-group', 'pointer-events': 'none' });
+    const openDetails = (kind, item) => {
+      if (!inspector) return;
+      inspector.replaceChildren();
+      if (kind === 'region') {
+        const name = displayRegionName(item.id);
+        const type = CURRENT_LANG === 'fa' ? getContent('regions', item.id, 'type', item.type || '') : (item.type || '');
+        const control = CURRENT_LANG === 'fa' ? getContent('regions', item.id, 'control', item.control || '') : (item.control || '');
+        const lore = CURRENT_LANG === 'fa' ? getContent('regions', item.id, 'desc', item.lore || '') : (item.lore || '');
+        inspector.appendChild(el('div', { class: 'map-inspector-kicker', text: t('map_region_kicker') }));
+        inspector.appendChild(el('h3', { class: 'map-inspector-title', text: name }));
+        if (type) inspector.appendChild(el('div', { class: 'map-inspector-type', text: type }));
+        if (control) inspector.appendChild(el('div', { class: 'map-inspector-meta', text: control }));
+        inspector.appendChild(el('p', { class: 'map-inspector-desc', text: lore }));
+        const open = el('button', { class: 'map-open-region', type: 'button', text: t('map_open_region') });
+        open.addEventListener('click', () => selectRegion(item.id));
+        inspector.appendChild(open);
+      } else {
+        const name = displayPlaceName(item);
+        const regionName = displayRegionName(item.regionId);
+        const type = CURRENT_LANG === 'fa' ? (item.typeFA || item.type) : item.type;
+        const control = CURRENT_LANG === 'fa' ? (item.controlFA || item.control || '') : (item.control || '');
+        const lore = CURRENT_LANG === 'fa' ? (item.loreFA || item.lore || '') : (item.lore || '');
+        inspector.appendChild(el('div', { class: 'map-inspector-kicker', text: t('map_place_kicker') }));
+        inspector.appendChild(el('h3', { class: 'map-inspector-title', text: name }));
+        inspector.appendChild(el('div', { class: 'map-inspector-type', text: [type,regionName].filter(Boolean).join(' · ') }));
+        if (control) inspector.appendChild(el('div', { class: 'map-inspector-meta', text: control }));
+        inspector.appendChild(el('p', { class: 'map-inspector-desc', text: lore }));
+        const open = el('button', { class: 'map-open-region', type: 'button', text: t('map_open_region') });
+        open.addEventListener('click', () => selectRegion(item.regionId));
+        inspector.appendChild(open);
+      }
+    };
+
+    regions.forEach(region => {
+      const name = displayRegionName(region.id);
+      const offset = offsets[region.id] || [0,28];
+      const lx = region.x + offset[0], ly = region.y + offset[1];
+      const width = Math.max(56, Math.min(172, name.length * (CURRENT_LANG === 'fa' ? 5.1 : 5.4) + 16));
+      const marker = svgEl('g', {
+        id: 'map-region-' + region.id, class: 'map-region-marker',
+        'data-region': region.id, style: '--region-color:' + region.color,
+        tabindex: '0', role: 'button', 'aria-label': name
+      });
+      marker.appendChild(svgEl('circle', { cx:region.x, cy:region.y, r:17, class:'map-marker-halo' }));
+      marker.appendChild(svgEl('circle', { cx:region.x, cy:region.y, r:9.5, class:'map-marker-ring' }));
+      marker.appendChild(svgEl('path', {
+        d:'M '+region.x+' '+(region.y-5)+' L '+(region.x+5)+' '+region.y+' L '+region.x+' '+(region.y+5)+' L '+(region.x-5)+' '+region.y+' Z',
+        class:'map-marker-gem'
+      }));
+      const labelGroup = svgEl('g', { class:'map-label-group', 'pointer-events':'none' });
       labelGroup.appendChild(svgEl('rect', {
-        x: labelX - labelWidth / 2,
-        y: labelY - 11,
-        width: labelWidth,
-        height: 22,
-        rx: 6,
-        class: 'map-label-plate'
+        x:lx-width/2, y:ly-10, width, height:20, rx:5, class:'map-label-plate'
       }));
       const label = svgEl('text', {
-        x: labelX,
-        y: labelY + 0.5,
-        class: 'map-region-label',
-        'text-anchor': 'middle',
-        'dominant-baseline': 'middle'
+        x:lx, y:ly+.5, class:'map-region-label',
+        'text-anchor':'middle', 'dominant-baseline':'middle'
       });
-      label.textContent = displayName;
+      label.textContent = name;
       labelGroup.appendChild(label);
       marker.appendChild(labelGroup);
-
       marker.addEventListener('mouseenter', event => {
         marker.classList.add('is-hovered');
-        showTooltip(tooltip, displayName, displayControl, event);
+        const control = CURRENT_LANG === 'fa'
+          ? getContent('regions', region.id, 'control', region.control || '')
+          : (region.control || '');
+        showTooltip(tooltip, name, control, event);
       });
       marker.addEventListener('mousemove', event => moveTooltip(tooltip, event));
-      marker.addEventListener('mouseleave', () => {
-        marker.classList.remove('is-hovered');
-        hideTooltip(tooltip);
-      });
-      marker.addEventListener('click', () => selectRegion(region.id));
+      marker.addEventListener('mouseleave', () => { marker.classList.remove('is-hovered'); hideTooltip(tooltip); });
+      marker.addEventListener('click', () => { if (!ignoreClick) { setSelected(marker); openDetails('region',region); } });
       marker.addEventListener('keydown', event => {
         if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          selectRegion(region.id);
+          event.preventDefault(); setSelected(marker); openDetails('region',region);
         }
       });
-
       regionLayer.appendChild(marker);
     });
-    svg.appendChild(regionLayer);
 
-    // The legend uses the same line-art emblems as the rest of the site.
-    if (legend && MAP_DATA.legends) {
-      const legendSymbols = {
-        Human: 'crown',
-        Aeldrin: 'moon',
-        Sylvaar: 'spider',
-        Dwarves: 'crossed-hammers',
-        Draekon: 'dragon',
-        Orcs: 'axe',
-        Kemiiri: 'fox',
-        Demons: 'demon',
-        Unknown: 'mist'
-      };
-      const legendRaces = {
-        Human: 'humans', Aeldrin: 'aeldrin', Sylvaar: 'sylvaar',
-        Dwarves: 'dwarves', Draekon: 'draekon', Orcs: 'orcs',
-        Kemiiri: 'kemiiri', Demons: 'demons'
-      };
-      MAP_DATA.legends.forEach(itemData => {
-        const item = el('div', { class: 'legend-item' });
-        item.appendChild(createSigilIcon('', {
-          className: 'legend-sigil sigil-icon',
-          color: itemData.color,
-          symbol: legendSymbols[itemData.label] || 'rune'
+    settlements.forEach(place => {
+      const name = displayPlaceName(place);
+      const regionName = displayRegionName(place.regionId);
+      const marker = svgEl('g', {
+        id:'map-place-'+place.id,
+        class:'map-city-marker map-city-marker-'+place.type+(place.major?' map-city-major':''),
+        'data-place':place.id, tabindex:'0', role:'button',
+        'aria-label':name+(regionName?', '+regionName:'')
+      });
+      const radius = place.type === 'capital' ? 8 : ((place.type === 'fortress'||place.type === 'port') ? 6.3 : 5.1);
+      marker.appendChild(svgEl('circle',{cx:place.x,cy:place.y,r:radius+4,class:'map-city-aura'}));
+      marker.appendChild(svgEl('circle',{cx:place.x,cy:place.y,r:radius,class:'map-city-ring'}));
+      if (place.type === 'capital') {
+        marker.appendChild(svgEl('path',{
+          d:'M '+place.x+' '+(place.y-4.5)+' L '+(place.x+4.2)+' '+(place.y+3.2)+' L '+(place.x-4.2)+' '+(place.y+3.2)+' Z',
+          class:'map-city-capital-mark'
         }));
-        const label = itemData.label === 'Unknown'
-          ? t('unknown')
-          : getContent('races', legendRaces[itemData.label], 'name', itemData.label);
-        item.appendChild(el('div', { class: 'legend-name', text: label }));
+      } else marker.appendChild(svgEl('circle',{cx:place.x,cy:place.y,r:1.6,class:'map-city-core'}));
+
+      marker.addEventListener('mouseenter',event=>{
+        marker.classList.add('is-hovered');
+        showTooltip(tooltip,name,[CURRENT_LANG==='fa'?(place.typeFA||place.type):place.type,regionName].filter(Boolean).join(' · '),event);
+      });
+      marker.addEventListener('mousemove',event=>moveTooltip(tooltip,event));
+      marker.addEventListener('mouseleave',()=>{marker.classList.remove('is-hovered');hideTooltip(tooltip);});
+      marker.addEventListener('click',()=>{if(!ignoreClick){setSelected(marker);openDetails('place',place);}});
+      marker.addEventListener('keydown',event=>{
+        if(event.key==='Enter'||event.key===' '){event.preventDefault();setSelected(marker);openDetails('place',place);focusPoint(place.x,place.y);}
+      });
+      cityLayer.appendChild(marker);
+
+      const width=Math.max(52,Math.min(148,name.length*(CURRENT_LANG==='fa'?4.7:5)+14));
+      const group=svgEl('g',{class:'map-city-label-group','data-major':place.major?'true':'false'});
+      group.appendChild(svgEl('rect',{x:place.x+8,y:place.y-18,width,height:18,rx:4,class:'map-city-label-plate'}));
+      const label=svgEl('text',{x:place.x+13,y:place.y-5.5,class:'map-city-label','text-anchor':'start'});
+      label.textContent=name;
+      group.appendChild(label);
+      cityLabels.appendChild(group);
+
+      if(placeList){
+        const button=el('button',{class:'map-place-link',type:'button','data-place-id':place.id},[
+          el('span',{class:'map-place-symbol'+(place.type==='capital'?' is-capital':''),'aria-hidden':'true'}),
+          el('span',{class:'map-place-link-name',text:name}),
+          el('span',{class:'map-place-link-region',text:regionName})
+        ]);
+        button.addEventListener('click',()=>{setSelected(marker);openDetails('place',place);focusPoint(place.x,place.y);});
+        placeList.appendChild(button);
+      }
+    });
+    viewport.appendChild(regionLayer);
+    viewport.appendChild(cityLayer);
+    viewport.appendChild(cityLabels);
+
+    if(legend&&MAP_DATA.legends){
+      const symbols={Human:'crown',Aeldrin:'moon',Sylvaar:'spider',Dwarves:'crossed-hammers',Draekon:'dragon',Orcs:'axe',Kemiiri:'fox',Demons:'demon',Unknown:'mist'};
+      const ids={Human:'humans',Aeldrin:'aeldrin',Sylvaar:'sylvaar',Dwarves:'dwarves',Draekon:'draekon',Orcs:'orcs',Kemiiri:'kemiiri',Demons:'demons'};
+      MAP_DATA.legends.forEach(data=>{
+        const item=el('div',{class:'legend-item'});
+        item.appendChild(createSigilIcon('',{className:'legend-sigil sigil-icon',color:data.color,symbol:symbols[data.label]||'rune'}));
+        item.appendChild(el('div',{class:'legend-name',text:data.label==='Unknown'?t('unknown'):getContent('races',ids[data.label], 'name',data.label)}));
         legend.appendChild(item);
       });
     }
+
+    function updateLayers(){
+      const borderToggle=$('#mapBordersToggle'), cityToggle=$('#mapSettlementsToggle'), nameToggle=$('#mapNamesToggle');
+      borders.style.display=borderToggle&&!borderToggle.checked?'none':'';
+      cityLayer.style.display=cityToggle&&!cityToggle.checked?'none':'';
+      const showNames=!nameToggle||nameToggle.checked;
+      regionLayer.querySelectorAll('.map-label-group').forEach(node=>node.style.display=showNames?'':'none');
+      geographicLabels.style.display=showNames?'':'none';
+      cityLabels.querySelectorAll('.map-city-label-group').forEach(node=>{
+        node.style.display=showNames&&(node.dataset.major==='true'||scale>=1.32)?'':'none';
+      });
+    }
+    function updateTransform(){
+      tx=Math.max(1000*(1-scale),Math.min(0,tx));
+      ty=Math.max(700*(1-scale),Math.min(0,ty));
+      if(scale<=1.001){scale=1;tx=0;ty=0;}
+      viewport.setAttribute('transform','translate('+tx+' '+ty+') scale('+scale+')');
+      const readout=$('#mapZoomReadout');
+      if(readout)readout.textContent=Math.round(scale*100)+'%';
+      updateLayers();
+    }
+    function zoomAt(nextScale,clientX,clientY){
+      const rect=svg.getBoundingClientRect();
+      const next=Math.max(1,Math.min(4,nextScale));
+      if(Math.abs(next-scale)<.001)return;
+      const px=(clientX-rect.left)*1000/Math.max(1,rect.width);
+      const py=(clientY-rect.top)*700/Math.max(1,rect.height);
+      const wx=(px-tx)/scale, wy=(py-ty)/scale;
+      scale=next;tx=px-wx*scale;ty=py-wy*scale;updateTransform();
+    }
+    function focusPoint(x,y){
+      scale=Math.max(scale,1.55);
+      tx=500-x*scale;ty=350-y*scale;updateTransform();
+    }
+
+    const zoomIn=$('#mapZoomIn'),zoomOut=$('#mapZoomOut'),reset=$('#mapZoomReset'),fullscreen=$('#mapFullscreen');
+    if(zoomIn)zoomIn.addEventListener('click',()=>{
+      const rect=svg.getBoundingClientRect();zoomAt(scale+.25,rect.left+rect.width/2,rect.top+rect.height/2);
+    });
+    if(zoomOut)zoomOut.addEventListener('click',()=>{
+      const rect=svg.getBoundingClientRect();zoomAt(scale-.25,rect.left+rect.width/2,rect.top+rect.height/2);
+    });
+    if(reset)reset.addEventListener('click',()=>{scale=1;tx=0;ty=0;updateTransform();});
+    if(fullscreen)fullscreen.addEventListener('click',async()=>{
+      try{
+        if(document.fullscreenElement)await document.exitFullscreen();
+        else if(atlas&&atlas.requestFullscreen)await atlas.requestFullscreen();
+      }catch(error){console.warn('Fullscreen is not available in this browser context.',error);}
+    });
+    ['mapBordersToggle','mapSettlementsToggle','mapNamesToggle'].forEach(id=>{
+      const node=$('#'+id);if(node)node.addEventListener('change',updateLayers);
+    });
+
+    svg.addEventListener('wheel',event=>{
+      event.preventDefault();zoomAt(scale*(event.deltaY<0?1.17:1/1.17),event.clientX,event.clientY);
+    },{passive:false});
+    svg.addEventListener('pointerdown',event=>{
+      if(event.button!==0)return;
+      if(event.target.closest&&event.target.closest('.map-region-marker,.map-city-marker'))return;
+      drag={x:event.clientX,y:event.clientY,tx,ty,pointerId:event.pointerId};moved=false;
+      svg.classList.add('is-dragging');
+      try{svg.setPointerCapture(event.pointerId);}catch(_){}
+    });
+    svg.addEventListener('pointermove',event=>{
+      if(!drag){if(tooltip&&tooltip.classList.contains('active'))moveTooltip(tooltip,event);return;}
+      const rect=svg.getBoundingClientRect();
+      const dx=(event.clientX-drag.x)*1000/Math.max(1,rect.width);
+      const dy=(event.clientY-drag.y)*700/Math.max(1,rect.height);
+      if(Math.abs(dx)+Math.abs(dy)>2)moved=true;
+      tx=drag.tx+dx;ty=drag.ty+dy;updateTransform();
+    });
+    const finishDrag=event=>{
+      if(!drag||drag.pointerId!==event.pointerId)return;
+      ignoreClick=moved;if(ignoreClick)setTimeout(()=>{ignoreClick=false;},80);
+      drag=null;svg.classList.remove('is-dragging');
+      try{svg.releasePointerCapture(event.pointerId);}catch(_){}
+    };
+    svg.addEventListener('pointerup',finishDrag);svg.addEventListener('pointercancel',finishDrag);
+    svg.addEventListener('dblclick',event=>{
+      if(event.target.closest&&event.target.closest('.map-region-marker,.map-city-marker'))return;
+      event.preventDefault();zoomAt(scale+.45,event.clientX,event.clientY);
+    });
+
+    if(inspector){
+      inspector.replaceChildren();
+      inspector.appendChild(el('div',{class:'map-inspector-kicker',text:t('map_inspector_title')}));
+      inspector.appendChild(el('h3',{class:'map-inspector-title',text:t('map_select_hint')}));
+      inspector.appendChild(el('p',{class:'map-inspector-desc',text:t('map_navigation_hint')}));
+    }
+    updateTransform();
   }
 
-  function showTooltip(tooltip, title, sub, e) {
-    tooltip.innerHTML = `
-      <div class="map-tooltip-title">${escapeHtml(title)}</div>
-      <div class="map-tooltip-sub">${escapeHtml(sub || '')}</div>
-    `;
-    tooltip.classList.add('active');
-    moveTooltip(tooltip, e);
+  function showTooltip(tooltip,title,sub,e){
+    if(!tooltip)return;
+    tooltip.innerHTML='<div class="map-tooltip-title">'+escapeHtml(title)+'</div>'+
+      '<div class="map-tooltip-sub">'+escapeHtml(sub||'')+'</div>';
+    tooltip.classList.add('active');moveTooltip(tooltip,e);
   }
-
-  function moveTooltip(tooltip, e) {
-    tooltip.style.left = (e.clientX + 15) + 'px';
-    tooltip.style.top = (e.clientY + 15) + 'px';
+  function moveTooltip(tooltip,e){
+    if(!tooltip||!e)return;
+    tooltip.style.left=(e.clientX+15)+'px';tooltip.style.top=(e.clientY+15)+'px';
   }
-
-  function hideTooltip(tooltip) {
-    tooltip.classList.remove('active');
-  }
+  function hideTooltip(tooltip){if(tooltip)tooltip.classList.remove('active');}
 
   function selectRegion(id) {
     const region = MAP_DATA.regions.find(r => r.id === id);
@@ -533,7 +692,14 @@
     const grid = $('#racesGrid');
     if (!grid || typeof RACES === 'undefined') return;
     grid.innerHTML = '';
-    const filtered = filter === 'all' ? RACES : RACES.filter(r => r.category === filter);
+    const filtered = filter === 'all'
+      ? RACES
+      : RACES.filter(r => {
+          if (filter === 'mortal') return r.category === 'human' || r.category === 'elven';
+          if (filter === 'beast') return r.category === 'beast';
+          if (filter === 'otherworldly') return r.category === 'divine';
+          return r.category === filter;
+        });
     filtered.forEach((race, i) => {
       const name = getContent('races', race.id, 'name', race.name);
       const epithet = getContent('races', race.id, 'epithet', race.epithet);
