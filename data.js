@@ -3120,94 +3120,47 @@ const WORLD_META = {
    ============================================================ */
 const WORLD_TILES = [
   {
-    icon: "world",
-    title: "Two Continents, One Wound",
-    desc: "Aethermoor stretches south of the Black Chasm; Xarnath lies beyond it to the north. Two parallel ranges of near-impassable mountains hem in the gorge. The Godseal is the only maintained crossing, watched by an order that guards the barrier rather than any single crown. The realms on either side are inhabited, politically divided, and far from fully understood.",
-    statLabel: "Continents",
-    statValue: "2"
+    icon: "world", title: "Two Continents, One Crossing",
+    desc: "Aethermoor lies south of the Black Chasm; Xarnath stretches north beyond it. The Godseal is the only maintained crossing. The gorge, broken ridges and narrow supply routes make a large invasion difficult even if the structure is damaged. Unknown territory remains outside the reliable maps.",
+    statLabel: "Known Continents", statValue: "2"
   },
   {
-    icon: "swords",
-    title: "Four Centuries of Ash",
-    desc: "In the 402 years since the Sundering, the chronicles record forty-two major wars over land, trade, divine ruins, and succession. The number is incomplete: smaller border conflicts were often omitted, and each court defines victory differently. Scholars warn that another imperial succession crisis is forming; soldiers along the central roads say it has already begun.",
-    statLabel: "Recorded Wars",
-    statValue: "42"
+    icon: "swords", title: "Four Centuries After the Sundering",
+    desc: "The Sundering happened 402 years ago. Records agree on the damage it caused but disagree on why it happened. Courts, temples and scholars preserve different accounts; none has proved its explanation beyond dispute.",
+    statLabel: "Current Year", statValue: "402 S.A."
   },
   {
-    icon: "candle",
-    title: "The Silent Gods",
-    desc: "No physical proof exists that any god lives or died. Every faith tells a different story. The Aeldrin say Aelith waits beneath the Silver Wood. The dwarves say Vorthal sleeps beneath the Frostspine. The orcs say Karok died at the Sundering. The only evidence of divine power is the Godseal itself — a barrier so vast, so perfect, that no mortal hand could have carved it.",
-    statLabel: "Confirmed Gods",
-    statValue: "0"
+    icon: "candle", title: "No Confirmed Gods",
+    desc: "Aethermoor contains many faiths, sacred places and stories of old powers. No physical evidence proves that a god lives, died or built the Godseal. The structure is real; its maker and purpose remain unknown.",
+    statLabel: "Physically Confirmed Gods", statValue: "0"
   },
   {
-    icon: "scroll",
-    title: "The Forbidden Histories",
-    desc: "Every victor rewrites the past. Beneath the official chronicles lie banned texts, burned libraries, and the testimony of the dead — preserved in stone and bone. The Silent Choir has catalogued 1,247 works that are considered dangerous to know. They have read them all. They have not been the same since.",
-    statLabel: "Banned Texts",
-    statValue: "1,247"
+    icon: "scroll", title: "History Has Authors",
+    desc: "Imperial chronicles, clan songs, temple records and travellers' journals disagree about important events. A useful archive records who wrote a source, when it was made and what its author stood to gain—not only what the text claims.",
+    statLabel: "Core Records", statValue: "15"
   },
   {
-    icon: "dagger",
-    title: "The Age of Ambition",
-    desc: "Across the royal annals spanning several millennia, eighty-eight commoners are recorded as having seized a throne; forty-one died within a year. The figures are incomplete: many small crowns never entered shared chronicles, and some courts counted a regent as a monarch while others did not.",
-    statLabel: "Successful Usurpations",
-    statValue: "88"
+    icon: "castle", title: "Competing Powers",
+    desc: "No ruler speaks for every human, elf, dwarf or Kemiiri community. Courts and councils compete for roads, grain, ports, mines and knowledge. Even allies disagree when authority or resources are at stake.",
+    statLabel: "Major Listed Factions", statValue: "12"
   },
   {
-    icon: "eclipse",
-    title: "The Demon Threat",
-    desc: "Beyond the Black Chasm, the Demon King rules Xarnath through a hierarchy of rival houses. Demons can steal a measure of life-force by ritual or direct contact, but the gain is dangerous and limited; they still train, build, negotiate, and fight over water and territory. The Godseal has held since the Sundering. Its recent hum is the first recorded change in its tone—not proof that it is about to fail.",
-    statLabel: "Demon King Age",
-    statValue: "10,000+"
+    icon: "eclipse", title: "The Northern Courts",
+    desc: "Demons dominate Xarnath, but its people and creatures are not one uniform nation. Demons gain innate vitality and lifespan by killing and absorbing a living victim's remaining force. That power shapes their brutal hierarchy; it does not erase politics, planning or rivalry.",
+    statLabel: "Possible Demon Lifespan", statValue: "Up to ~10,000 years"
   },
   {
-    icon: "blood",
-    title: "The Blood Debt",
-    desc: "Some scholars believe the Sundering left a lasting strain on magic; others argue that local failures come from damaged runes, exhausted ley lines, or political exaggeration. Estimates of how long stable magic will remain range from two centuries to several more. No council has agreed on a test that would settle the question.",
-    statLabel: "Estimated Years Left",
-    statValue: "~400"
+    icon: "abyss", title: "The Hundred Floors",
+    desc: "The Abyss is the largest confirmed dungeon and lies in the Black Basin, several days from the imperial capital. Sixty floors have verified surveys. The first ten can repopulate in cycles; no reliable reset rule is known for the deeper levels.",
+    statLabel: "Floors in the Great Dungeon", statValue: "100"
   },
   {
-    icon: "blossom",
-    title: "The Last Dawn",
-    desc: "Aelwyn Vaelor was born in 242 S.A., the first Aeldrin child recorded after a gap of one hundred and sixty years. She is now one hundred and sixty years old and appears sixteen by Aeldrin standards. The elders treat her as a sign of hope, but Aelwyn does not want to be made a symbol in place of a person. No other child has been recorded since; whether she is truly the last remains unconfirmed.",
-    statLabel: "Recorded Aeldrin births since 242 S.A.",
-    statValue: "1"
-  },
-  {
-    icon: "castle",
-    title: "The Great Guild Council",
-    desc: "Twelve guild branches span the continent — a round table of power brokers, monster hunters, and information brokers who answer to no king. The largest guild sits beside the Abyss in Valerius's Rest, the Imperial City. Its halls are carved from the dungeon's own stone. Its archives go deeper than anyone admits.",
-    statLabel: "Guild Branches",
-    statValue: "12"
-  },
-  {
-    icon: "abyss",
-    title: "The Abyss",
-    desc: "One hundred floors. Only two hundred adventurers in history have reached the fortieth. No one has ever returned from the sixtieth. The Abyss is not a cave — it is a wound. It hums. It breathes. It remembers. And at its heart, on a floor no living soul has seen, something waits. The scholars argue about what. The soldiers do not.",
-    statLabel: "Confirmed Floors",
-    statValue: "100 (claimed)"
-  },
-  {
-    icon: "skull",
-    title: "The Beast-Curse",
-    desc: "The Kemiiri carry a dormant plague that they cannot transmit to each other but can transmit to all other races. It activates when their population drops below one thousand. They are at fourteen hundred. The elders know. They have not told the young. They are running out of time.",
-    statLabel: "Kemiiri Remaining",
-    statValue: "~1,400"
-  },
-  {
-    icon: "waves",
-    title: "The Mistlands",
-    desc: "Far to the west, beyond the Sea of Sorrow, lies an island wrapped in perpetual mist. Every ship sent to explore it has vanished. Every adventurer who has gone has not returned. The Mistlands are not on any official map — but they are on every sailor's chart, marked with a single word: 'Don't.'",
-    statLabel: "Expeditions Returned",
-    statValue: "0"
+    icon: "mist", title: "Unknown Lands Remain",
+    desc: "The Mistlands appear on sailors' charts, but no returning crew has supplied a trustworthy interior survey. The island's reefs and fog may be natural hazards or something not yet understood. The atlas records the limit of current knowledge, not the edge of the world.",
+    statLabel: "Verified Interior Maps", statValue: "0"
   }
 ];
 
-/* ============================================================
-   2. THE TEN RACES OF THE WORLD — FULL PROFILES
-   ============================================================ */
 const RACES = [
   {
     id: "humans", name: "Humans", epithet: "The Many Crowns", category: "humanoid", icon: "crown",
@@ -4979,55 +4932,37 @@ const ECONOMY = {
 const BESTIARY_CLASSIFICATION = {
   categories: [
     {
-      name: "Mundane Animals",
-      icon: "beast",
-      dangerRange: "None",
-      description: "Ordinary animals. Found everywhere. Not dangerous. Not interesting.",
-      examples: ["Cattle", "Sheep", "Horses", "Fish", "Birds"]
+      name: "Natural Animals", icon: "beast", dangerRange: "Low to High",
+      description: "Ordinary fauna shaped by habitat, season and hunger. Most avoid people, but an injured, cornered or starving animal may attack.",
+      examples: ["Wolves", "Ridge Eagles", "Blackwater Eels", "Ash Horses"]
     },
     {
-      name: "Natural Beasts",
-      icon: "beast",
-      dangerRange: "Low to Moderate",
-      description: "Natural animals, but larger and more dangerous than ordinary. They avoid humans. They do not hunt humans. They defend themselves.",
-      examples: ["Wolves", "Bears", "Eagles"]
+      name: "Mana-Adapted Fauna", icon: "paw-print", dangerRange: "Moderate to High",
+      description: "Species whose bodies have adapted to unusual mana concentrations or extreme environments. Their behaviour follows ecology more often than malice.",
+      examples: ["Ash-Serpents", "Fire-Newts", "Stone-Lizards"]
     },
     {
-      name: "Dungeon Monsters",
-      icon: "spider",
-      dangerRange: "Moderate to Extreme",
-      description: "Creatures that live in dungeons. They are not natural. They are shaped by the dungeon's magic. They are hostile to all living things.",
-      examples: ["Void-Spiders", "Stone-Lizards", "Bone Knights", "Shadow-Bats"]
+      name: "Dungeon Ecology", icon: "spider", dangerRange: "Moderate to Extreme",
+      description: "Creatures living in layered ruins, caverns or other places classified as dungeons. Some are natural animals; others remain unclassified. Hostility and origin must be assessed species by species.",
+      examples: ["Giant Rats", "Void-Spiders", "Shadow-Bats", "Frost-Wyrms"]
     },
     {
-      name: "Demon Beasts",
-      icon: "demon",
-      dangerRange: "Moderate to Extreme",
-      description: "Creatures that live in Xarnath. They are twisted versions of natural animals. They are hostile to all living things. They are food for demons.",
-      examples: ["Abyssal Lycans", "Hell-Cows", "Ash-Horses", "Apex Terrors"]
+      name: "Unverified or Unusual Reports", icon: "eye", dangerRange: "Unknown to Extreme",
+      description: "Reports that lack a preserved specimen or independent confirmation. The Guild records testimony without treating a name, rumour or strange appearance as proof of supernatural origin.",
+      examples: ["The Watchers", "Mist-Walkers", "The Screaming Dead", "The Drowned"]
     },
     {
-      name: "Intelligent Monsters",
-      icon: "eye",
-      dangerRange: "Extreme",
-      description: "Creatures that are intelligent. They can speak. They can plan. They can wait. They are found only in high-level dungeons (A and S rank) and in the deep places of Xarnath.",
-      examples: ["Apex Terrors", "The Watchers", "The Beast of the Broken Steppe"]
-    },
-    {
-      name: "Unique Entities",
-      icon: "dragon",
-      dangerRange: "Extinction-level",
-      description: "Creatures that exist only once. They are not a species. They are individuals. They are the stuff of legend.",
-      examples: ["True Dragons", "Frost-Wyrms", "The Mist-Walkers", "The Speaking Trees"]
+      name: "Potentially Sapient Beings", icon: "message-circle", dangerRange: "Variable",
+      description: "Some rare entities may communicate, plan or maintain a territory. If a being demonstrates intent and language, its status must be investigated rather than decided by a generic monster label.",
+      examples: ["Speaking Trees", "Some deep-floor encounters", "Unclassified northern beings"]
     }
   ],
   dangerScale: [
-    { level: "None", description: "Not dangerous. Will not attack unless provoked." },
-    { level: "Low", description: "Can be killed by a single experienced adventurer." },
-    { level: "Moderate", description: "Can be killed by a small team of adventurers." },
-    { level: "High", description: "Can be killed by a large team of adventurers." },
-    { level: "Extreme", description: "Can be killed by a legendary adventurer — or a very lucky team." },
-    { level: "Extinction-level", description: "Cannot be killed. Can only be avoided. Or survived." }
+    { level: "Low", description: "A prepared traveller can often avoid the threat; injury remains possible." },
+    { level: "Moderate", description: "A trained small team and appropriate equipment are recommended." },
+    { level: "High", description: "Specialist equipment, a verified plan and a return route are essential." },
+    { level: "Extreme", description: "Expeditions require experienced teams, reserves and explicit rescue planning." },
+    { level: "Unknown", description: "Evidence is insufficient to estimate threat. Treat reports cautiously and do not confuse uncertainty with invulnerability." }
   ]
 };
 
