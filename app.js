@@ -81,8 +81,10 @@
     'The Silent Choir': 'crest-choir'
   });
 
+  const VECTOR_SIGIL_IDS = new Set(Object.values(ICON_SYMBOLS));
+
   function iconSymbol(value) {
-    return ICON_SYMBOLS[value] || 'rune';
+    return ICON_SYMBOLS[value] || (VECTOR_SIGIL_IDS.has(value) ? value : 'rune');
   }
 
   function createSigilIcon(value, options = {}) {
