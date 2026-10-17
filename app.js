@@ -375,6 +375,8 @@
 
   function applyMapView(svg) {
     svg.setAttribute('viewBox', [MAP_VIEW.x, MAP_VIEW.y, MAP_VIEW.w, MAP_VIEW.h].join(' '));
+    // Keep the overview uncluttered, then reveal every settlement name after a useful zoom-in.
+    svg.classList.toggle('map-zoomed', MAP_VIEW.w <= 1200);
   }
 
   function zoomMapAt(svg, factor, clientX, clientY) {
