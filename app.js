@@ -42,7 +42,16 @@
   };
 
   /* ============ GLOBAL STATE ============ */
-  let CURRENT_LANG = localStorage.getItem('aethermoor_lang') || 'en';
+  const getSavedLanguage = () => {
+    try {
+      return window.localStorage.getItem('aethermoor_lang') === 'fa' ? 'fa' : 'en';
+    } catch (_) {
+      // Storage can be unavailable in private/restricted browser contexts.
+      return 'en';
+    }
+  };
+
+  let CURRENT_LANG = getSavedLanguage();
   let CURRENT_PAGE = 'home';
   let CURRENT_CODEX_TAB = 'artifacts';
   const renderedPages = new Set();
@@ -108,7 +117,7 @@
   function initMobileToggle() {
     const navToggle = $('#navToggle');
     const navLinks = $('#navLinks');
-    if (!navToggle) return;
+    if (!navToggle || !navLinks) return;
     navToggle.addEventListener('click', () => {
       navToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
@@ -155,7 +164,7 @@
     });
     
     // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
     
     // Close mobile menu
     const navLinks = $('#navLinks');
@@ -1125,14 +1134,26 @@
     if (!btn) return;
     
     btn.addEventListener('click', () => {
+      const activeRaceFilter = $('#raceFilters .filter-btn.active')?.dataset.filter || 'all';
+      const activeTimelineEra = $('#timelineControls .era-btn.active')?.dataset.era || 'all';
+      const activeCodexTab = $('#codexTabs .codex-tab.active')?.dataset.tab || CURRENT_CODEX_TAB;
+
       CURRENT_LANG = CURRENT_LANG === 'en' ? 'fa' : 'en';
-      localStorage.setItem('aethermoor_lang', CURRENT_LANG);
+      try {
+        window.localStorage.setItem('aethermoor_lang', CURRENT_LANG);
+      } catch (_) {
+        // Language switching still works for this session when storage is blocked.
+      }
       applyUITranslations();
       
       // Clear rendered cache so pages re-render
       renderedPages.clear();
       // Re-render current page
       renderPage(CURRENT_PAGE);
+      // Restore active filters after the current page is rebuilt.
+      if (CURRENT_PAGE === 'races') renderRaces(activeRaceFilter);
+      if (CURRENT_PAGE === 'timeline') renderTimeline(activeTimelineEra);
+      if (CURRENT_PAGE === 'codex') renderCodex(activeCodexTab);
       renderedPages.add(CURRENT_PAGE);
       
       document.title = CURRENT_LANG === 'fa' 
