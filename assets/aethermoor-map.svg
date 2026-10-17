@@ -1,330 +1,375 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-label="Illustrated fantasy atlas of Aethermoor">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" role="img" aria-label="Illustrated fantasy atlas of Vaelthar">
 <defs>
   <linearGradient id="ocean" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#071321"/>
-    <stop offset=".45" stop-color="#0a2230"/>
-    <stop offset="1" stop-color="#050914"/>
+    <stop offset="0" stop-color="#102b3a"/>
+    <stop offset=".42" stop-color="#091b2a"/>
+    <stop offset="1" stop-color="#040b14"/>
   </linearGradient>
-  <linearGradient id="land" x1="0" y1="0" x2=".82" y2="1">
-    <stop offset="0" stop-color="#65755c"/>
-    <stop offset=".28" stop-color="#52684f"/>
-    <stop offset=".53" stop-color="#77704d"/>
-    <stop offset=".78" stop-color="#715a42"/>
-    <stop offset="1" stop-color="#4f493d"/>
+  <linearGradient id="aethermoor-land" x1=".12" y1="0" x2=".88" y2="1">
+    <stop offset="0" stop-color="#71856b"/>
+    <stop offset=".22" stop-color="#667758"/>
+    <stop offset=".48" stop-color="#817354"/>
+    <stop offset=".72" stop-color="#665941"/>
+    <stop offset="1" stop-color="#3d4941"/>
   </linearGradient>
   <linearGradient id="xarnath-land" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#3b2029"/>
-    <stop offset=".5" stop-color="#341a1b"/>
-    <stop offset="1" stop-color="#160f19"/>
+    <stop offset="0" stop-color="#6c3935"/>
+    <stop offset=".4" stop-color="#442629"/>
+    <stop offset="1" stop-color="#201521"/>
   </linearGradient>
-  <radialGradient id="frost" cx=".5" cy=".5" r=".65">
-    <stop offset="0" stop-color="#c3e0e6" stop-opacity=".95"/>
-    <stop offset=".55" stop-color="#86b6c8" stop-opacity=".48"/>
-    <stop offset="1" stop-color="#6ba8c9" stop-opacity="0"/>
+  <linearGradient id="cliff" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#1c2028"/>
+    <stop offset=".46" stop-color="#070b13"/>
+    <stop offset="1" stop-color="#02050b"/>
+  </linearGradient>
+  <linearGradient id="snow" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#e1e8dc"/>
+    <stop offset=".45" stop-color="#a9c1c4"/>
+    <stop offset="1" stop-color="#617b83"/>
+  </linearGradient>
+  <radialGradient id="forest">
+    <stop offset="0" stop-color="#203f31" stop-opacity=".9"/>
+    <stop offset=".72" stop-color="#244736" stop-opacity=".62"/>
+    <stop offset="1" stop-color="#244736" stop-opacity="0"/>
   </radialGradient>
-  <radialGradient id="forest" cx=".5" cy=".5" r=".65">
-    <stop offset="0" stop-color="#284f3b" stop-opacity=".96"/>
-    <stop offset=".65" stop-color="#356048" stop-opacity=".62"/>
-    <stop offset="1" stop-color="#356048" stop-opacity="0"/>
+  <radialGradient id="frost">
+    <stop offset="0" stop-color="#c5dce1" stop-opacity=".85"/>
+    <stop offset=".65" stop-color="#86b1bf" stop-opacity=".45"/>
+    <stop offset="1" stop-color="#86b1bf" stop-opacity="0"/>
   </radialGradient>
-  <radialGradient id="shadow" cx=".5" cy=".5" r=".7">
-    <stop offset="0" stop-color="#37244f" stop-opacity=".92"/>
-    <stop offset=".68" stop-color="#322449" stop-opacity=".54"/>
-    <stop offset="1" stop-color="#322449" stop-opacity="0"/>
+  <radialGradient id="red-waste">
+    <stop offset="0" stop-color="#a45c45" stop-opacity=".65"/>
+    <stop offset=".75" stop-color="#753b35" stop-opacity=".28"/>
+    <stop offset="1" stop-color="#753b35" stop-opacity="0"/>
   </radialGradient>
-  <radialGradient id="desert" cx=".5" cy=".5" r=".68">
-    <stop offset="0" stop-color="#b98a4b" stop-opacity=".9"/>
-    <stop offset=".64" stop-color="#957044" stop-opacity=".68"/>
-    <stop offset="1" stop-color="#957044" stop-opacity="0"/>
+  <radialGradient id="ember">
+    <stop offset="0" stop-color="#bc4a32" stop-opacity=".68"/>
+    <stop offset=".65" stop-color="#6e292b" stop-opacity=".5"/>
+    <stop offset="1" stop-color="#6e292b" stop-opacity="0"/>
   </radialGradient>
-  <radialGradient id="ember" cx=".5" cy=".5" r=".75">
-    <stop offset="0" stop-color="#9d3b2e" stop-opacity=".78"/>
-    <stop offset=".65" stop-color="#572331" stop-opacity=".58"/>
-    <stop offset="1" stop-color="#572331" stop-opacity="0"/>
-  </radialGradient>
-  <pattern id="sea-lines" width="170" height="110" patternUnits="userSpaceOnUse">
-    <path d="M-18 22 C12 6 40 7 65 22 S118 38 148 21 S183 10 198 20 M-28 49 C0 35 24 36 47 49 S92 64 116 48 S163 37 190 50 M12 87 C36 74 60 74 82 87 S126 100 150 86"
-      fill="none" stroke="#5c9baf" stroke-opacity=".13" stroke-width="1.2"/>
+  <pattern id="sea-grain" width="112" height="76" patternUnits="userSpaceOnUse">
+    <path d="M-12 18 C14 6 38 8 58 18 S99 31 126 15 M-16 49 C8 37 29 38 49 49 S88 63 118 47" fill="none" stroke="#5e99a5" stroke-opacity=".15" stroke-width="1.2"/>
+    <path d="M8 69 l17 -2 M75 5 l11 2 M91 36 l9 -2" fill="none" stroke="#c9b886" stroke-opacity=".15" stroke-width=".8"/>
+    <circle cx="44" cy="28" r="1" fill="#b6c6b7" fill-opacity=".15"/>
   </pattern>
   <pattern id="land-grain" width="38" height="34" patternUnits="userSpaceOnUse">
-    <path d="M4 7 l3 -1 M20 15 l4 1 M29 28 l3 -2 M10 29 l2 1" stroke="#e2cc91" stroke-opacity=".22" stroke-width="1" stroke-linecap="round"/>
-    <circle cx="15" cy="5" r=".9" fill="#d6c291" fill-opacity=".3"/>
-    <circle cx="33" cy="12" r=".7" fill="#152c24" fill-opacity=".5"/>
+    <path d="M2 8 l7 -3 M22 25 l6 -4 M13 31 l3 -1 M31 9 l4 1" fill="none" stroke="#f0d8a4" stroke-opacity=".12" stroke-width="1"/>
+    <circle cx="18" cy="12" r=".8" fill="#182a24" fill-opacity=".24"/>
+    <circle cx="5" cy="28" r=".7" fill="#e4c98e" fill-opacity=".18"/>
   </pattern>
-  <filter id="coast-glow" x="-25%" y="-25%" width="150%" height="150%">
+  <clipPath id="xarnathClip">
+    <path d="M145 20 L850 18 L882 40 L846 83 L808 119 L746 139 L664 147 L584 139 L525 152 L452 142 L376 152 L302 137 L230 122 L176 83 L126 55 Z"/>
+  </clipPath>
+  <clipPath id="aethermoorClip">
+    <path d="M112 300 Q145 257 207 244 L275 240 Q326 243 373 258 L434 246 L490 253 L548 267 L610 256 L674 266 L738 279 Q810 271 869 300 L917 337 L932 400 Q940 461 909 508 L866 550 L803 586 L737 592 L675 621 L612 632 L549 617 L483 637 L422 626 L360 640 L292 621 L225 595 L166 550 L124 497 L94 432 L91 367 Z"/>
+  </clipPath>
+  <filter id="softGlow" x="-80%" y="-80%" width="260%" height="260%">
     <feGaussianBlur stdDeviation="4" result="blur"/>
     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
-  <filter id="soft-glow" x="-60%" y="-60%" width="220%" height="220%">
-    <feGaussianBlur stdDeviation="2.2" result="blur"/>
-    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  <filter id="landShadow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+    <feOffset dy="3" result="offset"/>
+    <feComponentTransfer><feFuncA type="linear" slope=".42"/></feComponentTransfer>
+    <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
-  <clipPath id="main-land-clip">
-    <path d="M 100 300 Q 150 200 250 220 L 350 240 Q 420 220 480 240 L 560 260 Q 620 240 700 260 L 780 280 Q 850 260 920 300 L 940 400 Q 950 480 900 540 Q 820 600 720 580 L 620 600 Q 540 620 460 600 L 380 620 Q 300 640 220 600 L 140 540 Q 80 460 100 380 Q 100 330 100 300 Z"/>
-  </clipPath>
-  <clipPath id="xarnath-clip">
-    <path d="M 200 0 L 800 0 L 780 40 Q 700 70 600 80 Q 550 100 500 95 Q 450 100 400 80 Q 300 70 220 40 Z"/>
-  </clipPath>
-  <symbol id="mountain" viewBox="0 0 64 64">
-    <path d="M3 56 L21 19 L31 35 L43 8 L62 56 Z" fill="#526d79" stroke="#152b37" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M13 39 L21 19 L31 35 L25 32 L21 28 L18 36 Z" fill="#c5dee0" stroke="#d6e6e4" stroke-width="1"/>
-    <path d="M34 27 L43 8 L55 37 L48 31 L43 26 L39 34 Z" fill="#d7e7e5" stroke="#e8f0e9" stroke-width="1"/>
-    <path d="M5 56 L21 43 L31 50 L43 35 L61 56" fill="none" stroke="#b6c8bd" stroke-width="1.6" opacity=".75"/>
-    <path d="M8 59 H59" stroke="#dccb9d" stroke-width="1.4" opacity=".8"/>
-  </symbol>
-  <symbol id="pine" viewBox="0 0 48 60">
-    <path d="M24 3 L8 26 H17 L4 42 H19 L12 51 H36 L29 42 H44 L31 26 H40 Z" fill="#244b3b" stroke="#9eb78a" stroke-width="1.6" stroke-linejoin="round"/>
-    <path d="M24 12 L24 49" stroke="#c0aa75" stroke-width="2"/>
-    <path d="M12 27 L20 29 M29 36 L37 37" stroke="#6a956b" stroke-width="1.4" opacity=".85"/>
-  </symbol>
-  <symbol id="keep" viewBox="0 0 64 64">
-    <path d="M8 57 V26 H18 V15 H27 V27 H37 V10 H47 V27 H56 V57 Z" fill="#d5c49a" stroke="#5f513e" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M8 26 L18 20 L27 27 L37 21 L47 27 L56 22" fill="none" stroke="#f1e0b8" stroke-width="2"/>
-    <path d="M27 57 V39 Q32 31 37 39 V57 M14 34 H20 M43 34 H49" fill="none" stroke="#654f40" stroke-width="2"/>
-    <path d="M35 10 L42 2 L49 10" fill="#8b5d42" stroke="#654f40" stroke-width="1.5"/>
-  </symbol>
-  <symbol id="volcano" viewBox="0 0 70 64">
-    <path d="M4 57 L20 32 L30 19 L38 28 L46 34 L65 57 Z" fill="#4a2b32" stroke="#b65a3a" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M28 25 L34 8 L40 26" fill="#d46b36" stroke="#f1a64e" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M33 10 L29 1 M38 12 L47 3 M39 16 L51 11" fill="none" stroke="#ffbc5d" stroke-width="2" stroke-linecap="round"/>
-    <path d="M14 48 L27 43 M43 48 L55 44" stroke="#d98a42" stroke-width="2"/>
-  </symbol>
-  <symbol id="ruins" viewBox="0 0 64 64">
-    <path d="M8 56 V25 L18 15 L27 25 V56 M30 56 V11 L42 4 L52 11 V56" fill="#77634b" stroke="#dbc28e" stroke-width="2"/>
-    <path d="M8 25 H27 M30 11 H52 M15 33 H21 M37 21 H45 M37 30 H45 M0 57 H60" fill="none" stroke="#ddc792" stroke-width="1.4"/>
-    <path d="M41 4 L40 15 L52 11" fill="none" stroke="#3b3440" stroke-width="2"/>
-  </symbol>
-  <symbol id="ship" viewBox="0 0 64 64">
-    <path d="M7 43 H57 L48 54 H18 Z" fill="#4e473e" stroke="#c7ae7b" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M32 7 V43 M32 10 L13 36 H32 Z M36 16 L52 35 H36 Z" fill="#c8b78c" stroke="#ead9ac" stroke-width="1.5" stroke-linejoin="round"/>
-    <path d="M4 59 Q16 55 28 59 T52 59 T65 59" fill="none" stroke="#70b3c2" stroke-width="1.4"/>
-  </symbol>
-  <symbol id="compass" viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="37" fill="#08121d" fill-opacity=".7" stroke="#c9a86a" stroke-width="1.5"/>
-    <circle cx="50" cy="50" r="30" fill="none" stroke="#a98c5f" stroke-opacity=".6" stroke-width="1"/>
-    <path d="M50 8 L57 43 L50 50 L43 43 Z" fill="#e8d6a3" stroke="#e8d6a3" stroke-width="1"/>
-    <path d="M50 92 L43 57 L50 50 L57 57 Z" fill="#385a68" stroke="#a5c1c2" stroke-width="1"/>
-    <path d="M8 50 L43 43 L50 50 L43 57 Z" fill="#4f6a70" stroke="#d3bd86" stroke-width="1"/>
-    <path d="M92 50 L57 43 L50 50 L57 57 Z" fill="#ba985f" stroke="#e8d6a3" stroke-width="1"/>
-    <circle cx="50" cy="50" r="4" fill="#eed9a2"/>
-  </symbol>
+  <g id="peak">
+    <path d="M0 42 L24 0 L40 19 L52 6 L82 45 Z" fill="#3d5055" stroke="#15272e" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M24 0 L27 17 L18 15 L13 26 L0 42 L24 34 L33 26 L40 19 Z" fill="#a9c0c2"/>
+    <path d="M24 0 L34 23 L42 19 L52 6 L62 27 L82 45 L52 39 L34 34 Z" fill="#617c83"/>
+    <path d="M18 16 L24 0 L27 17 L35 20 L29 25 L24 21 Z" fill="#e5e9db"/>
+    <path d="M9 36 L24 29 L35 31 L45 37 L60 35" fill="none" stroke="#cfdbd0" stroke-opacity=".5" stroke-width="1"/>
+  </g>
+  <g id="pine">
+    <path d="M16 0 L3 19 H10 L0 31 H13 L7 39 H25 L19 31 H31 L21 19 H28 Z" fill="#193c31" stroke="#8a9f77" stroke-opacity=".55" stroke-width="1"/>
+    <path d="M16 8 L16 34" stroke="#6c7958" stroke-width="1.2"/>
+  </g>
+  <g id="tower">
+    <path d="M3 24 L4 12 L9 12 L9 5 L15 2 L21 5 L21 12 L26 12 L27 24 Z" fill="#d9c49a" stroke="#382e25" stroke-width="1.5"/>
+    <path d="M2 12 L15 0 L28 12 Z" fill="#5a4033" stroke="#e4d1a5" stroke-width="1.2"/>
+    <rect x="13" y="15" width="5" height="9" fill="#4c362b"/>
+    <path d="M9 12 V18 M21 12 V18" stroke="#5b4635" stroke-width="2"/>
+  </g>
+  <g id="ruin">
+    <path d="M1 27 V8 L8 3 L15 8 V27 M18 27 V13 L24 7 L30 13 V27 M0 27 H32" fill="none" stroke="#b4a17e" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M5 13 L10 13 M21 17 L26 17 M7 21 L12 21" stroke="#453d35" stroke-width="2"/>
+  </g>
+  <g id="volcano">
+    <path d="M0 44 L18 16 L27 21 L40 0 L56 26 L67 44 Z" fill="#4b3332" stroke="#221a22" stroke-width="2"/>
+    <path d="M34 11 L40 0 L46 11 L42 17 L36 16 Z" fill="#dc784c"/>
+    <path d="M39 5 L40 0 L43 6" fill="none" stroke="#ffd08a" stroke-width="2"/>
+    <path d="M20 26 L27 21 L32 28 M48 22 L56 26" fill="none" stroke="#cf6a48" stroke-width="1.5"/>
+  </g>
+  <g id="compass">
+    <circle cx="50" cy="50" r="42" fill="#07111b" fill-opacity=".6" stroke="#cbb57d" stroke-opacity=".72" stroke-width="1.2"/>
+    <circle cx="50" cy="50" r="34" fill="none" stroke="#cbb57d" stroke-opacity=".35" stroke-width="1"/>
+    <path d="M50 8 L59 42 L50 35 L41 42 Z" fill="#e8d6a0"/>
+    <path d="M50 92 L59 58 L50 65 L41 58 Z" fill="#6a8d96"/>
+    <path d="M8 50 L42 41 L35 50 L42 59 Z" fill="#6a8d96"/>
+    <path d="M92 50 L58 41 L65 50 L58 59 Z" fill="#e8d6a0"/>
+    <path d="M50 30 L55 50 L50 70 L45 50 Z" fill="#bda66d" stroke="#eddcab" stroke-width=".8"/>
+    <circle cx="50" cy="50" r="3" fill="#f4e6b8"/>
+  </g>
 </defs>
 
 <rect width="1000" height="700" fill="url(#ocean)"/>
-<rect width="1000" height="700" fill="url(#sea-lines)"/>
-<g fill="none" stroke="#4b8698" stroke-opacity=".18" stroke-width="1.2">
-  <path d="M-20 155 C95 115 160 150 230 129 S350 104 430 142 S590 185 690 137 S880 115 1030 151"/>
-  <path d="M-30 174 C83 135 164 169 238 149 S348 124 433 162 S591 205 700 158 S886 136 1030 171"/>
-  <path d="M-30 192 C82 153 168 187 242 167 S351 142 439 180 S593 225 706 178 S890 156 1030 191"/>
-  <path d="M-40 660 C100 622 210 655 340 634 S560 620 680 649 S875 671 1040 627"/>
-  <path d="M-30 678 C110 640 220 673 350 652 S565 638 686 667 S880 689 1040 645"/>
+<rect width="1000" height="700" fill="url(#sea-grain)"/>
+<g fill="none" stroke="#5c8f9a" stroke-opacity=".2" stroke-width="1.1">
+  <path d="M-10 116 C120 86 220 118 325 96 S530 90 634 112 S832 133 1010 97"/>
+  <path d="M-10 128 C120 98 220 130 325 108 S530 102 634 124 S832 145 1010 109"/>
+  <path d="M-10 674 C130 640 235 672 365 646 S600 648 730 668 S890 672 1015 641"/>
+  <path d="M-10 687 C130 653 235 685 365 659 S600 661 730 681 S890 685 1015 654"/>
+  <path d="M25 220 C80 204 107 209 150 216 M850 220 C895 204 926 209 978 196"/>
+</g>
+<g fill="none" stroke="#d1bf93" stroke-opacity=".14" stroke-width=".8">
+  <path d="M35 172 l12 -3 l6 4 l-12 4 Z M925 244 l12 -4 l6 3 l-12 4 Z"/>
+  <path d="M32 479 q16 -10 32 0 t32 0 M867 640 q16 -10 32 0 t32 0"/>
 </g>
 
-<!-- Xarnath: the exact existing silhouette is preserved. -->
-<path d="M 200 0 L 800 0 L 780 40 Q 700 70 600 80 Q 550 100 500 95 Q 450 100 400 80 Q 300 70 220 40 Z" fill="url(#xarnath-land)" stroke="#9c6451" stroke-opacity=".78" stroke-width="2"/>
-<g clip-path="url(#xarnath-clip)">
-  <path d="M230 12 Q330 30 420 12 T610 17 T790 8 M240 25 Q320 42 420 25 T610 32 T780 25 M270 45 Q360 61 430 45 T590 54 T750 41" fill="none" stroke="#bc7051" stroke-opacity=".38" stroke-width="1.2"/>
-  <g fill="none" stroke="#d56c45" stroke-opacity=".65" stroke-width="1.8" stroke-linecap="round">
-    <path d="M365 -5 L398 24 L382 44 L433 63 L446 91"/>
-    <path d="M570 -6 L550 19 L590 35 L570 53 L608 80"/>
-    <path d="M688 0 L660 24 L683 42 L650 57"/>
-    <path d="M285 5 L306 24 L293 40 L335 55"/>
+<!-- Xarnath: a harsh northern continent with inhabited basins, ridges and volcanic scars. -->
+<path d="M145 20 L850 18 L882 40 L846 83 L808 119 L746 139 L664 147 L584 139 L525 152 L452 142 L376 152 L302 137 L230 122 L176 83 L126 55 Z" fill="url(#xarnath-land)" stroke="#b87e69" stroke-width="2.4" stroke-opacity=".78" filter="url(#landShadow)"/>
+<path d="M155 28 L845 27 L862 42 L830 78 L794 111 L741 129 L660 138 L583 130 L523 142 L454 134 L379 143 L308 128 L238 113 L188 77 L145 53 Z" fill="none" stroke="#e2b28b" stroke-opacity=".28" stroke-width="1.2"/>
+<g clip-path="url(#xarnathClip)">
+  <rect x="110" y="15" width="800" height="150" fill="url(#land-grain)"/>
+  <ellipse cx="285" cy="72" rx="180" ry="95" fill="url(#red-waste)"/>
+  <ellipse cx="690" cy="65" rx="210" ry="90" fill="#24151f" fill-opacity=".55"/>
+  <g fill="none" stroke="#db9271" stroke-opacity=".42" stroke-width="1.3">
+    <path d="M168 48 C244 28 296 54 361 44 S465 31 535 51 S660 80 734 49 S825 35 866 55"/>
+    <path d="M159 65 C235 45 295 72 360 61 S467 48 537 68 S662 97 735 66 S824 52 856 71"/>
+    <path d="M175 86 C252 68 310 94 377 82 S467 72 537 91 S663 117 736 88 S816 76 840 92"/>
   </g>
-  <use href="#volcano" x="360" y="18" width="56" height="48"/>
-  <use href="#volcano" x="594" y="20" width="60" height="54"/>
-  <use href="#volcano" x="690" y="24" width="42" height="38"/>
-  <path d="M228 7 L265 2 L287 8 L256 13 Z M462 17 L486 11 L501 18 L478 22 Z M725 58 L746 51 L760 57 L741 64 Z" fill="#78616a" fill-opacity=".6"/>
-</g>
-
-<!-- The main continent uses the same silhouette as the site's original SVG map. -->
-<path d="M 100 300 Q 150 200 250 220 L 350 240 Q 420 220 480 240 L 560 260 Q 620 240 700 260 L 780 280 Q 850 260 920 300 L 940 400 Q 950 480 900 540 Q 820 600 720 580 L 620 600 Q 540 620 460 600 L 380 620 Q 300 640 220 600 L 140 540 Q 80 460 100 380 Q 100 330 100 300 Z" fill="url(#land)" stroke="#b6b18b" stroke-opacity=".82" stroke-width="3" filter="url(#coast-glow)"/>
-<path d="M 100 300 Q 150 200 250 220 L 350 240 Q 420 220 480 240 L 560 260 Q 620 240 700 260 L 780 280 Q 850 260 920 300 L 940 400 Q 950 480 900 540 Q 820 600 720 580 L 620 600 Q 540 620 460 600 L 380 620 Q 300 640 220 600 L 140 540 Q 80 460 100 380 Q 100 330 100 300 Z" fill="none" stroke="#e1ca91" stroke-opacity=".45" stroke-width="1.1"/>
-
-<g clip-path="url(#main-land-clip)">
-  <rect x="70" y="190" width="900" height="470" fill="url(#land-grain)" opacity=".85"/>
-  <ellipse cx="245" cy="263" rx="190" ry="100" fill="url(#frost)"/>
-  <ellipse cx="416" cy="298" rx="190" ry="115" fill="url(#forest)"/>
-  <ellipse cx="142" cy="406" rx="150" ry="130" fill="url(#forest)"/>
-  <ellipse cx="478" cy="505" rx="155" ry="112" fill="url(#shadow)"/>
-  <ellipse cx="694" cy="354" rx="180" ry="132" fill="url(#desert)"/>
-  <ellipse cx="728" cy="592" rx="190" ry="110" fill="url(#ember)"/>
-  <ellipse cx="394" cy="438" rx="195" ry="125" fill="#b8a66f" fill-opacity=".2"/>
-
-  <!-- Cartographic elevation contours -->
-  <g fill="none" stroke="#ead7a3" stroke-opacity=".24" stroke-width="1.25">
-    <path d="M120 286 C154 238 211 230 267 239 S364 264 389 294 S350 333 289 322 S185 315 149 340"/>
-    <path d="M132 300 C167 254 216 248 264 256 S344 278 365 301 S331 318 286 310 S200 302 163 326"/>
-    <path d="M160 341 C196 320 230 328 248 350 S241 387 213 399 S177 393 171 374"/>
-    <path d="M174 355 C204 339 226 348 232 363 S219 385 200 385 S181 373 185 361"/>
-    <path d="M310 251 C350 232 397 240 435 260 S474 289 452 313 S406 325 374 313"/>
-    <path d="M329 267 C362 250 394 256 425 273 S451 293 435 304 S396 311 373 302"/>
-    <path d="M500 272 C544 249 590 258 622 279 S640 311 610 327 S559 330 536 315"/>
-    <path d="M518 289 C549 272 581 279 604 291 S614 309 593 317 S557 317 541 306"/>
-    <path d="M598 343 C636 320 686 327 710 350 S703 390 669 401 S616 387 606 369"/>
-    <path d="M614 355 C641 339 675 344 690 359 S683 383 661 388 S628 379 622 366"/>
-    <path d="M292 401 C325 377 369 384 397 402 S418 431 392 451 S341 464 313 444"/>
-    <path d="M312 415 C338 399 366 405 385 418 S394 436 378 444 S342 447 326 433"/>
-    <path d="M411 475 C449 451 489 458 519 480 S530 518 502 531 S446 528 428 508"/>
-    <path d="M428 488 C456 470 484 477 501 490 S507 510 489 518 S455 514 441 501"/>
-    <path d="M546 524 C583 500 625 507 653 526 S661 557 633 572 S581 572 560 551"/>
-    <path d="M566 536 C590 519 620 525 638 537 S641 553 623 560 S592 557 578 547"/>
-    <path d="M233 520 C270 498 305 510 334 530 S341 558 311 570 S259 561 242 544"/>
-    <path d="M252 529 C276 515 301 521 318 534 S320 549 304 554 S274 550 263 540"/>
-    <path d="M705 416 C738 399 777 408 796 429 S786 457 759 465 S716 456 710 439"/>
-    <path d="M725 428 C745 416 768 421 780 433 S771 449 755 451 S733 444 730 435"/>
+  <g fill="none" stroke="#ed9564" stroke-opacity=".68" stroke-width="2.1" stroke-linejoin="round">
+    <path d="M263 13 L285 39 L273 57 L309 78 L297 100 L329 126"/>
+    <path d="M412 7 L399 28 L422 45 L404 64 L438 81 L429 106 L459 130"/>
+    <path d="M612 13 L592 32 L615 52 L594 70 L624 89 L615 117"/>
+    <path d="M743 6 L728 28 L746 44 L725 61 L746 79 L730 101"/>
   </g>
-
-  <!-- Rivers and tributaries -->
-  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M248 248 C277 278 290 302 315 326 S354 354 365 382 S403 408 420 438 S423 482 449 507 S490 557 520 588 S549 621 565 658" stroke="#143846" stroke-width="10" opacity=".75"/>
-    <path d="M248 248 C277 278 290 302 315 326 S354 354 365 382 S403 408 420 438 S423 482 449 507 S490 557 520 588 S549 621 565 658" stroke="#5d9fb0" stroke-width="5" opacity=".93"/>
-    <path d="M248 248 C277 278 290 302 315 326 S354 354 365 382 S403 408 420 438 S423 482 449 507 S490 557 520 588 S549 621 565 658" stroke="#bad9c8" stroke-width="1.2" stroke-dasharray="3 9" opacity=".72"/>
-    <path d="M423 259 C408 286 422 310 441 327 S468 354 455 379 S425 400 420 438" stroke="#244b59" stroke-width="7" opacity=".82"/>
-    <path d="M423 259 C408 286 422 310 441 327 S468 354 455 379 S425 400 420 438" stroke="#7ab8c4" stroke-width="3.2" opacity=".85"/>
-    <path d="M605 318 C576 345 574 366 590 388 S623 422 617 445 S589 470 594 493" stroke="#1e4650" stroke-width="7" opacity=".8"/>
-    <path d="M605 318 C576 345 574 366 590 388 S623 422 617 445 S589 470 594 493" stroke="#6ca7ad" stroke-width="3" opacity=".8"/>
-    <path d="M173 433 C204 421 221 433 236 452 S262 481 291 487" stroke="#264b52" stroke-width="6" opacity=".8"/>
-    <path d="M173 433 C204 421 221 433 236 452 S262 481 291 487" stroke="#6fa8ac" stroke-width="2.5" opacity=".85"/>
-  </g>
-
-  <!-- Frostspine range: a hand-inked chain of snowy peaks -->
-  <g opacity=".96">
-    <use href="#mountain" x="144" y="218" width="48" height="50"/>
-    <use href="#mountain" x="174" y="204" width="56" height="59"/>
-    <use href="#mountain" x="207" y="211" width="54" height="57"/>
-    <use href="#mountain" x="239" y="202" width="64" height="66"/>
-    <use href="#mountain" x="275" y="213" width="52" height="55"/>
-    <use href="#mountain" x="305" y="222" width="45" height="48"/>
-    <use href="#mountain" x="331" y="224" width="43" height="46"/>
-    <use href="#mountain" x="356" y="229" width="40" height="42"/>
-    <use href="#mountain" x="386" y="234" width="32" height="35"/>
-    <path d="M145 274 Q190 250 231 270 T319 271 T405 276" fill="none" stroke="#d9e4d0" stroke-opacity=".55" stroke-width="2"/>
-  </g>
-
-  <!-- Ancient forests, shown as little inked tree clusters -->
-  <g opacity=".96">
-    <use href="#pine" x="91" y="310" width="25" height="32"/>
-    <use href="#pine" x="112" y="300" width="29" height="37"/>
-    <use href="#pine" x="132" y="313" width="25" height="32"/>
-    <use href="#pine" x="145" y="331" width="30" height="38"/>
-    <use href="#pine" x="112" y="348" width="30" height="38"/>
-    <use href="#pine" x="146" y="359" width="27" height="35"/>
-    <use href="#pine" x="171" y="344" width="24" height="31"/>
-    <use href="#pine" x="194" y="331" width="25" height="32"/>
-    <use href="#pine" x="210" y="352" width="27" height="34"/>
-    <use href="#pine" x="242" y="326" width="24" height="30"/>
-    <use href="#pine" x="379" y="260" width="24" height="31"/>
-    <use href="#pine" x="401" y="249" width="26" height="34"/>
-    <use href="#pine" x="423" y="266" width="24" height="30"/>
-    <use href="#pine" x="444" y="277" width="25" height="32"/>
-    <use href="#pine" x="390" y="293" width="25" height="33"/>
-    <use href="#pine" x="421" y="304" width="26" height="33"/>
-    <use href="#pine" x="448" y="294" width="24" height="30"/>
-    <use href="#pine" x="469" y="313" width="25" height="32"/>
-    <use href="#pine" x="498" y="328" width="22" height="28"/>
-    <use href="#pine" x="123" y="397" width="27" height="34"/>
-    <use href="#pine" x="148" y="412" width="26" height="33"/>
-    <use href="#pine" x="174" y="399" width="29" height="36"/>
-    <use href="#pine" x="195" y="421" width="25" height="31"/>
-    <use href="#pine" x="222" y="408" width="25" height="31"/>
-    <use href="#pine" x="247" y="430" width="26" height="33"/>
-    <use href="#pine" x="274" y="445" width="22" height="29"/>
-    <use href="#pine" x="405" y="465" width="24" height="31"/>
-    <use href="#pine" x="427" y="479" width="25" height="32"/>
-    <use href="#pine" x="450" y="492" width="27" height="34"/>
-    <use href="#pine" x="479" y="506" width="24" height="30"/>
-    <use href="#pine" x="497" y="487" width="24" height="29"/>
-    <use href="#pine" x="519" y="508" width="25" height="31"/>
-    <use href="#pine" x="536" y="525" width="24" height="31"/>
-  </g>
-
-  <!-- Desert striations and volcanic scars -->
-  <g fill="none" stroke="#e3bd7a" stroke-opacity=".4" stroke-width="1.4">
-    <path d="M590 290 Q655 277 705 294 T816 315"/>
-    <path d="M578 311 Q644 296 701 316 T827 334"/>
-    <path d="M584 339 Q654 326 704 345 T815 360"/>
-    <path d="M605 370 Q662 354 713 375 T805 390"/>
-    <path d="M620 392 Q672 378 719 394 T785 408"/>
-    <path d="M647 418 Q699 400 755 420 T802 435"/>
-  </g>
-  <path d="M640 277 L658 312 L647 338 L679 368 L662 391 M712 284 L693 319 L715 344 L700 372 L732 405" fill="none" stroke="#5b3433" stroke-width="3" stroke-linejoin="round" opacity=".82"/>
   <g opacity=".94">
-    <use href="#volcano" x="668" y="560" width="72" height="67"/>
-    <use href="#volcano" x="725" y="588" width="53" height="49"/>
-    <use href="#mountain" x="744" y="493" width="43" height="45"/>
-    <use href="#mountain" x="782" y="473" width="38" height="40"/>
-    <use href="#mountain" x="801" y="502" width="33" height="36"/>
+    <use href="#volcano" x="335" y="41" width="47" height="35"/>
+    <use href="#volcano" x="548" y="71" width="52" height="39"/>
+    <use href="#volcano" x="755" y="42" width="44" height="33"/>
   </g>
-
-  <!-- Roads: old, dashed gold routes between known settlements -->
-  <g fill="none" stroke="#d7b875" stroke-linecap="round">
-    <path d="M405 416 Q374 389 340 372 T300 342" stroke-width="2" stroke-dasharray="2 7" opacity=".82"/>
-    <path d="M405 416 Q449 382 500 351 T600 321" stroke-width="2" stroke-dasharray="2 7" opacity=".82"/>
-    <path d="M405 416 Q426 459 451 501 T465 557" stroke-width="2" stroke-dasharray="2 7" opacity=".82"/>
-    <path d="M405 416 Q458 437 524 463 T620 495 T746 557" stroke-width="2" stroke-dasharray="2 7" opacity=".78"/>
-    <path d="M405 416 Q371 472 351 524 T340 598" stroke-width="2" stroke-dasharray="2 7" opacity=".78"/>
-  </g>
-
-  <!-- Small keeps and ruins: settlements remain subordinate to the land itself. -->
-  <use href="#keep" x="383" y="386" width="42" height="42"/>
-  <use href="#keep" x="196" y="246" width="32" height="34" opacity=".78"/>
-  <use href="#keep" x="417" y="264" width="28" height="29" opacity=".78"/>
-  <use href="#ruins" x="577" y="301" width="35" height="34" opacity=".88"/>
-  <use href="#keep" x="715" y="526" width="34" height="35" opacity=".8"/>
-  <use href="#ruins" x="675" y="371" width="35" height="34" opacity=".8"/>
-  <use href="#ruins" x="328" y="583" width="27" height="27" opacity=".76"/>
-  <use href="#ruins" x="489" y="539" width="28" height="29" opacity=".72"/>
-
-  <!-- Tiny settlement lights and hand-inked ground marks -->
-  <g fill="#f0d89a" filter="url(#soft-glow)">
-    <circle cx="405" cy="416" r="3.5"/><circle cx="215" cy="264" r="2.5"/>
-    <circle cx="434" cy="274" r="2.3"/><circle cx="598" cy="321" r="2.5"/>
-    <circle cx="700" cy="380" r="2.3"/><circle cx="749" cy="557" r="2.5"/>
-    <circle cx="340" cy="600" r="2.3"/><circle cx="466" cy="560" r="2.2"/>
-  </g>
-  <g fill="none" stroke="#d7c18e" stroke-opacity=".42" stroke-width="1">
-    <path d="M330 350 l7 -5 l5 5 l-7 5 Z M360 366 l5 -4 l5 4 l-5 4 Z M504 410 l6 -4 l5 4 l-5 5 Z"/>
-    <path d="M510 580 l6 -5 l5 5 l-5 4 Z M281 548 l5 -4 l5 4 l-5 4 Z M770 449 l5 -4 l5 4 l-5 4 Z"/>
+  <g fill="#b36c4d" fill-opacity=".44">
+    <path d="M192 47 l28 -10 l18 8 l-17 10 Z M350 99 l25 -10 l24 8 l-15 13 Z M674 39 l30 -8 l23 9 l-19 13 Z M784 102 l26 -12 l20 8 l-16 12 Z"/>
   </g>
 </g>
+<path d="M149 119 L184 132 L225 139 L272 143 L317 151 L373 157 L422 150 L465 158 L518 154 L562 164 L614 156 L669 161 L717 153 L758 145 L806 124 L842 107" fill="none" stroke="#e0b68d" stroke-opacity=".5" stroke-width="1.8"/>
 
-<!-- The Godseal and Black Chasm remain at their original north-south coordinates. -->
-<path d="M100 130 Q500 145 900 130" fill="none" stroke="#170b13" stroke-width="24" stroke-linecap="round" opacity=".9"/>
-<path d="M100 130 Q500 145 900 130" fill="none" stroke="#4f2929" stroke-width="4" stroke-linecap="round" opacity=".85"/>
-<path d="M250 90 Q500 75 750 90" fill="none" stroke="#e5c56a" stroke-width="8" stroke-opacity=".16" filter="url(#coast-glow)"/>
-<path d="M250 90 Q500 75 750 90" fill="none" stroke="#e8c547" stroke-width="2.5" stroke-dasharray="8 6" stroke-linecap="round" filter="url(#soft-glow)"/>
-<g fill="#e8c547">
-  <circle cx="250" cy="90" r="3"/><circle cx="500" cy="78" r="3.5"/><circle cx="750" cy="90" r="3"/>
+<!-- The northern rim of the chasm: a near-continuous crown of giant peaks. -->
+<g opacity=".98">
+  <use href="#peak" x="95" y="116" width="56" height="47"/>
+  <use href="#peak" x="128" y="106" width="70" height="58"/>
+  <use href="#peak" x="169" y="113" width="69" height="57"/>
+  <use href="#peak" x="210" y="100" width="82" height="69"/>
+  <use href="#peak" x="257" y="107" width="74" height="62"/>
+  <use href="#peak" x="306" y="101" width="90" height="74"/>
+  <use href="#peak" x="360" y="91" width="100" height="81"/>
+  <use href="#peak" x="421" y="99" width="88" height="73"/>
+  <use href="#peak" x="474" y="84" width="105" height="86"/>
+  <use href="#peak" x="536" y="94" width="96" height="78"/>
+  <use href="#peak" x="595" y="102" width="83" height="68"/>
+  <use href="#peak" x="646" y="107" width="78" height="64"/>
+  <use href="#peak" x="692" y="112" width="75" height="62"/>
+  <use href="#peak" x="738" y="105" width="82" height="67"/>
+  <use href="#peak" x="790" y="112" width="74" height="61"/>
+  <use href="#peak" x="836" y="118" width="64" height="53"/>
 </g>
 
-<!-- Offshore lands already implied by the site's existing regional coordinates. -->
-<g stroke="#9db0a0" stroke-width="1.2" stroke-opacity=".75">
-  <path d="M48 538 Q65 514 84 526 L101 550 L84 573 L56 568 Z" fill="#596e5d"/>
-  <path d="M58 530 l9 -8 l8 9 l-5 11 Z" fill="#78916c"/>
-  <path d="M831 237 Q849 224 869 236 L878 253 L863 268 L842 262 Z" fill="#5e6460"/>
-  <path d="M839 244 l11 -9 l9 10 l-7 12 Z" fill="#a28e69"/>
-  <path d="M517 645 Q538 626 557 642 L573 660 L560 676 L531 675 Z" fill="#49646a"/>
-  <path d="M527 649 l10 -7 l12 10 l-8 10 Z" fill="#7fa8a3"/>
-  <path d="M920 459 Q935 447 949 462 L954 478 L936 486 L922 476 Z" fill="#45565d"/>
+<!-- The Black Chasm: an actual void between the two mountain walls. -->
+<path d="M63 175 C170 161 240 179 331 171 S494 164 575 174 S744 186 823 171 S934 166 1010 176" fill="none" stroke="#d6b78b" stroke-opacity=".32" stroke-width="44" stroke-linecap="round"/>
+<path d="M63 175 C170 161 240 179 331 171 S494 164 575 174 S744 186 823 171 S934 166 1010 176" fill="none" stroke="url(#cliff)" stroke-width="35" stroke-linecap="round"/>
+<path d="M63 162 C170 148 240 166 331 158 S494 151 575 161 S744 173 823 158 S934 153 1010 163" fill="none" stroke="#b8b3a2" stroke-opacity=".5" stroke-width="2.1"/>
+<path d="M63 189 C170 175 240 193 331 185 S494 178 575 188 S744 200 823 185 S934 180 1010 190" fill="none" stroke="#6b5550" stroke-opacity=".75" stroke-width="2.4"/>
+<g fill="none" stroke="#0b1019" stroke-width="2.1" stroke-linecap="round">
+  <path d="M178 165 l-9 16 l8 6 l-13 17"/>
+  <path d="M280 166 l-7 11 l8 9 l-11 14"/>
+  <path d="M372 158 l-10 16 l8 10 l-12 19"/>
+  <path d="M615 165 l-9 14 l7 8 l-12 18"/>
+  <path d="M716 173 l-10 14 l8 8 l-11 18"/>
+  <path d="M844 158 l-10 14 l6 9 l-10 15"/>
 </g>
-<g opacity=".74">
-  <use href="#pine" x="57" y="516" width="20" height="26"/>
-  <use href="#ruins" x="839" y="232" width="23" height="23"/>
-  <use href="#ship" x="535" y="645" width="34" height="32"/>
-  <use href="#ship" x="914" y="461" width="27" height="27"/>
-</g>
-
-<!-- A compass rose with no fixed-language lettering, preserving north at the top. -->
-<use href="#compass" x="30" y="25" width="90" height="90" opacity=".92"/>
-<g fill="#ddc58b" opacity=".8">
-  <circle cx="75" cy="29" r="1.8"/><circle cx="75" cy="111" r="1.8"/>
-  <circle cx="29" cy="70" r="1.8"/><circle cx="121" cy="70" r="1.8"/>
+<g fill="#d7c39a" fill-opacity=".72">
+  <circle cx="255" cy="176" r="1.5"/><circle cx="392" cy="173" r="1.4"/><circle cx="655" cy="181" r="1.5"/><circle cx="790" cy="179" r="1.4"/>
 </g>
 
-<!-- Fine cartographic notes and ornament, deliberately kept free of labels. -->
-<g fill="none" stroke="#d7bd7a" stroke-opacity=".43" stroke-width="1">
-  <path d="M24 134 h32 l5 5 h18 M976 134 h-32 l-5 5 h-18"/>
-  <path d="M24 568 h17 l7 7 h18 M976 568 h-17 l-7 7 h-18"/>
-  <path d="M35 616 l10 -8 l10 8 l-10 8 Z M965 616 l-10 -8 l-10 8 l10 8 Z"/>
+<!-- The Godseal spans the narrow pass, with a gate on each rim rather than an ordinary bridge. -->
+<path d="M478 133 Q500 121 522 133 L529 197 Q500 212 471 197 Z" fill="#132633" stroke="#e7d28e" stroke-opacity=".75" stroke-width="1.5"/>
+<path d="M481 137 L500 128 L519 137 L520 193 L500 203 L480 193 Z" fill="#d7b76a" fill-opacity=".12" stroke="#e8c547" stroke-width="2"/>
+<path d="M486 143 L500 136 L514 143 L514 187 L500 195 L486 187 Z" fill="none" stroke="#f4df9a" stroke-width="1.2"/>
+<path d="M500 131 L500 199 M483 166 L517 166 M486 184 L514 184" stroke="#f2d982" stroke-opacity=".9" stroke-width="1.5"/>
+<g fill="#ffe9a0" filter="url(#softGlow)">
+  <circle cx="500" cy="132" r="3"/><circle cx="500" cy="199" r="3"/>
+  <circle cx="486" cy="166" r="2"/><circle cx="514" cy="166" r="2"/>
+</g>
+<path d="M455 168 Q500 143 545 168" fill="none" stroke="#e8c547" stroke-opacity=".55" stroke-width="2" stroke-dasharray="4 5"/>
+<path d="M452 180 Q500 205 548 180" fill="none" stroke="#e8c547" stroke-opacity=".42" stroke-width="1.6" stroke-dasharray="4 5"/>
+
+<!-- Aethermoor's northern rim: a second, taller wall of knife-edged peaks. -->
+<g opacity=".99">
+  <use href="#peak" x="84" y="207" width="76" height="63"/>
+  <use href="#peak" x="126" y="215" width="68" height="57"/>
+  <use href="#peak" x="167" y="204" width="86" height="71"/>
+  <use href="#peak" x="217" y="211" width="80" height="66"/>
+  <use href="#peak" x="265" y="208" width="91" height="75"/>
+  <use href="#peak" x="322" y="215" width="82" height="68"/>
+  <use href="#peak" x="371" y="203" width="100" height="82"/>
+  <use href="#peak" x="432" y="214" width="91" height="75"/>
+  <use href="#peak" x="490" y="203" width="104" height="86"/>
+  <use href="#peak" x="552" y="213" width="94" height="77"/>
+  <use href="#peak" x="609" y="209" width="96" height="78"/>
+  <use href="#peak" x="667" y="216" width="86" height="71"/>
+  <use href="#peak" x="719" y="208" width="94" height="77"/>
+  <use href="#peak" x="777" y="216" width="82" height="68"/>
+  <use href="#peak" x="827" y="220" width="73" height="60"/>
+  <use href="#peak" x="872" y="227" width="61" height="51"/>
+</g>
+
+<!-- Aethermoor proper: broad southern land with distinct climate belts. -->
+<path d="M112 300 Q145 257 207 244 L275 240 Q326 243 373 258 L434 246 L490 253 L548 267 L610 256 L674 266 L738 279 Q810 271 869 300 L917 337 L932 400 Q940 461 909 508 L866 550 L803 586 L737 592 L675 621 L612 632 L549 617 L483 637 L422 626 L360 640 L292 621 L225 595 L166 550 L124 497 L94 432 L91 367 Z" fill="url(#aethermoor-land)" stroke="#d8c89b" stroke-opacity=".9" stroke-width="2.7" filter="url(#landShadow)"/>
+<path d="M119 302 Q150 265 211 253 L278 249 Q328 252 373 267 L433 255 L488 262 L547 276 L610 265 L672 275 L736 288 Q806 280 862 309 L906 342 L920 402 Q928 456 898 500 L858 540 L798 575 L732 581 L671 610 L611 620 L550 606 L484 626 L423 615 L361 629 L297 610 L232 585 L176 542 L135 491 L105 429 L102 367 Z" fill="none" stroke="#eadab2" stroke-opacity=".34" stroke-width="1.2"/>
+
+<g clip-path="url(#aethermoorClip)">
+  <rect x="85" y="235" width="860" height="415" fill="url(#land-grain)" opacity=".9"/>
+  <ellipse cx="217" cy="285" rx="162" ry="77" fill="url(#frost)"/>
+  <ellipse cx="407" cy="319" rx="143" ry="104" fill="url(#forest)"/>
+  <ellipse cx="172" cy="392" rx="125" ry="113" fill="url(#forest)"/>
+  <ellipse cx="631" cy="360" rx="181" ry="120" fill="url(#red-waste)"/>
+  <ellipse cx="483" cy="511" rx="155" ry="105" fill="#2f3044" fill-opacity=".36"/>
+  <ellipse cx="743" cy="573" rx="174" ry="107" fill="url(#ember)"/>
+  <ellipse cx="335" cy="588" rx="145" ry="57" fill="#a6a66b" fill-opacity=".22"/>
+
+  <!-- Terrain contours: hand-drawn elevation, valleys, highlands and basins. -->
+  <g fill="none" stroke="#ecd8a8" stroke-opacity=".27" stroke-width="1.1">
+    <path d="M118 291 C151 264 206 260 252 272 S337 291 355 314 S321 344 273 331 S171 319 134 342"/>
+    <path d="M132 304 C166 278 210 277 250 286 S323 302 337 319 S311 333 272 321 S181 310 151 331"/>
+    <path d="M164 354 C193 331 232 340 250 364 S239 403 211 414 S174 404 177 382"/>
+    <path d="M178 367 C201 348 226 357 234 373 S222 399 205 399 S184 387 188 376"/>
+    <path d="M303 269 C345 249 396 260 431 282 S467 316 440 336 S386 345 354 324"/>
+    <path d="M324 285 C360 267 394 275 422 292 S443 316 425 326 S386 331 365 315"/>
+    <path d="M514 291 C555 270 600 280 625 303 S634 336 605 348 S557 342 538 326"/>
+    <path d="M531 306 C560 290 588 297 608 311 S614 329 594 336 S561 331 547 321"/>
+    <path d="M625 350 C661 332 704 340 723 362 S712 398 680 407 S635 394 628 376"/>
+    <path d="M641 361 C666 347 692 354 705 368 S696 390 675 393 S648 385 646 373"/>
+    <path d="M287 412 C324 385 371 393 401 417 S417 450 389 469 S339 474 309 449"/>
+    <path d="M311 426 C340 407 367 414 385 429 S389 449 371 458 S340 450 324 440"/>
+    <path d="M427 476 C458 455 500 461 527 484 S533 520 504 534 S455 531 439 512"/>
+    <path d="M443 489 C467 475 491 481 508 494 S508 514 491 521 S462 515 452 501"/>
+    <path d="M555 524 C590 501 629 507 651 527 S656 558 628 574 S581 571 565 552"/>
+    <path d="M573 537 C596 521 619 527 636 540 S636 556 619 562 S593 557 583 547"/>
+    <path d="M227 520 C260 499 302 510 326 531 S331 559 303 574 S254 563 238 545"/>
+    <path d="M247 531 C272 515 297 522 312 536 S314 553 298 559 S272 550 258 542"/>
+    <path d="M738 433 C766 416 803 426 818 447 S807 473 781 481 S747 465 742 451"/>
+  </g>
+
+  <!-- River system links highland springs to ports and fertile valleys. -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M244 267 C270 290 291 313 315 330 S355 362 365 390 S404 420 424 447 S427 482 451 508 S492 553 518 585 S549 615 565 656" stroke="#1b3f4d" stroke-width="10" opacity=".82"/>
+    <path d="M244 267 C270 290 291 313 315 330 S355 362 365 390 S404 420 424 447 S427 482 451 508 S492 553 518 585 S549 615 565 656" stroke="#62a0ae" stroke-width="4.5" opacity=".95"/>
+    <path d="M244 267 C270 290 291 313 315 330 S355 362 365 390 S404 420 424 447 S427 482 451 508 S492 553 518 585 S549 615 565 656" stroke="#c2d8c8" stroke-width="1.1" stroke-dasharray="3 8" opacity=".7"/>
+    <path d="M421 267 C405 292 421 317 442 334 S466 360 453 384 S427 415 424 447" stroke="#214956" stroke-width="7" opacity=".87"/>
+    <path d="M421 267 C405 292 421 317 442 334 S466 360 453 384 S427 415 424 447" stroke="#79b5bd" stroke-width="3" opacity=".9"/>
+    <path d="M611 318 C585 346 576 365 592 389 S621 422 616 447 S593 469 596 496" stroke="#234a53" stroke-width="7" opacity=".86"/>
+    <path d="M611 318 C585 346 576 365 592 389 S621 422 616 447 S593 469 596 496" stroke="#78acb1" stroke-width="3" opacity=".92"/>
+    <path d="M170 424 C198 416 219 433 235 452 S262 481 293 488" stroke="#264a51" stroke-width="6"/>
+    <path d="M170 424 C198 416 219 433 235 452 S262 481 293 488" stroke="#6ba7ad" stroke-width="2.4"/>
+  </g>
+
+  <!-- Forest belts and isolated groves. -->
+  <g opacity=".95">
+    <use href="#pine" x="103" y="312" width="22" height="29"/><use href="#pine" x="123" y="301" width="26" height="34"/>
+    <use href="#pine" x="141" y="315" width="24" height="31"/><use href="#pine" x="155" y="337" width="26" height="34"/>
+    <use href="#pine" x="116" y="350" width="27" height="35"/><use href="#pine" x="148" y="365" width="25" height="33"/>
+    <use href="#pine" x="176" y="349" width="22" height="29"/><use href="#pine" x="199" y="333" width="24" height="31"/>
+    <use href="#pine" x="214" y="355" width="25" height="32"/><use href="#pine" x="244" y="329" width="23" height="29"/>
+    <use href="#pine" x="378" y="281" width="22" height="29"/><use href="#pine" x="400" y="271" width="25" height="32"/>
+    <use href="#pine" x="423" y="289" width="22" height="29"/><use href="#pine" x="446" y="299" width="23" height="30"/>
+    <use href="#pine" x="391" y="315" width="22" height="29"/><use href="#pine" x="421" y="326" width="24" height="30"/>
+    <use href="#pine" x="450" y="313" width="22" height="29"/><use href="#pine" x="475" y="332" width="22" height="29"/>
+    <use href="#pine" x="499" y="345" width="20" height="27"/>
+    <use href="#pine" x="122" y="396" width="26" height="33"/><use href="#pine" x="148" y="413" width="24" height="31"/>
+    <use href="#pine" x="176" y="401" width="27" height="35"/><use href="#pine" x="199" y="423" width="24" height="31"/>
+    <use href="#pine" x="225" y="410" width="24" height="31"/><use href="#pine" x="250" y="432" width="26" height="33"/>
+    <use href="#pine" x="277" y="448" width="22" height="28"/>
+  </g>
+
+  <!-- Dry eastern basin: wind-scoured ground, mineral fissures and scattered ruins. -->
+  <g fill="none" stroke="#e5c28c" stroke-opacity=".4" stroke-width="1.35">
+    <path d="M585 301 Q649 287 704 306 T820 327"/>
+    <path d="M578 322 Q646 306 703 326 T828 347"/>
+    <path d="M590 348 Q651 336 705 354 T818 370"/>
+    <path d="M612 377 Q665 361 713 381 T808 400"/>
+    <path d="M631 399 Q675 385 720 401 T788 420"/>
+    <path d="M651 424 Q703 405 758 426 T804 445"/>
+  </g>
+  <path d="M640 285 L658 318 L647 343 L678 373 L662 398 M710 292 L693 325 L715 350 L700 378 L731 412" fill="none" stroke="#603a35" stroke-width="3.1" stroke-linejoin="round"/>
+
+  <!-- The Dragon's Reach and Ember Fields, marked by active vents. -->
+  <g opacity=".98">
+    <use href="#volcano" x="671" y="539" width="65" height="59"/>
+    <use href="#volcano" x="722" y="577" width="50" height="45"/>
+    <use href="#peak" x="748" y="486" width="42" height="36"/>
+    <use href="#peak" x="785" y="469" width="38" height="33"/>
+    <use href="#peak" x="808" y="498" width="32" height="28"/>
+    <path d="M668 571 C685 556 693 550 701 536 S728 524 744 515" fill="none" stroke="#d76441" stroke-width="2.2" stroke-dasharray="3 5" opacity=".9"/>
+  </g>
+
+  <!-- Old roads follow the river valleys and avoid the high ridges. -->
+  <g fill="none" stroke="#c9b17a" stroke-linecap="round" stroke-width="1.7" stroke-dasharray="2 6" opacity=".85">
+    <path d="M430 430 Q388 391 350 367 T306 354"/>
+    <path d="M430 430 Q463 390 508 360 T610 324"/>
+    <path d="M430 430 Q435 469 454 509 T466 566"/>
+    <path d="M430 430 Q483 451 536 472 T620 500 T755 555"/>
+    <path d="M430 430 Q384 477 359 530 T302 601"/>
+  </g>
+
+  <!-- Quiet marks of settlement in the painted landscape. -->
+  <g opacity=".8">
+    <use href="#tower" x="211" y="263" width="27" height="26"/>
+    <use href="#tower" x="414" y="300" width="27" height="26"/>
+    <use href="#tower" x="415" y="419" width="31" height="30"/>
+    <use href="#ruin" x="581" y="322" width="32" height="28"/>
+    <use href="#tower" x="740" y="547" width="28" height="27"/>
+    <use href="#ruin" x="678" y="383" width="29" height="26"/>
+    <use href="#ruin" x="323" y="581" width="25" height="23"/>
+  </g>
+  <g fill="#f0dba4" filter="url(#softGlow)">
+    <circle cx="223" cy="276" r="2.3"/><circle cx="428" cy="314" r="2.1"/>
+    <circle cx="430" cy="430" r="3.3"/><circle cx="596" cy="333" r="2.4"/>
+    <circle cx="691" cy="392" r="2.1"/><circle cx="754" cy="560" r="2.6"/>
+    <circle cx="304" cy="602" r="2.2"/><circle cx="467" cy="568" r="2.1"/>
+  </g>
+  <g fill="none" stroke="#d3c092" stroke-opacity=".5" stroke-width=".9">
+    <path d="M329 363 l7 -5 l5 5 l-7 5 Z M360 381 l5 -4 l5 4 l-5 4 Z M503 424 l6 -4 l5 4 l-5 5 Z"/>
+    <path d="M512 580 l6 -5 l5 5 l-5 4 Z M281 550 l5 -4 l5 4 l-5 4 Z M770 454 l5 -4 l5 4 l-5 4 Z"/>
+  </g>
+</g>
+
+<!-- Offshore places: remote islands, reefs and the dangerous southern sea. -->
+<g stroke="#b6c3af" stroke-width="1.2" stroke-opacity=".78">
+  <path d="M45 533 Q61 510 83 524 L100 546 L87 571 L57 568 Z" fill="#4e6559"/>
+  <path d="M55 541 L72 525 L84 543 L71 556 Z" fill="#829177" stroke="none"/>
+  <path d="M835 239 Q853 224 871 236 L879 253 L862 270 L843 263 Z" fill="#555b58"/>
+  <path d="M843 245 L854 235 L865 246 L857 261 Z" fill="#9c8e6b" stroke="none"/>
+  <path d="M520 647 Q540 628 559 643 L576 661 L561 678 L533 676 Z" fill="#405b61"/>
+  <path d="M530 652 L541 641 L555 652 L546 664 Z" fill="#82aaa5" stroke="none"/>
+  <path d="M919 458 Q935 447 950 462 L955 479 L937 487 L923 476 Z" fill="#3b4f58"/>
+  <path d="M924 466 L936 455 L946 467 L937 479 Z" fill="#789aa0" stroke="none"/>
+</g>
+<g opacity=".8">
+  <use href="#pine" x="58" y="518" width="19" height="24"/>
+  <use href="#ruin" x="841" y="233" width="21" height="20"/>
+</g>
+
+<!-- Cartographic ornament, frame marks and a language-neutral compass rose. -->
+<use href="#compass" x="22" y="21" width="82" height="82" opacity=".92"/>
+<text x="72" y="27" text-anchor="middle" font-family="serif" font-size="9" font-weight="700" fill="#f0dfb2">N</text>
+<g fill="none" stroke="#d7bd7a" stroke-opacity=".45" stroke-width="1">
+  <path d="M18 122 h28 l6 6 h18 M982 122 h-28 l-6 6 h-18"/>
+  <path d="M18 592 h19 l7 7 h18 M982 592 h-19 l-7 7 h-18"/>
+  <path d="M28 625 l9 -7 l9 7 l-9 7 Z M972 625 l-9 -7 l-9 7 l9 7 Z"/>
+</g>
+<g fill="none" stroke="#d7bd7a" stroke-opacity=".28" stroke-width="1">
+  <path d="M20 685 H980"/>
+  <path d="M20 681 v8 M980 681 v8"/>
 </g>
 </svg>
