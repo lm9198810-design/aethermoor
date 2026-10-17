@@ -126,17 +126,45 @@
       </p>
     </header>
     <div class="map-wrapper">
-      <div class="map-frame">
-        <div class="map-corner tl"></div>
-        <div class="map-corner tr"></div>
-        <div class="map-corner bl"></div>
-        <div class="map-corner br"></div>
-        <svg id="worldMap" class="world-map" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet"></svg>
-        <div class="map-tooltip" id="mapTooltip"></div>
+      <div class="map-atlas" id="mapAtlas">
+        <div class="map-toolbar">
+          <div class="map-zoom-controls" aria-label="Map navigation">
+            <button id="mapZoomOut" type="button" data-i18n-title="map_zoom_out" aria-label="Zoom out">−</button>
+            <button id="mapZoomIn" type="button" data-i18n-title="map_zoom_in" aria-label="Zoom in">+</button>
+            <button id="mapZoomReset" type="button" data-i18n-title="map_reset" aria-label="Reset view">↺</button>
+            <span id="mapZoomReadout" class="map-zoom-readout">100%</span>
+            <button id="mapFullscreen" type="button" data-i18n-title="map_fullscreen" aria-label="Fullscreen">⛶</button>
+          </div>
+          <div class="map-layer-controls">
+            <label class="map-layer-toggle"><input id="mapBordersToggle" type="checkbox" checked><span data-i18n="map_borders">Political borders</span></label>
+            <label class="map-layer-toggle"><input id="mapSettlementsToggle" type="checkbox" checked><span data-i18n="map_settlements">Cities &amp; landmarks</span></label>
+            <label class="map-layer-toggle"><input id="mapNamesToggle" type="checkbox" checked><span data-i18n="map_names">Place names</span></label>
+          </div>
+        </div>
+        <div class="map-frame" id="mapFrame">
+          <div class="map-corner tl"></div>
+          <div class="map-corner tr"></div>
+          <div class="map-corner bl"></div>
+          <div class="map-corner br"></div>
+          <svg id="worldMap" class="world-map" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet"></svg>
+          <div class="map-tooltip" id="mapTooltip"></div>
+        </div>
       </div>
-      <div class="map-legend">
-        <div class="legend-title">◆ <span data-i18n="map_legend_title">The Lands of Aethermoor</span> ◆</div>
-        <div class="legend-grid" id="mapLegend"></div>
+      <div class="map-bottom-grid">
+        <section class="map-legend">
+          <div class="legend-title">◆ <span data-i18n="map_legend_title">The Lands of Aethermoor</span> ◆</div>
+          <div class="legend-grid" id="mapLegend"></div>
+        </section>
+        <section class="map-inspector" id="mapInspector" aria-live="polite">
+          <div class="map-inspector-kicker" data-i18n="map_inspector_title">Atlas notes</div>
+          <h3 class="map-inspector-title" data-i18n="map_select_hint">Select a region or settlement</h3>
+          <p class="map-inspector-desc" data-i18n="map_navigation_hint">Use the wheel or controls to zoom, drag to pan, and select a marker for its history.</p>
+        </section>
+        <section class="map-place-directory">
+          <h3 class="map-section-title" data-i18n="map_places_title">Cities, keeps &amp; landmarks</h3>
+          <p class="map-directory-desc" data-i18n="map_places_desc">Choose a name to focus the map.</p>
+          <div class="map-place-list" id="mapPlaceList"></div>
+        </section>
       </div>
     </div>
   </section>
