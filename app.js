@@ -615,25 +615,25 @@
     svg.appendChild(borders);
 
     const places = [
-      { name: "Valerius's Rest", fa: 'آرامگاه والریوس', x: 400, y: 420, region: 'heartlands', note: 'Imperial seat above the Abyss; the crown is stronger on paper than on the roads.', noteFA: 'مرکز امپراتوری بر فراز هاویه؛ تاج روی کاغذ قدرتمندتر از جاده‌های زیر فرمانش است.' },
-      { name: 'Aelthalas', fa: 'آئل‌تالاس', x: 430, y: 242, region: 'silver-wood', note: 'Crystal capital of the Aeldrin, hidden behind layered forest wards.', noteFA: 'پایتخت بلورین آلدِرین، پنهان پشت نگهبان‌های چندلایه‌ی جنگل.' },
-      { name: 'Hearthforge', fa: 'آتشگاه', x: 220, y: 246, region: 'frostspine', note: 'The dwarven Iron Hold, carved into the highest reachable galleries of the Frostspine.', noteFA: 'دژ آهنین دورف‌ها، کنده‌شده در بلندترین تالارهای دست‌یافتنی شان‌کوه.' },
-      { name: 'Ondrath', fa: 'اوندراِث', x: 480, y: 500, region: 'shadowmere', note: 'The Sylvaar seat below ground; the court conceals the truth of its dead queen.', noteFA: 'جایگاه فرمانروایی سیلوار در زیرزمین؛ دربار حقیقت ملکه‌ی مرده‌اش را پنهان می‌کند.' },
-      { name: "Kael'Dorath", fa: 'کائل‌دورات', x: 750, y: 560, region: 'dragons-reach', note: 'The Ashen Citadel, seat of the Draekon clan council.', noteFA: 'دژ خاکستر، جایگاه شورای خاندان‌های درائِکون.' },
-      { name: 'Stormwatch', fa: 'دیده‌بان توفان', x: 185, y: 452, region: 'stormlands', note: 'A fortified port that watches the western storm routes.', noteFA: 'بندری دژمانند که راه‌های دریایی توفانی غرب را زیر نظر دارد.' },
+      { name: "Valerius's Rest", fa: 'آرامگاه والریوس', x: 400, y: 420, showLabel: true, region: 'heartlands', note: 'Imperial seat above the Abyss; the crown is stronger on paper than on the roads.', noteFA: 'مرکز امپراتوری بر فراز هاویه؛ تاج روی کاغذ قدرتمندتر از جاده‌های زیر فرمانش است.' },
+      { name: 'Aelthalas', fa: 'آئل‌تالاس', x: 430, y: 242, showLabel: true, region: 'silver-wood', note: 'Crystal capital of the Aeldrin, hidden behind layered forest wards.', noteFA: 'پایتخت بلورین آلدِرین، پنهان پشت نگهبان‌های چندلایه‌ی جنگل.' },
+      { name: 'Hearthforge', fa: 'آتشگاه', x: 220, y: 246, showLabel: true, region: 'frostspine', note: 'The dwarven Iron Hold, carved into the highest reachable galleries of the Frostspine.', noteFA: 'دژ آهنین دورف‌ها، کنده‌شده در بلندترین تالارهای دست‌یافتنی شان‌کوه.' },
+      { name: 'Ondrath', fa: 'اوندراِث', x: 480, y: 500, showLabel: true, region: 'shadowmere', note: 'The Sylvaar seat below ground; the court conceals the truth of its dead queen.', noteFA: 'جایگاه فرمانروایی سیلوار در زیرزمین؛ دربار حقیقت ملکه‌ی مرده‌اش را پنهان می‌کند.' },
+      { name: "Kael'Dorath", fa: 'کائل‌دورات', x: 750, y: 560, showLabel: true, region: 'dragons-reach', note: 'The Ashen Citadel, seat of the Draekon clan council.', noteFA: 'دژ خاکستر، جایگاه شورای خاندان‌های درائِکون.' },
+      { name: 'Stormwatch', fa: 'دیده‌بان توفان', x: 185, y: 452, showLabel: true, region: 'stormlands', note: 'A fortified port that watches the western storm routes.', noteFA: 'بندری دژمانند که راه‌های دریایی توفانی غرب را زیر نظر دارد.' },
       { name: 'Thornhollow', fa: 'تورن‌هالو', x: 122, y: 357, region: 'whispering-forest', note: 'A forest town whose old roads vanish beneath the Whispering Forest.', noteFA: 'شهری جنگلی که راه‌های کهنش زیر جنگل زمزمه‌گر ناپدید می‌شوند.' },
-      { name: 'Redhaven', fa: 'بندر سرخ', x: 585, y: 405, region: 'ashen-wastes', note: 'A disputed caravan port linking the central road to the eastern wastes.', noteFA: 'بندر کاروانیِ مورد مناقشه در پیوندگاه جاده‌ی مرکزی و سرزمین‌های شرقی.' },
+      { name: 'Redhaven', fa: 'بندر سرخ', x: 585, y: 405, showLabel: true, region: 'ashen-wastes', note: 'A disputed caravan port linking the central road to the eastern wastes.', noteFA: 'بندر کاروانیِ مورد مناقشه در پیوندگاه جاده‌ی مرکزی و سرزمین‌های شرقی.' },
       { name: 'Ashen Gate', fa: 'دروازه‌ی خاکستر', x: 610, y: 321, region: 'ashen-wastes', note: 'A fortified toll crossing on the old imperial road.', noteFA: 'گذرگاه دیوارکشی‌شده‌ای برای دریافت عوارض در جاده‌ی کهن امپراتوری.' },
-      { name: 'Mistport', fa: 'بندر مه', x: 78, y: 560, region: 'mistlands', note: 'A remote harbour whose charts fail when the mist thickens.', noteFA: 'بندری دورافتاده که با غلیظ‌شدن مه، نقشه‌های دریایی‌اش بی‌اعتبار می‌شوند.' },
+      { name: 'Mistport', fa: 'بندر مه', x: 78, y: 560, showLabel: true, region: 'mistlands', note: 'A remote harbour whose charts fail when the mist thickens.', noteFA: 'بندری دورافتاده که با غلیظ‌شدن مه، نقشه‌های دریایی‌اش بی‌اعتبار می‌شوند.' },
       { name: 'Godfall Abbey', fa: 'صومعه‌ی سقوط خدا', x: 300, y: 340, region: 'godfall', note: 'A ruined sanctuary built where divine weapons struck the earth.', noteFA: 'زیارتگاهی ویران در جایی که سلاح‌های الهی به زمین خوردند.' },
       { name: 'Irondeep', fa: 'ژرف‌آهن', x: 180, y: 580, region: 'iron-coast', note: 'A dwarven trade enclave exporting iron, tools, and rune-work.', noteFA: 'قرارگاه بازرگانی دورف‌ها برای صدور آهن، ابزار و رون‌سازی.' },
       { name: 'Sunspire', fa: 'خورشیدمنار', x: 340, y: 600, region: 'sunlit-coast', note: 'A coastal market city famous for salt, glass, and sea charts.', noteFA: 'شهری بازرگانی بر ساحل، نامدار به نمک، شیشه و نقشه‌های دریایی.' },
       { name: 'Emberfall', fa: 'اخگرفرود', x: 700, y: 620, region: 'ember-fields', note: 'A settlement at the safe edge of the volcanic fields.', noteFA: 'آبادی‌ای در لبه‌ی امن دشت‌های آتشفشانی.' },
-      { name: 'Bone Throne', fa: 'تختگاه استخوان', x: 500, y: 43, region: 'xarnath', note: "The Demon King's fortress-capital, built around basalt towers and the captured life-force of conquered warlords.", noteFA: 'دژـپایتخت پادشاه شیاطین، ساخته‌شده پیرامون برج‌های بازالتی و نیروی حیات جنگ‌سالاران مغلوب.' },
+      { name: 'Bone Throne', fa: 'تختگاه استخوان', x: 500, y: 43, showLabel: true, region: 'xarnath', note: "The Demon King's fortress-capital, built around basalt towers and the captured life-force of conquered warlords.", noteFA: 'دژـپایتخت پادشاه شیاطین، ساخته‌شده پیرامون برج‌های بازالتی و نیروی حیات جنگ‌سالاران مغلوب.' },
       { name: 'Varkhast', fa: 'وارخاست', x: 383, y: 58, region: 'xarnath', note: 'A basalt city controlling Xarnath’s northern mineral road.', noteFA: 'شهری بازالتی که راه معدنی شمال زارنات را در اختیار دارد.' },
       { name: 'Cinder Wells', fa: 'چاه‌های اخگر', x: 620, y: 55, region: 'xarnath', note: 'A rare settlement around deep aquifers and heat-resistant fungi.', noteFA: 'آبادی‌ای کمیاب پیرامون سفره‌های آب عمیق و قارچ‌های مقاوم به گرما.' },
       { name: 'Blackglass Exchange', fa: 'بازار شیشه‌ی سیاه', x: 745, y: 76, region: 'xarnath', note: 'A guarded market where rival demon houses exchange ore, captives, and treaties.', noteFA: 'بازاری حفاظت‌شده که خاندان‌های رقیب شیطانی در آن سنگ معدن، اسیر و پیمان مبادله می‌کنند.' },
-      { name: "Watcher’s Citadel", fa: 'دژ فرقه‌ی دیدبان', x: 545, y: 110, region: 'godseal', note: 'A fortress of the Watching Order overlooking the only sealed crossing.', noteFA: 'دژ فرقه‌ی دیدبان با دید بر تنها گذرگاه مهرشده.' },
+      { name: "Watcher’s Citadel", fa: 'دژ فرقه‌ی دیدبان', x: 545, y: 110, showLabel: true, region: 'godseal', note: 'A fortress of the Watching Order overlooking the only sealed crossing.', noteFA: 'دژ فرقه‌ی دیدبان با دید بر تنها گذرگاه مهرشده.' },
       { name: 'Greyford', fa: 'گذرگاه خاکستری', x: 348, y: 399, region: 'heartlands', note: 'A river crossing that feeds the imperial capital and becomes a front line when succession wars flare.', noteFA: 'گذرگاه رودخانه‌ای که پایتخت را تغذیه می‌کند و هنگام جنگ جانشینی به خط مقدم بدل می‌شود.' },
       { name: 'Seven Bridges', fa: 'هفت‌پل', x: 457, y: 460, region: 'broken-steppe', note: 'A caravan town where the old imperial road splits into rival toll routes.', noteFA: 'شهری کاروانی که جاده‌ی کهن امپراتوری در آن به راه‌های عوارضی رقیب تقسیم می‌شود.' },
       { name: 'Saltmere', fa: 'نمک‌مرداب', x: 510, y: 645, region: 'sunken-kingdoms', note: 'A tidal port built on the surviving towers of a drowned kingdom.', noteFA: 'بندری جزرومدی بر فراز برج‌های بازمانده‌ی پادشاهی غرق‌شده.' },
@@ -652,7 +652,10 @@
       });
       marker.appendChild(svgEl('circle', { cx: place.x, cy: place.y, r: 7, class: 'map-city-ring' }));
       marker.appendChild(svgEl('circle', { cx: place.x, cy: place.y, r: 3.1, class: 'map-city-dot' }));
-      const label = svgEl('text', { x: place.x, y: place.y - 10, class: 'map-city-label' });
+      const label = svgEl('text', {
+        x: place.x, y: place.y - 10,
+        class: 'map-city-label' + (place.showLabel ? ' is-featured' : ' is-hidden-until-hover')
+      });
       label.textContent = shownName;
       marker.appendChild(label);
       marker.addEventListener('mouseenter', event => showTooltip(
