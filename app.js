@@ -895,7 +895,10 @@
     const grid = $('#racesGrid');
     if (!grid || typeof RACES === 'undefined') return;
     grid.innerHTML = '';
-    const filtered = filter === 'all' ? RACES : RACES.filter(r => r.category === filter);
+    // Canon rebuild: present all peoples together; culture is not a species filter.
+    const filterBar = $('#raceFilters');
+    if (filterBar) filterBar.hidden = true;
+    const filtered = RACES;
     filtered.forEach((race, i) => {
       const name = getContent('races', race.id, 'name', race.name);
       const epithet = getContent('races', race.id, 'epithet', race.epithet);
@@ -920,16 +923,10 @@
   }
 
   function initRaceFilters() {
+    // Kept for backwards compatibility with the existing page markup.
+    // The canon presents related peoples in one catalogue, not arbitrary race buckets.
     const bar = $('#raceFilters');
-    if (!bar || bar.dataset.init === 'true') return;
-    bar.dataset.init = 'true';
-    bar.addEventListener('click', (e) => {
-      const btn = e.target.closest('.filter-btn');
-      if (!btn) return;
-      $$('.filter-btn', bar).forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderRaces(btn.dataset.filter);
-    });
+    if (bar) bar.hidden = true;
   }
 
   /* ============ MAGIC ============ */
@@ -1381,7 +1378,7 @@
     const L = CURRENT_LANG === 'fa' ? {
       floors: 'طبقات',
       explored: 'کاوش‌شده',
-      floor40: 'رسیده به طبقه ۴۰',
+      liftTo20: 'آسانسور تا طبقهٔ ۲۰',
       floor100: 'رسیده به طبقه ۱۰۰',
       themes: 'تِم‌های طبقات',
       bosses: 'رئیس‌ها',
@@ -1395,7 +1392,7 @@
     } : {
       floors: 'Floors',
       explored: 'Explored',
-      floor40: 'Reached Floor 40',
+      liftTo20: 'Lift to Floor 20',
       floor100: 'Reached Floor 100',
       themes: 'Floor Themes',
       bosses: 'Bosses',
@@ -1423,8 +1420,8 @@
           el('span', { class: 'abyss-stat-label', text: L.explored })
         ]),
         el('div', { class: 'abyss-stat' }, [
-          el('span', { class: 'abyss-stat-num', text: '200' }),
-          el('span', { class: 'abyss-stat-label', text: L.floor40 })
+          el('span', { class: 'abyss-stat-num', text: '20' }),
+          el('span', { class: 'abyss-stat-label', text: L.liftTo20 })
         ]),
         el('div', { class: 'abyss-stat' }, [
           el('span', { class: 'abyss-stat-num', text: '0' }),
@@ -1637,7 +1634,7 @@
       add(REGIONS, 'Region', 'region', 'regions', 'regions');
       add(ARTIFACTS, 'Artifact', 'artifact', 'codex', 'artifacts');
       add(MAGIC_SCHOOLS, 'Magic', 'magic', 'magic', 'magic');
-      add(GODS, 'God', 'god', 'codex', 'gods');
+      add(GODS, 'Belief', 'god', 'codex', 'gods');
       add(CREATURES, 'Creature', 'creature', 'codex', 'creatures');
       add(PROPHECIES, 'Prophecy', 'prophecy', 'codex', 'prophecies');
       add(BOOKS, 'Book', 'book', 'library', 'books');
@@ -1654,7 +1651,7 @@
       results.innerHTML = '';
       matches.forEach(m => {
         const item = el('div', { class: 'search-result-item' }, [
-          el('div', { class: 'sr-cat', text: CURRENT_LANG === 'fa' ? (({ Character: 'شخصیت', Race: 'نژاد', House: 'خاندان', Region: 'ناحیه', Artifact: 'اثر', Magic: 'جادو', God: 'خدا', Creature: 'موجود', Prophecy: 'پیشگویی', Book: 'کتاب', Guild: 'گیلد' })[m.cat] || m.cat) : m.cat }),
+          el('div', { class: 'sr-cat', text: CURRENT_LANG === 'fa' ? (({ Character: 'شخصیت', Race: 'نژاد', House: 'خاندان', Region: 'ناحیه', Artifact: 'اثر', Magic: 'جادو', Belief: 'باور', Creature: 'موجود', Prophecy: 'پیشگویی', Book: 'کتاب', Guild: 'گیلد' })[m.cat] || m.cat) : m.cat }),
           el('div', { class: 'sr-name', text: m.name })
         ]);
         item.addEventListener('click', () => {
