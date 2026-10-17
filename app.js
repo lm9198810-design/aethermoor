@@ -814,20 +814,19 @@
     // The legend uses the same line-art emblems as the rest of the site.
     if (legend && MAP_DATA.legends) {
       const legendSymbols = {
-        Human: 'crown',
-        Aeldrin: 'moon',
-        Sylvaar: 'spider',
+        Humans: 'crown',
+        Elves: 'leaf',
         Dwarves: 'crossed-hammers',
-        Draekon: 'dragon',
         Orcs: 'axe',
         Kemiiri: 'fox',
         Demons: 'demon',
+        'Mixed Lineages': 'eclipse',
         Unknown: 'mist'
       };
       const legendRaces = {
-        Human: 'humans', Aeldrin: 'aeldrin', Sylvaar: 'sylvaar',
-        Dwarves: 'dwarves', Draekon: 'draekon', Orcs: 'orcs',
-        Kemiiri: 'kemiiri', Demons: 'demons'
+        Humans: 'humans', Elves: 'elves', Dwarves: 'dwarves',
+        Orcs: 'orcs', Kemiiri: 'kemiiri', Demons: 'demons',
+        'Mixed Lineages': 'halfdemons'
       };
       MAP_DATA.legends.forEach(itemData => {
         const item = el('div', { class: 'legend-item' });
