@@ -327,7 +327,12 @@
 
   /* ============ MAP / INTERACTIVE ATLAS ============ */
   function renderMap() {
-    const svg = $('#worldMap');
+    let svg = $('#worldMap');
+    if (svg && svg.parentNode) {
+      const freshSvg = svg.cloneNode(false);
+      svg.parentNode.replaceChild(freshSvg, svg);
+      svg = freshSvg;
+    }
     const tooltip = $('#mapTooltip');
     const legend = $('#mapLegend');
     const inspector = $('#mapInspector');
