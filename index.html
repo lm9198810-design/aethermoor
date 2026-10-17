@@ -36,26 +36,26 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#/home" data-route="home">Home</a></li>
-      <li><a href="#/world" data-route="world">World</a></li>
-      <li><a href="#/map" data-route="map">Map</a></li>
-      <li><a href="#/races" data-route="races">Races</a></li>
-      <li><a href="#/magic" data-route="magic">Magic</a></li>
-      <li><a href="#/characters" data-route="characters">Characters</a></li>
-      <li><a href="#/houses" data-route="houses">Houses</a></li>
-      <li><a href="#/regions" data-route="regions">Regions</a></li>
-      <li><a href="#/timeline" data-route="timeline">Timeline</a></li>
-      <li><a href="#/codex" data-route="codex">Codex</a></li>
-      <li><a href="#/library" data-route="library">Library</a></li>
-      <li><a href="#/guilds" data-route="guilds">Guilds</a></li>
-      <li><a href="#/dungeons" data-route="dungeons">Dungeons</a></li>
+      <li><a href="#/home" data-route="home" data-i18n="nav_home">Home</a></li>
+      <li><a href="#/world" data-route="world" data-i18n="nav_world">World</a></li>
+      <li><a href="#/map" data-route="map" data-i18n="nav_map">Map</a></li>
+      <li><a href="#/races" data-route="races" data-i18n="nav_races">Races</a></li>
+      <li><a href="#/magic" data-route="magic" data-i18n="nav_magic">Magic</a></li>
+      <li><a href="#/characters" data-route="characters" data-i18n="nav_characters">Characters</a></li>
+      <li><a href="#/houses" data-route="houses" data-i18n="nav_houses">Houses</a></li>
+      <li><a href="#/regions" data-route="regions" data-i18n="nav_regions">Regions</a></li>
+      <li><a href="#/timeline" data-route="timeline" data-i18n="nav_timeline">Timeline</a></li>
+      <li><a href="#/codex" data-route="codex" data-i18n="nav_codex">Codex</a></li>
+      <li><a href="#/library" data-route="library" data-i18n="nav_library">Library</a></li>
+      <li><a href="#/guilds" data-route="guilds" data-i18n="nav_guilds">Guilds</a></li>
+      <li><a href="#/dungeons" data-route="dungeons" data-i18n="nav_dungeons">Dungeons</a></li>
     </ul>
     <button class="lang-toggle" id="langToggle" aria-label="Switch language">
       <span class="lang-globe">🌐</span>
       <span class="lang-code" id="langCode">EN</span>
     </button>
     <div class="nav-search">
-      <input type="text" id="globalSearch" placeholder="Search..." autocomplete="off">
+      <input type="text" id="globalSearch" placeholder="Search..." data-i18n-placeholder="search_placeholder" autocomplete="off">
       <div class="search-results" id="searchResults"></div>
     </div>
   </div>
@@ -78,9 +78,9 @@
       <div class="hero-stats">
         <div class="stat"><span class="stat-num" data-count="10">0</span><span class="stat-label" data-i18n="stat_races">Races</span></div>
         <div class="stat"><span class="stat-num" data-count="5">0</span><span class="stat-label" data-i18n="stat_magic">Magic Schools</span></div>
-        <div class="stat"><span class="stat-num" data-count="20">0</span><span class="stat-label" data-i18n="stat_regions">Regions</span></div>
+        <div class="stat"><span class="stat-num" data-count="21">0</span><span class="stat-label" data-i18n="stat_regions">Regions</span></div>
         <div class="stat"><span class="stat-num" data-count="18">0</span><span class="stat-label" data-i18n="stat_characters">Characters</span></div>
-        <div class="stat"><span class="stat-num" data-count="230">0</span><span class="stat-label" data-i18n="stat_entries">Lore Entries</span></div>
+        <div class="stat"><span class="stat-num" data-count="221">0</span><span class="stat-label" data-i18n="stat_entries">Lore Entries</span></div>
       </div>
     </header>
 
@@ -107,9 +107,9 @@
   <!-- ═══════════════ WORLD PAGE ═══════════════ -->
   <section class="page" data-page="world" hidden>
     <header class="page-header">
-      <span class="page-label">Chapter I</span>
-      <h2 class="page-title">The World of Vaelthar</h2>
-      <p class="page-desc">
+      <span class="page-label" data-i18n="chapter_1">Chapter I</span>
+      <h2 class="page-title" data-i18n="world_title">The World of Vaelthar</h2>
+      <p class="page-desc" data-i18n="world_desc">
         Aethermoor is but one continent upon the sphere of Vaelthar — a world torn open a thousand years ago when the gods made war upon each other and the sky itself was cracked. To the north, across the Divine Divide and the Black Chasm, lies Xarnath, the Demon Continent.
       </p>
     </header>
@@ -119,9 +119,9 @@
   <!-- ═══════════════ MAP PAGE ═══════════════ -->
   <section class="page page-map-page" data-page="map" hidden>
     <header class="page-header">
-      <span class="page-label">Chapter II</span>
-      <h2 class="page-title">The Living Map</h2>
-      <p class="page-desc">
+      <span class="page-label" data-i18n="chapter_2">Chapter II</span>
+      <h2 class="page-title" data-i18n="map_title">The Living Map</h2>
+      <p class="page-desc" data-i18n="map_desc">
         Twenty lands, two continents, and a thousand years of ash. Click any region to unveil its secrets.
       </p>
     </header>
@@ -135,7 +135,7 @@
         <div class="map-tooltip" id="mapTooltip"></div>
       </div>
       <div class="map-legend">
-        <div class="legend-title">◆ The Lands of Aethermoor ◆</div>
+        <div class="legend-title">◆ <span data-i18n="map_legend_title">The Lands of Aethermoor</span> ◆</div>
         <div class="legend-grid" id="mapLegend"></div>
       </div>
     </div>
@@ -144,18 +144,18 @@
   <!-- ═══════════════ RACES PAGE ═══════════════ -->
   <section class="page" data-page="races" hidden>
     <header class="page-header">
-      <span class="page-label">Chapter III</span>
-      <h2 class="page-title">The Ten Races</h2>
-      <p class="page-desc">
+      <span class="page-label" data-i18n="chapter_3">Chapter III</span>
+      <h2 class="page-title" data-i18n="races_title">The Ten Races</h2>
+      <p class="page-desc" data-i18n="races_desc">
         Before the Sundering, twelve races walked Vaelthar. Five were erased from existence. The ten that remain remember — and they do not forgive.
       </p>
     </header>
     <div class="filter-bar" id="raceFilters">
-      <button class="filter-btn active" data-filter="all">All Races</button>
-      <button class="filter-btn" data-filter="human">Humanoid</button>
-      <button class="filter-btn" data-filter="elven">Elven</button>
-      <button class="filter-btn" data-filter="beast">Beastfolk</button>
-      <button class="filter-btn" data-filter="divine">Divine</button>
+      <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All Races</button>
+      <button class="filter-btn" data-filter="human" data-i18n="filter_human">Humanoid</button>
+      <button class="filter-btn" data-filter="elven" data-i18n="filter_elven">Elven</button>
+      <button class="filter-btn" data-filter="beast" data-i18n="filter_beast">Beastfolk</button>
+      <button class="filter-btn" data-filter="divine" data-i18n="filter_divine">Divine</button>
     </div>
     <div class="races-grid" id="racesGrid"></div>
   </section>
@@ -163,15 +163,15 @@
   <!-- ═══════════════ MAGIC PAGE ═══════════════ -->
   <section class="page" data-page="magic" hidden>
     <header class="page-header">
-      <span class="page-label">Chapter IV</span>
-      <h2 class="page-title">The Five Schools of Magic</h2>
-      <p class="page-desc">
+      <span class="page-label" data-i18n="chapter_4">Chapter IV</span>
+      <h2 class="page-title" data-i18n="magic_title">The Five Schools of Magic</h2>
+      <p class="page-desc" data-i18n="magic_desc">
         Magic in Aethermoor is not a gift — it is a debt. Every spell cast draws from something. Those who forget this lesson rarely live long enough to learn it twice.
       </p>
     </header>
     <div class="magic-showcase" id="magicShowcase"></div>
     <div class="magic-rules">
-      <h3>The Four Laws of Magic</h3>
+      <h3 data-i18n="magic_laws_title">The Four Laws of Magic</h3>
       <div class="laws-grid" id="lawsGrid"></div>
     </div>
   </section>
@@ -179,9 +179,9 @@
   <!-- ═══════════════ CHARACTERS PAGE ═══════════════ -->
   <section class="page" data-page="characters" hidden>
     <header class="page-header">
-      <span class="page-label">Chapter V</span>
-      <h2 class="page-title">Key Figures of the Age</h2>
-      <p class="page-desc">
+      <span class="page-label" data-i18n="chapter_5">Chapter V</span>
+      <h2 class="page-title" data-i18n="characters_title">Key Figures of the Age</h2>
+      <p class="page-desc" data-i18n="characters_desc">
         In every age, a handful of souls shape the fate of millions. Some rise willingly; most are dragged into legend against their will.
       </p>
     </header>
@@ -191,9 +191,9 @@
   <!-- ═══════════════ HOUSES PAGE ═══════════════ -->
   <section class="page" data-page="houses" hidden>
     <header class="page-header">
-      <span class="page-label">Chapter VI</span>
-      <h2 class="page-title">The Great Houses & Tribes</h2>
-      <p class="page-desc">
+      <span class="page-label" data-i18n="chapter_6">Chapter VI</span>
+      <h2 class="page-title" data-i18n="houses_title">The Great Houses & Tribes</h2>
+      <p class="page-desc" data-i18n="houses_desc">
         Twelve powers rule Aethermoor. Some sit upon thrones of gold; others upon thrones of bone. All of them scheme.
       </p>
     </header>
@@ -203,9 +203,9 @@
   <!-- ═══════════════ REGIONS PAGE ═══════════════ -->
   <section class="page" data-page="regions" hidden>
     <header class="page-header">
-      <span class="page-label">Chapter VII</span>
-      <h2 class="page-title">Regions of the World</h2>
-      <p class="page-desc">
+      <span class="page-label" data-i18n="chapter_7">Chapter VII</span>
+      <h2 class="page-title" data-i18n="regions_title">Regions of the World</h2>
+      <p class="page-desc" data-i18n="regions_desc">
         From the frozen teeth of the Frostspine to the burning glass of the Ashen Wastes, and beyond the Black Chasm to the Demon Continent of Xarnath — the world remembers every wound carved into it.
       </p>
     </header>
@@ -215,18 +215,18 @@
   <!-- ═══════════════ TIMELINE PAGE ═══════════════ -->
   <section class="page" data-page="timeline" hidden>
     <header class="page-header">
-      <span class="page-label">Chapter VIII</span>
-      <h2 class="page-title">Chronicle of Ages</h2>
-      <p class="page-desc">
+      <span class="page-label" data-i18n="chapter_8">Chapter VIII</span>
+      <h2 class="page-title" data-i18n="timeline_title">Chronicle of Ages</h2>
+      <p class="page-desc" data-i18n="timeline_desc">
         Ten thousand years of history, condensed into the moments that mattered. The rest is silence, ash, and the lies victors tell.
       </p>
     </header>
     <div class="timeline-controls" id="timelineControls">
-      <button class="era-btn active" data-era="all">All Eras</button>
-      <button class="era-btn" data-era="dawn">Age of Dawn</button>
-      <button class="era-btn" data-era="myth">Age of Myth</button>
-      <button class="era-btn" data-era="sundering">The Sundering</button>
-      <button class="era-btn" data-era="ash">The Ash Age</button>
+      <button class="era-btn active" data-era="all" data-i18n="era_all">All Eras</button>
+      <button class="era-btn" data-era="dawn" data-i18n="era_dawn">Age of Dawn</button>
+      <button class="era-btn" data-era="myth" data-i18n="era_myth">Age of Myth</button>
+      <button class="era-btn" data-era="sundering" data-i18n="era_sundering">The Sundering</button>
+      <button class="era-btn" data-era="ash" data-i18n="era_ash">The Ash Age</button>
     </div>
     <div class="timeline" id="timelineContainer"></div>
   </section>
@@ -234,18 +234,18 @@
   <!-- ═══════════════ CODEX PAGE ═══════════════ -->
   <section class="page" data-page="codex" hidden>
     <header class="page-header">
-      <span class="page-label">Chapter IX</span>
-      <h2 class="page-title">The Forbidden Codex</h2>
-      <p class="page-desc">
+      <span class="page-label" data-i18n="chapter_9">Chapter IX</span>
+      <h2 class="page-title" data-i18n="codex_title">The Forbidden Codex</h2>
+      <p class="page-desc" data-i18n="codex_desc">
         Ancient artifacts, fallen gods, forgotten prophecies, and creatures that should not exist. Read at your own peril.
       </p>
     </header>
     <div class="codex-tabs" id="codexTabs">
-      <button class="codex-tab active" data-tab="artifacts">Artifacts</button>
-      <button class="codex-tab" data-tab="gods">Gods</button>
-      <button class="codex-tab" data-tab="creatures">Creatures</button>
-      <button class="codex-tab" data-tab="prophecies">Prophecies</button>
-      <button class="codex-tab" data-tab="languages">Languages</button>
+      <button class="codex-tab active" data-tab="artifacts" data-i18n="tab_artifacts">Artifacts</button>
+      <button class="codex-tab" data-tab="gods" data-i18n="tab_gods">Gods</button>
+      <button class="codex-tab" data-tab="creatures" data-i18n="tab_creatures">Creatures</button>
+      <button class="codex-tab" data-tab="prophecies" data-i18n="tab_prophecies">Prophecies</button>
+      <button class="codex-tab" data-tab="languages" data-i18n="tab_languages">Languages</button>
     </div>
     <div class="codex-content" id="codexContent"></div>
   </section>
@@ -253,9 +253,9 @@
   <!-- ═══════════════ LIBRARY PAGE ═══════════════ -->
   <section class="page" data-page="library" hidden>
     <header class="page-header">
-      <span class="page-label">Chapter X</span>
-      <h2 class="page-title">The Great Library</h2>
-      <p class="page-desc">
+      <span class="page-label" data-i18n="chapter_10">Chapter X</span>
+      <h2 class="page-title" data-i18n="library_title">The Great Library</h2>
+      <p class="page-desc" data-i18n="library_desc">
         Ten books from the world of Aethermoor — diaries, gospels, treatises, and forbidden tomes. Read them. Learn them. Fear them.
       </p>
     </header>
@@ -265,9 +265,9 @@
   <!-- ═══════════════ GUILDS PAGE ═══════════════ -->
   <section class="page" data-page="guilds" hidden>
     <header class="page-header">
-      <span class="page-label">Chapter XI</span>
-      <h2 class="page-title">The Twelve Guilds</h2>
-      <p class="page-desc">
+      <span class="page-label" data-i18n="chapter_11">Chapter XI</span>
+      <h2 class="page-title" data-i18n="guilds_title">The Twelve Guilds</h2>
+      <p class="page-desc" data-i18n="guilds_desc">
         Twelve organizations span the continent — from the Adventurers' Guild to the Watching Order to the secretive Wounded Choir. They shape the world in ways both seen and unseen.
       </p>
     </header>
@@ -277,9 +277,9 @@
   <!-- ═══════════════ DUNGEONS PAGE ═══════════════ -->
   <section class="page" data-page="dungeons" hidden>
     <header class="page-header">
-      <span class="page-label">Chapter XII</span>
-      <h2 class="page-title">The Dungeons</h2>
-      <p class="page-desc">
+      <span class="page-label" data-i18n="chapter_12">Chapter XII</span>
+      <h2 class="page-title" data-i18n="dungeons_title">The Dungeons</h2>
+      <p class="page-desc" data-i18n="dungeons_desc">
         The Abyss — one hundred floors, thousands of deaths, one book that should never be read. And four other dungeons scattered across the world.
       </p>
     </header>
@@ -311,38 +311,38 @@
     <div class="footer-grid">
       <div class="footer-col">
         <div class="footer-logo">◈ AETHERMOOR</div>
-        <p class="footer-desc">A living world chronicle. Built over months. Every entry a stone in the foundation of a realm.</p>
+        <p class="footer-desc" data-i18n="footer_desc">A living world chronicle. Built over months. Every entry a stone in the foundation of a realm.</p>
       </div>
       <div class="footer-col">
-        <h4>World</h4>
+        <h4 data-i18n="footer_col_world">World</h4>
         <ul>
-          <li><a href="#/world" data-route="world">The World</a></li>
-          <li><a href="#/map" data-route="map">The Map</a></li>
-          <li><a href="#/races" data-route="races">Races</a></li>
-          <li><a href="#/regions" data-route="regions">Regions</a></li>
+          <li><a href="#/world" data-route="world" data-i18n="footer_link_world">The World</a></li>
+          <li><a href="#/map" data-route="map" data-i18n="footer_link_map">The Map</a></li>
+          <li><a href="#/races" data-route="races" data-i18n="footer_link_races">Races</a></li>
+          <li><a href="#/regions" data-route="regions" data-i18n="footer_link_regions">Regions</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Lore</h4>
+        <h4 data-i18n="footer_col_lore">Lore</h4>
         <ul>
-          <li><a href="#/characters" data-route="characters">Characters</a></li>
-          <li><a href="#/houses" data-route="houses">Houses</a></li>
-          <li><a href="#/timeline" data-route="timeline">Timeline</a></li>
-          <li><a href="#/codex" data-route="codex">Codex</a></li>
+          <li><a href="#/characters" data-route="characters" data-i18n="footer_link_characters">Characters</a></li>
+          <li><a href="#/houses" data-route="houses" data-i18n="footer_link_houses">Houses</a></li>
+          <li><a href="#/timeline" data-route="timeline" data-i18n="footer_link_timeline">Timeline</a></li>
+          <li><a href="#/codex" data-route="codex" data-i18n="footer_link_codex">Codex</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>More</h4>
+        <h4 data-i18n="footer_col_more">More</h4>
         <ul>
-          <li><a href="#/library" data-route="library">Library</a></li>
-          <li><a href="#/guilds" data-route="guilds">Guilds</a></li>
-          <li><a href="#/dungeons" data-route="dungeons">Dungeons</a></li>
+          <li><a href="#/library" data-route="library" data-i18n="footer_link_library">Library</a></li>
+          <li><a href="#/guilds" data-route="guilds" data-i18n="footer_link_guilds">Guilds</a></li>
+          <li><a href="#/dungeons" data-route="dungeons" data-i18n="footer_link_dungeons">Dungeons</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <div>© Year 402 of the Ash Age · Aethermoor Chronicle</div>
-      <div>"We write so that the world does not forget."</div>
+      <div data-i18n="footer_copyright">© Year 402 of the Ash Age · Aethermoor Chronicle</div>
+      <div data-i18n="footer_motto">"We write so that the world does not forget."</div>
     </div>
   </div>
 </footer>

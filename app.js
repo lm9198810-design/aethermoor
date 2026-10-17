@@ -216,11 +216,11 @@
         style: `animation-delay: ${i * 0.06}s`
       }, [
         el('span', { class: 'tile-icon', text: tile.icon }),
-        el('h3', { text: tile.title }),
-        el('p', { text: tile.desc }),
+        el('h3', { text: getContent('worldTiles', tile.title, 'title', tile.title) }),
+        el('p', { text: getContent('worldTiles', tile.title, 'desc', tile.desc) }),
         el('div', { class: 'tile-stat' }, [
-          el('span', { text: tile.statLabel }),
-          el('span', { text: tile.statValue })
+          el('span', { text: getContent('worldTiles', tile.title, 'statLabel', tile.statLabel) }),
+          el('span', { text: getContent('worldTiles', tile.title, 'statValue', tile.statValue) })
         ])
       ]));
     });
@@ -324,29 +324,29 @@
 
     // Godseal label
     const godsealLabel = svgEl('text', {
-      x: 500, y: 70, 'text-anchor': 'middle',
+      x: 290, y: 72, 'text-anchor': 'middle',
       'font-family': 'Cinzel, serif', 'font-size': '11px',
       fill: '#e8c547', 'letter-spacing': '0.15em', 'pointer-events': 'none'
     });
-    godsealLabel.textContent = 'THE GODSEAL';
+    godsealLabel.textContent = t('map_lbl_godseal');
     svg.appendChild(godsealLabel);
 
     // Chasm label
     const chasmLabel = svgEl('text', {
-      x: 500, y: 165, 'text-anchor': 'middle',
+      x: 290, y: 165, 'text-anchor': 'middle',
       'font-family': 'Cinzel, serif', 'font-size': '10px',
       fill: '#7a1a1a', 'letter-spacing': '0.15em', 'pointer-events': 'none'
     });
-    chasmLabel.textContent = 'THE BLACK CHASM';
+    chasmLabel.textContent = t('map_lbl_chasm');
     svg.appendChild(chasmLabel);
 
     // Xarnath label
     const xarnathLabel = svgEl('text', {
-      x: 500, y: 40, 'text-anchor': 'middle',
+      x: 290, y: 40, 'text-anchor': 'middle',
       'font-family': 'Cinzel, serif', 'font-size': '14px',
       fill: '#b52a2a', 'letter-spacing': '0.25em', 'pointer-events': 'none'
     });
-    xarnathLabel.textContent = 'XARNATH';
+    xarnathLabel.textContent = t('map_lbl_xarnath');
     svg.appendChild(xarnathLabel);
 
     // Regions
@@ -405,7 +405,9 @@
         dot.style.background = lg.color;
         dot.style.color = lg.color;
         item.appendChild(dot);
-        item.appendChild(el('div', { class: 'legend-name', text: lg.label }));
+        const LEGEND_RACE = { Human: 'humans', Aeldrin: 'aeldrin', Sylvaar: 'sylvaar', Dwarves: 'dwarves', Draekon: 'draekon', Orcs: 'orcs', Kemiiri: 'kemiiri', Demons: 'demons' };
+        const legendLabel = lg.label === 'Unknown' ? t('unknown') : getContent('races', LEGEND_RACE[lg.label], 'name', lg.label);
+        item.appendChild(el('div', { class: 'legend-name', text: legendLabel }));
         legend.appendChild(item);
       });
     }
@@ -476,7 +478,7 @@
         el('h3', { class: 'race-name', text: name }),
         el('div', { class: 'race-epithet', text: epithet }),
         el('p', { class: 'race-desc', text: shortDesc }),
-        el('div', { class: 'race-traits' }, race.traits.map(tr => el('span', { class: 'race-trait', text: tr }))),
+        el('div', { class: 'race-traits' }, race.traits.map(tr => el('span', { class: 'race-trait', text: (CURRENT_LANG === 'fa' && typeof FA_DATA !== 'undefined' && FA_DATA.traits && FA_DATA.traits[tr]) || tr }))),
         el('div', { class: 'race-secret', text: secret })
       ]));
       grid.appendChild(card);
@@ -618,7 +620,7 @@
       </div>
       <div class="modal-stats">
         <div class="stat-box"><span class="stat-box-label">${escapeHtml(t('modal_race'))}</span><span class="stat-box-value">${escapeHtml(race)}</span></div>
-        <div class="stat-box"><span class="stat-box-label">${escapeHtml(t('modal_age'))}</span><span class="stat-box-value">${escapeHtml(char.age)}</span></div>
+        <div class="stat-box"><span class="stat-box-label">${escapeHtml(t('modal_age'))}</span><span class="stat-box-value">${escapeHtml(getContent('characters', char.id, 'age', char.age))}</span></div>
         <div class="stat-box"><span class="stat-box-label">${escapeHtml(t('modal_born'))}</span><span class="stat-box-value">${escapeHtml(born)}</span></div>
         <div class="stat-box"><span class="stat-box-label">${escapeHtml(t('modal_status'))}</span><span class="stat-box-value" style="color:${char.statusColor}">${escapeHtml(status)}</span></div>
       </div>
@@ -765,7 +767,7 @@
       const title = getContent(config.categoryKey, nameKey, 'title', item.title);
       const displayName = tab === 'prophecies' ? title : name;
       
-      const type = getContent(config.categoryKey, nameKey, 'type', item[config.typeKey]);
+      const type = getContent(config.categoryKey, nameKey, config.typeKey, item[config.typeKey]);
       const domain = getContent(config.categoryKey, nameKey, 'domain', item.domain);
       const cls = getContent(config.categoryKey, nameKey, 'class', item.class);
       const source = getContent(config.categoryKey, nameKey, 'source', item.source);
@@ -828,7 +830,7 @@
         el('div', { class: 'book-author', text: author }),
         el('p', { class: 'book-excerpt', text: excerpt }),
         el('div', { class: 'book-footer' }, [
-          el('span', { text: `${book.pages} ${t('book_pages')} · ${getContent('books', book.id, 'date', book.date)}` }),
+          el('span', { text: `${typeof book.pages === 'number' ? book.pages + ' ' + t('book_pages') : getContent('books', book.id, 'pages', book.pages)} · ${getContent('books', book.id, 'date', book.date)}` }),
           el('span', { class: 'book-read-btn', text: t('book_read') })
         ])
       ]);
@@ -853,8 +855,8 @@
       <div class="book-reader-author">${CURRENT_LANG === 'fa' ? 'نوشته‌ی' : 'by'} ${escapeHtml(author)}</div>
       <div class="book-reader-meta">
         <span>${escapeHtml(getContent('books', book.id, 'date', book.date))}</span>
-        <span>${escapeHtml(book.language)}</span>
-        <span>${book.pages} ${t('book_pages')}</span>
+        <span>${escapeHtml(getContent('books', book.id, 'language', book.language))}</span>
+        <span>${escapeHtml(typeof book.pages === 'number' ? book.pages + ' ' + t('book_pages') : getContent('books', book.id, 'pages', book.pages))}</span>
       </div>
       <div class="book-reader-text">${escapeHtml(fullText)}</div>
       ${note ? `<div class="book-reader-note">${escapeHtml(note)}</div>` : ''}
@@ -894,6 +896,9 @@
       const headquarters = getContent('guilds', guild.name, 'headquarters', guild.headquarters);
       
       const branchesWord = guild.branches === 1 ? L.branchOne : L.branchMany;
+      const branchesText = typeof guild.branches === 'number'
+        ? `${guild.branches} ${branchesWord}`
+        : `${L.branchMany}: ${getContent('guilds', guild.name, 'branches', guild.branches)}`;
       
       const card = el('article', {
         class: 'guild-card',
@@ -901,7 +906,7 @@
       }, [
         el('span', { class: 'guild-icon', text: guild.icon }),
         el('h3', { class: 'guild-name', text: name }),
-        el('div', { class: 'guild-founded', text: `${L.founded}: ${getContent('guilds', guild.name, 'founded', guild.founded)} · ${guild.branches} ${branchesWord}` }),
+        el('div', { class: 'guild-founded', text: `${L.founded}: ${getContent('guilds', guild.name, 'founded', guild.founded)} · ${branchesText}` }),
         el('p', { class: 'guild-purpose', text: purpose }),
         el('div', { class: 'guild-ranks' }, 
           (Array.isArray(ranks) ? ranks : []).map(r => el('span', { class: 'guild-rank', text: r }))
@@ -926,8 +931,17 @@
     const faAbyss = faDungeons.theAbyss || {};
     const tAbyss = (f, fb) => faAbyss[f] || fb;
     const tTheme = (n) => (faAbyss.themeNames && faAbyss.themeNames[n]) || n;
-    const tBoss = (n) => (faAbyss.bossNames && faAbyss.bossNames[n]) || n;
-    const tBossDesc = (n, fb) => (faAbyss.bossDescriptions && faAbyss.bossDescriptions[n]) || fb;
+    const tBoss = (n) => (faAbyss.bossNames && faAbyss.bossNames[n]) || (CURRENT_LANG === 'fa' && n === 'Unknown' ? t('unknown') : n);
+    const tBossDesc = (b) => {
+      if (CURRENT_LANG !== 'fa') return b.description;
+      const mapped = faAbyss.bossDescriptions && faAbyss.bossDescriptions[b.name];
+      if (mapped) return mapped;
+      const m = b.description.match(/^No living adventurer has returned from Floor (\d+)\. The boss is unknown\.$/);
+      if (m) return `هیچ ماجراجوی زنده‌ای از طبقه‌ی ${m[1]} بازنگشته است. رئیس این طبقه ناشناخته است.`;
+      if (/^No living adventurer has ever reached Floor 100\./.test(b.description)) return 'هیچ ماجراجوی زنده‌ای هرگز به طبقه‌ی 100 نرسیده است. رئیس ناشناخته است. خودِ طبقه ناشناخته است. همه‌چیز ناشناخته است.';
+      return b.description;
+    };
+    const tThemeDesc = (th) => (faAbyss.themeDescriptions && faAbyss.themeDescriptions[th.theme]) || th.description;
     const tOther = (n) => (faDungeons.otherDungeonNames && faDungeons.otherDungeonNames[n]) || n;
     
     const L = CURRENT_LANG === 'fa' ? {
@@ -996,7 +1010,7 @@
         el('div', { class: 'theme-range', text: `${L.floorPrefix} ${theme.range}` }),
         el('div', {}, [
           el('div', { class: 'theme-name', text: tTheme(theme.theme) }),
-          el('div', { class: 'theme-desc', text: theme.description })
+          el('div', { class: 'theme-desc', text: tThemeDesc(theme) })
         ])
       ]));
     });
@@ -1012,7 +1026,7 @@
       bossList.appendChild(el('div', { class: 'boss-item' }, [
         el('div', { class: 'boss-floor', text: `${L.floorSingle} ${boss.floor}` }),
         el('div', { class: 'boss-name', text: tBoss(boss.name) }),
-        el('div', { class: 'boss-desc', text: tBossDesc(boss.name, boss.description) })
+        el('div', { class: 'boss-desc', text: tBossDesc(boss) })
       ]));
     });
     bossesSection.appendChild(bossList);
@@ -1023,7 +1037,7 @@
       el('h3', { class: 'abyss-section-title', text: L.rules })
     ]);
     const rulesList = el('ul', { class: 'rules-list' });
-    abyss.rules.forEach(rule => {
+    (faAbyss.rulesFA || abyss.rules).forEach(rule => {
       rulesList.appendChild(el('li', { text: rule }));
     });
     rulesSection.appendChild(rulesList);
@@ -1034,7 +1048,7 @@
       el('h3', { class: 'abyss-section-title', text: L.facts })
     ]);
     const factsList = el('ul', { class: 'facts-list' });
-    abyss.notableFacts.forEach(fact => {
+    (faAbyss.notableFactsFA || abyss.notableFacts).forEach(fact => {
       factsList.appendChild(el('li', { text: fact }));
     });
     factsSection.appendChild(factsList);
@@ -1048,11 +1062,11 @@
     DUNGEONS_DATA.otherDungeons.forEach(d => {
       otherGrid.appendChild(el('div', { class: 'other-dungeon' }, [
         el('h4', { class: 'other-dungeon-name', text: tOther(d.name) }),
-        el('div', { class: 'other-dungeon-location', text: d.location }),
-        el('p', { class: 'other-dungeon-desc', text: d.description }),
+        el('div', { class: 'other-dungeon-location', text: (faDungeons.otherDungeonLocations && faDungeons.otherDungeonLocations[d.name]) || d.location }),
+        el('p', { class: 'other-dungeon-desc', text: (faDungeons.otherDungeonDescriptions && faDungeons.otherDungeonDescriptions[d.name]) || d.description }),
         el('div', { class: 'other-dungeon-meta' }, [
           el('span', {}, [document.createTextNode(L.floorsLabel + ' '), el('strong', { text: d.floors })]),
-          el('span', {}, [document.createTextNode(L.bossLabel + ' '), el('strong', { text: d.boss.split('—')[0].trim() })])
+          el('span', {}, [document.createTextNode(L.bossLabel + ' '), el('strong', { text: (faDungeons.otherDungeonBosses && faDungeons.otherDungeonBosses[d.name]) || d.boss.split('—')[0].trim() })])
         ])
       ]));
     });
@@ -1194,7 +1208,7 @@
       results.innerHTML = '';
       matches.forEach(m => {
         const item = el('div', { class: 'search-result-item' }, [
-          el('div', { class: 'sr-cat', text: m.cat }),
+          el('div', { class: 'sr-cat', text: CURRENT_LANG === 'fa' ? (({ Character: 'شخصیت', Race: 'نژاد', House: 'خاندان', Region: 'ناحیه', Artifact: 'اثر', Magic: 'جادو', God: 'خدا', Creature: 'موجود', Prophecy: 'پیشگویی', Book: 'کتاب', Guild: 'گیلد' })[m.cat] || m.cat) : m.cat }),
           el('div', { class: 'sr-name', text: m.name })
         ]);
         item.addEventListener('click', () => {
