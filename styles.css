@@ -3398,3 +3398,7 @@ html[dir="rtl"] .reading-continue { direction: rtl; }
   .map-frame { min-height: 420px; }
   .map-main { min-width: 0; }
 }
+
+
+/* Zoomed atlas views reveal the smaller settlements, not only featured cities. */
+.world-map.map-zoomed .map-city-label.is-hidden-until-hover { opacity: .92; }
