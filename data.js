@@ -13,14 +13,14 @@ const WORLD_META = {
   currentEra: "The Ash Age",
   currentYear: 402,
   tagline: "Where gods have fallen and left their thrones empty.",
-  summary: "Aethermoor is but one continent upon the sphere of Vaelthar — a world torn open a thousand years ago when the gods made war upon each other and the sky itself was cracked. To the north, across the Divine Divide and the Black Chasm, lies Xarnath, the Demon Continent. What remains is a realm of ash and ambition, where ten races cling to the ruins of heaven, and every crown was won in blood.",
-  calendar: "Years are counted from the Sundering. 'S.A.' = Since Ash. 'B.S.' = Before Sundering.",
+  summary: "Vaelthar holds two vast continents joined only by legend and divided in fact. Aethermoor lies south of the Black Chasm; Xarnath rises beyond it to the north. The Sundering took place 402 years ago, leaving the Godseal across the gorge and twin mountain walls that have defeated every recorded overland expedition. Aethermoor is not one kingdom: imperial heartlands, free cities, forest courts, mountain holds, clan territories, and underworld states bargain and fight over roads, grain, ore, and old magic. Xarnath is harsh but inhabited, with basalt cities, geothermal basins, deep wells, and rival demon houses beneath the Demon King's rule.",
+  calendar: "Years are counted from the Sundering: 'S.A.' = Since Ash, beginning at the Sundering; the current year is 402 S.A. 'B.S.' = Before Sundering. Dates older than the calendar are estimates, often drawn from disputed records.",
   motto: "We write so that the world does not forget.",
   lastUpdate: "402 S.A. — The Chronicle Continues",
   chronicler: "The Silent Choir of Aelthalas",
   worldLaws: {
     mana: "Mana is never destroyed — only transformed. It returns to the world when a creature dies, when a spell fades, when a body decomposes. This is the Law of Conservation, the fourth and final law of magic.",
-    lifeForce: "Life-force is different from mana. It is the fire of mortality itself — what keeps a body alive, what withers with age. Demons feed on it. Mortals are born with a fixed amount.",
+    lifeForce: "Life-force is different from mana. It is the vitality that sustains a living body. Most creatures cannot transfer it at will. Certain demons can forcibly draw a portion from a dying victim through direct contact or a prepared rite; the gain is temporary and can carry memories, impulses, or madness from the victim. It does not make every killing useful, and it cannot make a demon invulnerable.",
     death: "There is no confirmed afterlife. No god has ever returned from death to describe it. Every faith claims to know what happens. None agree."
   }
 };
@@ -32,14 +32,14 @@ const WORLD_TILES = [
   {
     icon: "world",
     title: "Two Continents, One Wound",
-    desc: "Aethermoor, the central continent, spans three million square miles. To its north lies Xarnath — the Demon Continent — an endless, desolate land of scarce minerals and barren soil, where the strong devour the weak and the Demon King sits on a throne of bone. Between them, the Black Chasm severs the world in two, and the Godseal holds the demons back.",
+    desc: "Aethermoor stretches south of the Black Chasm; Xarnath lies beyond it to the north. Two parallel ranges of near-impassable mountains hem in the gorge. The Godseal is the only maintained crossing, watched by an order that guards the barrier rather than any single crown. The realms on either side are inhabited, politically divided, and far from fully understood.",
     statLabel: "Continents",
     statValue: "2"
   },
   {
     icon: "swords",
-    title: "A Thousand Years of Ash",
-    desc: "Since the Sundering, forty-two wars have been fought over the ruins of heaven. Twelve ended in genocide. Fourteen ended in stalemate. Sixteen ended in the annihilation of at least one noble house. The rest ended when everyone involved was simply too exhausted to continue. The scholars say the forty-third war is overdue. The soldiers say it is already here.",
+    title: "Four Centuries of Ash",
+    desc: "In the 402 years since the Sundering, the chronicles record forty-two major wars over land, trade, divine ruins, and succession. The number is incomplete: smaller border conflicts were often omitted, and each court defines victory differently. Scholars warn that another imperial succession crisis is forming; soldiers along the central roads say it has already begun.",
     statLabel: "Recorded Wars",
     statValue: "42"
   },
@@ -67,14 +67,14 @@ const WORLD_TILES = [
   {
     icon: "eclipse",
     title: "The Demon Threat",
-    desc: "Beyond the Black Chasm, the Demon King rules an endless wasteland. His subjects grow stronger not through training, but through slaughter — draining the life-force of every living thing they kill. For a thousand years, the Godseal has held them back. For a thousand years, the demons have waited. The Godseal is humming now. It has never hummed before.",
+    desc: "Beyond the Black Chasm, the Demon King rules Xarnath through a hierarchy of rival houses. Demons can steal a measure of life-force by ritual or direct contact, but the gain is dangerous and limited; they still train, build, negotiate, and fight over water and territory. The Godseal has held since the Sundering. Its recent hum is the first recorded change in its tone—not proof that it is about to fail.",
     statLabel: "Demon King Age",
     statValue: "10,000+"
   },
   {
     icon: "blood",
     title: "The Blood Debt",
-    desc: "Every drop of divine blood spilled at the Sundering is still owed. The world pays in slow increments — in plague, in madness, in the slow fading of magic itself. Scholars estimate that at current rates of decay, magic will cease to function entirely within four hundred years. Nobody is doing anything about it. Most people do not believe it.",
+    desc: "Some scholars believe the Sundering left a lasting strain on magic; others argue that local failures come from damaged runes, exhausted ley lines, or political exaggeration. Estimates of how long stable magic will remain range from two centuries to several more. No council has agreed on a test that would settle the question.",
     statLabel: "Estimated Years Left",
     statValue: "~400"
   },
@@ -123,7 +123,7 @@ const RACES = [
     id: "humans",
     name: "Humans",
     epithet: "The Fractured Crowns",
-    category: "human",
+    category: "humanoid",
     icon: "crown",
     shortDesc: "The most numerous race of Aethermoor, and the most divided. Where elves and dwarves find unity, humans find only ambition — and the ambition of one emperor once carved the largest empire the world has ever known.",
     traits: ["Ambitious", "Numerous", "Adaptable", "Divided"],
@@ -149,7 +149,7 @@ const RACES = [
     id: "aeldrin",
     name: "Aeldrin",
     epithet: "The Firstborn of the Silver Wood",
-    category: "elven",
+    category: "humanoid",
     icon: "moon",
     shortDesc: "The ageless lords of the Silver Wood, whose memories stretch back before the Sundering and whose pride outlasts their dying bloodline.",
     traits: ["Ageless", "Silver-blooded", "Arcanists", "Ancient"],
@@ -175,7 +175,7 @@ const RACES = [
     id: "sylvaar",
     name: "Sylvaar",
     epithet: "The Shadowed Kin",
-    category: "elven",
+    category: "humanoid",
     icon: "spider",
     shortDesc: "Elves who chose the dark over death, and have paid for it every day since.",
     traits: ["Shadow-bound", "Cunning", "Underground", "Secretive"],
@@ -201,7 +201,7 @@ const RACES = [
     id: "dwarves",
     name: "Dwarves",
     epithet: "The Stoneborn",
-    category: "human",
+    category: "humanoid",
     icon: "hammer",
     shortDesc: "Miners, engineers, and smiths without equal. The dwarves of the Frostspine carve their cities into the bones of the world — and their loyalty into the bones of their people.",
     traits: ["Stoneborn", "Engineers", "Loyal", "Stubborn"],
@@ -227,7 +227,7 @@ const RACES = [
     id: "draekon",
     name: "Draekon",
     epithet: "The Dragon-Blooded",
-    category: "human",
+    category: "humanoid",
     icon: "dragon",
     shortDesc: "Descendants of the first mortal who dared to love a dragon. Their blood carries fire, and their fate is to one day burn in it.",
     traits: ["Fire-blooded", "Warriors", "Clan-bound", "Cursed"],
@@ -253,7 +253,7 @@ const RACES = [
     id: "orcs",
     name: "Orcs",
     epithet: "The Blood of Karok",
-    category: "human",
+    category: "humanoid",
     icon: "axe",
     shortDesc: "Once soldiers of a dead god, now a people without a purpose — and without a home that will have them. The orcs raid, pillage, and enslave. They do not apologize. They do not explain. They do not forgive.",
     traits: ["Warlike", "Tribal", "Slavers", "Hated"],
@@ -305,12 +305,12 @@ const RACES = [
     id: "halfborn",
     name: "Halfborn",
     epithet: "The God-Touched",
-    category: "divine",
+    category: "humanoid",
     icon: "eye",
-    shortDesc: "The children of gods and mortals. Powerful beyond measure. Broken beyond repair. And hunted by both heaven and earth.",
+    shortDesc: "Mortals altered by divine contact or uncertain divine lineage. Their gifts are real, their limits are individual, and their weaknesses are never the same.",
     traits: ["Divine-blood", "Cursed", "Powerful", "Hunted"],
-    fullDesc: "The Halfborn are what happens when a god loves a mortal — or uses one. Their blood is divine; their flesh is mortal. This contradiction tears them apart. A Halfborn child is born with power that would take a mortal wizard decades to achieve. They can shatter stone with a word, walk through fire, see the future in dreams. But every Halfborn carries a Flaw — a unique weakness that grows with their power. Some are killed by water. Some lose their memories every year. Some hear the thoughts of everyone around them, forever, without relief. Most are dead by forty. The Halfborn are not a race. They are a scattering. But the ones who survive — the ones who learn to live with their Flaw — become something more than mortal. Something terrifying.",
-    secret: "The Halfborn are not accidents. They are the gods' only way back into the world. Every Halfborn carries a fragment of their divine parent's essence. If enough Halfborn were to die in one place, at one time, in the right ritual — the parent god could be reborn.",
+    fullDesc: "The Halfborn are not a people with a shared homeland. They are rare individuals whose lives have been changed by a divine parent, a broken rite, or prolonged exposure to a god-touched relic. Their abilities vary: one may hear a fragment of another person's memory, while another can bend flame or glimpse possible futures. Each develops a distinct Flaw linked to the same source as their gift. Power therefore brings a practical cost, not a universal ranking above ordinary mages. Many die young because their families hide their symptoms or powerful institutions seek to study them. Others live quietly with careful rules and trusted companions.",
+    secret: "A forbidden doctrine claims that killing enough Halfborn in one ritual could restore a divine parent to the world. No reliable evidence supports it. The doctrine has nevertheless led to disappearances and murders, and the Wounded Choir was formed in part to hide children whose strange abilities place them at risk. Some members blame the gods; others want only to stop the hunts. The group has no single plan to kill or resurrect any deity.",
     stats: {
       lifespan: "20-60 years",
       population: "~50",
@@ -319,7 +319,7 @@ const RACES = [
       alignment: "Any",
       magicAffinity: "All schools"
     },
-    culture: "There is no Halfborn culture. Only individuals, alone with their power and their Flaw. The only thing they share is a secret society called the Wounded Choir — an underground network that tries to protect Halfborn children and, when possible, kill the gods who abandoned them.",
+    culture: "There is no Halfborn nation or common culture. Most remain within the communities that raised them, if those communities are safe. The Wounded Choir is a loose network of healers, couriers, and safe-house keepers that protects some Halfborn children and records dangerous cases. Its members disagree about theology and politics; protecting a child does not require believing a prophecy.",
     notable: ["Kaelen Vareth", "Aelwyn Vaelor", "The Blind Oracle"],
     relations: {
       allies: ["Themselves"],
@@ -331,21 +331,21 @@ const RACES = [
     id: "halfdemons",
     name: "Half-Demons",
     epithet: "The Crossroads Blood",
-    category: "divine",
+    category: "humanoid",
     icon: "eclipse",
-    shortDesc: "Children of two worlds, belonging to neither. Their eyes are always red — the demon blood is dominant — and their power is a dangerous gift.",
-    traits: ["Demon-blood", "Red-Eyed", "Latent Power", "Outcast"],
-    fullDesc: "Half-demons are the rare children of a demon and a mortal — or, more commonly, of a demon and a mortal who made a contract with one. They look human in most respects, but their eyes are always red — the demon blood is dominant, always. Some possess horns or sharp teeth. Some possess latent magical abilities that manifest in childhood or in moments of great stress. They are hated by humans for their demon heritage, and distrusted by demons for their mortal weakness. They belong nowhere. They fight for everything. Half-demons grow stronger through training — like humans — but their ceiling is that of a demon, not a mortal. This makes them the most dangerous race in Aethermoor: they can grow without the constraint of a mortal lifespan, and they can train without the constraint of needing to kill.",
-    secret: "Half-demons are the only race that can approach the Demon King's power. This is why the Demon King watches them very, very carefully. And why the Wounded Choir recruits them. And why the Emperor of Valerius's Rest has a secret program to find and train them. Half-demons are the key to the next thousand years of Aethermoor's history. They just do not know it yet.",
+    shortDesc: "Rare children of two lineages. Their bodies carry a mortal pulse and demonic mana, a combination the Godseal was never designed to judge.",
+    traits: ["Mixed-blood", "Ember Eyes", "Unstable Mana", "Outcast"],
+    fullDesc: "Half-Demons are rare children of a demon and a mortal, sometimes born from a pact that binds two lives rather than from affection. Most can pass as human at a glance; their eyes turn ember-red when demonic mana rises, and a few bear horns, unusual teeth, or a shadow that moves against the light. Their mortal half gives them a finite life and a stable sense of self. Their demonic half grants them a deep reserve of mana, but not the demons' predatory ability to replenish it by taking life. Strong spells therefore cost them dearly: fever, memory loss, or years of life. They are feared by communities that remember demon raids and distrusted by demons who see mortality as weakness. They are not a hidden super-race, and no two half-demons share the same gifts.",
+    secret: "The Godseal bars demonic life-force, not ancestry. No Half-Demon can cross while the seal is closed. However, an unusual mixed signature may cause a ward to react differently, which makes Half-Demons relevant to the current investigation without making them living keys. The Demon King wants such cases captured because one might reveal a flaw in the barrier—or a way to mend it. The Wounded Choir shelters hunted Half-Demons and records what happens to them; it does not recruit every child into a prophecy. The Valerian court seeks witnesses to test the old wards, though its factions disagree on whether to protect, study, or exploit them. A fragmentary prophecy may refer to Kaelen Vareth, but the wording is disputed and the evidence is incomplete.",
     stats: {
-      lifespan: "200-500 years (varies)",
-      population: "~2,000 (scattered)",
-      homeland: "Scattered (mostly northern Aethermoor)",
-      capital: "None",
-      alignment: "Any",
-      magicAffinity: "Breathweaving, Bloodfire, Demonic Magic"
+      lifespan: "90-180 years (varies by lineage and magic use)",
+      population: "A few hundred reliably documented; the true number is unknown",
+      homeland: "Scattered border towns and hidden refuges",
+      capital: "None; no unified state",
+      alignment: "Varies by individual",
+      magicAffinity: "Breathweaving; volatile demonic mana"
     },
-    culture: "There is no half-demon culture. There are only half-demon individuals — mostly hiding, mostly alone, mostly afraid. The Wounded Choir protects some. The Whisperer uses others. The Demon King watches them all. Their food is mortal food. Their music is mortal music. They are, in every way but their eyes, mortal. And that is what makes them dangerous.",
+    culture: "There is no half-demon nation or single culture. Most live within the communities that raised them, conceal their ancestry where it is unsafe to reveal, and keep local customs. A loose network called the Wounded Choir offers safe houses, healers, and false travel papers to those being hunted. Some refuse its help; others distrust its habit of recording their lives. The Whisperer has exploited a few for espionage, while ordinary people sometimes shelter them for reasons unrelated to prophecy. Their shared condition creates a fragile network, not a secret kingdom.",
     notable: ["Kaelen Vareth (suspected)", "The Red-Eyed Wanderer", "The Wounded Choir"],
     relations: {
       allies: ["Themselves"],
@@ -357,12 +357,12 @@ const RACES = [
     id: "demons",
     name: "Demons",
     epithet: "The Lords of Xarnath",
-    category: "divine",
+    category: "otherworldly",
     icon: "demon",
-    shortDesc: "The rulers of Xarnath, the demon continent. Immortal, ageless, and hungry. They do not age. They do not die of natural causes. They grow stronger only through slaughter — draining the life-force of every living thing they kill.",
+    shortDesc: "The people of Xarnath are ageless, not invulnerable. Their courts prize strength, but their survival depends just as much on wells, bargains, supply roads, and control of scarce resources.",
     traits: ["Ageless", "Red-Eyed", "Life-Drainers", "Tyrannical"],
-    fullDesc: "The demons of Xarnath are the most feared race in the world. They look human in most respects — the same skin colors, the same builds — but their eyes are always red, and some have horns or sharp teeth. They do not age. They do not die of natural causes. They grow stronger only through slaughter — every living thing they kill feeds their life-force, extends their lifespan, and slowly increases their mana capacity. A demon who has lived for a thousand years has killed thousands of beings. A demon who has lived for ten thousand years has killed hundreds of thousands. The Demon King, who has ruled Xarnath for ten thousand years, has killed more than any being in history. He is not a person. He is an event. He is the reason the Godseal exists. He is the reason the world holds its breath.",
-    secret: "The Demon King is not the oldest demon. There are older ones — demons who have lived for fifty thousand years or more, hidden in the deepest reaches of Xarnath, forgotten by even their own kind. The Demon King overthrew one of them to take the throne. He knows the others are out there. He knows they are waiting. He knows that one day, they will come for him. This is why he is so obsessed with power. This is why he is so afraid. This is why the Godseal must never break.",
+    fullDesc: "Demons are an old people of Xarnath, commonly marked by ember-red eyes and, in some lineages, horns or other traits. They do not age as mortals do, but fatal wounds can kill them and long periods without life-force leave them diminished. A demon can draw a portion of vitality from a dying victim through direct contact or a prepared rite; the gain is limited, never guaranteed by every killing, and may leave the taker carrying fragments of the victim's memory. This practice made conquest profitable to some demon lords, but it also created rituals, taboos, and political disputes over who is allowed to feed. Demons train in arms and magic, maintain cities around deep wells and geothermal farms, and trade under armed truce when it serves them. Their societies are harsh, not mindless: the Demon King rules by balancing rival houses that would otherwise turn Xarnath into permanent civil war.",
+    secret: "The Demon King is old enough to remember the first wars with the gods, but legends exaggerate his reach. He cannot command every demon's loyalty, and he fears the older houses that withdrew into Xarnath's deep vaults after he took the throne. His public insistence that the Godseal must never fail is strategic as well as defensive: if the barrier fell, Aethermoor's armies would invade, Xarnath's rival houses would unite against him, and the world beyond the chasm would become a battlefield. Some of his agents quietly seek knowledge to repair the seal; others would rather weaponize the hum.",
     stats: {
       lifespan: "Infinite (barring violence)",
       population: "~30,000,000 (Xarnath)",
@@ -371,7 +371,7 @@ const RACES = [
       alignment: "Lawful Evil",
       magicAffinity: "Demonic Magic, Bloodfire, Voidwalking"
     },
-    culture: "Demon culture is built on strength, hierarchy, and the constant fear of being devoured by someone stronger. Every demon knows that every other demon is a potential threat — and a potential meal. The only stable relationships are those enforced by the Demon King's will. When his attention wanders, the knives come out. Demon cuisine is whatever they can catch — and demons can catch almost anything. Their music is the sound of battle. Their art is the art of conquest.",
+    culture: "Demon culture is built around house loyalty, ritualized contests, resource control, and fear of political weakness. The strongest may gain status through battle, but a lord who cannot secure water, defend a road, or honor a treaty soon loses followers. Some factions consider life-force harvesting sacred; others treat it as a dangerous last resort because of the memories it can transfer. Markets exist under guard, often during truces. Their art celebrates conquest, endurance, and the names of the dead—not because every demon loves war, but because a conquered house risks losing its history.",
     notable: ["The Demon King", "The Forgotten Ones (older demons)", "The Demon Council"],
     relations: {
       allies: ["None"],
@@ -789,11 +789,11 @@ const REGIONS = [
   {
     id: "xarnath",
     name: "Xarnath, the Demon Continent",
-    type: "Endless wasteland (north of the Godseal)",
+    type: "Basalt highlands, salt flats, geothermal basins",
     color: "#3d0a0a",
     mapX: 500,
     mapY: 40,
-    desc: "Xarnath is not a place. It is a warning. It is the land beyond the Godseal — the realm where the demons were exiled after their war against the gods. It is an endless wasteland of black rock and red dust, where nothing grows and nothing is born. The sky is a constant storm. The ground is hot to the touch. The only water is a slow, oily liquid that flows from cracks in the earth. Demons do not build cities here. They do not farm. They do not trade. They hunt, they kill, and they grow stronger. Xarnath is not a continent. It is a wound — a place where the world was broken and never healed.",
+    desc: "Xarnath lies north of the Black Chasm, beyond two continent-length mountain walls whose upper ridges remain snowbound even above the ash storms. The land is severe rather than empty: basalt plateaus, salt flats, deep aquifers, warm ravines, and fungus fields support fortified cities. Varkhast controls the northern mineral road; Cinder Wells survives around one of the few reliable deep-water basins; the Blackglass Exchange hosts guarded bargains between rival demon houses. The Bone Throne is the Demon King's capital, but his control depends on treaties, hostages, and a careful balance of power. Xarnath is dangerous to outsiders because its geography and politics are hostile—not because nothing lives there.",
     control: "The Demon King (absolute rule)",
     notable: ["The Bone Throne", "The Storm-Sky", "The Black Wastes", "The Forgotten Depths", "The Demon Council"],
     regionType: "demon",
@@ -811,7 +811,7 @@ const REGIONS = [
     color: "#1a0a0a",
     mapX: 500,
     mapY: 130,
-    desc: "The Black Chasm is not a natural formation. It is a wound in the world — a gaping fissure in the earth, miles wide and miles deep, that runs the entire width of the continent. Beyond it lies Xarnath, the Demon Continent. The Chasm is crossed by no bridge, guarded by no army — because it does not need to be. It is, by itself, impassable to any normal army. The only way across is the Godseal — and the Godseal has not been opened in a thousand years. To fall into the Black Chasm is to fall into the earth's own memory. What lives down there is not alive. But it moves.",
+    desc: "The Black Chasm is a continent-scale rift left by the Sundering. Its depth is hidden by a permanent black haze, and the cliffs are ringed by twin ranges of jagged mountains so high and unstable that ordinary roads cannot cross them. Avalanches, mana storms, and broken stone make attempts to go around the gorge almost as lethal as crossing it. The Godseal is the only maintained passage. No bridge has survived elsewhere, and no verified expedition has crossed the mountain wall. Stories of things moving in the depth are numerous; proof is not.",
     control: "None (divine-wrought)",
     notable: ["The Godseal", "The Depths", "The Watching Stones", "The Fallen Bridge", "The Demon's Side"],
     regionType: "divine",
@@ -825,7 +825,7 @@ const REGIONS = [
     color: "#e8c547",
     mapX: 500,
     mapY: 90,
-    desc: "The Godseal is the only crossing between Aethermoor and Xarnath — and it is not a bridge. It is a barrier. A wall of divine light and rune-carved stone, stretching across the Black Chasm, humming with power that no mortal can replicate. No one knows who built it. No one knows how it works. All that is known is that it holds the demons back — and that it has held for a thousand years. The Godseal is maintained by the Watching Order — an ancient, multi-racial order of knights, mages, and scholars who have dedicated their lives to guarding the barrier. The Watching Order accepts members from every race except demons. Its members serve for life. There are currently 300 members. There have always been 300. When one dies, another takes their place. The Godseal has held for a thousand years. It is humming now. It has never hummed before.",
+    desc: "The Godseal is the sole maintained crossing between Aethermoor and Xarnath. It is not an ordinary dam or a bridge: rune-carved pylons and a sealed span anchor a wall of divine force across the deepest part of the Black Chasm. No surviving record names its builders or fully explains its mechanism. Since the Sundering, 402 years ago, it has prevented any organized army from crossing. The Watching Order guards the structure and maintains three hundred sworn seats, recruiting across the known peoples. The recent hum is a measurable change in the wards, but its cause is still unknown; the Order has found no proof that the seal is failing.",
     control: "The Watching Order (multi-racial)",
     notable: ["The Barrier", "The Rune-Carved Gate", "The Watching Order's Citadel", "The Pilgrims' Path", "The Demon's Side"],
     regionType: "divine",
@@ -1454,12 +1454,12 @@ const CHARACTERS = [
     status: "Alive",
     statusColor: "#e8c547",
     icon: "swords",
-    race: "Halfborn / Half-Demon (suspected)",
+    race: "Unknown mixed lineage (Halfborn or Half-Demon theories; neither confirmed)",
     age: "24",
     born: "Year 378 S.A.",
     allegiance: "None (formerly House Vareth)",
-    summary: "A young man with ash-colored eyes and no memory of his mother. He may be the most important person in Aethermoor — or he may be nothing at all.",
-    fullBio: "Kaelen was born in the Stormlands during a thunderstorm that lasted three days. His mother, a noblewoman of House Vareth, died in childbirth. His father was never named. He was raised in the Spire of Ashes by his uncle, Lord Arathor Vareth, who treated him with cold indifference and occasional cruelty. Kaelen grew up believing he was a bastard, a stain on the family name, and he accepted this — until the day his eyes changed color. It happened when he was sixteen. He was being beaten by a guardsman for stealing bread. He looked up. His eyes, which had been grey, turned the color of ash — and the guardsman's sword shattered in his hand. Kaelen fled the Spire that night. He has been wandering Aethermoor for eight years, learning to control a power he does not understand, and trying to discover who — or what — he really is. He is currently in the Dragon's Reach, searching for the dragon that awoke three years ago. He does not know that his mother was Vexa Cinderborn. He does not know that the Draekon elders are watching him. And he does not know that, in less than a year, he will have to choose between saving the world and destroying it.",
+    summary: "A young wanderer whose ash-colored eyes can disrupt weapons and runes. His birth records conflict, and the few witnesses who know the truth disagree about what he is.",
+    fullBio: "Kaelen was born in the Stormlands during a thunderstorm that lasted three days. The public record names a noblewoman of House Vareth as his mother and says she died in childbirth; the record is inconsistent with several surviving midwife notes, and no one has proved who his biological parents were. He was raised in the Spire of Ashes by his uncle, Lord Arathor Vareth, who treated him with cold indifference. At sixteen, while a guardsman beat him for stealing bread, his grey eyes turned ash-colored and the man's sword shattered in his hand. Kaelen fled that night. In the eight years since, he has learned a little about controlling the effect but still cannot explain whether it is divine, demonic, or something caused by the old wards. He is now in the Dragon's Reach investigating a dragon awakened in 398 S.A.; he has heard that Vexa Cinderborn may know something about his birth, but he has not confirmed the claim. Several powers have asked questions about his ability, for different and not always sinister reasons. None has proved that any prophecy is about him.",
     personality: "Quiet, watchful, and slow to trust. Kaelen speaks rarely and, when he does, it is with the precision of someone who has learned that words can be weapons. He is kind to those weaker than himself — a trait that has gotten him into more trouble than any of his enemies. He has a dark sense of humor that surfaces only with people he trusts. He does not believe in destiny, gods, or prophecy. He believes in survival, and in the small kindnesses that make survival worth the effort.",
     abilities: [
       "Ash-Eyes — When angered or in danger, Kaelen's eyes turn the color of ash, and his power manifests. The exact nature of this power is unknown, but it appears to involve the destruction of physical objects (weapons, walls, chains) on a fundamental level.",
@@ -1474,6 +1474,12 @@ const CHARACTERS = [
       "The Wound — Kaelen carries a wound on his chest that will not heal. It appeared the night his eyes first changed. It sometimes bleeds when he uses his power. It sometimes bleeds for no reason at all."
     ],
     relationships: [
+      { to: "Vexa Cinderborn", type: "Possible biological mother", detail: "Several clues connect Vexa to Kaelen's birth, but the surviving records disagree. She has not spoken to him, and her reasons for keeping silent are not fully known." },
+      { to: "Lord Arathor Vareth", type: "Uncle / guardian", detail: "Arathor raised Kaelen and insists the official birth record is true. His payments and private letters suggest he knows more than he admits." },
+      { to: "Nyx the Shadow-Speaker", type: "Reluctant ally", detail: "They met in a prison cell in Ondrath and escaped together. They distrust each other, but both have reasons to keep travelling together." },
+      { to: "The Whisperer", type: "Interested observer", detail: "The Whisperer has collected reports of Kaelen's rune reactions. Whether they want to protect, study, or exploit him is unknown." },
+      { to: "Aelwyn Vaelor", type: "Unmet; possible research overlap", detail: "Aelwyn's work concerns a binding beneath the Silver Wood; Kaelen's eyes disrupt some runes. A few scholars suspect a shared cause, but the evidence is too thin to establish a connection." }
+    ],
       { to: "Vexa Cinderborn", type: "Mother (unknown to him)", detail: "She has been searching for him for twenty-four years. She has not yet found him." },
       { to: "Lord Arathor Vareth", type: "Uncle (abuser)", detail: "Arathor knows the truth about Kaelen's parentage. He has been paid handsomely to keep silent." },
       { to: "Nyx the Shadow-Speaker", type: "Reluctant Ally", detail: "They met in a prison cell in Ondrath. They escaped together. They do not trust each other, but they have learned to work together." },
@@ -1486,6 +1492,10 @@ const CHARACTERS = [
       "If I am the Ashborn Prince, then the prophecy is a joke. I am not a prince. I am not a savior. I am a man who has learned that the only thing worth protecting is the person standing next to you."
     ],
     storyHooks: [
+      "Different factions want different things from Kaelen: some seek a witness for the ward investigation, some hope to recruit him, and a few would rather control him. The Wounded Choir is not among the confirmed pursuers.",
+      "His chest wound appears after unusual rune reactions and worsens when he uses his ash-eye ability. Its source is unknown; no evidence shows that healing him would heal the world.",
+      "The dragon that awoke in 398 S.A. is linked to House Cinderborn politics. Whether it is related to Kaelen's family is unconfirmed."
+    ]
       "Kaelen is being hunted by three different factions — the Aeldrin Council (who want to study him), the Sylvaar (who want to weaponize him), and the Wounded Choir (who want to protect him).",
       "His wound is connected to the Sundering. If he ever learns the truth, he will have to choose between healing himself and healing the world.",
       "The dragon that awoke in 398 S.A. is Kaelen's half-sister. She is searching for him. She is not searching to help him."
@@ -2898,17 +2908,17 @@ const PROPHECIES = [
     icon: "scales",
     title: "The Prophecy of the Half-Demon",
     source: "Unknown, discovered in the Wounded Choir's archives",
-    text: "The child of two bloods shall stand at the crossroads. They shall choose — not for themselves, but for the world. Their choice shall break the Godseal, or seal it forever. There is no middle ground.",
+    text: "When two bloods meet at the sealed road, the gate may answer. One choice may mend the ward; another may loosen it. The scribe leaves no name, and the surviving line before this passage is missing.",
     status: "Waiting",
-    desc: "A prophecy discovered by the Wounded Choir, the secret society that protects half-demons. It names the half-demon as the key to the Godseal — the only being who can break it, or seal it. The Wounded Choir has been searching for this half-demon for a century. They may have found him. They may have found Kaelen Vareth."
+    desc: "A fragment copied into the Wounded Choir's archive from an unverified source. Some readers believe it describes a Half-Demon and the Godseal; others argue that 'two bloods' refers to rival houses or an old treaty. The text does not say that any person can open or close the seal, and the Choir has no confirmed candidate. Kaelen's unusual reaction to runes has made him a subject of debate, not a proven chosen one.",
   },
   {
     icon: "star",
     title: "The Prophecy of the Ashborn",
     source: "Unknown, discovered in the Godfall",
-    text: "The ash-born shall rise from the ashes of the fallen god. He shall be the last hope of the dying race, the last light of the dying world. And he shall choose — fire or ice, dawn or dusk, life or death. The world shall be remade in his image.",
+    text: "From ash-colored eyes, a disputed heir will rise. The old road shall test their name; the mountain shall not answer blood alone. What is broken may be mended, but no hand shall do so without a cost.",
     status: "Beginning",
-    desc: "A prophecy discovered in the Godfall — carved into the glass sea itself, in letters no one has ever seen before. It was translated by the Silent Choir, who have not spoken since. It names the Ashborn Prince as the one who will remake the world. The Ashborn Prince is Kaelen Vareth. He does not know this. He does not want to know this."
+    desc: "A damaged inscription from Godfall, translated differently by three archivists. 'Ashborn' may be a family epithet, a condition of the eyes, or a poetic reference to the years after the Sundering. Popular retellings identify Kaelen, but the original contains no name and offers no reliable proof of his destiny.",
   }
 ];
 
@@ -3708,9 +3718,9 @@ const GUILDS_DATA = [
     color: "#6d4fa8",
     founded: "Unknown (possibly pre-Sundering)",
     founder: "Unknown (possibly the first halfborn)",
-    purpose: "To protect. To avenge. To wait. The Wounded Choir does not have a purpose. It has a prophecy.",
-    headquarters: "Unknown",
-    branches: "Unknown",
+    purpose: "To shelter people endangered by divine anomalies, preserve testimony, and prevent persecution. Members disagree about theology and the uses of their records; there is no universally accepted prophecy or single political objective.",
+    headquarters: "No central seat; a changing network of safe houses and clinics",
+    branches: "Small local circles in the Heartlands, the Silver Wood borderlands, and a handful of trade ports",
     ranks: ["Voice", "Echo", "Silent", "The Unheard"],
     rankDescriptions: {
       Voice: "A new member. Can speak. Can recruit. Cannot act.",
@@ -3719,7 +3729,7 @@ const GUILDS_DATA = [
       "The Unheard": "The leader. Unknown. Possibly dead. Possibly alive. Possibly a myth."
     },
     notable_members: ["Unknown — the Wounded Choir does not share names"],
-    secrets: "The Wounded Choir knows that Kaelen Vareth is the Ashborn Prince. They know that he is the key to the Godseal. They know that he is the one the prophecy speaks of. They have been watching him since he was a child. They are waiting for the right moment to reveal themselves. The right moment is approaching."
+    secrets: "The Choir keeps conflicting copies of the half-blood prophecy and has not agreed on its meaning. A few archivists suspect Kaelen Vareth's rune reactions may help explain the Godseal's changing tone; others warn that connecting him to the prophecy could endanger him. The Choir has no proof that he is a key to the barrier and has not followed him since childhood as a single coordinated organization.",
   }
 ];
 
