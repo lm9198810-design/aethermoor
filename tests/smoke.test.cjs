@@ -16,7 +16,7 @@ test('the unified data bundle initializes English, Persian, and the complete atl
   const sandbox = vm.createContext({ console: { log() {}, warn() {}, error() {} } });
   const exposure = [
     '',
-    'globalThis.__AETHERMOOR_TEST__ = { UI_TEXT, FA_DATA, WORLD_META, RACES, MAP_DATA, WORLD_STATS };'
+    'globalThis.__AETHERMOOR_TEST__ = { UI_TEXT, FA_DATA, WORLD_META, RACES, MAP_DATA, REGIONS, WORLD_STATS };'
   ].join('\n');
   new vm.Script(read('data.js') + exposure, { filename: 'data.js' })
     .runInContext(sandbox, { timeout: 10000 });
@@ -26,6 +26,8 @@ test('the unified data bundle initializes English, Persian, and the complete atl
   assert.equal(d.WORLD_META.currentYear, 402, 'the current era should stay at 402 S.A.');
   assert.equal(d.RACES.length, 10, 'the ten peoples should remain present');
   assert.equal(d.MAP_DATA.regions.length, 21, 'the map should retain all 21 regions');
+  assert.match(d.REGIONS.find((region) => region.id === 'godfall').desc, /four centuries after the Sundering/);
+  assert.doesNotMatch(d.FA_DATA.regions.godfall.desc, /ده قرن بعد/);
 
   const regionIds = d.MAP_DATA.regions.map((region) => region.id);
   assert.equal(new Set(regionIds).size, regionIds.length, 'region ids must be unique');
