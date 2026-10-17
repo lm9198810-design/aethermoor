@@ -11,7 +11,7 @@ function loadData() {
   const sandbox = vm.createContext({ console: { log() {}, warn() {}, error() {} } });
   const exposure = `
 globalThis.__AETHERMOOR_TEST__ = {
-  UI_TEXT, FA_DATA, WORLD_META, RACES, MAGIC_SCHOOLS, MAGIC_LAWS, HOUSES,
+  UI_TEXT, FA_DATA, WORLD_META, WORLD_TILES, RACES, MAGIC_SCHOOLS, MAGIC_LAWS, HOUSES,
   MAP_DATA, REGIONS, TIMELINE, CHARACTERS, ARTIFACTS, GODS, CREATURES,
   PROPHECIES, LANGUAGES, BOOKS, GUILDS_DATA, DUNGEONS_DATA, WORLD_STATS
 };`;
@@ -99,7 +99,7 @@ test('the page loads the merged bundle once and no longer references lang.js', (
 test('the people catalogue is unified and the dungeon display has no stale floor count', () => {
   const app = read('app.js');
   assert.match(app, /const filtered = RACES;/);
-  assert.match(app, /if \(bar\) bar\.hidden = true;/);
+  assert.match(app, /if \(filterBar\)\s*\{\s*filterBar\.hidden = true;\s*filterBar\.style\.display = 'none';\s*\}/);
   assert.match(app, /liftTo20: 'Lift to Floor 20'/);
   assert.match(app, /liftTo20: 'آسانسور تا طبقهٔ ۲۰'/);
   assert.doesNotMatch(app, /class: 'abyss-stat-num', text: '200'/);
